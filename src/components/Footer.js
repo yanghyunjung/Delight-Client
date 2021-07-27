@@ -25,7 +25,7 @@ const Footer = (props) => {
 
       <Div>
         <Content>
-          당신에게 만족스러운 <br></br> 한끼의 기쁨을 드려요
+          당신에게 만족스러운 <br/> 한끼의 기쁨을 드려요
         </Content>
         <Icon>
           <InstagramIcon // 인스타그램 아이콘
