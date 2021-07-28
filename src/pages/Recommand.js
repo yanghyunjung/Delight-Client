@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Grid, Button } from "../elements";
 import FoodCard from "../components/FoodCard";
+import SelectedFoodSlider from "../components/SelectedFoodSlider";
 
 const Recommand = (props) => {
   return (
@@ -28,6 +29,8 @@ const Recommand = (props) => {
         <FoodCard select={false}></FoodCard>
         <FoodCard select={false}></FoodCard>
       </FoodList>
+
+      <SelectedFoodSlider></SelectedFoodSlider>
 
       <Grid width="360px" heigh="143px" margin="0px auto" padding="20px">
         <Button
