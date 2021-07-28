@@ -108,7 +108,7 @@ Grid.defaultProps = {
   minWidth: false,
   minHeight: false,
   shadow: false,
-  _onClick: () => {},
+  _onClick: () => { },
   top: false,
   left: false,
   right: false,
@@ -171,18 +171,19 @@ const GridBox = styled.div`
     props.is_header ? `position: sticky; top: 0; z-index: 10;` : ""};
   ${(props) => (props.is_float ? `float: ${props.is_float}; ` : "")}
   ${(props) => (props.text_align ? `text-align: ${props.text_align}; ` : "")}
+  
   @media (min-width: 501px) {
     ${(props) =>
-      props.review_flex
-        ? `display: flex; align-items: center; justify-content: space-between;`
-        : ""}
+    props.review_flex
+      ? `display: flex; align-items: center; justify-content: space-between;`
+      : ""}
   }
 
   @media (min-width: 510px) {
     ${(props) =>
-      props.post_flex
-        ? `display: flex; align-items: center; justify-content: center;`
-        : ""}
+    props.post_flex
+      ? `display: flex; align-items: center; justify-content: center;`
+      : ""}
   }
 `;
 
