@@ -60,8 +60,8 @@ const FoodImgWrap = styled.div`
       border: 2px solid #ffa012;
     `}
   & img {
-    width: 70px;
-    height: 70px;
+    width: 100%;
+    height: 100%;
     margin: 0px;
     padding: 0px;
     -webkit-transform: scale(1);
