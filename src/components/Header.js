@@ -13,6 +13,7 @@ const Header = (props) => {
   );
 };
 
+// 헤더 박스 모양 잡아주기
 const HEADER = styled.div`
   box-sizing: border-box;
   border: none;
@@ -25,6 +26,7 @@ const HEADER = styled.div`
   justify-content: space-between;
 `;
 
+// 로고 스타일 지정
 const Logo = styled.img`
   display: flex;
   width: 66px;
