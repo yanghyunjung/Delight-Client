@@ -50,13 +50,12 @@ const FooterStyle = styled.div`
   background-color: #d1cdc7;
   display: flex;
   flex-direction: column;
-  position: fixed;
   bottom: 0;
   width: 100%;
   height: 181px;
   justify-content: center;
   align-items: center;
-  margin-left: -8px;
+  margin: 0px;
 `;
 
 const Div = styled.div`
