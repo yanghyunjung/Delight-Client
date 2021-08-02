@@ -27,7 +27,7 @@ const HEADER = styled.div`
   box-sizing: border-box;
   border: none;
   width: 100%;
-  height: 42px;
+  height: 6vh;
   background-color: #f4f0ea;
   display: flex;
   box-shadow: 0px 3px #e5e5e3;

@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
+
+import NotionIcon from "../image/notion.png"
 
 const Footer = (props) => {
   return (
@@ -56,9 +57,10 @@ const Footer = (props) => {
             href="https://www.notion.so/Delight-Crew-s-aa69ae261f404f6a8c58c48e669f02fd"
             target="_blank"
           >
-            <TwitterIcon // 노션 아이콘 없어서 일단, 트위터로 대체
+              <Notion src={NotionIcon} />
+            {/* <TwitterIcon // 노션 아이콘 없어서 일단, 트위터로 대체
               style={{ fontSize: "2rem", margin: "10px", cursor: "pointer" }}
-            ></TwitterIcon>
+            ></TwitterIcon> */}
           </A>
         </Icon>
         <Name>Team Delight</Name>
@@ -79,7 +81,6 @@ const FooterStyle = styled.div`
   justify-content: center;
   align-items: center;
   margin: 30px 0px 0px 0px;
-  position: fixed;
 `;
 
 const Div = styled.div`
@@ -104,6 +105,12 @@ const Content = styled.a`
 const Icon = styled.div`
   display: flex;
   padding: 5px;
+`;
+
+const Notion = styled.img`
+  margin: 10px 0px 0px 8px;
+  width: 34px;
+  height: 34px;
 `;
 
 const Name = styled.a`

@@ -35,7 +35,7 @@ const MenuItem = styled.li`
   padding: 8px;
   display: flex;
   font-size: 14px;
-  li:checked{
+  li:active{
       color: black;
   }
 `;
