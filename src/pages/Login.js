@@ -11,7 +11,7 @@ import { Grid, Text } from "../elements";
 const Login = () => {
     return (
         <React.Fragment>
-            <Grid is_flex2 wrap width="100%" >
+            <Grid is_flex2 wrap width="100%" margin="150px 0 0 0">
                 <Grid is_flex2 margin="0 0 50px 0">
                     <img src={DelightLogo} />
                 </Grid>
