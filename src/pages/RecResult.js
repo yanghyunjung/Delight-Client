@@ -7,6 +7,7 @@ import Kakao from "../image/kakao_black.png";
 import Google from "../image/google_black.png";
 import Facebook from "../image/facebook_black.png";
 
+import Footer from "../components/Footer";
 import ImageSlider from "../components/ImageSlider";
 
 
@@ -21,8 +22,6 @@ const RecResult = () => {
                         오늘은 이거 어때?
                     </Text>
                 </Grid>
-
-
                 <ImageSlider />
                 {/* 바텀 */}
                 <Grid is_flex2 wrap width="auto" margin="50px 0 0 0">
@@ -39,24 +38,29 @@ const RecResult = () => {
                     </Grid>
 
 
-
-                    <Grid is_flex2>
-                        <Text bold>
-                            원하는 결과가 아니신가요?
-                    </Text>
-                    </Grid>
-
-                    <Button>
-                        <Text color="white"  >
-                            테스트 다시하기
+                    <Grid width="600px" is_flex2 wrap>
+                        <Button1>
+                            <Text color="white" size="10px">
+                                오늘 내가 먹은 음식은?
                         </Text>
-                    </Button>
+
+                            <Text color="white" bold >
+                                추천 받으러 가기
+                        </Text>
+                        </Button1>
+
+                        <Button2>
+                            <Text color="#FFA012" size="10px">
+                                오늘 내가 먹은 음식은?
+                        </Text>
+                            <Text color="#FFA012" bold >
+                                검색하러 가기
+                        </Text>
+                        </Button2>
+                    </Grid>
                 </Grid>
-
-
-
-
             </Grid>
+            <Footer />
         </React.Fragment>
 
     );
@@ -83,16 +87,28 @@ background-size: cover;
 background-image: url(${Facebook});
 `;
 
-// 테스트 다시 하기 버튼
-const Button = styled.button`
+// 버튼
+const Button1 = styled.button`
     background-color: #FFA012;
     border:none;
-    border-radius:30px;
+    border-radius:10px;
     width:500px;
-    height:50px;
+    height:70px;
     cursor:pointer;
     padding:0 auto;
-    margin:10px 0 10px 0;
+    box-shadow: 2px 2px 2px gray;
 `;
+const Button2 = styled.button`
+    background-color: white;
+    border:1px solid #FFA012;
+    border-radius:10px;
+    width:500px;
+    height:70px;
+    cursor:pointer;
+    padding:0 auto;
+    margin:10px 0 50px 0;
+    box-shadow: 2px 2px 2px gray;
+`;
+
 
 export default RecResult;
