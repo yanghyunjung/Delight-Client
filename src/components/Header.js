@@ -8,7 +8,16 @@ const Header = (props) => {
   return (
     <HEADER>
       <Logo src={HeaderLogo} />
-      <Text size="15px">login</Text>
+      <Text
+        size="15px"
+        margin="10px"
+        cursor
+        _onClick={() => {
+          window.location.replace("/login"); // history.push(/)를 사용하면 refresh가 안됨.
+        }}
+      >
+        login
+      </Text>
     </HEADER>
   );
 };
@@ -31,6 +40,7 @@ const Logo = styled.img`
   display: flex;
   width: 66px;
   height: 26px;
+  margin: 10px;
 `;
 
 export default Header;

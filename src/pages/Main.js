@@ -3,8 +3,9 @@ import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import MainSlider from "../components/MainSlider";
 
+import RecComButton from "../image/RecButton.png";
+import SearchButton from "../image/SearchButton.png";
 import styled from "styled-components";
-import { Button, Text, Grid } from "../elements";
 
 const Main = (props) => {
   return (
@@ -23,31 +24,20 @@ const Main = (props) => {
         </p>
       </Title>
 
+      {/* 메뉴 바 */}
       <Menu />
 
+      {/* 음식 이미지 슬라이드 */}
       <MainSlider />
 
       {/* 버튼 제작 */}
       <GRID>
-      <Button
-        bg="#FFA012"
-        border="none"
-        color="#ffffff "
-        radius="10px"
-        width="320px"
-        height="81px"
-        margin="10px"
-        cursor
-        // _onClick={() => history.push(`/recommand`)}
-      >
-        <Text size="14px" color="#ffffff">
-          오늘 내가 먹을 음식은?
-        </Text>
-        <Text size="24px" color="#ffffff" bold>
-          추천받으러 가기 ⟶
-        </Text>
-      </Button>
+        <RecButton src={RecComButton} />
       </GRID>
+
+      <GRID2>
+        <SeaButton src={SearchButton} />
+      </GRID2>
       <Footer />
     </div>
   );
@@ -59,10 +49,25 @@ const Title = styled.div`
 `;
 
 const GRID = styled.div`
-  display: flex;
-  padding: 30px;
-  justify-content: center;
   margin-top: 70px;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+`;
+
+const GRID2 = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const RecButton = styled.img`
+  width: 320px;
+  height: 90px;
+`;
+
+const SeaButton = styled.img`
+  width: 320px;
+  height: 90px;
 `;
 
 export default Main;
