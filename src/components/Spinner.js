@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-import SpinnerImg from "../image/spinner/SpinnerImg.png";
+import spinner from "../image/spinner/Spinner.png";
 
 import Loader from "react-loader-spinner";
 
@@ -11,7 +11,7 @@ const Spinner = (props) => {
       <Container>
         <Box>
           <p className="two">추천 받는 중...</p>
-          <img src={SpinnerImg} alt="" className="one" />
+          <img src={spinner} alt="" className="one" />
           <StyledLoader type="Oval" color="#FFA012" height={250} width={250} />
           <p className="three">맛있게 먹으면 0 칼로리!</p>
         </Box>
@@ -58,6 +58,8 @@ const Box = styled.div`
   left: 50%;
   transform: translate(-50%, -100%);
   & img.one {
+    width: 200px;
+    height: 150px;
     position: absolute;
     top: 50%;
     left: 50%;

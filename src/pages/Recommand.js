@@ -43,7 +43,7 @@ const Recommand = (props) => {
         <FoodCard select={false}></FoodCard>
       </FoodList>
 
-      <div>
+      <SelectedBox>
         <SelectedFoodSlider />
         <Grid width="360px" heigh="143px" margin="0px auto" padding="20px">
           {selected > 0 ? (
@@ -72,17 +72,29 @@ const Recommand = (props) => {
             </Button>
           )}
         </Grid>
-      </div>
+      </SelectedBox>
     </React.Fragment>
   );
 };
+
+const SelectedBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  align-items: stretch;
+  justify-content: center;
+  width: 360px;
+  margin: 0px auto;
+  bottom: 0px;
+
+`;
 
 const FoodList = styled.div`
   display: grid;
   margin: 0px auto;
   justify-items: center;
   width: 320px;
-  height: auto;
+  height: 70vh;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 13px;
 `;
@@ -94,8 +106,8 @@ const RefreshImgWrap = styled.div`
   border-radius: 10px;
   box-sizing: border-box;
   padding: 10px;
+  cursor: pointer;
   & img {
-    cursor: pointer;
     width: 100%;
     height: 100%;
     margin: 0px;
