@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-import spinner from "../image/spinner/Spinner.png";
+import spinner from "../image/spinner/Spinner.svg";
 
 import Loader from "react-loader-spinner";
 
@@ -21,77 +21,69 @@ const Spinner = (props) => {
 };
 
 const Container = styled.div`
-  width: 360px;
-  height: 50rem;
-  margin: 0px auto;
+  width: 100%;
+  height: 94%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  text-align: center;
 `;
 
 const boxFade = keyframes`
   0% {
     opacity: 1;
-    top: 50%;
-  }
-  25% {
-    opacity: 1;
-    top: 45%;
-  }
-  50% {
-    opacity: 1;
-    top: 40%;
-  }
-  75% {
-    opacity: 1;
     top: 45%;
   }
   100% {
     opacity: 1;
-    top: 50%:
+    top: 50%;
   }
 `;
 
 const Box = styled.div`
-  position: relative;
-  text-align: center;
   width: 100%;
-  height: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
+  height: 100%;
   & img.one {
-    width: 200px;
-    height: 150px;
+    width: 20rem;
+    height: 20rem;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 10%);
+    transform: translate(-50%, 0%);
     animation-name: ${boxFade};
     animation-duration: 3s;
     animation-timing-function: linear;
     animation-delay: 0s;
     animation-iteration-count: infinite;
-    animation-direction: normal;
+    animation-direction: alternate;
   }
   & p.two {
     width: 100%;
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 700;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -320%);
+    transform: translate(-50%, -390%);
   }
   & p.three {
-    width: 360px;
-    font-size: 24px;
+    width: 36rem;
+    font-size: 2.4rem;
     font-weight: 700;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 220px); // 750%
+    transform: translate(-50%, 220px);
+    @media (min-width: 768px) {
+      transform: translate(-50%, 350px);
+    }
   }
 `;
 
 const StyledLoader = styled(Loader)`
+  background-color: #ffa012;
+  border-radius: 100rem;
   z-index: -1;
   position: absolute;
   top: 50%;
