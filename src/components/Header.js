@@ -32,13 +32,14 @@ const Header = (props) => {
 const HEADER = styled.div`
   box-sizing: border-box;
   border: none;
-  width: 100%;
-  height: 6vh;
+  width: 100vw;
+  height: 6%;
   background-color: #f4f0ea;
   display: flex;
   box-shadow: 0 0.3rem #e5e5e3;
   align-items: center;
   justify-content: space-between;
+  padding: 0 5%;
 `;
 
 // 로고 스타일 지정
