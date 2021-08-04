@@ -40,21 +40,13 @@ const RecResult = () => {
 
                     <Grid width="600px" is_flex2 wrap>
                         <Button1>
-                            <Text color="white" size="10px">
-                                오늘 내가 먹은 음식은?
-                        </Text>
-
                             <Text color="white" bold >
-                                추천 받으러 가기
+                                테스트 다시하기
                         </Text>
                         </Button1>
-
                         <Button2>
-                            <Text color="#FFA012" size="10px">
-                                오늘 내가 먹은 음식은?
-                        </Text>
                             <Text color="#FFA012" bold >
-                                검색하러 가기
+                                직접 검색하러 가기
                         </Text>
                         </Button2>
                     </Grid>
