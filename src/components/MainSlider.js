@@ -12,7 +12,7 @@ import LeftArrow from "../image/ArrowLeft.png";
 const MainSlider = (props) => {
   useEffect(() => {
     const list = document.querySelector(".slick-list");
-    list.style.setProperty("width", "250px", "important");
+    list.style.setProperty("width", "25rem", "important");
     console.log(list);
   });
 
@@ -29,7 +29,7 @@ const MainSlider = (props) => {
     <div>
       <StlyedSlider {...foods}>
         <Card>
-          <ImgWrap style={{ marginBottom: "7px" }}>
+          <ImgWrap style={{ marginBottom: "0.7rem" }}>
             <img
               // 알리오 올리오 사진
               src={
@@ -37,14 +37,14 @@ const MainSlider = (props) => {
               }
             />
           </ImgWrap>
-          <span style={{ fontSize: "20px", fontWeight: "bold" }}>
+          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
             1위 <br />
             알리오 올리오
           </span>
         </Card>
 
         <Card>
-          <ImgWrap style={{ marginBottom: "7px" }}>
+          <ImgWrap style={{ marginBottom: "0.7rem" }}>
             <img
               // 마라탕 사진
               src={
@@ -52,14 +52,14 @@ const MainSlider = (props) => {
               }
             />
           </ImgWrap>
-          <span style={{ fontSize: "20px", fontWeight: "bold" }}>
+          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
             2위 <br />
             마라탕
           </span>
         </Card>
 
         <Card>
-          <ImgWrap style={{ marginBottom: "7px" }}>
+          <ImgWrap style={{ marginBottom: "0.7rem" }}>
             <img
               // 짜장면 사진
               src={
@@ -67,20 +67,20 @@ const MainSlider = (props) => {
               }
             />
           </ImgWrap>
-          <span style={{ fontSize: "20px", fontWeight: "bold" }}>
+          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
             3위 <br />
             짜장면
           </span>
         </Card>
 
         <Card>
-          <ImgWrap style={{ marginBottom: "7px" }}>
+          <ImgWrap style={{ marginBottom: "0.7rem" }}>
             <img
               // 떡볶이 사진
               src={"https://hyunjung.s3.ap-northeast-2.amazonaws.com/food.jpeg"}
             />
           </ImgWrap>
-          <span style={{ fontSize: "20px", fontWeight: "bold" }}>
+          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
             4위 <br />
             떡볶이
           </span>
@@ -92,22 +92,31 @@ const MainSlider = (props) => {
 
 const StlyedSlider = styled(Slider)`
   .slick-dots {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
   }
   .slick-dots li {
-    width: 50px;
-    padding: 0px 10px;
+    width: 5rem;
+    padding: 0 1rem;
   }
   position: relative;
-  margin: 10px auto;
+  margin-top: 2rem;
   .slick-list {
     text-align: center;
-    margin: 0px auto;
-    width: 300px;
-    height: 300px;
+    margin: 0rem auto;
+    width: 30rem;
+    height: 30rem;
   }
   .slick-list div {
     outline: none;
+  }
+
+  .pro-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 25%;
+    height: 1rem;
+    background: #ccc;
   }
 `;
 
@@ -115,16 +124,16 @@ const Card = styled.div``;
 
 const ImgWrap = styled.div`
   overflow: hidden;
-  width: 250px;
-  height: 250px;
+  width: 25rem;
+  height: 25rem;
   border-radius: 50%;
   box-sizing: border-box;
   & img {
     text-align: center;
     width: 100%;
     height: 100%;
-    margin: 0px;
-    padding: 0px;
+    margin: 0rem;
+    padding: 0rem;
   }
 `;
 
@@ -139,8 +148,8 @@ function NextArrow(props) {
       style={{
         ...style,
         position: "absolute",
-        top: "120px",
-        right: "0px",
+        top: "9rem",
+        right: "0rem",
         zIndex: 9999,
         cursor: "pointer",
       }}
@@ -151,7 +160,7 @@ function NextArrow(props) {
   );
 }
 
- // 이전 화살표
+// 이전 화살표
 function PrevArrow(props) {
   const { style, onClick } = props;
   if (onClick === null) {
@@ -162,8 +171,8 @@ function PrevArrow(props) {
       style={{
         ...style,
         position: "absolute",
-        top: "120px",
-        left: "0px",
+        top: "9rem",
+        left: "0rem",
         zIndex: 9999,
         cursor: "pointer",
       }}
@@ -176,8 +185,8 @@ function PrevArrow(props) {
 
 const ArrowWrap = styled.div`
   & img {
-    width: 27px;
-    height: 55px;
+    width: 3.3rem;
+    height: 6.5rem;
   }
 `;
 export default MainSlider;
