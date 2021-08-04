@@ -21,67 +21,53 @@ const FoodCard = (props) => {
 };
 
 const Container = styled.div`
-  margin: 0px auto 5px;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0.5rem;
+`;
+
+const FoodImgWrap = styled.div`
+  overflow: hidden;
+  width: 100%;
+  height: 80%;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  ${(props) =>
+    props.select &&
+    css`
+      opacity: 0.8;
+      border: 2px solid orange;
+    `}
+  & img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const FoodNameWrap = styled.div`
-  width: 70px;
+  width: 100%;
+  height: 20%;
 `;
 
 const FoodName = styled.div`
-  width: 70px;
+  width: 100%;
+  height: 100%;
   text-align: center;
   overflow: hidden;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 1.2rem;
   color: #000000;
-  line-height: 14px;
+  line-height: 1.4rem;
   word-wrap: break-word;
   letter-spacing: 0;
   box-sizing: border-box;
-  margin: 3px auto 0px;
+  margin: 0.3rem auto 0.5rem;
   ${(props) =>
     props.select &&
     css`
       color: #ffa012;
     `}
-`;
-
-const FoodImgWrap = styled.div`
-  overflow: hidden;
-  width: 70px;
-  height: 70px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  ${(props) =>
-    props.select &&
-    css`
-      border: 2px solid #ffa012;
-    `}
-  & img {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: 0.4s;
-    -moz-transition: 0.4s;
-    -ms-transition: 0.4s;
-    -o-transition: 0.4s;
-    transition: 0.4s;
-    &:hover {
-      transform: scale(1.1);
-      -webkit-transform: scale(1.1);
-      -moz-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-      -o-transform: scale(1.1);
-    }
-  }
 `;
 
 export default FoodCard;

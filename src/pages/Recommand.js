@@ -9,17 +9,20 @@ const Recommand = (props) => {
   const selected = 1;
   return (
     <React.Fragment>
-      <Grid width="360px" margin="0px auto" padding="20px">
-        <Grid is_flex>
+      <Grid width="100%" height="15%" padding="2rem 5% 2.5rem">
+        <Grid is_flex height="70%">
           <Title>최근에 뭐 먹었어요?</Title>
           <RefreshImgWrap>
             <img src={RefreshImg} />
           </RefreshImgWrap>
         </Grid>
-        <p>
-          총 <b>10개</b>까지 선택할 수 있어요!
-        </p>
+        <Wrap>
+          <SubTitle>
+            총 <Span>10개</Span>까지 선택할 수 있어요!
+          </SubTitle>
+        </Wrap>
       </Grid>
+
       <FoodList>
         <FoodCard select={true}></FoodCard>
         <FoodCard select={true}></FoodCard>
@@ -45,15 +48,15 @@ const Recommand = (props) => {
 
       <SelectedBox>
         <SelectedFoodSlider />
-        <Grid width="360px" heigh="143px" margin="0px auto" padding="20px">
+        <Grid margin="0 auto">
           {selected > 0 ? (
             <Button
               bg="#FFA012"
               border="1px solid #FFA012"
               color="#ffffff "
-              radius="10px"
-              width="320px"
-              height="50px"
+              radius="1rem"
+              width="100%"
+              height="5rem"
               cursor
             >
               선택완료 ( 1 / 10 )
@@ -63,9 +66,9 @@ const Recommand = (props) => {
               bg="#C8C8C8"
               border="1px solid #C8C8C8"
               color="#ffffff "
-              radius="10px"
-              width="320px"
-              height="50px"
+              radius="1rem"
+              width="100%"
+              height="5rem"
               cursor
             >
               선택완료
@@ -80,44 +83,64 @@ const Recommand = (props) => {
 const SelectedBox = styled.div`
   display: flex;
   flex-direction: column;
-  position: fixed;
   align-items: stretch;
-  justify-content: center;
-  width: 360px;
-  margin: 0px auto;
-  bottom: 0px;
-
+  justify-content: flex-end;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #f4f0ea;
+  padding: 1.4rem 2rem;
+  box-shadow: 0 -0.4rem 0.4rem 0 rgba(0, 0, 0, 0.1);
 `;
 
 const FoodList = styled.div`
   display: grid;
-  margin: 0px auto;
   justify-items: center;
-  width: 320px;
-  height: 70vh;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 13px;
+  margin: 0rem 0rem 2.5rem 0rem;
+  padding: 0 5%;
+  width: 90%;
+  height: 100%;
+  grid-template-columns: repeat(4, minmax(20%, auto));
+  gap: 0.5rem 1.3rem;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const RefreshImgWrap = styled.div`
   overflow: hidden;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 1rem;
   cursor: pointer;
   & img {
     width: 100%;
     height: 100%;
-    margin: 0px;
-    padding: 0px;
   }
 `;
 
 const Title = styled.h2`
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
+`;
+
+const SubTitle = styled.h3`
+  font-size: 1.4rem;
+  font-weight: 400;
+`;
+
+const Span = styled.span`
+  font-size: 1.4rem;
+  font-weight: 700;
+`;
+
+const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30%;
 `;
 
 export default Recommand;
