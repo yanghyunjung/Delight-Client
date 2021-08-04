@@ -7,10 +7,16 @@ import HeaderLogo from "../image/DelightLogo.png";
 const Header = (props) => {
   return (
     <HEADER>
-      <Logo src={HeaderLogo} />
+      <Logo
+        style={{ cursor: "pointer" }}
+        src={HeaderLogo}
+        onClick={() => {
+          window.location.replace("/");
+        }}
+      />
       <Text
-        size="15px"
-        margin="10px"
+        size="1.5rem"
+        margin="1rem"
         cursor
         _onClick={() => {
           window.location.replace("/login"); // history.push(/)를 사용하면 refresh가 안됨.
@@ -26,21 +32,22 @@ const Header = (props) => {
 const HEADER = styled.div`
   box-sizing: border-box;
   border: none;
-  width: 100%;
-  height: 6vh;
+  width: 100vw;
+  height: 6%;
   background-color: #f4f0ea;
   display: flex;
-  box-shadow: 0px 3px #e5e5e3;
+  box-shadow: 0 0.3rem #e5e5e3;
   align-items: center;
   justify-content: space-between;
+  padding: 0 5%;
 `;
 
 // 로고 스타일 지정
 const Logo = styled.img`
   display: flex;
-  width: 66px;
-  height: 26px;
-  margin: 10px;
+  width: 6.6rem;
+  height: 2.6rem;
+  margin: 1rem;
 `;
 
 export default Header;

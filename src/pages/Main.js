@@ -13,9 +13,9 @@ const Main = (props) => {
       <Title>
         <p
           style={{
-            fontSize: "24px",
+            fontSize: "2.4rem",
             fontWeight: "bold",
-            margin: "15px 0px 0px 15px",
+            margin: "2rem 0 0 2.5rem",
             float: "left",
           }}
         >
@@ -24,19 +24,23 @@ const Main = (props) => {
         </p>
       </Title>
 
-      {/* 메뉴 바 */}
+      {/* 메뉴 컴포넌트 */}
       <Menu />
 
-      {/* 음식 이미지 슬라이드 */}
+      {/* 음식 이미지 슬라이드 컴포넌트 */}
       <MainSlider />
 
       {/* 버튼 제작 */}
       <GRID>
-        <RecButton src={RecComButton} />
+        <RecButton
+          src={RecComButton}
+          onClick={() => {
+            window.location.replace("/recommand");
+          }}
+        />
       </GRID>
-
       <GRID2>
-        <SeaButton src={SearchButton} />
+      <SeaButton src={SearchButton} />
       </GRID2>
       <Footer />
     </div>
@@ -49,9 +53,9 @@ const Title = styled.div`
 `;
 
 const GRID = styled.div`
-  margin-top: 70px;
+  margin-top: 3rem;
   display: flex;
-  padding: 10px;
+  padding: 1rem;
   justify-content: center;
 `;
 
@@ -61,13 +65,15 @@ const GRID2 = styled.div`
 `;
 
 const RecButton = styled.img`
-  width: 320px;
-  height: 90px;
+  cursor: pointer;
+  width: 32rem;
+  height: 9rem;
 `;
 
 const SeaButton = styled.img`
-  width: 320px;
-  height: 90px;
+  cursor: pointer;
+  width: 32rem;
+  height: 9rem;
 `;
 
 export default Main;

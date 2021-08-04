@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
-
-import NotionIcon from "../image/notion.png"
+import NotionIcon from "../image/notion.png";
 
 const Footer = (props) => {
   return (
@@ -44,23 +43,20 @@ const Footer = (props) => {
         </StarDiv>
         <Icon>
           <A href="https://www.instagram.com/" target="_blank">
-            <InstagramIcon
-              style={{ fontSize: "2rem", margin: "10px", cursor: "pointer" }}
+            <InstagramIcon // 인스타그램 아이콘
+              style={{ fontSize: "3.1rem", margin: "1rem", cursor: "pointer" }}
             ></InstagramIcon>
           </A>
           <A href="https://www.facebook.com/" target="_blank">
             <FacebookIcon // 페이스북 아이콘
-              style={{ fontSize: "2rem", margin: "10px", cursor: "pointer" }}
+              style={{ fontSize: "3.1rem", margin: "1rem", cursor: "pointer" }}
             ></FacebookIcon>
           </A>
-          <A
+          <A // 노션 아이콘
             href="https://www.notion.so/Delight-Crew-s-aa69ae261f404f6a8c58c48e669f02fd"
             target="_blank"
-          >
-              <Notion src={NotionIcon} />
-            {/* <TwitterIcon // 노션 아이콘 없어서 일단, 트위터로 대체
-              style={{ fontSize: "2rem", margin: "10px", cursor: "pointer" }}
-            ></TwitterIcon> */}
+          >   
+              <Notion src={NotionIcon} /> 
           </A>
         </Icon>
         <Name>Team Delight</Name>
@@ -77,10 +73,10 @@ const FooterStyle = styled.div`
   flex-direction: column;
   bottom: 0;
   width: 100%;
-  height: 181px;
+  height: 18.1rem;
   justify-content: center;
   align-items: center;
-  margin: 30px 0px 0px 0px;
+  margin: 3rem 0rem 0rem 0rem;
 `;
 
 const Div = styled.div`
@@ -95,27 +91,27 @@ const StarDiv = styled.div`
 `;
 
 const Content = styled.a`
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: bold;
   text-align: center;
-  padding: 5px;
-  line-height: 24px;
+  padding: 0.5rem;
+  line-height: 2.4rem;
 `;
 
 const Icon = styled.div`
   display: flex;
-  padding: 5px;
+  padding: 0.5rem;
 `;
 
 const Notion = styled.img`
-  margin: 10px 0px 0px 8px;
-  width: 34px;
-  height: 34px;
+  margin: 0.95rem 0 0 0.9rem;
+  width: 3.4rem;
+  height: 3.4rem;
 `;
 
 const Name = styled.a`
   display: flex;
-  font-size: 12px;
+  font-size: 1.2rem;
 `;
 
 const A = styled.a`
