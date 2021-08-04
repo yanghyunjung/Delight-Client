@@ -6,11 +6,13 @@ import { connectRouter } from 'connected-react-router';
 
 // Modules
 import User from './modules/user';
+import Food from './modules/food';
 
 export const history = createBrowserHistory();
 
 // export한 Reducer를 모으기
 const rootReducer = combineReducers({
+  food: Food,
   router: connectRouter(history)
 });
 
@@ -21,12 +23,12 @@ const middlewares = [thunk.withExtraArgument({ history: history })];
 // 지금의 환경
 const env = process.env.NODE_ENV;
 
-// Chrome Extension
 if (env === "development") {
   const { logger } = require("redux-logger");
   middlewares.push(logger);
 }
 
+// Chrome Extension
 // Redux devTools 설정
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
