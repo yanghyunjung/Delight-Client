@@ -5,6 +5,9 @@ import { Grid } from "../elements";
 
 import Footer from "../components/Footer";
 
+import ArrowRight from "../image/SelectedArrowR.png";
+import ArrowLeft from "../image/SelectedArrowL.png";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -39,6 +42,9 @@ class ImageSlider extends Component {
             sliderToShow: 2,    //1장씩 보이게 해주세요
             arrows: true,   // 넌 왜 안보이냐
             slidesToScroll: 1,  //1장씩 넘기세요
+            nextArrow: <SampleNextArrow />,
+            prevArrow: <SamplePrevArrow />,
+
 
 
 
@@ -47,18 +53,18 @@ class ImageSlider extends Component {
             <React.Fragment>
 
                 <div className="ImageSlider" style={{ padding: 40 }}>
-                    <Wrap>
-                        <Slider {...settings}>
-                            {photos.map((photo) => {
-                                return (
-                                    <Grid is_flex2 width="auto" >
-                                        <img width="50%" src={photo.url} />
-                                    </Grid>
-                                )
-                            })}
 
-                        </Slider>
-                    </Wrap>
+                    <Slider {...settings}>
+                        {photos.map((photo) => {
+                            return (
+                                <Grid is_flex2 width="auto" >
+                                    <img width="50%" src={photo.url} />
+                                </Grid>
+                            )
+                        })}
+
+                    </Slider>
+
                 </div>
             </React.Fragment >
         );
@@ -66,23 +72,53 @@ class ImageSlider extends Component {
     }
 }
 
-const Wrap = styled.div`
-    width: 100%;
-    
-.slick-prev:before {
-    opacity: 1; // 기존에 숨어있던 화살표 버튼이 보이게
-    color: #FFA012; // 버튼 색
-    position:absolute;
-    left:700%;
-    font-size: 40px;
+function SampleNextArrow(props) {
+    const { style, onClick } = props;
+    if (onClick === null) {
+        return "";
+    }
+    return (
+        <ArrowWrap
+            style={{
+                ...style,
+                position: "absolute",
+                top: "-5px",
+                right: "0px",
+                zIndex: 9999,
+            }}
+            onClick={onClick}
+        >
+            <img src={ArrowRight} alt="오른쪽 화살표" />
+        </ArrowWrap>
+    );
 }
-.slick-next:before {
-    opacity:1; 
-    color: #FFA012;
-    position:absolute;
-    right:700%;
-    font-size: 40px;
+
+function SamplePrevArrow(props) {
+    const { style, onClick } = props;
+    if (onClick === null) {
+        return "";
+    }
+    return (
+        <ArrowWrap
+            style={{
+                ...style,
+                position: "absolute",
+                top: "-5px",
+                left: "0px",
+                zIndex: 9996,
+            }}
+            onClick={onClick}
+        >
+            <img src={ArrowLeft} alt="왼쪽 화살표" />
+        </ArrowWrap>
+    );
 }
+
+const ArrowWrap = styled.div`
+    & img {
+        width: 25px;
+        height: 50px;
+    }
 `;
 
 export default ImageSlider;

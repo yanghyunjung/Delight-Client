@@ -16,6 +16,7 @@ const App = (props) => {
           <Route exact path="/recommand" component={Recommand} />
           <Route exact path="/recommand/:id" component={RecResult} />
           <Route exact path="/login" component={Login} />
+
         </Switch>
       </Layout>
     </Router>
