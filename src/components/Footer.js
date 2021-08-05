@@ -44,12 +44,12 @@ const Footer = (props) => {
         <Icon>
           <A href="https://www.instagram.com/" target="_blank">
             <InstagramIcon // 인스타그램 아이콘
-              style={{ fontSize: "3.1rem", margin: "1rem", cursor: "pointer" }}
+              style={{ fontSize: "3.3rem", margin: "1rem", cursor: "pointer" }}
             ></InstagramIcon>
           </A>
           <A href="https://www.facebook.com/" target="_blank">
             <FacebookIcon // 페이스북 아이콘
-              style={{ fontSize: "3.1rem", margin: "1rem", cursor: "pointer" }}
+              style={{ fontSize: "3.3rem", margin: "1rem", cursor: "pointer" }}
             ></FacebookIcon>
           </A>
           <A // 노션 아이콘
@@ -60,7 +60,6 @@ const Footer = (props) => {
           </A>
         </Icon>
         <Name>Team Delight</Name>
-        <Name>delight123@naver.com</Name>
       </Div>
     </FooterStyle>
   );
@@ -104,14 +103,14 @@ const Icon = styled.div`
 `;
 
 const Notion = styled.img`
-  margin: 0.95rem 0 0 0.9rem;
-  width: 3.4rem;
-  height: 3.4rem;
+  margin: 1rem;
+  width: 3.3rem;
+  height: 3.3rem;
 `;
 
 const Name = styled.a`
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 `;
 
 const A = styled.a`

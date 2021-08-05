@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Footer from "../components/Footer";
-import Menu from "../components/Menu";
 import MainSlider from "../components/MainSlider";
 
 import RecComButton from "../image/RecButton.png";
 import SearchButton from "../image/SearchButton.png";
 import styled from "styled-components";
 
+import { actionCreators as categoryActions } from "../redux/modules/category";
+import { useDispatch, useSelector } from "react-redux";
+
 const Main = (props) => {
+  // const dispatch = useDispatch();
+  // const category_list = useSelector((state) => state.list.category_list);
+
+  // useEffect(() => {
+  //   dispatch(categoryActions.getCategoryDB());
+  // }, []);
+
   return (
     <div>
       <Title>
@@ -24,10 +33,7 @@ const Main = (props) => {
         </p>
       </Title>
 
-      {/* 메뉴 컴포넌트 */}
-      <Menu />
-
-      {/* 음식 이미지 슬라이드 컴포넌트 */}
+      {/* 메뉴 & 음식 이미지 슬라이드 컴포넌트 */}
       <MainSlider />
 
       {/* 버튼 제작 */}
@@ -53,7 +59,7 @@ const Title = styled.div`
 `;
 
 const GRID = styled.div`
-  margin-top: 3rem;
+  margin-top: 1.7rem;
   display: flex;
   padding: 1rem;
   justify-content: center;
