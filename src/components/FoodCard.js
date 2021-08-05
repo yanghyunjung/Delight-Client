@@ -1,44 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 
+import { useSelector, useDispatch } from "react-redux";
+
 const FoodCard = (props) => {
+  const { _onClick } = props;
+  const [selection, setSelection] = useState(false);
+  const handleSelection = () => {
+    setSelection(true);
+  };
+
+  if (selection) {
+    return (
+      <React.Fragment>
+        <Container id={props.data.id} onClick={_onClick}>
+          <FoodImgWrap
+            style={{ opacity: "0.8", border: "2px solid orange" }}
+            onClick={handleSelection}
+          >
+            <img src={props.data.imgUrl} alt={props.data.name} />
+          </FoodImgWrap>
+          <FoodNameWrap>
+            <FoodName style={{ color: "#ffa012" }}>{props.data.name}</FoodName>
+          </FoodNameWrap>
+        </Container>
+      </React.Fragment>
+    );
+  }
   return (
     <React.Fragment>
-      <Container>
-        <FoodImgWrap select={props.select}>
-          <img
-            src={
-              "https://s3-alpha-sig.figma.com/img/6b7b/7732/464039ca5fa8f4d268a61e54798418be?Expires=1628467200&Signature=UAMtlWmh3IFALK~hiTpgTROjh~nUopgEXfJRDE0nt0p4fRLgg9bpov4CMdk0t2H0mg63ALXXkRL14YgfjH2f0p-Xod22fZeuzPW~O9e4Sw8zS-ZPYkandDOYSgkbELsZAJsZnUph0frKaZ2J62WCRyShGt9r~IPPcsF5WWOKDmc8jEpnd9PDU7DVEVSTrBqjFk9NSVNTgmSWmbuwgAE~34XLsY~zj9YJsrfMQCrPogcIAel8-zsWh0~wORrUB3pot3pA~DoVqSxnpJgZGJfwHddkab8JFFlKONDldFP2nEES1-Z3JxkdoMtr-63r~NfsFhLJ0C18ZkoYTNUQgXRs2g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            }
-          />
+      <Container id={props.data.id} onClick={_onClick}>
+        <FoodImgWrap onClick={handleSelection}>
+          <img src={props.data.imgUrl} alt={props.data.name} />
         </FoodImgWrap>
         <FoodNameWrap>
-          <FoodName select={props.select}>짜장면</FoodName>
+          <FoodName>{props.data.name}</FoodName>
         </FoodNameWrap>
       </Container>
     </React.Fragment>
   );
 };
 
+FoodCard.defaultProps = {
+  _onClick: () => {},
+};
+
 const Container = styled.div`
-  cursor: pointer;
   width: 100%;
   height: 100%;
   margin-bottom: 0.5rem;
 `;
 
 const FoodImgWrap = styled.div`
+  cursor: pointer;
   overflow: hidden;
   width: 100%;
   height: 80%;
   border-radius: 1rem;
   box-sizing: border-box;
-  ${(props) =>
-    props.select &&
-    css`
-      opacity: 0.8;
-      border: 2px solid orange;
-    `}
   & img {
     width: 100%;
     height: 100%;
@@ -56,15 +75,13 @@ const FoodName = styled.div`
   text-align: center;
   overflow: hidden;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1em;
   color: #000000;
-  line-height: 1.4rem;
-  word-wrap: break-word;
-  letter-spacing: 0;
+  line-height: 1.5rem;
   box-sizing: border-box;
   margin: 0.3rem auto 0.5rem;
   ${(props) =>
-    props.select &&
+    props.selection &&
     css`
       color: #ffa012;
     `}
