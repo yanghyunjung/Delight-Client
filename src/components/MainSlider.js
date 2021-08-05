@@ -1,15 +1,25 @@
 import React, { useEffect } from "react";
-import styled, { css } from "styled-components";
-import { Text } from "../elements";
+import styled from "styled-components";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import RightArrow from "../image/ArrowRight.png";
 import LeftArrow from "../image/ArrowLeft.png";
 
+import { history } from "../redux/configureStore";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as categoryActions } from "../redux/modules/category";
+
 const MainSlider = (props) => {
+  // const dispatch = useDispatch();
+  // const category_list = useSelector((state) => state.list.category_list);
+
+  // useEffect(() => {
+  //   dispatch(categoryActions.getCategoriesDB());
+  // }, []);
+
+  // 슬라이드 이미지 크기(width) 임의로 변경하기 위해 useEffect 사용함
   useEffect(() => {
     const list = document.querySelector(".slick-list");
     list.style.setProperty("width", "25rem", "important");
@@ -27,7 +37,40 @@ const MainSlider = (props) => {
   };
   return (
     <div>
+      <MenuList>
+        <MenuItem>전체</MenuItem>
+        <MenuItem>한식</MenuItem>
+        <MenuItem>분식</MenuItem>
+        <MenuItem>양식</MenuItem>
+        <MenuItem>일식</MenuItem>
+        <MenuItem>패스트푸드</MenuItem>
+        <MenuItem>중식</MenuItem>
+      </MenuList>
+
       <StlyedSlider {...foods}>
+        {/* {category_list.map((category, index) => ( */}
+        <Card>
+          <ImgWrap style={{ marginBottom: "0.7rem" }}>
+            {/* <img
+                src={
+                  category.imgUrl &&
+                  category.imgUrl[0]?.imgUrl
+                }
+                alt="category"
+              /> */}
+            <img
+              // 알리오 올리오 사진
+              src={
+                "https://hyunjung.s3.ap-northeast-2.amazonaws.com/food2.jpeg"
+              }
+            />
+          </ImgWrap>
+          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
+            1위 <br />
+            {/* {category.name} */} 알리오올리오
+          </span>
+        </Card>
+        {/* ))} */}
         <Card>
           <ImgWrap style={{ marginBottom: "0.7rem" }}>
             <img
@@ -39,50 +82,7 @@ const MainSlider = (props) => {
           </ImgWrap>
           <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
             1위 <br />
-            알리오 올리오
-          </span>
-        </Card>
-
-        <Card>
-          <ImgWrap style={{ marginBottom: "0.7rem" }}>
-            <img
-              // 마라탕 사진
-              src={
-                "https://hyunjung.s3.ap-northeast-2.amazonaws.com/food3.webp"
-              }
-            />
-          </ImgWrap>
-          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
-            2위 <br />
-            마라탕
-          </span>
-        </Card>
-
-        <Card>
-          <ImgWrap style={{ marginBottom: "0.7rem" }}>
-            <img
-              // 짜장면 사진
-              src={
-                "https://hyunjung.s3.ap-northeast-2.amazonaws.com/food1.jpeg"
-              }
-            />
-          </ImgWrap>
-          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
-            3위 <br />
-            짜장면
-          </span>
-        </Card>
-
-        <Card>
-          <ImgWrap style={{ marginBottom: "0.7rem" }}>
-            <img
-              // 떡볶이 사진
-              src={"https://hyunjung.s3.ap-northeast-2.amazonaws.com/food.jpeg"}
-            />
-          </ImgWrap>
-          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
-            4위 <br />
-            떡볶이
+            {/* {category.name} */} 알리오올리오
           </span>
         </Card>
       </StlyedSlider>
@@ -99,7 +99,7 @@ const StlyedSlider = styled(Slider)`
     padding: 0 1rem;
   }
   position: relative;
-  margin-top: 2rem;
+  margin-top: 0.8rem;
   .slick-list {
     text-align: center;
     margin: 0rem auto;
@@ -189,4 +189,32 @@ const ArrowWrap = styled.div`
     height: 6.5rem;
   }
 `;
+
+const MenuList = styled.div`
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2rem;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const MenuItem = styled.a`
+  color: gray;
+  cursor: pointer;
+  width: auto;
+  padding: 0.8rem;
+  display: flex;
+  font-size: 1.4rem;
+  &:hover {
+    color: black;
+    border-bottom: 1.5px solid;
+    transition: 0.3s ease-in-out; // 시작지점과 종료지점의 변화가 서서히 일어남.
+  }
+`;
+
 export default MainSlider;
