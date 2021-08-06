@@ -3,21 +3,31 @@ import styled, { css } from "styled-components";
 
 import { useSelector, useDispatch } from "react-redux";
 
+import { addFood, deleteFood } from "../redux/modules/food";
+
 const FoodCard = (props) => {
-  const { _onClick } = props;
+  const dispatch = useDispatch();
   const [selection, setSelection] = useState(false);
-  const handleSelection = () => {
+  const foodSelect = () => {
     setSelection(true);
   };
-
+  const foodNotSelect = () => {
+    setSelection(false);
+  };
   if (selection) {
     return (
       <React.Fragment>
-        <Container id={props.data.id} onClick={_onClick}>
-          <FoodImgWrap
-            style={{ opacity: "0.8", border: "2px solid orange" }}
-            onClick={handleSelection}
-          >
+        <Container
+          id={props.data.id}
+          onClick={({ name, imgUrl, select }) => {
+            name = props.data.name;
+            imgUrl = props.data.imgUrl;
+            select = false;
+            dispatch(deleteFood({ name, imgUrl, select }));
+            foodNotSelect();
+          }}
+        >
+          <FoodImgWrap style={{ opacity: "0.8", border: "2px solid #ffa012" }}>
             <img src={props.data.imgUrl} alt={props.data.name} />
           </FoodImgWrap>
           <FoodNameWrap>
@@ -29,8 +39,17 @@ const FoodCard = (props) => {
   }
   return (
     <React.Fragment>
-      <Container id={props.data.id} onClick={_onClick}>
-        <FoodImgWrap onClick={handleSelection}>
+      <Container
+        id={props.data.id}
+        onClick={({ name, imgUrl, select }) => {
+          name = props.data.name;
+          imgUrl = props.data.imgUrl;
+          select = true;
+          dispatch(addFood({ name, imgUrl, select }));
+          foodSelect();
+        }}
+      >
+        <FoodImgWrap>
           <img src={props.data.imgUrl} alt={props.data.name} />
         </FoodImgWrap>
         <FoodNameWrap>
@@ -39,10 +58,6 @@ const FoodCard = (props) => {
       </Container>
     </React.Fragment>
   );
-};
-
-FoodCard.defaultProps = {
-  _onClick: () => {},
 };
 
 const Container = styled.div`

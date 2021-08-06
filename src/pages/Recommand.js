@@ -52,6 +52,46 @@ const datas = [
     imgUrl:
       "https://s3-alpha-sig.figma.com/img/3afd/6268/1c6d17679a66e7177f9bf5185da1ce8e?Expires=1629072000&Signature=g7okrF0~8tOLQW3jyIqwO3Tzg29upe09M0OMAolq3AAf1Lr1W3QsGQvR3bBwLMW2zgzl7wCj6pSqcDI8vgZIQ-g1-kSbvBVJkZ7TQUuYhKXysSduOxSRH1QyeusyUse8k3o0HDm7zEvZeDPe9XEUQC8kYnTnLnhnCThZnsuYplV5XSbAunvenFdcAjzo03~t0y3i681rz-AKzcRr83PHoVgaU6wB9RORgPUDwoLJ7975jwLjDmNB1OXuKL6Pt1lLrDC-YH~gP1om5wXTOOJvfR7Y5nsT0NF1FA~6NpclRlo1olpdyByFkx2riEi-XhzytqC3lpWBn8z67dez8-InfQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
   },
+  {
+    name: "알리오올리오",
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/7aa5/81e8/de2e30ce8ffbbf6bef3d62f916e9aca2?Expires=1629072000&Signature=eX2Oq2BphvFOK9b~85MXD4dwHar4MgUeCJkHUYeQq6CmbdMW7NxsEJTa-hjR9RJjvZDUICF0FMG1Kyd9v5lkqpt~n7RGHnpu4F9yjGk59or-ke-nlLzN-j6n8IxXWYyWqZ8ao2mRBiWYhOWzrfNys1uLtheN7vfbdxkkiuJMJGpOxSFkYmS00ako~o0TbdB0sYjehFJj3JZM6zgg~SbVrF~nXNsURiGqOlqo4ZVeTZdaYQf4jHMPfG9KfOfOha4l9-jGl7L032W9aymJ6xSCru9-Oddhsqe2yGYpWQHfv9f6LdGenh6iwWrkOXnl4aY1mjP4kPTK4uFpJvfWWvuozw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  },
+  {
+    name: "탕수육",
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/312b/89b0/32aead0327308d2e6fd8f5626382a791?Expires=1629072000&Signature=SxRD9ci1R6rA85UNvxPFfqYd8S1b9w3NbxS251SmqrqJsoyYi6u~VNZtVnzBTPaxaaW4deSaZ~wZhDTBIDab1YSknI0am26ZIxLzYiSEwD8JQrAI~IJ3Q-SJfNZ1qcT6Ss2-OzJnt9mlTYmLeDKW7hVP7ictGY~ixUFZCAs-eGBB4D2PFw7qwe09GAMhK6TY9hc6R486Baf8df2G6qxv71l-qTLwe6d76JaKXazn2btOw6vQn9ljP1~FRe3Yi9C0VRXFMDMew63NDouPzTXLHSsrLpThgOR2DEvf91E3dBMarMD9Dp5R4J01KhDMU6o9qkV4HNd55vzKPp1e7ucZbg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  },
+  {
+    name: "청국장",
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/a266/f45b/ff7bae9f38dfd83ac5309680d22ba7eb?Expires=1629072000&Signature=GNeZiJ8N8GiVEIrR0x~uA0UckEb4-pTWXKo05XAgJTM3uR8xpjC471~pQFYsY1GeYYkY6DHMorI-5fqiqqPpVGRfwaxfvmDrc7TaTWqYA-uOch2S20pKoXN7aa6yY04jU7K1W3qdtBHMa02wTsanzX-pSSFXgXFLeV-FynxwMWolQ3wrgk1hmwLPtQLbLSWUuhtzn-HaSBCR7DDNNxLmcZ96AviY2~Xn2xY~ZAI3z481RssctPOi8DZ44XEs~1TJZw0LsMF1QFepe4cZxh9Zm~SNeFHYn4EpP989gKKSxiosDnmH6~8Y2ABczFcSZhmV7ETQ0ryaYLsBEz3M2VmbdA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  },
+  {
+    name: "된장찌개",
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/44b2/228f/5f5185d7b596e5a3ad2cba8d4d96c06b?Expires=1629072000&Signature=DNkZ1czMq~5hXiVZTML0bMkeBTzQvyHaEoK~78Ns9Uo8gY0rrjKLsg5rq74Ml9DQW3va3SHAQREUBwbhb-5lQk~81Bu0UxqmUk~WgNM1nG3t8dR2E29BeboSd8PzNiKQTpiAdVYA6VzHePPc5t-u3HVU6c9z2GurStlZ-SFmA6RgMZVo4CItPVl7eMEem6V1JKktcU4GTbFkSHD66rCtbAK36XunB-be9MtJJbXxxPV~lhgU0bTuKUfStZVz2MC4znOps9Ob4YJGHGRN8Z8Fikmq31123cFlnuWtRwDBniljsndu5PVsvHyojklue1dMLzudRkcn2mrTtQkGIJgPaQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  },
+  {
+    name: "샌드위치",
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/f274/c037/209722d8a478e617e059dc842b68fc9a?Expires=1629072000&Signature=JpVgzpT35fBYdrhoC5Zk6ZFiBUWQnewMgIo-vYO0a2LI8~Xvx7kEjQ4ja1j0OVPkddxFtqwB0JVpVUG35kuvuwXPtHUdXUczfCwV9hC8olPhd-hTC~qZ0m3NU3boYqnvCV2Jdq0T4nLZlrne9KSrT3hWNa2wS7TnDOjbFqAY8XhrHNhrzcoN7oT4B1GmSB5nLspb6zPVjgLfOcofpRfB~uDTxYGAyLS9a~Nig9~wUXOmZ7SEagYPSKF5768nATvHdYeC7Jkl9xiCK511pY0djp9zzWqsfN9zQ43iZy5DqPbM3jfiz2S99EqP6PMRgbypHluWcCzIirvswEixkc50TQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  },
+  {
+    name: "잔치국수",
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/bd2e/ff87/9d170c3253b9dcb424edbef65dfd2a2a?Expires=1629072000&Signature=XxlAb2tkkJglP2eQyrsp3LdhhMXDRP~seSuyHp0PAQ1~QJOt096SVnLDx1oV5mLtymaQp1HooYuIi-~yOR73JZRzCY9tL4-pzQla20EMFvbZU0qbp0cuk2D0KCtQ6WT4w0DpyhsEvrubYBRJ1S2Cutia3jdwz9joMvLfozbaQX8876xzPpEX-xIhnnNbJp0Ok-jQfLMgDep0PxyPa5Y4MTeJcjWdON6CKlbOiVsJJr1lNb9hURJqhoz5WcHR91HdGGgo~u4v~nvJX0rMT4Ahqh3Ur761pb8fzX1-GYw5V~Mzbomq710zXHiT54fv-nrLPdYVIzwngJ8Iknc3RXALKg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  },
+  {
+    name: "돈코츠라멘",
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/b595/b1b3/12f4d7b28a5bb8b0193d02cdf4d7ec84?Expires=1629072000&Signature=ToZKRBmeVdE5P0GQtCCtphDCvW8aC~TqHETzkozuO5sgvPNjLXOCB3vv8p1b3bvtkPuPZYRPcnqrexjufDMZOVyjLQV6JhMEQG~4bnZoPEuyt0GwgocetSqShv~2mm9oQeauHOha~0DJv97UMaFcrc3-PoyOOciREoWXZhPoz8N9u013Z74-HFzi7veXivLyv2vAzsAz2xhshur5FFy-x8vzwO2gVIz8jzCWXqOEMBTJKl6k9L4Qvr9QMocd4ywPq1HaGIEttOgZAtDZ5OMs7VILEpu2mDhsYnkRc4NNQELqlnwc1RRHp8VgVJoDz28Uu0hYFtDGE1vq1yTTFoIjww__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  },
+  {
+    name: "가츠동",
+    imgUrl:
+      "https://s3-alpha-sig.figma.com/img/b742/dde6/80dfcdbcc74fd380ad03860af4b07426?Expires=1629072000&Signature=YWPbAEhQtdznsFnFYcvnJIxlcUSnn0UdrVSJj4rh1sICncqcvy~pzZtqu7-SE5mvSyfmkMwOGoMVHe1FH69a4Kra77k8yFtEotjpRxMJx9jmby3rmMGysP9W92jTxDyudp3gP1K9bUTuyoqpNHnwTb3o8qQYKwWhvcSQBPDJXG~TJLdnFcCWr-yr~~aUJjLiujsuYK8pApQj6tUN5F~SXoE2pDJQx1uo3hp1l7gLIHMrctmbZfNzxUA~E3DMa9o10N4cMT6sIe3iBcba4YDqyzHzszFAE6xLEcConHTVKHLoHbp2NwZlNVH6uQgE1kEXb165YMmzeKYeT1MNVoxzpg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  },
 ];
 
 const Recommand = (props) => {
@@ -74,17 +114,7 @@ const Recommand = (props) => {
       </Grid>
       <FoodList>
         {datas.map((data, idx) => {
-          return (
-            <FoodCard
-              _onClick={({ name, imgUrl }) => {
-                name = data.name;
-                imgUrl = data.imgUrl;
-                dispatch(addFood({ name, imgUrl }));
-              }}
-              data={data}
-              id={idx}
-            />
-          );
+          return <FoodCard data={data} id={idx} />;
         })}
       </FoodList>
 

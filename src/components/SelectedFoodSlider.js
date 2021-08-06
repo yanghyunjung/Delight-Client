@@ -13,8 +13,7 @@ import XBox from "../image/xBox.svg";
 
 const SelectedFoodSlider = (props) => {
   const dispatch = useDispatch();
-  const itemList = useSelector((state) => state.food.list);
-
+  const foodList = useSelector((state) => state.food.list);
   const settings = {
     infinite: false,
     centerPadding: "6rem",
@@ -27,13 +26,13 @@ const SelectedFoodSlider = (props) => {
     <React.Fragment>
       <div>
         <StlyedSlider {...settings}>
-          {itemList.map((item, idx) => {
+          {foodList.map((item, idx) => {
             return (
               <FoodImgWrap
                 onClick={({ name, imgUrl, list }) => {
                   name = item.name;
                   imgUrl = item.imgUrl;
-                  list = itemList;
+                  list = foodList;
                   dispatch(deleteFood({ name, imgUrl, list }));
                 }}
                 id={idx}
