@@ -114,17 +114,7 @@ const Recommand = (props) => {
       </Grid>
       <FoodList>
         {datas.map((data, idx) => {
-          return (
-            <FoodCard
-              _onClick={({ name, imgUrl }) => {
-                name = data.name;
-                imgUrl = data.imgUrl;
-                dispatch(addFood({ name, imgUrl }));
-              }}
-              data={data}
-              id={idx}
-            />
-          );
+          return <FoodCard data={data} id={idx} />;
         })}
       </FoodList>
 
