@@ -13,53 +13,56 @@ import { GOOGLE_URL, KAKAO_URL, NAVER_URL } from "../redux/modules/oauth";
 const Login = () => {
   return (
     <React.Fragment>
-      <Grid>
-        <Logo src={DelightLogo} />
-      </Grid>
+      <Grid wrap height="30%">
+        <Grid is_flex2 margin="0 0 -10rem 0">
+          <Logo src={DelightLogo} />
+        </Grid>
 
-      <Grid>
-        <Text size="1.6rem" bold>
-          당신에게 만족스러운
+        <Grid is_flex2 >
+          <Text size="1.6rem" bold margin="0 0 0 2rem" >
+            당신에게 만족스러운
           <br />
-          <br />
+            <br />
           한끼의 기쁨을 드려요
         </Text>
-      </Grid>
+        </Grid>
 
-      {/* 로그인 버튼 */}
-      <Grid is_flex wrap>
-        <ButtonG href={GOOGLE_URL}>
-          <Grid is_flex2>
-            <LogoG />
-            <Text size="16px" bold text_align="center" margin="auto">
-              구글로 1초 로그인하기
-            </Text>
-          </Grid>
-        </ButtonG>
 
-        <ButtonK href={KAKAO_URL}>
-          <Grid is_flex>
-            <LogoK />
-            <Text size="16px" bold text_align="center" margin="auto">
-              카카오로 1초 로그인하기
+        {/* 로그인 버튼 */}
+        <Grid is_flex2 wrap>
+          <ButtonG href={GOOGLE_URL}>
+            <Grid is_flex2>
+              <LogoG />
+              <Text size="16px" bold text_align="center" margin="auto">
+                구글로 1초 로그인하기
             </Text>
-          </Grid>
-        </ButtonK>
+            </Grid>
+          </ButtonG>
 
-        <ButtonN href={NAVER_URL}>
-          <Grid is_flex>
-            <LogoN />
-            <Text
-              color="white"
-              size="16px"
-              bold
-              text_align="center"
-              margin="auto"
-            >
-              네이버로 1초 로그인하기
+          <ButtonK href={KAKAO_URL}>
+            <Grid is_flex>
+              <LogoK />
+              <Text size="16px" bold text_align="center" margin="auto">
+                카카오로 1초 로그인하기
             </Text>
-          </Grid>
-        </ButtonN>
+            </Grid>
+          </ButtonK>
+
+          <ButtonN href={NAVER_URL}>
+            <Grid is_flex>
+              <LogoN />
+              <Text
+                color="white"
+                size="16px"
+                bold
+                text_align="center"
+                margin="auto"
+              >
+                네이버로 1초 로그인하기
+            </Text>
+            </Grid>
+          </ButtonN>
+        </Grid>
       </Grid>
     </React.Fragment>
   );
@@ -103,6 +106,7 @@ const ButtonN = styled.a`
 const Logo = styled.img`
   width: 19rem;
   height: 6rem;
+  
 `;
 
 // sns 로고
