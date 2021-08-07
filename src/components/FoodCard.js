@@ -3,40 +3,48 @@ import styled, { css } from "styled-components";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { addFood, deleteFood } from "../redux/modules/food";
+import {
+  addFood,
+  deleteFood,
+  getFoodList,
+  getFoodName,
+} from "../redux/modules/food";
 
 const FoodCard = (props) => {
   const dispatch = useDispatch();
-  const [selection, setSelection] = useState(false);
-  const foodSelect = () => {
-    setSelection(true);
-  };
-  const foodNotSelect = () => {
-    setSelection(false);
-  };
-  if (selection) {
+  const foodNameList = useSelector((state) => state.food.foodName);
+  const foodList = useSelector((state) => state.food.list);
+  const [name, setName] = useState("");
+  const [alist, setAList] = useState({});
+  useEffect(() => {
+    setAList(foodNameList);
+    foodNameList.forEach((item) => {
+      if (props.data.name === item) {
+        setName(item);
+      }
+    });
+  }, [foodNameList, alist, props.data.name]);
+
+  if (name === props.data.name) {
     return (
       <React.Fragment>
         <Container
           id={props.data.id}
-          onClick={({ name, imgUrl, select }) => {
-            name = props.data.name;
-            imgUrl = props.data.imgUrl;
-            select = false;
-            dispatch(deleteFood({ name, imgUrl, select }));
-            foodNotSelect();
+          onClick={() => {
+            alert(`이미 ${props.data.name}를 선택하셨습니다.`);
           }}
         >
-          <FoodImgWrap style={{ opacity: "0.8", border: "2px solid #ffa012" }}>
+          <FoodImgWrap>
             <img src={props.data.imgUrl} alt={props.data.name} />
           </FoodImgWrap>
           <FoodNameWrap>
-            <FoodName style={{ color: "#ffa012" }}>{props.data.name}</FoodName>
+            <FoodName>{props.data.name}</FoodName>
           </FoodNameWrap>
         </Container>
       </React.Fragment>
     );
   }
+
   return (
     <React.Fragment>
       <Container
@@ -46,7 +54,6 @@ const FoodCard = (props) => {
           imgUrl = props.data.imgUrl;
           select = true;
           dispatch(addFood({ name, imgUrl, select }));
-          foodSelect();
         }}
       >
         <FoodImgWrap>
@@ -95,11 +102,6 @@ const FoodName = styled.div`
   line-height: 1.5rem;
   box-sizing: border-box;
   margin: 0.3rem auto 0.5rem;
-  ${(props) =>
-    props.selection &&
-    css`
-      color: #ffa012;
-    `}
 `;
 
 export default FoodCard;

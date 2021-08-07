@@ -11,11 +11,15 @@ import SelectedFoodSlider from "../components/SelectedFoodSlider";
 
 import { addFood } from "../redux/modules/food";
 
+import { sendSelectFood } from "../redux/modules/food";
+
+import { getFoodList } from "../shared/api";
+
 const datas = [
   {
     name: "짜장면",
     imgUrl:
-      "https://s3-alpha-sig.figma.com/img/6b7b/7732/464039ca5fa8f4d268a61e54798418be?Expires=1628467200&Signature=UAMtlWmh3IFALK~hiTpgTROjh~nUopgEXfJRDE0nt0p4fRLgg9bpov4CMdk0t2H0mg63ALXXkRL14YgfjH2f0p-Xod22fZeuzPW~O9e4Sw8zS-ZPYkandDOYSgkbELsZAJsZnUph0frKaZ2J62WCRyShGt9r~IPPcsF5WWOKDmc8jEpnd9PDU7DVEVSTrBqjFk9NSVNTgmSWmbuwgAE~34XLsY~zj9YJsrfMQCrPogcIAel8-zsWh0~wORrUB3pot3pA~DoVqSxnpJgZGJfwHddkab8JFFlKONDldFP2nEES1-Z3JxkdoMtr-63r~NfsFhLJ0C18ZkoYTNUQgXRs2g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+      "https://s3-alpha-sig.figma.com/img/6b7b/7732/464039ca5fa8f4d268a61e54798418be?Expires=1629676800&Signature=GbZ66phN0BuBrXMh1QqTeliDZLOhqkSqoN47FurOeJPPpYPI94JJepDj4oc2cVkJlE~qoFZq8aKDm8HTVfr6kO0G~VhdgN2MQlsIuuRSgivaD7i9ypuhnrP9E0d6sJtEl85Vlr2MW397lR-TshB8cpJm-PBKOkkwWsN3xW3H9In9bzjhYriKKXPZ74qrytoD~yqvx1qKVHUcjtpn0Br07GOTMZCdaifeXsJ~TcYz--mkSdgv3ozfSdEfN0riMGzH0myMckL74g94rhJGOX89LkCWPmRxQmN2JZ1WM5P9h6mdqx7108BMmZg6Hg0LCBiopSAk9hQAMQSxIXhSUSrBrw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
   },
   {
     name: "햄버거",
@@ -96,69 +100,100 @@ const datas = [
 
 const Recommand = (props) => {
   const dispatch = useDispatch();
+
+  const [selectedFood, setSelectedFood] = useState([]);
+  const [foods, setFoods] = useState([]);
+
   const list = useSelector((state) => state.food.list);
+  const foodNameList = useSelector((state) => state.food.foodName);
+
+  const sendSelectedFood = () => {
+    setSelectedFood(foodNameList);
+    return dispatch(sendSelectFood(selectedFood));
+  };
+
+  useEffect(() => {
+    async function getFoods() {
+      const { data } = await getFoodList();
+      setFoods(data);
+      console.log("zcxz", data);
+    }
+    return getFoods();
+  }, []);
+
+  console.log("asd", foods);
+
   return (
     <React.Fragment>
-      <Grid width="100%" height="15%" padding="2rem 5% 2.5rem">
-        <Grid is_flex height="70%">
-          <Title>최근에 뭐 먹었어요?</Title>
-          <RefreshImgWrap>
-            <img src={RefreshImg} alt="refresh" />
-          </RefreshImgWrap>
-        </Grid>
-        <Wrap>
-          <SubTitle>
-            총 <Span>10개</Span>까지 선택할 수 있어요!
-          </SubTitle>
-        </Wrap>
-      </Grid>
-      <FoodList>
-        {datas.map((data, idx) => {
-          return <FoodCard data={data} id={idx} />;
-        })}
-      </FoodList>
+      <Container>
+        <ContentsContainer>
+          <Grid width="100%" height="15%" padding="2rem 5% 2.5rem">
+            <Grid is_flex height="70%">
+              <Title>최근에 뭐 먹었어요?</Title>
+              <RefreshImgWrap>
+                <img src={RefreshImg} alt="refresh" />
+              </RefreshImgWrap>
+            </Grid>
+            <Wrap>
+              <SubTitle>
+                총 <Span>10개</Span>까지 선택할 수 있어요!
+              </SubTitle>
+            </Wrap>
+          </Grid>
+          <FoodList>
+            {foods.map((data, idx) => {
+              return <FoodCard data={data} id={idx} />;
+            })}
+          </FoodList>
 
-      <SelectedBox>
-        <SelectedFoodSlider />
-        <Grid margin="0 auto">
-          {list.length > 0 ? (
-            <Button
-              bg="#FFA012"
-              border="1px solid #FFA012"
-              color="#ffffff "
-              radius="1rem"
-              width="100%"
-              height="5rem"
-              cursor
-            >
-              선택완료 ( {list.length} / 10 )
-            </Button>
-          ) : (
-            <Button
-              bg="#C8C8C8"
-              border="1px solid #C8C8C8"
-              color="#ffffff "
-              radius="1rem"
-              width="100%"
-              height="5rem"
-              _onClick={() => alert("음식을 선택해주세요")}
-            >
-              선택완료
-            </Button>
-          )}
-        </Grid>
-      </SelectedBox>
+          <SelectedBox>
+            <SelectedFoodSlider />
+            <Grid margin="0 auto">
+              {list.length > 0 ? (
+                <Button
+                  bg="#FFA012"
+                  border="1px solid #FFA012"
+                  color="#ffffff "
+                  radius="1rem"
+                  width="100%"
+                  height="5rem"
+                  cursor
+                  _onClick={() => {
+                    sendSelectedFood();
+                  }}
+                >
+                  선택완료 ( {list.length} / 10 )
+                </Button>
+              ) : (
+                <Button
+                  bg="#C8C8C8"
+                  border="1px solid #C8C8C8"
+                  color="#ffffff "
+                  radius="1rem"
+                  width="100%"
+                  height="5rem"
+                  _onClick={() => alert("음식을 선택해주세요")}
+                >
+                  선택완료
+                </Button>
+              )}
+            </Grid>
+          </SelectedBox>
+        </ContentsContainer>
+      </Container>
     </React.Fragment>
   );
 };
 
 const SelectedBox = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-end;
   box-sizing: border-box;
   width: 100%;
+  height: 142px;
   background-color: #f4f0ea;
   padding: 1.4rem 2rem;
   box-shadow: 0 -0.4rem 0.4rem 0 rgba(0, 0, 0, 0.1);
@@ -213,6 +248,15 @@ const Wrap = styled.div`
   align-items: center;
   justify-content: flex-start;
   height: 30%;
+`;
+
+const Container = styled.div`
+  width: 100%;
+`;
+
+const ContentsContainer = styled.div`
+  width: 100%;
+  padding-bottom: 142px;
 `;
 
 export default Recommand;

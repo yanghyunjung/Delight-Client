@@ -13,10 +13,9 @@ const App = (props) => {
       <Layout>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/recommand" component={Recommand} />
-          <Route exact path="/recommand/:id" component={RecResult} />
+          <Route exact path="/recommendation" component={Recommand} />
+          <Route exact path="/recommendation/:id" component={RecResult} />
           <Route exact path="/login" component={Login} />
-
         </Switch>
       </Layout>
     </Router>
