@@ -113,26 +113,24 @@ const Recommand = (props) => {
 };
 
 const SelectedBox = styled.div`
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-end;
   box-sizing: border-box;
   width: 36rem;
-  height: 142rem;
   background-color: #f4f0ea;
   padding: 1.4rem 2rem;
   box-shadow: 0 -0.4rem 0.4rem 0 rgba(0, 0, 0, 0.1);
 `;
 
 const FoodList = styled.div`
+  position: relative;
   display: grid;
   justify-items: center;
-  margin: 0rem 0rem 2.5rem 0rem;
-  padding: 0 5%;
+  padding: 0 2rem;
   width: 90%;
-  height: 100%;
   grid-template-columns: repeat(4, minmax(5em, auto));
   gap: 0.5rem 1.3rem;
   overflow-y: auto;
@@ -183,7 +181,6 @@ const Container = styled.div`
 
 const ContentsContainer = styled.div`
   width: 100%;
-  padding-bottom: 142px;
 `;
 
 const WrapContent = styled.div`
