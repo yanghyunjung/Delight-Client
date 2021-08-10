@@ -21,7 +21,7 @@ const food = createSlice({
     },
     deleteFood(state, action) {
       state.foodName.splice(state.foodName.indexOf(action.payload.name), 1);
-      const idx = action.payload.selectList.findIndex(function (item) {
+      const idx = action.payload.list.findIndex((item) => {
         return item.name === action.payload.name;
       });
       if (idx > -1) {
