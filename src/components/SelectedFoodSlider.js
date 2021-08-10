@@ -13,7 +13,7 @@ import XBox from "../image/xBox.svg";
 
 const SelectedFoodSlider = (props) => {
   const dispatch = useDispatch();
-  const foodList = useSelector((state) => state.food.list);
+  const foodList = useSelector((state) => state.food.selectList);
   const settings = {
     infinite: false,
     centerPadding: "6rem",
