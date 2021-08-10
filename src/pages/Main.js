@@ -32,7 +32,7 @@ const Main = (props) => {
         <RecButton
           src={RecComButton}
           onClick={() => {
-            window.location.replace("/recommand");
+            window.location.replace("/recommendation");
           }}
         />
       </GRID>
