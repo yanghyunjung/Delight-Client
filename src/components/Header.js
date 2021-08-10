@@ -46,7 +46,7 @@ const HEADER = styled.div`
 const Logo = styled.img`
   display: flex;
   width: 6.6rem;
-  height: 2.6rem;
+  height: 2.4rem;
   margin: 1rem;
 `;
 

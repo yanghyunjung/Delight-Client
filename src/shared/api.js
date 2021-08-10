@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://api.delight99.co.kr",
 });
 
 // instance.defaults.headers.common["Authorization"] = USER_TOKEN;
