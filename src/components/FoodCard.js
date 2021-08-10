@@ -13,7 +13,7 @@ import {
 const FoodCard = (props) => {
   const dispatch = useDispatch();
   const foodNameList = useSelector((state) => state.food.foodName);
-  const foodList = useSelector((state) => state.food.list);
+  const foodList = useSelector((state) => state.food.selectList);
   const [name, setName] = useState("");
   const [alist, setAList] = useState({});
   useEffect(() => {
