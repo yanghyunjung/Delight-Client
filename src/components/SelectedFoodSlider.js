@@ -35,11 +35,11 @@ const SelectedFoodSlider = (props) => {
                   list = foodList;
                   dispatch(deleteFood({ name, imgUrl, list }));
                 }}
-                id={idx}
+                key={idx}
               >
-                <img src={item.imgUrl} />
+                <img src={item.imgUrl} alt={item.name} />
                 <div>
-                  <img className="xbox" src={XBox} />
+                  <img className="xbox" src={XBox} alt="cancel" />
                 </div>
               </FoodImgWrap>
             );

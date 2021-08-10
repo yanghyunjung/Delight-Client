@@ -46,62 +46,66 @@ const Recommand = (props) => {
     <React.Fragment>
       <Container>
         <ContentsContainer>
-          <Grid width="100%" height="15%" padding="2rem 5% 2.5rem">
-            <Grid is_flex height="70%">
-              <Title>최근에 뭐 먹었어요?</Title>
-              <RefreshImgWrap
-                onClikc={() => {
-                  handleRecommendFood();
-                }}
-              >
-                <img src={RefreshImg} alt="refresh" />
-              </RefreshImgWrap>
-            </Grid>
-            <Wrap>
-              <SubTitle>
-                총 <Span>10개</Span>까지 선택할 수 있어요!
-              </SubTitle>
-            </Wrap>
-          </Grid>
-          <FoodList>
-            {foodsList.map((data, idx) => {
-              return <FoodCard data={data} id={idx} />;
-            })}
-          </FoodList>
-
-          <SelectedBox>
-            <SelectedFoodSlider />
-            <Grid margin="0 auto">
-              {list.length > 0 ? (
-                <Button
-                  bg="#FFA012"
-                  border="1px solid #FFA012"
-                  color="#ffffff "
-                  radius="1rem"
-                  width="100%"
-                  height="5rem"
-                  cursor
-                  _onClick={() => {
-                    sendSelectedFood();
+          <WrapContent>
+            <Grid width="100%" height="15%" padding="2rem 2rem 2.5rem">
+              <Grid is_flex height="70%">
+                <Title>최근에 뭐 먹었어요?</Title>
+                <RefreshImgWrap
+                  onClikc={() => {
+                    handleRecommendFood();
                   }}
                 >
-                  선택완료 ( {list.length} / 10 )
-                </Button>
-              ) : (
-                <Button
-                  bg="#C8C8C8"
-                  border="1px solid #C8C8C8"
-                  color="#ffffff "
-                  radius="1rem"
-                  width="100%"
-                  height="5rem"
-                  _onClick={() => alert("음식을 선택해주세요")}
-                >
-                  선택완료
-                </Button>
-              )}
+                  <img src={RefreshImg} alt="refresh" />
+                </RefreshImgWrap>
+              </Grid>
+              <Wrap>
+                <SubTitle>
+                  총 <Span>10개</Span>까지 선택할 수 있어요!
+                </SubTitle>
+              </Wrap>
             </Grid>
-          </SelectedBox>
+            <FoodList>
+              {foodsList.map((data, idx) => {
+                return <FoodCard data={data} id={idx} />;
+              })}
+            </FoodList>
+          </WrapContent>
+
+          <WrapBottomBox>
+            <SelectedBox>
+              <SelectedFoodSlider />
+              <Grid margin="0 auto">
+                {list.length > 0 ? (
+                  <Button
+                    bg="#FFA012"
+                    border="1px solid #FFA012"
+                    color="#ffffff "
+                    radius="1rem"
+                    width="100%"
+                    height="5rem"
+                    cursor
+                    _onClick={() => {
+                      sendSelectedFood();
+                    }}
+                  >
+                    선택완료 ( {list.length} / 10 )
+                  </Button>
+                ) : (
+                  <Button
+                    bg="#C8C8C8"
+                    border="1px solid #C8C8C8"
+                    color="#ffffff "
+                    radius="1rem"
+                    width="100%"
+                    height="5rem"
+                    _onClick={() => alert("음식을 선택해주세요")}
+                  >
+                    선택완료
+                  </Button>
+                )}
+              </Grid>
+            </SelectedBox>
+          </WrapBottomBox>
         </ContentsContainer>
       </Container>
     </React.Fragment>
@@ -115,8 +119,8 @@ const SelectedBox = styled.div`
   align-items: stretch;
   justify-content: flex-end;
   box-sizing: border-box;
-  width: 100%;
-  height: 142px;
+  width: 36rem;
+  height: 142rem;
   background-color: #f4f0ea;
   padding: 1.4rem 2rem;
   box-shadow: 0 -0.4rem 0.4rem 0 rgba(0, 0, 0, 0.1);
@@ -180,6 +184,16 @@ const Container = styled.div`
 const ContentsContainer = styled.div`
   width: 100%;
   padding-bottom: 142px;
+`;
+
+const WrapContent = styled.div`
+  margin: 0 auto;
+  max-width: 36rem;
+`;
+
+const WrapBottomBox = styled.div`
+  margin: 0 auto;
+  max-width: 36rem;
 `;
 
 export default Recommand;
