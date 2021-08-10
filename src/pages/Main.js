@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
 
@@ -6,17 +6,7 @@ import RecComButton from "../image/RecButton.png";
 import SearchButton from "../image/SearchButton.png";
 import styled from "styled-components";
 
-import { actionCreators as categoryActions } from "../redux/modules/category";
-import { useDispatch, useSelector } from "react-redux";
-
 const Main = (props) => {
-  // const dispatch = useDispatch();
-  // const category_list = useSelector((state) => state.list.category_list);
-
-  // useEffect(() => {
-  //   dispatch(categoryActions.getCategoryDB());
-  // }, []);
-
   return (
     <div>
       <Title>
@@ -26,6 +16,7 @@ const Main = (props) => {
             fontWeight: "bold",
             margin: "2rem 0 0 2.5rem",
             float: "left",
+            lineHeight: "3rem",
           }}
         >
           오늘 사람들이 가장 <br />
@@ -46,7 +37,7 @@ const Main = (props) => {
         />
       </GRID>
       <GRID2>
-      <SeaButton src={SearchButton} />
+        <SeaButton src={SearchButton} />
       </GRID2>
       <Footer />
     </div>
