@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
 import RefreshImg from "../image/Refresh.png";
+import BobAI from "../image/BobAi.svg";
 
 import { Grid, Button } from "../elements";
 
@@ -47,28 +48,28 @@ const Recommand = (props) => {
       <Container>
         <ContentsContainer>
           <WrapContent>
-            <Grid width="100%" height="15%" padding="2rem 2rem 2.5rem">
-              <Grid is_flex height="70%">
-                <Title>최근에 뭐 먹었어요?</Title>
-                <RefreshImgWrap
-                  onClikc={() => {
-                    handleRecommendFood();
-                  }}
-                >
-                  <img src={RefreshImg} alt="refresh" />
-                </RefreshImgWrap>
+            <Grid width="100%" height="15%" padding="2rem 2rem 2rem">
+              <Grid is_flex height="70%" width="32rem">
+                <AiImgWrap>
+                  <img src={BobAI} alt="AI" />
+                </AiImgWrap>
+                <TitleWrap className="chat">
+                  <Title>최근에 먹은 음식, 최대 10개 골라주세요!</Title>
+                </TitleWrap>
               </Grid>
-              <Wrap>
-                <SubTitle>
-                  총 <Span>10개</Span>까지 선택할 수 있어요!
-                </SubTitle>
-              </Wrap>
             </Grid>
             <FoodList>
               {foodsList.map((data, idx) => {
                 return <FoodCard data={data} id={idx} />;
               })}
             </FoodList>
+            <RefreshButton
+              onClick={() => {
+                handleRecommendFood();
+              }}
+            >
+              다른 음식도 볼래요
+            </RefreshButton>
           </WrapContent>
 
           <WrapBottomBox>
@@ -112,6 +113,19 @@ const Recommand = (props) => {
   );
 };
 
+const RefreshButton = styled.button`
+  text-align: center;
+  font-weight: 700;
+  color: #ffa012;
+  background-color: white;
+  border: 1px solid #ffa012;
+  border-radius: 1rem;
+  min-width: 32rem;
+  cursor: pointer;
+  padding: 1.7rem 0;
+  margin: 1.7rem auto 2rem;
+`;
+
 const SelectedBox = styled.div`
   position: relative;
   display: flex;
@@ -139,14 +153,12 @@ const FoodList = styled.div`
   }
 `;
 
-const RefreshImgWrap = styled.div`
-  overflow: hidden;
-  width: 4rem;
-  height: 4rem;
+const AiImgWrap = styled.div`
+  padding: 0.4rem 0 0 0;
+  width: 5rem;
+  height: 5rem;
   border-radius: 1rem;
   box-sizing: border-box;
-  padding: 1rem;
-  cursor: pointer;
   & img {
     width: 100%;
     height: 100%;
@@ -154,25 +166,10 @@ const RefreshImgWrap = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2.4rem;
-  font-weight: 700;
-`;
-
-const SubTitle = styled.h3`
-  font-size: 1.4rem;
-  font-weight: 400;
-`;
-
-const Span = styled.span`
-  font-size: 1.4rem;
-  font-weight: 700;
-`;
-
-const Wrap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 30%;
+  position: relative;
+  top: 50%;
+  font-size: 1.5rem;
+  font-weight: 600;
 `;
 
 const Container = styled.div`
@@ -186,11 +183,36 @@ const ContentsContainer = styled.div`
 const WrapContent = styled.div`
   margin: 0 auto;
   max-width: 36rem;
+  text-align: center;
 `;
 
 const WrapBottomBox = styled.div`
   margin: 0 auto;
   max-width: 36rem;
+`;
+
+const TitleWrap = styled.div`
+  border-radius: 2rem;
+  padding: 1.5rem;
+  background-color: #f6f6f6;
+  &.chat {
+    position: relative;
+    background: #f6f6f6;
+    border-radius: 0.8rem;
+  }
+  &.chat:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: #f6f6f6;
+    border-left: 0;
+    margin-top: -10px;
+    margin-left: -5px;
+  }
 `;
 
 export default Recommand;
