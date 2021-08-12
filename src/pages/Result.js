@@ -15,12 +15,10 @@ const Result = () => {
           <ResultSlider />
         </ResultContainer>
         <ButtonContainer>
-          <Wrap>
-            <SubText>더 많은 음식 보러 가기</SubText>
-            <SearchButton>직접 검색하러 가기</SearchButton>
-            <SubText>원하는 결과가 아니신가요?</SubText>
-            <ReTryButton>테스트 다시하기</ReTryButton>
-          </Wrap>
+          <SubText>더 많은 음식 보러 가기</SubText>
+          <SearchButton>직접 검색하러 가기</SearchButton>
+          <SubText>원하는 결과가 아니신가요?</SubText>
+          <ReTryButton>테스트 다시하기</ReTryButton>
         </ButtonContainer>
       </Container>
     </React.Fragment>
@@ -67,9 +65,6 @@ const ResultContainer = styled.div`
 const ButtonContainer = styled.div`
   margin: 4rem auto 0 auto;
   max-width: 36rem;
-`;
-
-const Wrap = styled.div`
   text-align: center;
 `;
 
