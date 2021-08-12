@@ -6,23 +6,18 @@ import { connectRouter } from "connected-react-router";
 
 // Modules
 
-import userSlice from './modules/user'; // 유저에 reducer
-import Food from './modules/food';
-import category from "./modules/category";
+import userSlice from "./modules/user"; // 유저에 reducer
+import Food from "./modules/food";
+import Category from "./modules/category";
 
 export const history = createBrowserHistory();
 
 // export한 Reducer를 모으기
 const rootReducer = combineReducers({
-
   food: Food,
   user: userSlice,
-  router: connectRouter(history)
-
-  food,
-  category,
+  category: Category,
   router: connectRouter(history),
-
 });
 
 // 미들웨어 적용
