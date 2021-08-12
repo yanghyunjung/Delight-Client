@@ -5,7 +5,7 @@ import styled, { keyframes } from "styled-components";
 const Tags = Array.from({ length: 10 }, () => ({ name: "Auto Layout" }));
 
 const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
-  const [radioValue, setRadioValue] = useState(null);
+  const [radioValue, setRadioValue] = useState(null); 
   return (
     <>
       {/* 태그 선택 화면 띄우기 */}
@@ -45,14 +45,24 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
             </Layout>
           ))}
         </div>
-        <TagBtn
-          onClick={() => {
-            setSelectedTag(radioValue);
-            setTagOpen(false);
-          }}
-        >
-          선택하기
-        </TagBtn>
+        {radioValue ? (
+          <TagBtn
+            onClick={() => {
+              setSelectedTag(radioValue);
+              setTagOpen(false);
+            }}
+          >
+            선택하기
+          </TagBtn>
+        ) : (
+          <TagBtn
+            onClick={() => {
+              alert('선택된 태그가 없습니다:)');
+            }}
+          >
+            선택하기
+          </TagBtn>
+        )}
       </DIV>
     </>
   );

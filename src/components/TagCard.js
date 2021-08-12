@@ -14,7 +14,7 @@ const TagCard = (props) => {
       <span
         style={{
           fontSize: "1.6rem",
-          fontWeight: "bold",
+          fontWeight: "medium",
           lineHeight: "4rem",
           marginTop: "1.2rem",
         }}
