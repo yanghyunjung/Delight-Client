@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
 
@@ -8,7 +9,6 @@ import styled from "styled-components";
 import Swal from "sweetalert2";
 
 import { history } from "../redux/configureStore";
-
 
 import { actionCreators as categoryActions } from "../redux/modules/category";
 import { useDispatch, useSelector } from "react-redux";

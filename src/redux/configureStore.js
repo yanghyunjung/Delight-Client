@@ -5,10 +5,11 @@ import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
 // Modules
-
 import userSlice from "./modules/user"; // 유저에 reducer
 import Food from "./modules/food";
 import Category from "./modules/category";
+import TagResult from "./modules/tagresult";
+import Tag from "./modules/tag";
 
 export const history = createBrowserHistory();
 
@@ -17,6 +18,8 @@ const rootReducer = combineReducers({
   food: Food,
   user: userSlice,
   category: Category,
+  tagresult: TagResult,
+  tag: Tag,
   router: connectRouter(history),
 });
 
