@@ -1,10 +1,13 @@
+
 import React, { useEffect } from "react";
+
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
 
 import RecComButton from "../image/RecButton.png";
 import SearchButton from "../image/SearchButton.png";
 import styled from "styled-components";
+
 
 import { history } from "../redux/configureStore";
 
@@ -20,6 +23,8 @@ const Main = (props) => {
   //   dispatch(categoryActions.getCategoryDB());
   // }, []);
   const is_jwt = document.cookie ? true : false;
+
+const Main = (props) => {
   return (
     <div>
       <Title>
@@ -29,6 +34,7 @@ const Main = (props) => {
             fontWeight: "bold",
             margin: "2rem 0 0 2.5rem",
             float: "left",
+            lineHeight: "3rem",
           }}
         >
           오늘 사람들이 가장 <br />
@@ -44,6 +50,7 @@ const Main = (props) => {
         <RecButton
           src={RecComButton}
           onClick={() => {
+
             if (!is_jwt) {
               window.alert("로그인이 필요한 서비스입니다.");
               return history.push("/login");
@@ -52,7 +59,15 @@ const Main = (props) => {
         />
       </GRID>
       <GRID2>
+
         <SeaButton src={SearchButton} />
+
+        <SeaButton
+          src={SearchButton}
+          onClick={() => {
+            window.location.replace("/search");
+          }}
+        />
       </GRID2>
       <Footer />
     </div>

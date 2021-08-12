@@ -13,7 +13,7 @@ import XBox from "../image/xBox.svg";
 
 const SelectedFoodSlider = (props) => {
   const dispatch = useDispatch();
-  const foodList = useSelector((state) => state.food.list);
+  const foodList = useSelector((state) => state.food.selectList);
   const settings = {
     infinite: false,
     centerPadding: "6rem",
@@ -35,11 +35,11 @@ const SelectedFoodSlider = (props) => {
                   list = foodList;
                   dispatch(deleteFood({ name, imgUrl, list }));
                 }}
-                id={idx}
+                key={idx}
               >
-                <img src={item.imgUrl} />
+                <img src={item.imgUrl} alt={item.name} />
                 <div>
-                  <img className="xbox" src={XBox} />
+                  <img className="xbox" src={XBox} alt="cancel" />
                 </div>
               </FoodImgWrap>
             );

@@ -1,22 +1,28 @@
 // Redux Store
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import { createBrowserHistory } from 'history';
-import { connectRouter } from 'connected-react-router';
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import { createBrowserHistory } from "history";
+import { connectRouter } from "connected-react-router";
 
 // Modules
+
 import userSlice from './modules/user'; // 유저에 reducer
 import Food from './modules/food';
-
-
+import category from "./modules/category";
 
 export const history = createBrowserHistory();
 
 // export한 Reducer를 모으기
 const rootReducer = combineReducers({
+
   food: Food,
   user: userSlice,
   router: connectRouter(history)
+
+  food,
+  category,
+  router: connectRouter(history),
+
 });
 
 // 미들웨어 적용
@@ -35,10 +41,10 @@ if (env === "development") {
 // Chrome Extension
 // Redux devTools 설정
 const composeEnhancers =
-  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    })
+        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+      })
     : compose;
 
 // 미들웨어 묶기

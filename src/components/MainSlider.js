@@ -1,32 +1,32 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
 
+import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RightArrow from "../image/ArrowRight.png";
 import LeftArrow from "../image/ArrowLeft.png";
 
-import { history } from "../redux/configureStore";
 import { useDispatch, useSelector } from "react-redux";
-import { actionCreators as categoryActions } from "../redux/modules/category";
+import { getCategoryThunk, getFoods } from "../redux/modules/category";
 
 const MainSlider = (props) => {
-  // const dispatch = useDispatch();
-  // const category_list = useSelector((state) => state.list.category_list);
+  const dispatch = useDispatch();
+  const foods = useSelector(getFoods);
 
-  // useEffect(() => {
-  //   dispatch(categoryActions.getCategoriesDB());
-  // }, []);
+  // 실행했을 때 카테고리 탭 기본값 설정
+  const [tabIndex, setTabIndex] = useState(1);
 
+  const sliderRef = useRef()
+  
   // 슬라이드 이미지 크기(width) 임의로 변경하기 위해 useEffect 사용함
   useEffect(() => {
     const list = document.querySelector(".slick-list");
     list.style.setProperty("width", "25rem", "important");
-    console.log(list);
-  });
+    dispatch(getCategoryThunk(0));
+  }, []);
 
-  const foods = {
+  const settings = {
     dots: false,
     infinite: true,
     speed: 600,
@@ -35,62 +35,60 @@ const MainSlider = (props) => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+
+  const menuItem = [
+    { categoryId: 0, category: "전체" },
+    { categoryId: 1, category: "한식" },
+    { categoryId: 2, category: "일식" },
+    { categoryId: 3, category: "중식" },
+    { categoryId: 4, category: "양식" },  
+    { categoryId: 5, category: "패스트푸드" },
+    { categoryId: 6, category: "분식" },
+  ];
   return (
     <div>
       <MenuList>
-        <MenuItem>전체</MenuItem>
-        <MenuItem>한식</MenuItem>
-        <MenuItem>분식</MenuItem>
-        <MenuItem>양식</MenuItem>
-        <MenuItem>일식</MenuItem>
-        <MenuItem>패스트푸드</MenuItem>
-        <MenuItem>중식</MenuItem>
+        {menuItem.map(({ categoryId, category }, i) => {
+          return (
+            <MenuItem
+              tabIndex={tabIndex}
+              onClick={() => {
+                dispatch(getCategoryThunk(categoryId));
+                setTabIndex(i + 1);
+                sliderRef.current.slickGoTo(0)
+              }}
+            >
+              {category}
+            </MenuItem>
+          );
+        })}
       </MenuList>
 
-      <StlyedSlider {...foods}>
-        {/* {category_list.map((category, index) => ( */}
-        <Card>
-          <ImgWrap style={{ marginBottom: "0.7rem" }}>
-            {/* <img
-                src={
-                  category.imgUrl &&
-                  category.imgUrl[0]?.imgUrl
-                }
-                alt="category"
-              /> */}
-            <img
-              // 알리오 올리오 사진
-              src={
-                "https://hyunjung.s3.ap-northeast-2.amazonaws.com/food2.jpeg"
-              }
-            />
-          </ImgWrap>
-          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
-            1위 <br />
-            {/* {category.name} */} 알리오올리오
-          </span>
-        </Card>
-        {/* ))} */}
-        <Card>
-          <ImgWrap style={{ marginBottom: "0.7rem" }}>
-            <img
-              // 알리오 올리오 사진
-              src={
-                "https://hyunjung.s3.ap-northeast-2.amazonaws.com/food2.jpeg"
-              }
-            />
-          </ImgWrap>
-          <span style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
-            1위 <br />
-            {/* {category.name} */} 알리오올리오
-          </span>
-        </Card>
-      </StlyedSlider>
+      <StyledSlider {...settings} ref={sliderRef}>
+        {foods.map((food, index) => (
+          <Card>
+            <ImgWrap style={{ marginBottom: "0.7rem" }}>
+              <img src={food.imgUrl} alt="food" />
+            </ImgWrap>
+            <span
+              style={{
+                fontSize: "2rem",
+                fontWeight: "bold",
+                lineHeight: "2.3rem",
+              }}
+            >
+              {index + 1}위 <br />
+              {food.name}
+            </span>
+          </Card>
+        ))}
+      </StyledSlider>
     </div>
   );
 };
 
-const StlyedSlider = styled(Slider)`
+// 이미지 슬라이드 스타일 적용하기
+const StyledSlider = styled(Slider)`
   .slick-dots {
     margin-bottom: 1rem;
   }
@@ -109,7 +107,6 @@ const StlyedSlider = styled(Slider)`
   .slick-list div {
     outline: none;
   }
-
   .pro-bar {
     position: absolute;
     bottom: 0;
@@ -204,17 +201,20 @@ const MenuList = styled.div`
 `;
 
 const MenuItem = styled.a`
-  color: gray;
+  color: #979797;
   cursor: pointer;
   width: auto;
   padding: 0.8rem;
   display: flex;
   font-size: 1.4rem;
-  &:hover {
+  ${(props) =>
+    props.tabIndex &&
+    `  &:nth-child(${props.tabIndex}) {
     color: black;
-    border-bottom: 1.5px solid;
-    transition: 0.3s ease-in-out; // 시작지점과 종료지점의 변화가 서서히 일어남.
-  }
+    font-weight: bold;
+    border-bottom: 1.8px solid;
+    transition: 0.3s ease-in-out; // 시작지점과 종료지점의 변화가 서서히 일어나게끔
+  }`}
 `;
 
 export default MainSlider;
