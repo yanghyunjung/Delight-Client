@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "../redux/configureStore";
 
 import Main from "../pages/Main";
 import Recommend from "../pages/Recommend";
@@ -9,9 +11,9 @@ import Layout from "./Layout";
 import Spinner from "../components/Spinner";
 import Search from "../pages/Search";
 
-const App = (props) => {
+const App = () => {
   return (
-    <Router>
+    <ConnectedRouter history={history}>
       <Layout>
         <Switch>
           <Route exact path="/" component={Main} />
@@ -22,7 +24,7 @@ const App = (props) => {
           <Route exact path="/search" component={Search} />
         </Switch>
       </Layout>
-    </Router>
+    </ConnectedRouter>
   );
 };
 export default App;

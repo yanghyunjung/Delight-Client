@@ -9,8 +9,11 @@ import Naver from "../image/naverlogo.png";
 import { Grid, Text } from "../elements";
 
 import { GOOGLE_URL, KAKAO_URL, NAVER_URL } from "../redux/modules/oauth";
+import { getCookie } from '../shared/Cookie';
 
-const Login = () => {
+const Login = (props) => {
+  console.log(getCookie('jwt'));
+
   return (
     <React.Fragment>
       <Grid wrap height="30%">
@@ -29,7 +32,9 @@ const Login = () => {
 
 
         {/* 로그인 버튼 */}
+
         <Grid is_flex2 wrap>
+
           <ButtonG href={GOOGLE_URL}>
             <Grid is_flex2>
               <LogoG />

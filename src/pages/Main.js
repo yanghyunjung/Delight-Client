@@ -1,10 +1,28 @@
-import React from "react";
+
+import React, { useEffect } from "react";
+
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
 
 import RecComButton from "../image/RecButton.png";
 import SearchButton from "../image/SearchButton.png";
 import styled from "styled-components";
+
+
+import { history } from "../redux/configureStore";
+
+
+import { actionCreators as categoryActions } from "../redux/modules/category";
+import { useDispatch, useSelector } from "react-redux";
+
+const Main = (props) => {
+  // const dispatch = useDispatch();
+  // const category_list = useSelector((state) => state.list.category_list);
+
+  // useEffect(() => {
+  //   dispatch(categoryActions.getCategoryDB());
+  // }, []);
+  const is_jwt = document.cookie ? true : false;
 
 const Main = (props) => {
   return (
@@ -32,11 +50,18 @@ const Main = (props) => {
         <RecButton
           src={RecComButton}
           onClick={() => {
-            window.location.replace("/recommendation");
+
+            if (!is_jwt) {
+              window.alert("로그인이 필요한 서비스입니다.");
+              return history.push("/login");
+            }
           }}
         />
       </GRID>
       <GRID2>
+
+        <SeaButton src={SearchButton} />
+
         <SeaButton
           src={SearchButton}
           onClick={() => {

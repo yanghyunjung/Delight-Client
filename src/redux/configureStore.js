@@ -5,17 +5,24 @@ import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
 // Modules
-import User from "./modules/user";
-import food from "./modules/food";
+
+import userSlice from './modules/user'; // 유저에 reducer
+import Food from './modules/food';
 import category from "./modules/category";
 
 export const history = createBrowserHistory();
 
 // export한 Reducer를 모으기
 const rootReducer = combineReducers({
+
+  food: Food,
+  user: userSlice,
+  router: connectRouter(history)
+
   food,
   category,
   router: connectRouter(history),
+
 });
 
 // 미들웨어 적용
@@ -25,8 +32,9 @@ const middlewares = [thunk.withExtraArgument({ history: history })];
 // 지금의 환경
 const env = process.env.NODE_ENV;
 
+//개발환경에서만 보여주는 logger
 if (env === "development") {
-  const { logger } = require("redux-logger");
+  const { logger } = require("redux-logger"); // require 패키지 가져오기
   middlewares.push(logger);
 }
 
