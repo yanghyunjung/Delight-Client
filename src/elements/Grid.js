@@ -149,7 +149,7 @@ const GridBox = styled.div`
       : ""}
   ${(props) =>
     props.is_flex3
-      ? `display: flex; justify-content: center;`
+      ? `display: flex; justify-content: flex-start;`
       : ""}
   ${(props) => (props.position ? `position: ${props.position};` : "")}
   ${(props) => (props.top ? `top: ${props.top};` : "")}
@@ -171,7 +171,7 @@ const GridBox = styled.div`
     props.is_header ? `position: sticky; top: 0; z-index: 10;` : ""};
   ${(props) => (props.is_float ? `float: ${props.is_float}; ` : "")}
   ${(props) => (props.text_align ? `text-align: ${props.text_align}; ` : "")}
-  
+
   @media (min-width: 501px) {
     ${(props) =>
     props.review_flex
