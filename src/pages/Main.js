@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
@@ -8,9 +8,6 @@ import SearchButton from "../image/SearchButton.png";
 import styled from "styled-components";
 
 import { history } from "../redux/configureStore";
-
-import { actionCreators as categoryActions } from "../redux/modules/category";
-import { useDispatch, useSelector } from "react-redux";
 
 const Main = (props) => {
   // const dispatch = useDispatch();

@@ -1,16 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
+import { getTagResult, getTagResultThunk } from "../redux/modules/tagresult";
+import { useDispatch, useSelector } from "react-redux";
+
 const Tags = Array.from({ length: 4 }, () => ({ name: "태그여섯글자" }));
 
 const TagCard = (props) => {
+  const dispatch = useDispatch();
+  const tags = useSelector(getTagResult);
   return (
-    <DIV>
+   
+   <DIV>
+     {/* {tags.map((tag) => ( 
+       <>
       <ImgWrap>
         <img
-          src={"https://hyunjung.s3.ap-northeast-2.amazonaws.com/foodtag.jpeg"}
+          src={tag.imgUrl} alt="tags"
         />
       </ImgWrap>
+       
       <span
         style={{
           fontSize: "1.6rem",
@@ -19,13 +28,15 @@ const TagCard = (props) => {
           marginTop: "1.2rem",
         }}
       >
-        해산물 토마토파스타 <br />
+        {tag.name} <br />
         <TagGrid>
-          {Tags.map((item) => {
-            return <TagName>{`# ` + item.name}</TagName>;
+          {Tags.map((tag) => {
+            return <TagName>{`# ` + tag.tagId}</TagName>;
           })}
         </TagGrid>
       </span>
+      </>
+      ))} */}
     </DIV>
   );
 };
