@@ -37,7 +37,12 @@ const Main = (props) => {
         />
       </GRID>
       <GRID2>
-        <SeaButton src={SearchButton} />
+        <SeaButton
+          src={SearchButton}
+          onClick={() => {
+            window.location.replace("/search");
+          }}
+        />
       </GRID2>
       <Footer />
     </div>

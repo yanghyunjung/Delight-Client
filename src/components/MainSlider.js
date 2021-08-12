@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import styled from "styled-components";
 import Slider from "react-slick";
@@ -17,6 +17,8 @@ const MainSlider = (props) => {
   // 실행했을 때 카테고리 탭 기본값 설정
   const [tabIndex, setTabIndex] = useState(1);
 
+  const sliderRef = useRef()
+  
   // 슬라이드 이미지 크기(width) 임의로 변경하기 위해 useEffect 사용함
   useEffect(() => {
     const list = document.querySelector(".slick-list");
@@ -53,6 +55,7 @@ const MainSlider = (props) => {
               onClick={() => {
                 dispatch(getCategoryThunk(categoryId));
                 setTabIndex(i + 1);
+                sliderRef.current.slickGoTo(0)
               }}
             >
               {category}
@@ -61,7 +64,7 @@ const MainSlider = (props) => {
         })}
       </MenuList>
 
-      <StyledSlider {...settings}>
+      <StyledSlider {...settings} ref={sliderRef}>
         {foods.map((food, index) => (
           <Card>
             <ImgWrap style={{ marginBottom: "0.7rem" }}>

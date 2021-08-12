@@ -6,6 +6,7 @@ import Recommand from "../pages/Recommand";
 import RecResult from "../pages/RecResult";
 import Login from "../pages/Login";
 import Layout from "./Layout";
+import Search from "../pages/Search";
 
 const App = (props) => {
   return (
@@ -16,6 +17,7 @@ const App = (props) => {
           <Route exact path="/recommendation" component={Recommand} />
           <Route exact path="/recommendation/:id" component={RecResult} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/search" component={Search} />
         </Switch>
       </Layout>
     </Router>
