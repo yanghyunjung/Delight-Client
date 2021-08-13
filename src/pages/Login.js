@@ -30,11 +30,8 @@ const Login = (props) => {
         </Text>
         </Grid>
 
-
         {/* 로그인 버튼 */}
-
         <Grid is_flex2 wrap>
-
           <ButtonG href={GOOGLE_URL}>
             <Grid is_flex2>
               <LogoG />

@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 
 import { history } from "../redux/configureStore";
 
-
 import { actionCreators as categoryActions } from "../redux/modules/category";
 import { useDispatch, useSelector } from "react-redux";
 
