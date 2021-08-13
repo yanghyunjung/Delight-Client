@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
@@ -10,17 +10,7 @@ import Swal from "sweetalert2";
 
 import { history } from "../redux/configureStore";
 
-import { actionCreators as categoryActions } from "../redux/modules/category";
-import { useDispatch, useSelector } from "react-redux";
-
 const Main = (props) => {
-  // const dispatch = useDispatch();
-  // const category_list = useSelector((state) => state.list.category_list);
-
-  // useEffect(() => {
-  //   dispatch(categoryActions.getCategoryDB());
-  // }, []);
-
   const is_jwt = document.cookie ? true : false;
 
   return (
@@ -32,9 +22,10 @@ const Main = (props) => {
             fontWeight: "bold",
             margin: "2rem 0 0 2.5rem",
             float: "left",
+            lineHeight: "3.5rem",
           }}
         >
-          오늘 사람들이 가장 <br />
+          오늘 사람들이 가장 <br /> 
           즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top10</span>
         </p>
       </Title>
@@ -49,11 +40,11 @@ const Main = (props) => {
           onClick={() => {
             if (!is_jwt) {
               Swal.fire({
-                position: 'top-center',
-                icon: 'warning',
-                title: '로그인이 필요합니다',
+                position: "top-center",
+                icon: "warning",
+                title: "로그인이 필요합니다",
                 showConfirmButton: false,
-                timer: 2000
+                timer: 2000,
               });
               return history.push("/login");
             }
