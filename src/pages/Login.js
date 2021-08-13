@@ -38,6 +38,7 @@ const Login = (props) => {
 
         {/* 로그인 버튼 */}
         <Box3>
+
           <ButtonG href={GOOGLE_URL}>
             <Grid is_flex>
               <LogoG />
