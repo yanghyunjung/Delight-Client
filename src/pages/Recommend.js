@@ -19,7 +19,7 @@ import Loader from "react-loader-spinner";
 const Recommand = (props) => {
   const dispatch = useDispatch();
 
-  const [selectedFood, setSelectedFood] = useState([]);
+  const [selectedFood, setSelectedFood] = useState(null);
   const [foodsList, setFoodsList] = useState([]);
   const [isLoding, setIsLoding] = useState(null);
 

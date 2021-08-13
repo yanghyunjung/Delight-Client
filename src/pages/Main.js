@@ -14,7 +14,7 @@ const Main = (props) => {
   const is_jwt = document.cookie ? true : false;
 
   return (
-    <div>
+    <Container>
       <Title>
         <p
           style={{
@@ -25,7 +25,7 @@ const Main = (props) => {
             lineHeight: "3.5rem",
           }}
         >
-          오늘 사람들이 가장 <br /> 
+          오늘 사람들이 가장 <br />
           즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top10</span>
         </p>
       </Title>
@@ -55,9 +55,14 @@ const Main = (props) => {
         <SeaButton src={SearchButton} />
       </GRID2>
       <Footer />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  width: 36rem;
+  margin: 0 auto;
+`;
 
 const Title = styled.div`
   display: flex;
