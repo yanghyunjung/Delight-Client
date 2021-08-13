@@ -56,7 +56,7 @@ const Main = (props) => {
 
   // 비로그인 시
   return (
-    <div>
+    <Container>
       <Title>
         <p
           style={{
@@ -111,9 +111,14 @@ const Main = (props) => {
         />
       </GRID2>
       <Footer />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  width: 36rem;
+  margin: 0 auto;
+`;
 
 const Title = styled.div`
   display: flex;
