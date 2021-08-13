@@ -12,8 +12,10 @@ import { history } from "../redux/configureStore";
 
 const Main = (props) => {
 
+  // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
 
+  // 로그인 시
   if (is_jwt) {
     return (
       <div>
@@ -52,7 +54,7 @@ const Main = (props) => {
     );
   };
 
-  {/* 비로그인 */ }
+  // 비로그인 시
   return (
     <div>
       <Title>
@@ -92,7 +94,21 @@ const Main = (props) => {
         />
       </GRID>
       <GRID2>
-        <SeaButton src={SearchButton} />
+        <SeaButton src={SearchButton}
+          onClick={() => {
+            if (!is_jwt) {
+              Swal.fire({
+                position: "top-center",
+                icon: "warning",
+                title: "로그인이 필요합니다",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+              return history.push("/login");
+            }
+          }}
+
+        />
       </GRID2>
       <Footer />
     </div>

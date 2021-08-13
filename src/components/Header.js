@@ -8,10 +8,10 @@ import Swal from "sweetalert2";
 
 const Header = (props) => {
 
-  // 로그인 유무 헤더 변경
+  // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
 
-  //로그인 시 헤더  
+  //로그인 시  
   if (is_jwt) {
     return (
       <HEADER>
