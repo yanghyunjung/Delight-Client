@@ -46,7 +46,7 @@ const Header = (props) => {
             window.location.replace("/"); // history.push(/)를 사용하면 refresh가 안됨.
           }}
         >
-          로그인 되었다규~
+          WELCOME!!!
       </Text>
       </HEADER>
     );
