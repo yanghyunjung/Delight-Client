@@ -2,54 +2,57 @@ import React from "react";
 import styled from "styled-components";
 
 import DelightLogo from "../image/DelightLogo.png";
-import Google from "../image/googlelogo.png";
-import Kakao from "../image/kakaologo.png";
-import Naver from "../image/naverlogo.png";
+import Google from "../image/google.png";
+import Kakao from "../image/kakao.png";
+import Naver from "../image/naver.png";
 
 import { Grid, Text } from "../elements";
 
 import { GOOGLE_URL, KAKAO_URL, NAVER_URL } from "../redux/modules/oauth";
-import { getCookie } from '../shared/Cookie';
+import { getCookie } from "../shared/Cookie";
 
 const Login = (props) => {
-  console.log(getCookie('jwt'));
+  console.log(getCookie("jwt"));
 
   return (
     <React.Fragment>
-      <Grid wrap height="30%">
-        <Grid is_flex2 margin="0 0 -10rem 0">
+      <Container>
+        <Box>
           <Logo src={DelightLogo} />
-        </Grid>
+        </Box>
 
-        <Grid is_flex2 >
-          <Text size="1.6rem" bold margin="0 0 0 2rem" >
+        <Box2>
+          <Text
+            size="1.7rem"
+            bold
+            width="20rem"
+            text_align="center"
+            padding="3rem"
+          >
             당신에게 만족스러운
-          <br />
             <br />
-          한끼의 기쁨을 드려요
-        </Text>
-        </Grid>
-
+            <br />
+            한끼의 기쁨을 드려요
+          </Text>
+        </Box2>
 
         {/* 로그인 버튼 */}
-
-        <Grid is_flex2 wrap>
-
+        <Box3>
           <ButtonG href={GOOGLE_URL}>
-            <Grid is_flex2>
+            <Grid is_flex>
               <LogoG />
-              <Text size="16px" bold text_align="center" margin="auto">
+              <Text size="1.6rem" bold text_align="center" margin="auto">
                 구글로 1초 로그인하기
-            </Text>
+              </Text>
             </Grid>
           </ButtonG>
 
           <ButtonK href={KAKAO_URL}>
             <Grid is_flex>
               <LogoK />
-              <Text size="16px" bold text_align="center" margin="auto">
+              <Text size="1.6rem" bold text_align="center" margin="auto">
                 카카오로 1초 로그인하기
-            </Text>
+              </Text>
             </Grid>
           </ButtonK>
 
@@ -58,20 +61,42 @@ const Login = (props) => {
               <LogoN />
               <Text
                 color="white"
-                size="16px"
+                size="1.6rem"
                 bold
                 text_align="center"
                 margin="auto"
               >
                 네이버로 1초 로그인하기
-            </Text>
+              </Text>
             </Grid>
           </ButtonN>
-        </Grid>
-      </Grid>
+        </Box3>
+      </Container>
     </React.Fragment>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 11rem;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Box2 = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Box3 = styled.div`
+  display: grid;
+  grid-gap: 2rem;
+`;
 
 // sns 버튼
 const ButtonG = styled.a`
@@ -79,8 +104,8 @@ const ButtonG = styled.a`
   border: none;
   color: #ffffff;
   border-radius: 3rem;
-  width: 28rem;
-  height: 5rem;
+  width: 27rem;
+  height: 5.5rem;
   cursor: pointer;
   padding: 0 1rem 0 5rem;
   text-decoration: none;
@@ -90,8 +115,8 @@ const ButtonK = styled.a`
   border: none;
   color: #ffffff;
   border-radius: 30px;
-  width: 28rem;
-  height: 5rem;
+  width: 27rem;
+  height: 5.5rem;
   cursor: pointer;
   padding: 0 1rem 0 5rem;
   text-decoration: none;
@@ -101,17 +126,15 @@ const ButtonN = styled.a`
   border: none;
   color: #ffffff;
   border-radius: 30px;
-  width: 28rem;
-  height: 5rem;
+  width: 27rem;
+  height: 5.5rem;
   cursor: pointer;
   padding: 0 1rem 0 5rem;
   text-decoration: none;
 `;
-
 const Logo = styled.img`
   width: 19rem;
   height: 6rem;
-  
 `;
 
 // sns 로고

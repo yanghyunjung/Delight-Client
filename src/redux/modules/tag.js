@@ -30,7 +30,7 @@ const categorySlice = createSlice({
     builder.addCase(getTagThunk.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
-      alert("태그 목록을 불러오는 중이에요 조금만 기다려주세요 !");
+      alert("태그 목록을 불러오는 중이에요. 잠시만 기다려주세요!");
     });
   },
 });
