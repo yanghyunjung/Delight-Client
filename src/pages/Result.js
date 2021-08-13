@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Grid, Text } from "../elements";
 import ResultSlider from "../components/ResultSlider";
+import PercentResult from "../components/PercentResult";
 
 const Result = () => {
   return (
@@ -14,6 +15,12 @@ const Result = () => {
           </Grid>
           <ResultSlider />
         </ResultContainer>
+        <PercentContainer>
+          <SubText>추천 받은 음식 데이터 한눈에 보기</SubText>
+          <PercentWrap>
+            <PercentResult />
+          </PercentWrap>
+        </PercentContainer>
         <ButtonContainer>
           <SubText>더 많은 음식 보러 가기</SubText>
           <SearchButton>직접 검색하러 가기</SearchButton>
@@ -24,6 +31,12 @@ const Result = () => {
     </React.Fragment>
   );
 };
+
+const PercentWrap = styled.div`
+  background-color: #f6f6f6;
+  padding: 0.5rem 1.2rem;
+  margin: 1.2rem auto 1rem;
+`;
 
 const Title = styled.h2`
   font-size: 2.4rem;
@@ -62,8 +75,13 @@ const ResultContainer = styled.div`
   max-width: 36rem;
 `;
 
+const PercentContainer = styled.div`
+  margin: 4rem auto;
+  max-width: 36rem;
+`;
+
 const ButtonContainer = styled.div`
-  margin: 4rem auto 0 auto;
+  margin: 4rem auto 4rem auto;
   max-width: 36rem;
   text-align: center;
 `;

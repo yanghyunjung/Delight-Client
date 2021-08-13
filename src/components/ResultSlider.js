@@ -51,10 +51,6 @@ const data = [
         tagId: 3,
         name: "매운 맛",
       },
-      {
-        tagId: 4,
-        name: "순한 맛",
-      },
     ],
   },
   {
