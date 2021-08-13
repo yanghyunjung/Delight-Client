@@ -25,7 +25,7 @@ const Search = (props) => {
           태그로 음식 볼래요! <br />
           {selectedTag !== null && (
             <span
-              style={{ fontSize: "1.3rem", fontWeight: "350", display: "flex" }}
+              style={{ fontSize: "1.4rem", fontWeight: "350", display: "flex" }}
             >
               선택 태그: <SelectTag>{`# ` + selectedTag}</SelectTag>
             </span>
@@ -85,7 +85,8 @@ const SelectTag = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 0.9rem;
-  font-size: 1.2rem;
+  margin-left: 1rem;
+  font-size: 1.4rem;
   font-weight: bold;
   width: 8rem;
   height: 2rem;

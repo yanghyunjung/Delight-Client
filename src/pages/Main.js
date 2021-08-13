@@ -25,7 +25,7 @@ const Main = (props) => {
             lineHeight: "3.5rem",
           }}
         >
-          오늘 사람들이 가장 <br /> 
+          오늘 사람들이 가장 <br />
           즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top10</span>
         </p>
       </Title>
@@ -52,7 +52,12 @@ const Main = (props) => {
         />
       </GRID>
       <GRID2>
-        <SeaButton src={SearchButton} />
+        <SeaButton
+          src={SearchButton}
+          onClick={() => {
+            history.push("/search");
+          }}
+        />
       </GRID2>
       <Footer />
     </div>

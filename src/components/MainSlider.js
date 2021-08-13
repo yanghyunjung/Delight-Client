@@ -14,11 +14,11 @@ const MainSlider = (props) => {
   const dispatch = useDispatch();
   const foods = useSelector(getFoods);
 
+  const sliderRef = useRef();
+
   // 실행했을 때 카테고리 탭 기본값 설정
   const [tabIndex, setTabIndex] = useState(1);
 
-  const sliderRef = useRef()
-  
   // 슬라이드 이미지 크기(width) 임의로 변경하기 위해 useEffect 사용함
   useEffect(() => {
     const list = document.querySelector(".slick-list");
@@ -41,7 +41,7 @@ const MainSlider = (props) => {
     { categoryId: 1, category: "한식" },
     { categoryId: 2, category: "일식" },
     { categoryId: 3, category: "중식" },
-    { categoryId: 4, category: "양식" },  
+    { categoryId: 4, category: "양식" },
     { categoryId: 5, category: "패스트푸드" },
     { categoryId: 6, category: "분식" },
   ];
@@ -55,7 +55,7 @@ const MainSlider = (props) => {
               onClick={() => {
                 dispatch(getCategoryThunk(categoryId));
                 setTabIndex(i + 1);
-                sliderRef.current.slickGoTo(0)
+                sliderRef.current.slickGoTo(0);
               }}
             >
               {category}

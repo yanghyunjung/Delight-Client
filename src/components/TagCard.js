@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { getTagResult, getTagResultThunk } from "../redux/modules/tagresult";
@@ -9,33 +9,36 @@ const Tags = Array.from({ length: 4 }, () => ({ name: "태그여섯글자" }));
 const TagCard = (props) => {
   const dispatch = useDispatch();
   const tags = useSelector(getTagResult);
+  const [tag, setTag] = useState(null);
+
+  useEffect(() => {
+    dispatch(getTagResultThunk());
+  }, []);
+
   return (
-   
-   <DIV>
-     {/* {tags.map((tag) => ( 
-       <>
-      <ImgWrap>
-        <img
-          src={tag.imgUrl} alt="tags"
-        />
-      </ImgWrap>
-       
-      <span
-        style={{
-          fontSize: "1.6rem",
-          fontWeight: "medium",
-          lineHeight: "4rem",
-          marginTop: "1.2rem",
-        }}
-      >
-        {tag.name} <br />
-        <TagGrid>
-          {Tags.map((tag) => {
-            return <TagName>{`# ` + tag.tagId}</TagName>;
-          })}
-        </TagGrid>
-      </span>
-      </>
+    <DIV>
+      {/* {tags.map((tag) => (
+        <>
+          <ImgWrap>
+            <img src={tag.imgUrl} alt="tags" />
+          </ImgWrap>
+
+          <span
+            style={{
+              fontSize: "1.6rem",
+              fontWeight: "medium",
+              lineHeight: "4rem",
+              marginTop: "1.2rem",
+            }}
+          >
+            {tag.name} <br />
+            <TagGrid>
+              {Tags.map((tag) => {
+                return <TagName>{`# ` + tag.tagId}</TagName>;
+              })}
+            </TagGrid>
+          </span>
+        </>
       ))} */}
     </DIV>
   );

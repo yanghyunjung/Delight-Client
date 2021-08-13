@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useState } from "react";
 import instance from "../../shared/api";
+
+import Loader from "react-loader-spinner";
 
 // 카테고리라는 함수 만들기
 export const getCategoryThunk = createAsyncThunk(

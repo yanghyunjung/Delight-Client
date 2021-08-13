@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import instance from "../../shared/api";
 
 // 태그 음식 결과 나오게 하기
-export const getTagResultThunk = createAsyncThunk("tag/getTagResult", async (tagId) => {
+export const getTagResultThunk = createAsyncThunk("tag/getTagResult", async (tagId="all") => {
   const response = await instance.get(`/api/foods/tags/${tagId}`);
   console.log(response.data);
   return response.data;

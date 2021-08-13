@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 import { getTags, getTagThunk } from "../redux/modules/tag";
+import { getTagResultThunk } from "../redux/modules/tagresult";
 import { useDispatch, useSelector } from "react-redux";
-
-// 태그 갯수 배열로 설정
-// const Tags = Array.from({ length: 20 }, () => ({ name: "auto layout" }));
 
 const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
   const dispatch = useDispatch();
   const tags = useSelector(getTags);
-  const [tag,setTag] = useState(null);
-  console.log("tags : ",tags)
+  const [tag, setTag] = useState(null);
+  console.log("tags : ", tags);
   useEffect(() => {
     dispatch(getTagThunk());
   }, []);
@@ -36,22 +34,25 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2,1fr)",
-            gridRowGap: "2rem",
+            gridRowGap: "1.5rem",
           }}
         >
-          {tags.map((tagId, tag) => (
-            <Layout key={tag.name}>
+          {tags.map(({ name, id }, index) => (
+            <Layout key={id}>
               <RadioBtn
-                id={tag}
+                id={id}
                 type="radio"
                 name="tag"
-                value={tag.name}
+                value={name}
                 style={{ margin: "1rem" }}
-                onClick={()=>setTag(tagId)}
+                onClick={() => {
+                  setTag(id);
+                  setRadioValue(name);
+                }}
               />
               <Btn></Btn>
-              <label htmlFor={tag} style={{ fontSize: "1.5rem" }}>
-                {tag.name}
+              <label htmlFor={id} style={{ fontSize: "1.5rem" }}>
+                {name}
               </label>
             </Layout>
           ))}
@@ -61,7 +62,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
             onClick={() => {
               setSelectedTag(radioValue);
               setTagOpen(false);
-              dispatch(getTagThunk(tag));
+              dispatch(getTagResultThunk(tag));
             }}
           >
             선택하기
@@ -107,9 +108,9 @@ const Layout = styled.div`
   bottom: 0;
   width: 100%;
   height: auto;
-  margin: 1rem 0 0 0;
+  margin: 1rem 0 0 5rem;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 const Btn = styled.div`
