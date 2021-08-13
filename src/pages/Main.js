@@ -11,8 +11,48 @@ import Swal from "sweetalert2";
 import { history } from "../redux/configureStore";
 
 const Main = (props) => {
+
   const is_jwt = document.cookie ? true : false;
 
+  if (is_jwt) {
+    return (
+      <div>
+        <Title>
+          <p
+            style={{
+              fontSize: "2.4rem",
+              fontWeight: "bold",
+              margin: "2rem 0 0 2.5rem",
+              float: "left",
+              lineHeight: "3.5rem",
+            }}
+          >
+            오늘 사람들이 가장 <br />
+          즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top10</span>
+          </p>
+        </Title>
+
+        {/* 메뉴 & 음식 이미지 슬라이드 컴포넌트 */}
+        <MainSlider />
+
+        {/* 버튼 제작 */}
+        <GRID>
+          <RecButton
+            src={RecComButton}
+            onClick={() => {
+              return history.push("/recommendation");
+            }}
+          />
+        </GRID>
+        <GRID2>
+          <SeaButton src={SearchButton} />
+        </GRID2>
+        <Footer />
+      </div>
+    );
+  };
+
+  {/* 비로그인 */ }
   return (
     <Container>
       <Title>
