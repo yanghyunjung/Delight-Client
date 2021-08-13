@@ -2,18 +2,26 @@ import React from "react";
 import styled from "styled-components";
 
 const PercentResult = (props) => {
+  const data = props.data;
+  console.log("===", data);
   return (
     <React.Fragment>
       <Container>
         <ContentContainer>
           <Chart>
-            <div>고구마 치즈 (60%)</div>
+            <div score={data[0].score}>
+              {data[0].name} ({data[0].score}%)
+            </div>
           </Chart>
           <Chart>
-            <div>음식1 (60%)</div>
+            <div score={data[1].score}>
+              {data[1].name} ({data[1].score}%)
+            </div>
           </Chart>
           <Chart>
-            <div>음식1 (60%)</div>
+            <div score={data[2].score}>
+              {data[2].name} ({data[2].score}%)
+            </div>
           </Chart>
         </ContentContainer>
       </Container>
@@ -34,7 +42,7 @@ const Chart = styled.div`
     background-color: #ffa012;
     font-size: 1.4rem;
     padding: 1rem 0 1rem 1.4rem;
-    width: 60%;
+    width: ${(props) => props.score}%;
     height: 100%;
   }
 `;

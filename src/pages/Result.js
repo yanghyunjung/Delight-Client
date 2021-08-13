@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
 import { Grid, Text } from "../elements";
 import ResultSlider from "../components/ResultSlider";
 import PercentResult from "../components/PercentResult";
 
+import { getSelectFoodSV } from "../redux/modules/food";
+
 const Result = () => {
+  const dispatch = useDispatch();
+  const [getResultFood, setGetResultFood] = useState(null);
+
+  const data = useSelector((state) => state.food.result);
+
+  useEffect(() => {
+    setGetResultFood(data);
+    console.log("결과페이지", data);
+  }, [data]);
   return (
     <React.Fragment>
       <Container>
@@ -13,12 +25,12 @@ const Result = () => {
           <Grid width="100%" height="15%" padding="2rem 2rem 4rem">
             <Title>오늘은 이거 어때?</Title>
           </Grid>
-          <ResultSlider />
+          <ResultSlider data={data} />
         </ResultContainer>
         <PercentContainer>
           <SubText>추천 받은 음식 데이터 한눈에 보기</SubText>
           <PercentWrap>
-            <PercentResult />
+            <PercentResult data={data} />
           </PercentWrap>
         </PercentContainer>
         <ButtonContainer>
