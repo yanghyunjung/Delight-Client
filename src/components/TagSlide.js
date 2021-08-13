@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
+import { getTags, getTagThunk } from "../redux/modules/tag";
+import { useDispatch, useSelector } from "react-redux";
+
 // 태그 갯수 배열로 설정
-const Tags = Array.from({ length: 10 }, () => ({ name: "Auto Layout" }));
+// const Tags = Array.from({ length: 20 }, () => ({ name: "auto layout" }));
 
 const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
-  const [radioValue, setRadioValue] = useState(null); 
+  const dispatch = useDispatch();
+  const tags = useSelector(getTags);
+  const [tag,setTag] = useState(null);
+  console.log("tags : ",tags)
+  useEffect(() => {
+    dispatch(getTagThunk());
+  }, []);
+
+  const [radioValue, setRadioValue] = useState(null);
   return (
     <>
       {/* 태그 선택 화면 띄우기 */}
@@ -28,18 +39,18 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
             gridRowGap: "2rem",
           }}
         >
-          {Tags.map((tag, i) => (
+          {tags.map((tagId, tag) => (
             <Layout key={tag.name}>
               <RadioBtn
-                id={i}
+                id={tag}
                 type="radio"
                 name="tag"
                 value={tag.name}
                 style={{ margin: "1rem" }}
-                onClick={() => setRadioValue(tag.name)}
+                onClick={()=>setTag(tagId)}
               />
               <Btn></Btn>
-              <label htmlFor={i} style={{ fontSize: "1.5rem" }}>
+              <label htmlFor={tag} style={{ fontSize: "1.5rem" }}>
                 {tag.name}
               </label>
             </Layout>
@@ -50,6 +61,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
             onClick={() => {
               setSelectedTag(radioValue);
               setTagOpen(false);
+              dispatch(getTagThunk(tag));
             }}
           >
             선택하기
@@ -57,7 +69,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
         ) : (
           <TagBtn
             onClick={() => {
-              alert('선택된 태그가 없습니다:)');
+              alert("선택된 태그가 없습니다:)");
             }}
           >
             선택하기

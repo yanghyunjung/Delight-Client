@@ -74,7 +74,7 @@ const MainSlider = (props) => {
               style={{
                 fontSize: "2rem",
                 fontWeight: "bold",
-                lineHeight: "2.3rem",
+                lineHeight: "2.4rem",
               }}
             >
               {index + 1}위 <br />

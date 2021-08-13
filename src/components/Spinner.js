@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 import { Grid } from "../elements";
@@ -9,6 +9,8 @@ import BobAI from "../image/BobAi.svg";
 import Loader from "react-loader-spinner";
 
 const Spinner = (props) => {
+  const [isLoding, setIsLoding] = useState(false);
+
   return (
     <React.Fragment>
       <Container>
@@ -21,22 +23,48 @@ const Spinner = (props) => {
               <Name>밥씨</Name>
             </WrapName>
           </Wrap>
-          <Chat className="chat">밥씨가 메뉴를 정하고 있어요!</Chat>
+          <Chat className="chat" delay="1">
+            밥씨가 메뉴를 정하고 있어요!
+          </Chat>
 
-          <Chat className="chat">
+          <Chat className="chat" delay="1.5">
             오늘 하루 맛있는 밥 먹고
             <br /> 배도 든든 마음도 든든한 하루 보내세요!
           </Chat>
-          <Chat className="chat">
-            <StyledLoader
-              type="ThreeDots"
-              color="#C4C4C4"
-              height={20}
-              width={30}
-            />
-          </Chat>
+          {isLoding ? (
+            <Chat
+              className="chat"
+              delay="2"
+              style={{
+                fontWeight: "700",
+                fontSize: "1.7rem",
+                padding: "1.7rem",
+              }}
+            >
+              결과가 나왔어요!
+            </Chat>
+          ) : (
+            <Chat className="chat" delay="2">
+              <StyledLoader
+                type="ThreeDots"
+                color="#C4C4C4"
+                height={20}
+                width={30}
+              />
+            </Chat>
+          )}
+
           <WrapButton>
-            <ResultButton>결과 볼래요!</ResultButton>
+            {isLoding ? (
+              <ResultButton>결과 볼래요!</ResultButton>
+            ) : (
+              <ResultButton
+                disabled={!isLoding}
+                style={{ backgroundColor: "#c8c8c8" }}
+              >
+                결과 기다리고 있어요!
+              </ResultButton>
+            )}
           </WrapButton>
         </WrapContent>
       </Container>
@@ -102,35 +130,18 @@ const Container = styled.div`
 const WrapContent = styled.div`
   margin: 0 auto;
   max-width: 36rem;
-  height: 95vh;
+  height: 92vh;
   position: relative;
 `;
 
-const boxFade = keyframes`
+const Slideup = keyframes`
   from {
     opacity: 0;
+    transform: translateY(200px);
   }
   to {
     opacity: 1;
-  }
-`;
-
-const Box = styled.div`
-  width: 100%;
-  height: 100%;
-  & img.one {
-    width: 20rem;
-    height: 20rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    animation-name: ${boxFade};
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    transform: translateY(0px);
   }
 `;
 
@@ -139,6 +150,7 @@ const StyledLoader = styled(Loader)`
 `;
 
 const Chat = styled.span`
+  opacity: 0;
   display: inline-block;
   position: relative;
   font-size: 1.5rem;
@@ -147,6 +159,11 @@ const Chat = styled.span`
   padding: 1.5rem;
   margin: 0 2rem 1.2rem 5rem;
   background-color: #f6f6f6;
+  animation-duration: 0.7s;
+  animation-delay: ${(props) => props.delay}s;
+  animation-timing-function: ease;
+  animation-name: ${Slideup};
+  animation-fill-mode: forwards;
   &.chat {
     position: relative;
     background: #f6f6f6;
