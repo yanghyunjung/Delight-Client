@@ -30,10 +30,9 @@ if (is_jwt) {
           _onClick={() => {
             if (
               window.confirm(
-                `준비중인 서비스입니다.\n메인페이지로 이동합니당!`
-              ) === true
+                `준비중인 서비스입니다.`
+              )
             ) {
-              history.push("/");
             }
           }}
         >
@@ -57,7 +56,7 @@ if (is_jwt) {
     if (!is_jwt) {
       Swal.fire({
         position: 'top-center',
-        icon: 'warning',
+        icon: 'info',
         title: '로그인이 필요합니다',
         showConfirmButton: false,
         timer: 2000
