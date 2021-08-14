@@ -22,6 +22,7 @@ const Recommand = (props) => {
   const [selectedFood, setSelectedFood] = useState(null);
   const [foodsList, setFoodsList] = useState([]);
   const [isLoding, setIsLoding] = useState(null);
+  const [check, setCheck] = useState(false);
 
   const list = useSelector((state) => state.food.selectList);
   const foods = useSelector((state) => state.food.foodName);
@@ -40,12 +41,20 @@ const Recommand = (props) => {
     return getFoods();
   };
 
+  const handleCheckFood = () => {
+    setCheck(true);
+  };
+
+  const handleCheckOutFood = () => {
+    setCheck(false);
+  };
+
   useEffect(() => {
     handleRecommendFood();
   }, []);
 
   useEffect(() => {
-    setSelectedFood({ foods });
+    setSelectedFood(foods);
   }, [foods]);
 
   return (
@@ -75,7 +84,14 @@ const Recommand = (props) => {
             ) : (
               <FoodList>
                 {foodsList.map((data, idx) => {
-                  return <FoodCard data={data} id={idx} />;
+                  return (
+                    <FoodCard
+                      check={check}
+                      setCheck={setCheck}
+                      data={data}
+                      id={idx}
+                    />
+                  );
                 })}
               </FoodList>
             )}
@@ -90,7 +106,11 @@ const Recommand = (props) => {
 
           <WrapBottomBox>
             <SelectedBox>
-              <SelectedFoodSlider />
+              <SelectedFoodSlider
+                data={foodsList}
+                check={check}
+                setCheck={setCheck}
+              />
               <Grid margin="0 auto">
                 {list.length > 0 ? (
                   <Button
@@ -128,6 +148,17 @@ const Recommand = (props) => {
     </React.Fragment>
   );
 };
+
+const Slideup = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
 
 const WrapLoader = styled.div`
   position: relative;
@@ -184,6 +215,11 @@ const FoodList = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  animation-duration: 0.7s;
+  animation-delay: ${(props) => props.delay}s;
+  animation-timing-function: ease;
+  animation-name: ${Slideup};
+  animation-fill-mode: forwards;
 `;
 
 const AiImgWrap = styled.div`
@@ -222,17 +258,6 @@ const WrapContent = styled.div`
 const WrapBottomBox = styled.div`
   margin: 0 auto;
   max-width: 36rem;
-`;
-
-const Slideup = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 `;
 
 const TitleWrap = styled.div`
