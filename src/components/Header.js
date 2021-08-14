@@ -36,7 +36,6 @@ if (is_jwt) {
             }
           }}
         >
-          마이페이지
       </Text>
         <Text
           size="1.5rem"
@@ -46,7 +45,6 @@ if (is_jwt) {
             window.location.replace("/"); // history.push(/)를 사용하면 refresh가 안됨.
           }}
         >
-          WELCOME!!!
       </Text>
       </HEADER>
     );

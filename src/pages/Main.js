@@ -111,7 +111,6 @@ const Main = (props) => {
               return history.push("/login");
             }
           }}
-
         />
       </GRID2>
       <Footer />

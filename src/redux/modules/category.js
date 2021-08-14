@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useState } from "react";
 import instance from "../../shared/api";
+
+import Loader from "react-loader-spinner";
 
 // 카테고리라는 함수 만들기
 export const getCategoryThunk = createAsyncThunk(
@@ -34,7 +37,7 @@ const categorySlice = createSlice({
     builder.addCase(getCategoryThunk.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
-      alert("랭킹 데이터가 준비중이에요 조금만 기다려주세요 !");
+      alert("랭킹 데이터가 준비중이에요 조금만 기다려주세요!");
     });
   },
 });

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import instance from "../../shared/api";
 
-// 태그 목록 불러오기
+// 태그목록 불러오기
 export const getTagThunk = createAsyncThunk("tag/getTag", async () => {
     console.log("목록")
   const response = await instance.get(`/api/tags`);
@@ -30,7 +30,7 @@ const categorySlice = createSlice({
     builder.addCase(getTagThunk.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
-      alert("태그 목록을 불러오는 중이에요. 잠시만 기다려주세요!");
+      alert("태그 목록을 불러오는 중이에요. 잠시만 기다려주세요:)");
     });
   },
 });
