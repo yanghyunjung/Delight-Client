@@ -10,37 +10,39 @@ import {
   getFoodName,
 } from "../redux/modules/food";
 
-const FoodCard = (props) => {
+const FoodCard = ({ data, id, check, setCheck }) => {
   const dispatch = useDispatch();
+
   const foodNameList = useSelector((state) => state.food.foodName);
   const foodList = useSelector((state) => state.food.selectList);
+
   const [foodName, setFoodName] = useState("");
-  const [alist, setAList] = useState({});
+
   useEffect(() => {
-    setAList(foodNameList);
     foodNameList.map((item) => {
-      if (props.data.name === item) {
+      if (data.name === item) {
         setFoodName(item);
       }
     });
-  }, [foodNameList, alist, props.data.name]);
+  }, [foodNameList, data.name]);
 
-  if (foodName === props.data.name) {
+  if (foodName === data.name) {
     return (
       <React.Fragment>
         <Container
-          key={props.data.id}
+          key={data.id}
           onClick={({ name, list }) => {
             name = foodName;
             list = foodList;
             dispatch(deleteFood({ name, list }));
+            setCheck(false);
           }}
         >
-          <FoodImgWrap style={{ border: "2px solid #ffa012" }}>
-            <img src={props.data.imgUrl} alt={props.data.name} />
+          <FoodImgWrap>
+            <img src={data.imgUrl} alt={data.name} />
           </FoodImgWrap>
           <FoodNameWrap>
-            <FoodName style={{ color: "#ffa012" }}>{props.data.name}</FoodName>
+            <FoodName>{data.name}</FoodName>
           </FoodNameWrap>
         </Container>
       </React.Fragment>
@@ -50,19 +52,19 @@ const FoodCard = (props) => {
   return (
     <React.Fragment>
       <Container
-        id={props.data.id}
-        onClick={({ name, imgUrl, select }) => {
-          name = props.data.name;
-          imgUrl = props.data.imgUrl;
-          select = true;
-          dispatch(addFood({ name, imgUrl, select }));
+        id={data.id}
+        onClick={({ name, imgUrl }) => {
+          name = data.name;
+          imgUrl = data.imgUrl;
+          dispatch(addFood({ name, imgUrl }));
+          setCheck(true);
         }}
       >
         <FoodImgWrap>
-          <img src={props.data.imgUrl} alt={props.data.name} />
+          <img src={data.imgUrl} alt={data.name} />
         </FoodImgWrap>
         <FoodNameWrap>
-          <FoodName>{props.data.name}</FoodName>
+          <FoodName>{data.name}</FoodName>
         </FoodNameWrap>
       </Container>
     </React.Fragment>

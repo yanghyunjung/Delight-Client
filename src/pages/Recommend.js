@@ -22,6 +22,7 @@ const Recommand = (props) => {
   const [selectedFood, setSelectedFood] = useState(null);
   const [foodsList, setFoodsList] = useState([]);
   const [isLoding, setIsLoding] = useState(null);
+  const [check, setCheck] = useState(false);
 
   const list = useSelector((state) => state.food.selectList);
   const foods = useSelector((state) => state.food.foodName);
@@ -40,12 +41,20 @@ const Recommand = (props) => {
     return getFoods();
   };
 
+  const handleCheckFood = () => {
+    setCheck(true);
+  };
+
+  const handleCheckOutFood = () => {
+    setCheck(false);
+  };
+
   useEffect(() => {
     handleRecommendFood();
   }, []);
 
   useEffect(() => {
-    setSelectedFood({ foods });
+    setSelectedFood(foods);
   }, [foods]);
 
   return (
@@ -75,7 +84,14 @@ const Recommand = (props) => {
             ) : (
               <FoodList>
                 {foodsList.map((data, idx) => {
-                  return <FoodCard data={data} id={idx} />;
+                  return (
+                    <FoodCard
+                      check={check}
+                      setCheck={setCheck}
+                      data={data}
+                      id={idx}
+                    />
+                  );
                 })}
               </FoodList>
             )}
@@ -90,7 +106,11 @@ const Recommand = (props) => {
 
           <WrapBottomBox>
             <SelectedBox>
-              <SelectedFoodSlider />
+              <SelectedFoodSlider
+                data={foodsList}
+                check={check}
+                setCheck={setCheck}
+              />
               <Grid margin="0 auto">
                 {list.length > 0 ? (
                   <Button
