@@ -6,12 +6,6 @@ const instance = axios.create({
   baseURL: "https://api.delight99.co.kr",
 });
 
-const initialState = {
-  selectList: [],
-  foodName: [],
-  result: null,
-};
-
 const food = createSlice({
   name: "food",
   initialState: {
@@ -20,7 +14,7 @@ const food = createSlice({
     result: null,
   },
   reducers: {
-    addFood(state, action) {
+    addFood: (state, action) => {
       if (state.selectList.length < 10) {
         state.selectList.unshift(action.payload);
         state.foodName.push(action.payload.name);
@@ -29,7 +23,7 @@ const food = createSlice({
         return;
       }
     },
-    deleteFood(state, action) {
+    deleteFood: (state, action) => {
       state.foodName.splice(state.foodName.indexOf(action.payload.name), 1);
       const idx = action.payload.list.findIndex((item) => {
         return item.name === action.payload.name;
@@ -49,12 +43,11 @@ export const sendSelectFoodSV = (foods) => {
     try {
       await instance
         .post("/api/ml-recommendations", {
-          foods: foods.foods,
+          foods: foods,
         })
         .then((res) => {
           const data = res.data.data;
           dispatch(getResult({ data }));
-          return data;
         });
 
       history.push("/recommendation/result");
