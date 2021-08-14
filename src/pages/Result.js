@@ -8,6 +8,8 @@ import PercentResult from "../components/PercentResult";
 
 import { getSelectFoodSV } from "../redux/modules/food";
 
+import { history } from "../redux/configureStore";
+
 const Result = () => {
   const dispatch = useDispatch();
   const [getResultFood, setGetResultFood] = useState(null);
@@ -35,9 +37,21 @@ const Result = () => {
         </PercentContainer>
         <ButtonContainer>
           <SubText>더 많은 음식 보러 가기</SubText>
-          <SearchButton>직접 검색하러 가기</SearchButton>
+          <SearchButton
+            onClick={() => {
+              history.push("/search");
+            }}
+          >
+            직접 검색하러 가기
+          </SearchButton>
           <SubText>원하는 결과가 아니신가요?</SubText>
-          <ReTryButton>테스트 다시하기</ReTryButton>
+          <ReTryButton
+            onClick={() => {
+              window.location.replace("/recommendation");
+            }}
+          >
+            테스트 다시하기
+          </ReTryButton>
         </ButtonContainer>
       </Container>
     </React.Fragment>
@@ -46,8 +60,8 @@ const Result = () => {
 
 const PercentWrap = styled.div`
   background-color: #f6f6f6;
-  padding: 0.5rem 1.2rem;
-  margin: 1.2rem auto 1rem;
+  padding: 1.4rem 1.2rem;
+  margin: 0.5rem auto 1rem;
 `;
 
 const Title = styled.h2`
