@@ -37,7 +37,7 @@ const categorySlice = createSlice({
     builder.addCase(getCategoryThunk.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
-      alert("랭킹 데이터가 준비중이에요 조금만 기다려주세요 !");
+      alert("랭킹 데이터가 준비중이에요 조금만 기다려주세요!");
     });
   },
 });

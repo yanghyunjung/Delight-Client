@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
 import { Grid, Text } from "../elements";
 import ResultSlider from "../components/ResultSlider";
+import PercentResult from "../components/PercentResult";
+
+import { getSelectFoodSV } from "../redux/modules/food";
 
 const Result = () => {
+  const dispatch = useDispatch();
+  const [getResultFood, setGetResultFood] = useState(null);
+
+  const data = useSelector((state) => state.food.result);
+
+  useEffect(() => {
+    setGetResultFood(data);
+    console.log("결과페이지", data);
+  }, [data]);
   return (
     <React.Fragment>
       <Container>
@@ -12,8 +25,14 @@ const Result = () => {
           <Grid width="100%" height="15%" padding="2rem 2rem 4rem">
             <Title>오늘은 이거 어때?</Title>
           </Grid>
-          <ResultSlider />
+          <ResultSlider data={data} />
         </ResultContainer>
+        <PercentContainer>
+          <SubText>추천 받은 음식 데이터 한눈에 보기</SubText>
+          <PercentWrap>
+            <PercentResult data={data} />
+          </PercentWrap>
+        </PercentContainer>
         <ButtonContainer>
           <SubText>더 많은 음식 보러 가기</SubText>
           <SearchButton>직접 검색하러 가기</SearchButton>
@@ -24,6 +43,12 @@ const Result = () => {
     </React.Fragment>
   );
 };
+
+const PercentWrap = styled.div`
+  background-color: #f6f6f6;
+  padding: 0.5rem 1.2rem;
+  margin: 1.2rem auto 1rem;
+`;
 
 const Title = styled.h2`
   font-size: 2.4rem;
@@ -62,8 +87,13 @@ const ResultContainer = styled.div`
   max-width: 36rem;
 `;
 
+const PercentContainer = styled.div`
+  margin: 4rem auto;
+  max-width: 36rem;
+`;
+
 const ButtonContainer = styled.div`
-  margin: 4rem auto 0 auto;
+  margin: 4rem auto 4rem auto;
   max-width: 36rem;
   text-align: center;
 `;

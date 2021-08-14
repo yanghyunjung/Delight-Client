@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { getTagResult } from "../redux/modules/tagresult";
+import { useSelector } from "react-redux";
 
 import { IoIosArrowDown } from "react-icons/io";
 import styled from "styled-components";
@@ -10,6 +12,7 @@ import TagCard from "../components/TagCard";
 const Search = (props) => {
   const [tagOpen, setTagOpen] = useState(false);
   const [selectedTag, setSelectedTag] = useState(null);
+  const tags = useSelector(getTagResult);
   return (
     <div style={{ height: "100vh", position: "relative" }}>
       <Title>
@@ -39,7 +42,10 @@ const Search = (props) => {
             flexDirection: "row",
           }}
         >
-          전체 1개
+            {
+                tags && `전체 ${tags.length}개`
+            }
+          
           <span
             style={{
               fontSize: "1.6rem",
@@ -87,10 +93,8 @@ const SelectTag = styled.div`
   margin-top: 0.9rem;
   margin-left: 1rem;
   font-size: 1.4rem;
-  font-weight: bold;
-  width: 8rem;
   height: 2rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 1rem;
   line-height: 2rem;
   background-color: #f2f2f2;
   border-radius: 1.6rem;

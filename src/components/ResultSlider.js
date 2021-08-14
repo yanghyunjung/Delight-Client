@@ -10,78 +10,6 @@ import ArrowLeft from "../image/SelectedArrowL.png";
 
 import Tag from "./Tag";
 
-const data = [
-  {
-    name: "떡볶이",
-    imgUrl:
-      "https://post-phinf.pstatic.net/MjAyMDA4MjhfODMg/MDAxNTk4NjAxNDgyNzYy.jVbCv-Jkpp-qgJs3U9r9jsbzVBJ3mV5tPQcIuI8MpI4g.LN6If8Ldi4GvY_JD03QDz41FZpW3wO-kqW7AnQU54Ewg.JPEG/1189849.jpg?type=w1200",
-    tags: [
-      {
-        tagId: 1,
-        name: "매운 맛",
-      },
-      {
-        tagId: 2,
-        name: "매운 맛",
-      },
-      {
-        tagId: 3,
-        name: "매운 맛",
-      },
-      {
-        tagId: 4,
-        name: "순한 맛",
-      },
-    ],
-  },
-  {
-    name: "햄버거",
-    imgUrl:
-      "https://post-phinf.pstatic.net/MjAxNzExMjhfNzgg/MDAxNTExODMzNTg2MDEz.Ng01xP9O0zxSQuja_QymPS89YgqGewpYLVMQRttBn8sg.zVlpj9eRm3w1z-3ung-VzjIAzXOSt8QvftivTfw155wg.JPEG/best%2Bburger%2Bgeneric.jpg?type=w1200",
-    tags: [
-      {
-        tagId: 1,
-        name: "매운 맛",
-      },
-      {
-        tagId: 2,
-        name: "매운 맛",
-      },
-      {
-        tagId: 3,
-        name: "매운 맛",
-      },
-      {
-        tagId: 4,
-        name: "순한 맛",
-      },
-    ],
-  },
-  {
-    name: "갈비탕",
-    imgUrl:
-      "https://img-cf.kurly.com/shop/data/goodsview/20200803/gv40000025492_1.jpg",
-    tags: [
-      {
-        tagId: 1,
-        name: "매운 맛",
-      },
-      {
-        tagId: 2,
-        name: "매운 맛",
-      },
-      {
-        tagId: 3,
-        name: "매운 맛",
-      },
-      {
-        tagId: 4,
-        name: "순한 맛",
-      },
-    ],
-  },
-];
-
 const ResultSlider = (props) => {
   const settings = {
     dots: true,
@@ -100,14 +28,14 @@ const ResultSlider = (props) => {
     <React.Fragment>
       <Container>
         <StlyedSlider {...settings}>
-          {data.map((item, index) => {
+          {props.data.map((item, index) => {
             return (
               <div key={index}>
                 <FoodImgWrap>
                   <img src={item.imgUrl} alt={item.name} />
                 </FoodImgWrap>
                 <FoodName>{item.name}</FoodName>
-                <Tag tag={item.tags} />
+                <Tag tag={item.tag} />
               </div>
             );
           })}
@@ -179,6 +107,8 @@ const FoodImgWrap = styled.div`
   position: relative;
   margin: 0 auto;
   height: 60%;
+  transform: scale(0.95);
+
   & img {
     border-radius: 11.5rem;
     margin: 0 auto;

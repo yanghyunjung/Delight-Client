@@ -8,11 +8,12 @@ import Swal from "sweetalert2";
 
 const Header = (props) => {
 
-  // 로그인 유무 헤더 변경
+  // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
 
-  //로그인 시 헤더  
-  if (is_jwt) {
+
+  //로그인 시  
+if (is_jwt) {
     return (
       <HEADER>
         <Logo
@@ -29,14 +30,13 @@ const Header = (props) => {
           _onClick={() => {
             if (
               window.confirm(
-                `준비중인 서비스입니다.\n메인페이지로 이동합니당!`
+                `준비중인 서비스입니다.\n메인페이지로 이동합니다!`
               ) === true
             ) {
               history.push("/");
             }
           }}
         >
-          마이페이지
       </Text>
         <Text
           size="1.5rem"
@@ -46,7 +46,6 @@ const Header = (props) => {
             window.location.replace("/"); // history.push(/)를 사용하면 refresh가 안됨.
           }}
         >
-          로그인 되었다규~
       </Text>
       </HEADER>
     );
@@ -93,14 +92,16 @@ const Header = (props) => {
 const HEADER = styled.div`
   box-sizing: border-box;
   border: none;
-  width: 100vw;
+  /* width: 100vw; */
+  width: 36rem;
+  margin: 0 auto;
+  padding: 0 1rem;
   height: 6%;
   background-color: #f4f0ea;
   display: flex;
   box-shadow: 0 0.3rem #e5e5e3;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5%;
 `;
 
 // 로고 스타일 지정

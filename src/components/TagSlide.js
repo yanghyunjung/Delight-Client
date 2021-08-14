@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
+import Swal from "sweetalert2";
 
 import { getTags, getTagThunk } from "../redux/modules/tag";
 import { getTagResultThunk } from "../redux/modules/tagresult";
@@ -50,7 +51,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
                   setRadioValue(name);
                 }}
               />
-              <Btn></Btn>
+              <Btn></Btn> {/* div로 버튼 만들어주기 */}
               <label htmlFor={id} style={{ fontSize: "1.5rem" }}>
                 {name}
               </label>
@@ -70,7 +71,13 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
         ) : (
           <TagBtn
             onClick={() => {
-              alert("선택된 태그가 없습니다:)");
+              Swal.fire({
+                position: "top-center",
+                icon: "warning",
+                title: "선택된 태그가 없습니다",
+                showConfirmButton: false,
+                timer: 2000,
+              });
             }}
           >
             선택하기
@@ -96,8 +103,8 @@ const DIV = styled.div`
   width: 100%;
   animation: ${boxShow} 0.9s ease-in-out;
   bottom: 0;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
   padding-top: 1.5rem;
 `;
 
@@ -133,7 +140,7 @@ const Btn = styled.div`
 `;
 
 const RadioBtn = styled.input`
-  display: none;
+  display: none; // RadioBtn을 display:none; 해야함
 
   &:checked + div::after {
     transform: scale(0.7);

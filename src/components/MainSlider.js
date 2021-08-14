@@ -19,7 +19,7 @@ const MainSlider = (props) => {
   // 실행했을 때 카테고리 탭 기본값 설정
   const [tabIndex, setTabIndex] = useState(1);
 
-  // 슬라이드 이미지 크기(width) 임의로 변경하기 위해 useEffect 사용함
+  // 위치를 잡기 위해 슬라이드 이미지 크기(width) 임의로 변경 -> useEffect 사용함
   useEffect(() => {
     const list = document.querySelector(".slick-list");
     list.style.setProperty("width", "25rem", "important");

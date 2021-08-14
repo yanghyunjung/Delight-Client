@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import RefreshImg from "../image/Refresh.png";
 import BobAI from "../image/BobAi.svg";
@@ -14,11 +14,14 @@ import { sendSelectFoodSV } from "../redux/modules/food";
 
 import { getFoodList } from "../shared/api";
 
+import Loader from "react-loader-spinner";
+
 const Recommand = (props) => {
   const dispatch = useDispatch();
 
-  const [selectedFood, setSelectedFood] = useState([]);
+  const [selectedFood, setSelectedFood] = useState(null);
   const [foodsList, setFoodsList] = useState([]);
+  const [isLoding, setIsLoding] = useState(null);
 
   const list = useSelector((state) => state.food.selectList);
   const foods = useSelector((state) => state.food.foodName);
@@ -28,9 +31,11 @@ const Recommand = (props) => {
   };
 
   const handleRecommendFood = () => {
+    setIsLoding(true);
     async function getFoods() {
       const { data } = await getFoodList();
       setFoodsList(data);
+      setIsLoding(false);
     }
     return getFoods();
   };
@@ -58,11 +63,22 @@ const Recommand = (props) => {
                 </TitleWrap>
               </Grid>
             </Grid>
-            <FoodList>
-              {foodsList.map((data, idx) => {
-                return <FoodCard data={data} id={idx} />;
-              })}
-            </FoodList>
+            {isLoding ? (
+              <WrapLoader>
+                <StyledLoader
+                  type="Oval"
+                  color="#ffa012"
+                  height={30}
+                  width={50}
+                />
+              </WrapLoader>
+            ) : (
+              <FoodList>
+                {foodsList.map((data, idx) => {
+                  return <FoodCard data={data} id={idx} />;
+                })}
+              </FoodList>
+            )}
             <RefreshButton
               onClick={() => {
                 handleRecommendFood();
@@ -113,6 +129,24 @@ const Recommand = (props) => {
   );
 };
 
+const WrapLoader = styled.div`
+  position: relative;
+  margin: 0 auto;
+  width: 32rem;
+  height: 50vh;
+`;
+
+const StyledLoader = styled(Loader)`
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+`;
+
 const RefreshButton = styled.button`
   text-align: center;
   font-weight: 700;
@@ -147,7 +181,6 @@ const FoodList = styled.div`
   width: 90%;
   grid-template-columns: repeat(4, minmax(5em, auto));
   gap: 0.5rem 1.3rem;
-  overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -191,10 +224,27 @@ const WrapBottomBox = styled.div`
   max-width: 36rem;
 `;
 
+const Slideup = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
+
 const TitleWrap = styled.div`
   border-radius: 2rem;
   padding: 1.5rem;
   background-color: #f6f6f6;
+  opacity: 0;
+  animation-duration: 0.7s;
+  animation-delay: ${(props) => props.delay}s;
+  animation-timing-function: ease;
+  animation-name: ${Slideup};
+  animation-fill-mode: forwards;
   &.chat {
     position: relative;
     background: #f6f6f6;
