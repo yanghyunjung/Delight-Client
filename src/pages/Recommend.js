@@ -129,6 +129,17 @@ const Recommand = (props) => {
   );
 };
 
+const Slideup = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
+
 const WrapLoader = styled.div`
   position: relative;
   margin: 0 auto;
@@ -184,6 +195,11 @@ const FoodList = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  animation-duration: 0.7s;
+  animation-delay: ${(props) => props.delay}s;
+  animation-timing-function: ease;
+  animation-name: ${Slideup};
+  animation-fill-mode: forwards;
 `;
 
 const AiImgWrap = styled.div`
@@ -222,17 +238,6 @@ const WrapContent = styled.div`
 const WrapBottomBox = styled.div`
   margin: 0 auto;
   max-width: 36rem;
-`;
-
-const Slideup = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 `;
 
 const TitleWrap = styled.div`

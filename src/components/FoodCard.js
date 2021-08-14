@@ -14,31 +14,33 @@ const FoodCard = (props) => {
   const dispatch = useDispatch();
   const foodNameList = useSelector((state) => state.food.foodName);
   const foodList = useSelector((state) => state.food.selectList);
-  const [name, setName] = useState("");
+  const [foodName, setFoodName] = useState("");
   const [alist, setAList] = useState({});
   useEffect(() => {
     setAList(foodNameList);
-    foodNameList.forEach((item) => {
+    foodNameList.map((item) => {
       if (props.data.name === item) {
-        setName(item);
+        setFoodName(item);
       }
     });
   }, [foodNameList, alist, props.data.name]);
 
-  if (name === props.data.name) {
+  if (foodName === props.data.name) {
     return (
       <React.Fragment>
         <Container
-          id={props.data.id}
-          onClick={() => {
-            alert(`이미 ${props.data.name}를 선택하셨습니다.`);
+          key={props.data.id}
+          onClick={({ name, list }) => {
+            name = foodName;
+            list = foodList;
+            dispatch(deleteFood({ name, list }));
           }}
         >
-          <FoodImgWrap>
+          <FoodImgWrap style={{ border: "2px solid #ffa012" }}>
             <img src={props.data.imgUrl} alt={props.data.name} />
           </FoodImgWrap>
           <FoodNameWrap>
-            <FoodName>{props.data.name}</FoodName>
+            <FoodName style={{ color: "#ffa012" }}>{props.data.name}</FoodName>
           </FoodNameWrap>
         </Container>
       </React.Fragment>
