@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const ChartBar = ({ width, percent, bgColor, name }) => {
+const ChartBar = ({ width, percent, bgColor, name, marginBt }) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -11,7 +11,10 @@ const ChartBar = ({ width, percent, bgColor, name }) => {
   return (
     <React.Fragment>
       <Container>
-        <ProgressBar className="progress-div" style={{ width: `${width}%` }}>
+        <ProgressBar
+          className="progress-div"
+          style={{ width: `${width}%`, marginBottom: `${marginBt}rem` }}
+        >
           <Progress
             className="progress"
             style={{ width: `${value}%`, backgroundColor: `#${bgColor}` }}

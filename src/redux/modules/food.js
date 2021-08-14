@@ -41,6 +41,7 @@ const food = createSlice({
 export const sendSelectFoodSV = (foods) => {
   return async (dispatch, getState, { history }) => {
     try {
+      history.replace("/spinner");
       await instance
         .post("/api/ml-recommendations", {
           foods: foods,
@@ -49,8 +50,6 @@ export const sendSelectFoodSV = (foods) => {
           const data = res.data.data;
           dispatch(getResult({ data }));
         });
-
-      history.push("/recommendation/result");
     } catch (error) {
       console.log("post 오류", error);
     }

@@ -125,7 +125,7 @@ const Recommand = (props) => {
                       sendSelectedFood();
                     }}
                   >
-                    선택완료 ( {list.length} / 10 )
+                    다 골랐어요! ( {list.length} / 10 )
                   </Button>
                 ) : (
                   <Button
@@ -137,7 +137,7 @@ const Recommand = (props) => {
                     height="5rem"
                     _onClick={() => alert("음식을 선택해주세요")}
                   >
-                    선택완료
+                    골라주세요~!
                   </Button>
                 )}
               </Grid>

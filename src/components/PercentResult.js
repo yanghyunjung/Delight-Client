@@ -12,21 +12,23 @@ const PercentResult = (props) => {
         <ContentContainer>
           <ChartBar
             width={100}
-            percent={50}
+            marginBt={0.7}
+            percent={data[0].score}
             bgColor={"FFA012"}
-            name={"더블불고기피자"}
+            name={data[0].name}
           />
           <ChartBar
             width={100}
-            percent={50}
+            marginBt={0.7}
+            percent={data[1].score}
             bgColor={"FFBC57"}
-            name={"고구마돈가스"}
+            name={data[1].name}
           />
           <ChartBar
             width={100}
-            percent={50}
+            percent={data[2].score}
             bgColor={"FFD699"}
-            name={"치즈떡볶이"}
+            name={data[2].name}
           />
         </ContentContainer>
       </Container>

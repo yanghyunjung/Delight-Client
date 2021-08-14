@@ -7,9 +7,13 @@ import spinner from "../image/spinner/Spinner.svg";
 import BobAI from "../image/BobAi.svg";
 
 import Loader from "react-loader-spinner";
+import { history } from "../redux/configureStore";
 
 const Spinner = (props) => {
   const [isLoding, setIsLoding] = useState(false);
+  useEffect(() => {
+    setIsLoding(true);
+  });
 
   return (
     <React.Fragment>
@@ -56,7 +60,13 @@ const Spinner = (props) => {
 
           <WrapButton>
             {isLoding ? (
-              <ResultButton>결과 볼래요!</ResultButton>
+              <ResultButton
+                onClick={() => {
+                  history.push("/recommendation/result");
+                }}
+              >
+                결과 볼래요!
+              </ResultButton>
             ) : (
               <ResultButton
                 disabled={!isLoding}
