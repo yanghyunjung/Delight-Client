@@ -10,6 +10,8 @@ import Login from "../pages/Login";
 import Layout from "./Layout";
 import Spinner from "../components/Spinner";
 import Search from "../pages/Search";
+import MyPage from "../pages/MyPage";
+
 
 const App = () => {
   return (
@@ -22,6 +24,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/spinner" component={Spinner} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/mypage" component={MyPage} />
         </Switch>
       </Layout>
     </ConnectedRouter>
