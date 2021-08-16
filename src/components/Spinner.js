@@ -18,14 +18,12 @@ const Spinner = (props) => {
   const dispatch = useDispatch();
 
   const [isLoding, setIsLoding] = useState(false);
-  const [selectedFood, setSelectedFood] = useState(null);
 
   const foods = useSelector((state) => state.food.foodName);
 
   useEffect(() => {
-    setSelectedFood(foods);
-    dispatch(sendSelectFoodSV({ selectedFood, setIsLoding }));
-  }, [foods, dispatch, selectedFood]);
+    dispatch(sendSelectFoodSV({ foods, setIsLoding }));
+  }, [foods, dispatch]);
 
   return (
     <React.Fragment>
@@ -56,7 +54,7 @@ const Spinner = (props) => {
               }}
             >
               MY PICK!
-            </Name>
+            </Name>{" "}
             버튼을 눌러주세요. <br />
             음식 데이터를 기록할 수 있어요!
           </Chat>

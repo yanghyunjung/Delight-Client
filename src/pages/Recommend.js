@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled, { keyframes } from "styled-components";
 
+import Swal from "sweetalert2";
+
+import FullAlert from "../image/FullAlert.svg";
+import ZeroAlert from "../image/ZeroAlert.svg";
 import BobAI from "../image/BobAi.svg";
 
 import { Grid, Button } from "../elements";
@@ -17,13 +21,12 @@ const Recommand = (props) => {
   const dispatch = useDispatch();
 
   const [foodsList, setFoodsList] = useState([]);
-  const [isLoding, setIsLoding] = useState(null);
+  const [isLoding, setIsLoding] = useState(true);
   const [check, setCheck] = useState(false);
 
   const list = useSelector((state) => state.food.selectList);
 
   const handleRecommendFood = () => {
-    setIsLoding(true);
     async function getFoods() {
       const { data } = await getFoodList();
       setFoodsList(data);
@@ -31,6 +34,24 @@ const Recommand = (props) => {
     }
     return getFoods();
   };
+
+  useEffect(() => {
+    if (list.length > 9) {
+      Swal.fire({
+        width: 240,
+        height: 150,
+        padding: "0 0 20px 0",
+        title: `10개 다 골랐어요!`,
+        imageUrl: FullAlert,
+        imageWidth: 240,
+        imageHeight: 100,
+        imageAlt: "음식을 골라주세요",
+        showConfirmButton: false,
+        background: "#ffffff",
+        timer: 1000,
+      });
+    }
+  }, [list.length]);
 
   useEffect(() => {
     handleRecommendFood();
@@ -114,7 +135,21 @@ const Recommand = (props) => {
                     radius="1rem"
                     width="100%"
                     height="5rem"
-                    _onClick={() => alert("음식을 선택해주세요")}
+                    _onClick={() =>
+                      Swal.fire({
+                        width: 240,
+                        height: 150,
+                        padding: "0 0 20px 0",
+                        title: `음식을 선택해주세요!`,
+                        imageUrl: ZeroAlert,
+                        imageWidth: 240,
+                        imageHeight: 100,
+                        imageAlt: "음식을 골라주세요",
+                        showConfirmButton: false,
+                        background: "#ffffff",
+                        timer: 1500,
+                      })
+                    }
                   >
                     골라주세요~!
                   </Button>
