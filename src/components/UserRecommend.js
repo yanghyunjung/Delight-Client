@@ -1,31 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
-import { useSelector, useDispatch } from "react-redux";
-
-import { Grid } from "../elements";
-
-import spinner from "../image/spinner/Spinner.svg";
 import BobAI from "../image/BobAi.svg";
 import ResultAI from "../image/spinner/ResultAI.svg";
+import MockData from "../image/spinner/MockData.svg";
 
 import Loader from "react-loader-spinner";
 import { history } from "../redux/configureStore";
 
-import { sendSelectFoodSV } from "../redux/modules/food";
-
-const Spinner = (props) => {
-  const dispatch = useDispatch();
-
+const UserRecommend = (props) => {
   const [isLoding, setIsLoding] = useState(false);
-  const [selectedFood, setSelectedFood] = useState(null);
-
-  const foods = useSelector((state) => state.food.foodName);
 
   useEffect(() => {
-    setSelectedFood(foods);
-    dispatch(sendSelectFoodSV({ selectedFood, setIsLoding }));
-  }, [foods, dispatch, selectedFood]);
+    setTimeout(setIsLoding, 7000, true);
+  }, []);
 
   return (
     <React.Fragment>
@@ -39,26 +27,31 @@ const Spinner = (props) => {
               <Name>밥씨</Name>
             </WrapName>
           </Wrap>
-          <Chat delay="1">밥씨가 메뉴를 정하고 있어요!</Chat>
+          <Chat delay="1">지난 주 회원님의 기록이에요!</Chat>
+          <Chat delay="1" style={{ padding: "0", backgroundColor: "#ffffff" }}>
+            <div>
+              <img src={MockData} alt="통계 들어가는 부분" />
+            </div>
+          </Chat>
 
           <Chat delay="1.5">
-            오늘 하루 맛있는 밥 먹고
-            <br /> 배도 든든 마음도 든든한 하루 보내세요!
-          </Chat>
-          <Chat delay="2">
-            원하는 음식이 나왔다면
-            <br />
+            밥씨가 지난 주 회원님의 기록을 가지고
+            <br />{" "}
             <Name
               style={{
                 display: "inline-block",
-                color: "#FF6B12",
+                color: "#141414",
                 fontWeight: "700",
               }}
             >
-              MY PICK!
-            </Name>
-            버튼을 눌러주세요. <br />
-            음식 데이터를 기록할 수 있어요!
+              AI
+            </Name>{" "}
+            추천을 해줄거에요!
+          </Chat>
+          <Chat delay="2">
+            오늘 하루 맛있는 밥 먹고
+            <br />
+            배도 든든 마음도 든든한 하루 보내세요!
           </Chat>
           {isLoding ? (
             <Chat
@@ -74,7 +67,7 @@ const Spinner = (props) => {
               <WrapButton>
                 <ResultButton
                   onClick={() => {
-                    history.push("/result/:id");
+                    history.push("#");
                   }}
                 >
                   결과 볼래요!!
@@ -189,4 +182,4 @@ const Chat = styled.span`
   animation-fill-mode: forwards;
 `;
 
-export default Spinner;
+export default UserRecommend;

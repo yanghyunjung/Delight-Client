@@ -2,34 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled, { keyframes } from "styled-components";
 
-import RefreshImg from "../image/Refresh.png";
 import BobAI from "../image/BobAi.svg";
 
 import { Grid, Button } from "../elements";
-
 import FoodCard from "../components/FoodCard";
 import SelectedFoodSlider from "../components/SelectedFoodSlider";
-
-import { sendSelectFoodSV } from "../redux/modules/food";
 
 import { getFoodList } from "../shared/api";
 
 import Loader from "react-loader-spinner";
+import { history } from "../redux/configureStore";
 
 const Recommand = (props) => {
   const dispatch = useDispatch();
 
-  const [selectedFood, setSelectedFood] = useState(null);
   const [foodsList, setFoodsList] = useState([]);
   const [isLoding, setIsLoding] = useState(null);
   const [check, setCheck] = useState(false);
 
   const list = useSelector((state) => state.food.selectList);
-  const foods = useSelector((state) => state.food.foodName);
-
-  const sendSelectedFood = () => {
-    dispatch(sendSelectFoodSV(selectedFood));
-  };
 
   const handleRecommendFood = () => {
     setIsLoding(true);
@@ -41,21 +32,9 @@ const Recommand = (props) => {
     return getFoods();
   };
 
-  const handleCheckFood = () => {
-    setCheck(true);
-  };
-
-  const handleCheckOutFood = () => {
-    setCheck(false);
-  };
-
   useEffect(() => {
     handleRecommendFood();
   }, []);
-
-  useEffect(() => {
-    setSelectedFood(foods);
-  }, [foods]);
 
   return (
     <React.Fragment>
@@ -122,7 +101,7 @@ const Recommand = (props) => {
                     height="5rem"
                     cursor
                     _onClick={() => {
-                      sendSelectedFood();
+                      history.replace("/recommendation/:id/spinner");
                     }}
                   >
                     다 골랐어요! ( {list.length} / 10 )

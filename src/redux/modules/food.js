@@ -38,17 +38,15 @@ const food = createSlice({
   },
 });
 
-export const sendSelectFoodSV = (foods) => {
+export const sendSelectFoodSV = ({ selectedFood, setIsLoding }) => {
   return async (dispatch, getState, { history }) => {
     try {
-      history.replace("/spinner");
       await instance
-        .post("/api/ml-recommendations", {
-          foods: foods,
-        })
+        .post("/api/ml-recommendations", { foods: selectedFood })
         .then((res) => {
           const data = res.data.data;
           dispatch(getResult({ data }));
+          setTimeout(setIsLoding, 6000, true);
         });
     } catch (error) {
       console.log("post 오류", error);
