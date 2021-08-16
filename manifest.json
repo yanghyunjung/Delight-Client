@@ -4,11 +4,11 @@
   "name": "Delight : 한끼 추천 서비스",
   "short_name": "Delight : ",
   "scope": "/",
+  "start_url": "https://www.delight99.co.kr/",
   "display": "standalone",
-  "background_color": "none",
-  "theme_color": "none",
-  "orientation": "any",
-  "prefer_related_applications": false,
+  "background_color": "#ffffff",
+  "theme_color": "#FFA012",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "images/71x71.png",
