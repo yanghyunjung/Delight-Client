@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import ChartBar from "./ChartBar";
 
+import { VictoryPie } from "victory";
+
 const PercentResult = (props) => {
   const data = props.data;
   console.log("===", data);
@@ -10,6 +12,22 @@ const PercentResult = (props) => {
     <React.Fragment>
       <Container>
         <ContentContainer>
+          <VictoryPie
+            data={[
+              { x: data[0].name, y: data[0].score },
+              { x: data[1].name, y: data[1].score },
+              { x: data[2].name, y: data[2].score },
+            ]}
+            animate={{
+              duration: 1000,
+            }}
+            colorScale={["#FFA012", "#FFBC57", "#FFD699"]}
+            startAngle={0}
+            endAngle={360}
+            padding={100}
+            width={350}
+            height={350}
+          />
           <ChartBar
             width={100}
             marginBt={0.7}
