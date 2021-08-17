@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { getTagResult, getTagResultThunk } from "../redux/modules/tagresult";
 import { useDispatch, useSelector } from "react-redux";
 
-const TagCard = (props) => {
+const TagCard = ({tagOpen}) => {
   const dispatch = useDispatch();
   const tags = useSelector(getTagResult);
 
