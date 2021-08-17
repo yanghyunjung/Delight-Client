@@ -12,6 +12,7 @@ import Spinner from "../components/Spinner";
 import Search from "../pages/Search";
 import MainChat from "../components/MainChat";
 import UserRecommend from "../components/UserRecommend";
+import MyPage from "../pages/MyPage";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             path="/recommendation/:id/user"
             component={UserRecommend}
           />
+          <Route exact path="/mypage" component={MyPage} />
         </Switch>
       </Layout>
     </ConnectedRouter>
