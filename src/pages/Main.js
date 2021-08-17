@@ -42,7 +42,7 @@ const Main = (props) => {
           <RecButton
             src={RecComButton}
             onClick={() => {
-              return history.push("/recommendation");
+              return history.push("/main/:id");
             }}
           />
         </GRID>

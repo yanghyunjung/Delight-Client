@@ -18,7 +18,7 @@ const Result = () => {
 
   useEffect(() => {
     setGetResultFood(data);
-    console.log("결과페이지", data);
+    console.log(getResultFood);
   }, [data]);
   return (
     <React.Fragment>
@@ -47,7 +47,7 @@ const Result = () => {
           <SubText>원하는 결과가 아니신가요?</SubText>
           <ReTryButton
             onClick={() => {
-              window.location.replace("/recommendation");
+              window.location.replace("/recommendation/:id");
             }}
           >
             테스트 다시하기

@@ -1,6 +1,5 @@
 import { createReducer, createAction, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { foodAPI } from "../../shared/api";
 
 const instance = axios.create({
   baseURL: "https://api.delight99.co.kr",
@@ -19,7 +18,6 @@ const food = createSlice({
         state.selectList.unshift(action.payload);
         state.foodName.push(action.payload.name);
       } else {
-        alert("10개 다 고르셨습니다!");
         return;
       }
     },
@@ -34,22 +32,19 @@ const food = createSlice({
     },
     getResult: (state, action) => {
       state.result = action.payload.data;
+      state.selectList = [];
     },
   },
 });
 
-export const sendSelectFoodSV = (foods) => {
+export const sendSelectFoodSV = ({ foods, setIsLoding }) => {
   return async (dispatch, getState, { history }) => {
     try {
-      history.replace("/spinner");
-      await instance
-        .post("/api/ml-recommendations", {
-          foods: foods,
-        })
-        .then((res) => {
-          const data = res.data.data;
-          dispatch(getResult({ data }));
-        });
+      await instance.post("/api/ml-recommendations", { foods }).then((res) => {
+        const data = res.data.data;
+        dispatch(getResult({ data }));
+        setTimeout(setIsLoding, 6000, true);
+      });
     } catch (error) {
       console.log("post 오류", error);
     }
