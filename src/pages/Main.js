@@ -42,12 +42,16 @@ const Main = (props) => {
           <RecButton
             src={RecComButton}
             onClick={() => {
-              return history.push("/recommendation");
+              return history.push("/main/:id");
             }}
           />
         </GRID>
         <GRID2>
-          <SeaButton src={SearchButton} />
+          <SeaButton src={SearchButton}
+            onClick={() => {
+              return history.push("/search");
+            }}
+          />
         </GRID2>
         <Footer />
       </div>
@@ -83,7 +87,7 @@ const Main = (props) => {
             if (!is_jwt) {
               Swal.fire({
                 position: "top-center",
-                icon: "warning",
+                icon: "info",
                 title: "로그인이 필요합니다",
                 showConfirmButton: false,
                 timer: 2000,
@@ -100,7 +104,7 @@ const Main = (props) => {
             if (!is_jwt) {
               Swal.fire({
                 position: "top-center",
-                icon: "warning",
+                icon: "info",
                 title: "로그인이 필요합니다",
                 showConfirmButton: false,
                 timer: 2000,

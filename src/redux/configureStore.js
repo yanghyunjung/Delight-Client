@@ -5,8 +5,9 @@ import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
 // Modules
-import userSlice from "./modules/user"; // 유저에 reducer
-import Food from "./modules/food";
+
+import userSlice from './modules/user'; // 유저에 reducer
+import Food from './modules/food';
 import Category from "./modules/category";
 import TagResult from "./modules/tagresult";
 import Tag from "./modules/tag";
@@ -15,12 +16,14 @@ export const history = createBrowserHistory();
 
 // export한 Reducer를 모으기
 const rootReducer = combineReducers({
+
   food: Food,
   user: userSlice,
   category: Category,
   tagresult: TagResult,
   tag: Tag,
-  router: connectRouter(history),
+  router: connectRouter(history)
+
 });
 
 // 미들웨어 적용
@@ -41,8 +44,8 @@ if (env === "development") {
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-      })
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    })
     : compose;
 
 // 미들웨어 묶기

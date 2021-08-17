@@ -11,9 +11,10 @@ import ArrowRight from "../image/SelectedArrowR.png";
 import ArrowLeft from "../image/SelectedArrowL.png";
 import XBox from "../image/xBox.svg";
 
-const SelectedFoodSlider = (props) => {
+const SelectedFoodSlider = ({ data, check, setCheck }) => {
   const dispatch = useDispatch();
   const foodList = useSelector((state) => state.food.selectList);
+  const foodNameList = useSelector((state) => state.food.foodName);
   const settings = {
     infinite: false,
     centerPadding: "6rem",
@@ -34,6 +35,7 @@ const SelectedFoodSlider = (props) => {
                   imgUrl = item.imgUrl;
                   list = foodList;
                   dispatch(deleteFood({ name, imgUrl, list }));
+                  setCheck(false);
                 }}
                 key={idx}
               >

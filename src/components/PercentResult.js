@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import ChartBar from "./ChartBar";
+
 const PercentResult = (props) => {
   const data = props.data;
   console.log("===", data);
@@ -8,44 +10,31 @@ const PercentResult = (props) => {
     <React.Fragment>
       <Container>
         <ContentContainer>
-          <Chart>
-            <div score={data[0].score}>
-              {data[0].name} ({data[0].score}%)
-            </div>
-          </Chart>
-          <Chart>
-            <div score={data[1].score}>
-              {data[1].name} ({data[1].score}%)
-            </div>
-          </Chart>
-          <Chart>
-            <div score={data[2].score}>
-              {data[2].name} ({data[2].score}%)
-            </div>
-          </Chart>
+          <ChartBar
+            width={100}
+            marginBt={0.7}
+            percent={data[0].score}
+            bgColor={"FFA012"}
+            name={data[0].name}
+          />
+          <ChartBar
+            width={100}
+            marginBt={0.7}
+            percent={data[1].score}
+            bgColor={"FFBC57"}
+            name={data[1].name}
+          />
+          <ChartBar
+            width={100}
+            percent={data[2].score}
+            bgColor={"FFD699"}
+            name={data[2].name}
+          />
         </ContentContainer>
       </Container>
     </React.Fragment>
   );
 };
-
-const Chart = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background-color: #ffffff;
-  width: 100%;
-  margin: 1rem 0;
-  padding: 0rem 0rem;
-  box-sizing: border-box;
-  & div {
-    box-sizing: border-box;
-    background-color: #ffa012;
-    font-size: 1.4rem;
-    padding: 1rem 0 1rem 1.4rem;
-    width: ${(props) => props.score}%;
-    height: 100%;
-  }
-`;
 
 const Container = styled.div`
   width: 100%;

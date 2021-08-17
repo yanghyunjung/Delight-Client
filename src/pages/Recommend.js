@@ -2,36 +2,31 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled, { keyframes } from "styled-components";
 
-import RefreshImg from "../image/Refresh.png";
+import Swal from "sweetalert2";
+
+import FullAlert from "../image/FullAlert.svg";
+import ZeroAlert from "../image/ZeroAlert.svg";
 import BobAI from "../image/BobAi.svg";
 
 import { Grid, Button } from "../elements";
-
 import FoodCard from "../components/FoodCard";
 import SelectedFoodSlider from "../components/SelectedFoodSlider";
-
-import { sendSelectFoodSV } from "../redux/modules/food";
 
 import { getFoodList } from "../shared/api";
 
 import Loader from "react-loader-spinner";
+import { history } from "../redux/configureStore";
 
 const Recommand = (props) => {
   const dispatch = useDispatch();
 
-  const [selectedFood, setSelectedFood] = useState(null);
   const [foodsList, setFoodsList] = useState([]);
-  const [isLoding, setIsLoding] = useState(null);
+  const [isLoding, setIsLoding] = useState(true);
+  const [check, setCheck] = useState(false);
 
   const list = useSelector((state) => state.food.selectList);
-  const foods = useSelector((state) => state.food.foodName);
-
-  const sendSelectedFood = () => {
-    dispatch(sendSelectFoodSV(selectedFood));
-  };
 
   const handleRecommendFood = () => {
-    setIsLoding(true);
     async function getFoods() {
       const { data } = await getFoodList();
       setFoodsList(data);
@@ -41,12 +36,26 @@ const Recommand = (props) => {
   };
 
   useEffect(() => {
-    handleRecommendFood();
-  }, []);
+    if (list.length > 9) {
+      Swal.fire({
+        width: 240,
+        height: 150,
+        padding: "0 0 20px 0",
+        title: `10개 다 골랐어요!`,
+        imageUrl: FullAlert,
+        imageWidth: 240,
+        imageHeight: 100,
+        imageAlt: "음식을 골라주세요",
+        showConfirmButton: false,
+        background: "#ffffff",
+        timer: 1000,
+      });
+    }
+  }, [list.length]);
 
   useEffect(() => {
-    setSelectedFood({ foods });
-  }, [foods]);
+    handleRecommendFood();
+  }, []);
 
   return (
     <React.Fragment>
@@ -75,7 +84,14 @@ const Recommand = (props) => {
             ) : (
               <FoodList>
                 {foodsList.map((data, idx) => {
-                  return <FoodCard data={data} id={idx} />;
+                  return (
+                    <FoodCard
+                      check={check}
+                      setCheck={setCheck}
+                      data={data}
+                      id={idx}
+                    />
+                  );
                 })}
               </FoodList>
             )}
@@ -90,7 +106,11 @@ const Recommand = (props) => {
 
           <WrapBottomBox>
             <SelectedBox>
-              <SelectedFoodSlider />
+              <SelectedFoodSlider
+                data={foodsList}
+                check={check}
+                setCheck={setCheck}
+              />
               <Grid margin="0 auto">
                 {list.length > 0 ? (
                   <Button
@@ -102,10 +122,10 @@ const Recommand = (props) => {
                     height="5rem"
                     cursor
                     _onClick={() => {
-                      sendSelectedFood();
+                      history.replace("/recommendation/:id/spinner");
                     }}
                   >
-                    선택완료 ( {list.length} / 10 )
+                    다 골랐어요! ( {list.length} / 10 )
                   </Button>
                 ) : (
                   <Button
@@ -115,9 +135,23 @@ const Recommand = (props) => {
                     radius="1rem"
                     width="100%"
                     height="5rem"
-                    _onClick={() => alert("음식을 선택해주세요")}
+                    _onClick={() =>
+                      Swal.fire({
+                        width: 240,
+                        height: 150,
+                        padding: "0 0 20px 0",
+                        title: `음식을 선택해주세요!`,
+                        imageUrl: ZeroAlert,
+                        imageWidth: 240,
+                        imageHeight: 100,
+                        imageAlt: "음식을 골라주세요",
+                        showConfirmButton: false,
+                        background: "#ffffff",
+                        timer: 1500,
+                      })
+                    }
                   >
-                    선택완료
+                    골라주세요~!
                   </Button>
                 )}
               </Grid>
@@ -128,6 +162,17 @@ const Recommand = (props) => {
     </React.Fragment>
   );
 };
+
+const Slideup = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
 
 const WrapLoader = styled.div`
   position: relative;
@@ -184,6 +229,11 @@ const FoodList = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  animation-duration: 0.7s;
+  animation-delay: ${(props) => props.delay}s;
+  animation-timing-function: ease;
+  animation-name: ${Slideup};
+  animation-fill-mode: forwards;
 `;
 
 const AiImgWrap = styled.div`
@@ -222,17 +272,6 @@ const WrapContent = styled.div`
 const WrapBottomBox = styled.div`
   margin: 0 auto;
   max-width: 36rem;
-`;
-
-const Slideup = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 `;
 
 const TitleWrap = styled.div`

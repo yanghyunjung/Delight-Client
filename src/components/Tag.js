@@ -8,8 +8,8 @@ const Tag = (props) => {
       <Container>
         <ContentContainer>
           <TagGrid>
-            {tag.map((item) => {
-              return <TagName>{`# ` + item.name}</TagName>;
+            {tag.map((item, idx) => {
+              return <TagName key={idx}>{`# ` + item.name}</TagName>;
             })}
           </TagGrid>
         </ContentContainer>
