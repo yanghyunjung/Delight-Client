@@ -2,6 +2,7 @@ import React from "react";
 
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
+import MainCard from "../components/MainCard";
 
 import RecComButton from "../image/RecButton.png";
 import SearchButton from "../image/SearchButton.png";
@@ -11,7 +12,6 @@ import Swal from "sweetalert2";
 import { history } from "../redux/configureStore";
 
 const Main = (props) => {
-
   // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
 
@@ -30,7 +30,7 @@ const Main = (props) => {
             }}
           >
             오늘 사람들이 가장 <br />
-          즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top10</span>
+            즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top10</span>
           </p>
         </Title>
 
@@ -56,7 +56,7 @@ const Main = (props) => {
         <Footer />
       </div>
     );
-  };
+  }
 
   // 비로그인 시
   return (
@@ -98,7 +98,8 @@ const Main = (props) => {
         />
       </GRID>
       <GRID2>
-        <SeaButton src={SearchButton}
+        <SeaButton
+          src={SearchButton}
           onClick={() => {
             if (!is_jwt) {
               Swal.fire({
@@ -113,6 +114,7 @@ const Main = (props) => {
           }}
         />
       </GRID2>
+      <MainCard />
       <Footer />
     </Container>
   );

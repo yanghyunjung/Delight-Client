@@ -4,7 +4,7 @@ import { getTagResult } from "../redux/modules/tagresult";
 import { useSelector } from "react-redux";
 
 import { IoIosArrowDown } from "react-icons/io";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import TagSlide from "../components/TagSlide";
 import TagCard from "../components/TagCard";
@@ -14,7 +14,7 @@ const Search = (props) => {
   const [selectedTag, setSelectedTag] = useState(null);
   const tags = useSelector(getTagResult);
   return (
-    <div style={{ height: "100vh", position: "relative" }}>
+    <DIV tagOpen={tagOpen}>
       <Title>
         <span
           style={{
@@ -42,10 +42,8 @@ const Search = (props) => {
             flexDirection: "row",
           }}
         >
-            {
-                tags && `전체 ${tags.length}개`
-            }
-          
+          {tags && `전체 ${tags.length}개`}
+
           <span
             style={{
               fontSize: "1.6rem",
@@ -62,7 +60,7 @@ const Search = (props) => {
       </Container>
 
       {/* 음식 태그 목록 컴포넌트 */}
-      <TagCard />
+      <TagCard tagOpen={tagOpen} />
 
       {/* 태그 컴포넌트 */}
       {tagOpen && (
@@ -72,9 +70,21 @@ const Search = (props) => {
           setSelectedTag={setSelectedTag}
         />
       )}
-    </div>
+    </DIV>
   );
 };
+
+const DIV = styled.div`
+  height: 100vh;
+  position: relative;
+  // 태그 슬라이드 올라올 때 뒤에 배경 CSS 설정
+  ${(props) =>
+    props.tagOpen &&
+    css`
+      overflow: hidden;
+      height: 140px !important;
+    `}
+`;
 
 const ArrowDown = styled(IoIosArrowDown)`
   vertical-align: middle;

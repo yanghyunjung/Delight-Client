@@ -21,12 +21,12 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
       {/* 태그 선택 화면 띄우기 */}
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           left: "0",
           bottom: "0",
           width: "100%",
           backgroundColor: "rgba(0,0,0,0.6)",
-          height: "100vh",
+          height: "100%",
         }}
         onClick={() => setTagOpen(false)}
       ></div>
@@ -99,7 +99,7 @@ const boxShow = keyframes`
 
 const DIV = styled.div`
   background-color: #ffffff;
-  position: absolute;
+  position: fixed;
   width: 100%;
   animation: ${boxShow} 0.9s ease-in-out;
   bottom: 0;

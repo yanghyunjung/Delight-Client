@@ -3,19 +3,14 @@ import instance from "../../shared/api";
 
 // 태그목록 불러오기
 export const getTagThunk = createAsyncThunk("tag/getTag", async () => {
-    console.log("목록")
+  console.log("목록");
   const response = await instance.get(`/api/tags`);
   console.log(response.data);
   return response.data;
 });
 
 const initialState = {
-  list: [
-    {
-        tagId: "3",
-        name: "한식",
-    },
-  ],
+  list: [],
 };
 
 const categorySlice = createSlice({
