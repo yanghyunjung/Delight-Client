@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
+import { Text } from "../elements";
 import Swal from "sweetalert2";
 
 import { getTags, getTagThunk } from "../redux/modules/tag";
@@ -8,14 +9,47 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
   const dispatch = useDispatch();
+
+  const [tagIndex, setTagIndex] = useState(1);
+  const [selectedTag2, setSelectedTag2] = useState([]);
   const tags = useSelector(getTags);
-  const [tag, setTag] = useState(null);
-  console.log("tags : ", tags);
+
+  const category_types = [
+    { type: "COUNTRY", category: "나라" },
+    { type: "INGREDIENT", category: "재료" },
+    { type: "SITUATION", category: "상황" },
+    { type: "PLACE", category: "장소" },
+  ];
+
+  // 기본값(COUNTRY) 설정
   useEffect(() => {
-    dispatch(getTagThunk());
+    dispatch(getTagThunk("COUNTRY"));
   }, []);
 
-  const [radioValue, setRadioValue] = useState(null);
+  // 태그 delete(삭제) -> filter 함수 사용
+  const handleDeleteSelectedTag = (id) => {
+    const newTags = selectedTag2.filter((tag) => {
+      return tag.id !== id;
+    });
+
+    setSelectedTag2(newTags);
+  };
+
+  // 선택하기를 눌렀을 때 실행되는 함수
+  const handleSubmitTags = () => {
+    console.log("submit");
+    let tagIdArray = [];
+    let tagNameArray = [];
+
+    setTagOpen(false);
+
+    for (let i in selectedTag2) {
+      tagIdArray.push(selectedTag2[i]["id"]);
+      tagNameArray.push(selectedTag2[i]["name"]);
+    }
+    dispatch(getTagResultThunk(tagNameArray));
+    setSelectedTag(tagNameArray);
+  };
   return (
     <>
       {/* 태그 선택 화면 띄우기 */}
@@ -31,43 +65,55 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
         onClick={() => setTagOpen(false)}
       ></div>
       <DIV tagOpen={tagOpen}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2,1fr)",
-            gridRowGap: "1.5rem",
-          }}
-        >
-          {tags.map(({ name, id }, index) => (
-            <Layout key={id}>
-              <RadioBtn
-                id={id}
-                type="radio"
-                name="tag"
-                value={name}
-                style={{ margin: "1rem" }}
-                onClick={() => {
-                  setTag(id);
-                  setRadioValue(name);
-                }}
-              />
-              <Btn></Btn> {/* div로 버튼 만들어주기 */}
-              <label htmlFor={id} style={{ fontSize: "1.5rem" }}>
-                {name}
-              </label>
-            </Layout>
-          ))}
+        <div>
+          <Layout>
+            <Text size="1.7rem" bold>
+              1. 카테고리 선택
+            </Text>
+            <Box>
+              {category_types.map(({ type, category }, index) => (
+                <SelectTag
+                  tagIndex={tagIndex}
+                  onClick={() => {
+                    setTagIndex(index + 1);
+                    dispatch(getTagThunk(type));
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  {category}
+                </SelectTag>
+              ))}
+            </Box>
+            <Text size="1.7rem" bold>
+              2. 태그 선택
+            </Text>
+            <Box1>
+              {tags.map(({ id, name }, index) => (
+                <SelectTag1
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setSelectedTag2([...selectedTag2, { id, name }])}
+                >
+                  {name}
+                </SelectTag1>
+              ))}
+            </Box1>
+            <Text size="1.7rem" bold>
+              3. 선택한 태그
+            </Text>
+            <Box2>
+              {selectedTag2?.map(({ id, name }) => (
+                <SelectTag2
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleDeleteSelectedTag(id)}
+                >
+                  {name}&nbsp;&nbsp;X
+                </SelectTag2>
+              ))}
+            </Box2>
+          </Layout>
         </div>
-        {radioValue ? (
-          <TagBtn
-            onClick={() => {
-              setSelectedTag(radioValue);
-              setTagOpen(false);
-              dispatch(getTagResultThunk(tag));
-            }}
-          >
-            선택하기
-          </TagBtn>
+        {selectedTag2.length > 0 ? (
+          <TagBtn onClick={() => handleSubmitTags()}>선택하기</TagBtn>
         ) : (
           <TagBtn
             onClick={() => {
@@ -111,40 +157,75 @@ const DIV = styled.div`
 const Layout = styled.div`
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   bottom: 0;
   width: 100%;
   height: auto;
-  margin: 1rem 0 0 5rem;
-  align-items: center;
+  margin: 0 0 1rem 1.3rem;
+  align-items: flex-start;
   justify-content: flex-start;
+  line-height: 6rem;
 `;
 
-const Btn = styled.div`
-  box-sizing: border-box;
-  border-radius: 50%;
-  border: 1px solid gray;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 0.6rem;
-  &:after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #ffa012;
-    transform: scale(0);
-    transition: transform 0.15s;
-  }
+const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
-const RadioBtn = styled.input`
-  display: none; // RadioBtn을 display:none; 해야함
+const Box1 = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 9rem;
+  width: 85%;
+  padding: 0.3rem 0 0.3rem 1.3rem;
+  background-color: #f2f2f2;
+  border-radius: 1.6rem;
+`;
 
-  &:checked + div::after {
-    transform: scale(0.7);
-  }
+const Box2 = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+`;
+
+const SelectTag = styled.div`
+  margin: 0 2rem 0 0;
+  font-size: 1.4rem;
+  height: 2rem;
+  padding: 0.5rem 1.5rem;
+  line-height: 2rem;
+  background-color: #f2f2f2;
+  border-radius: 1.6rem;
+  ${(props) =>
+    props.tagIndex &&
+    `  &:nth-child(${props.tagIndex}) {
+    color: #ffffff;
+    background-color: #FFA012;
+    border-bottom: 1px solid #f2f2f2;
+    transition: 0.3s ease;
+  }`}
+`;
+
+const SelectTag1 = styled.div`
+  margin: 0 1rem 0 0;
+  font-size: 1.4rem;
+  height: 2rem;
+  padding: 0.5rem 1.5rem;
+  line-height: 2rem;
+  background-color: #ffffff;
+  border-radius: 1.6rem;
+`;
+
+const SelectTag2 = styled.div`
+  background-color: #ffa012;
+  color: #ffffff;
+  margin: 0 1rem 0.8rem 0;
+  font-size: 1.4rem;
+  height: 2rem;
+  line-height: 2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1.6rem;
 `;
 
 const TagBtn = styled.button`

@@ -20,19 +20,20 @@ const Search = (props) => {
           style={{
             fontSize: "2.4rem",
             fontWeight: "bold",
-            margin: "1.7rem 0 0 2.5rem",
+            margin: "1.3rem 0px 1.3rem 1.3rem",
             float: "left",
             lineHeight: "4.5rem",
           }}
         >
           태그로 음식 볼래요! <br />
-          {selectedTag !== null && (
-            <span
-              style={{ fontSize: "1.4rem", fontWeight: "350", display: "flex" }}
-            >
-              선택 태그: <SelectTag>{`# ` + selectedTag}</SelectTag>
-            </span>
-          )}
+          <span
+            style={{ fontSize: "1.4rem", fontWeight: "350", display: "flex" }}
+          >
+            선택 태그:
+            {selectedTag?.map((tag) => (
+              <SelectTag>{`# ` + tag}</SelectTag>
+            ))}
+          </span>
         </span>
       </Title>
       <Container>
@@ -77,12 +78,12 @@ const Search = (props) => {
 const DIV = styled.div`
   height: 100vh;
   position: relative;
-  // 태그 슬라이드 올라올 때 뒤에 배경 CSS 설정
+  // 태그 슬라이드 올라올 때 뒷배경 CSS 설정
   ${(props) =>
     props.tagOpen &&
     css`
       overflow: hidden;
-      height: 140px !important;
+      height: 6rem !important;
     `}
 `;
 
@@ -120,7 +121,6 @@ const Container = styled.div`
   height: 6rem;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0 0 0;
 `;
 
 export default Search;
