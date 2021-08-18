@@ -18,7 +18,6 @@ const Result = () => {
 
   useEffect(() => {
     setGetResultFood(data);
-    console.log(getResultFood);
   }, [data]);
   return (
     <React.Fragment>
@@ -30,7 +29,7 @@ const Result = () => {
           <ResultSlider data={data} />
         </ResultContainer>
         <PercentContainer>
-          <SubText>추천 받은 음식 데이터 한눈에 보기</SubText>
+          <SubText>밥씨가 알려주는 퍼센트!</SubText>
           <PercentWrap>
             <PercentResult data={data} />
           </PercentWrap>
@@ -114,7 +113,7 @@ const ButtonContainer = styled.div`
 
 const SubText = styled.div`
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   padding: 0.5rem;
 `;
 
