@@ -9,7 +9,7 @@ const TagCard = ({tagOpen}) => {
   const tags = useSelector(getTagResult);
 
   useEffect(() => {
-    dispatch(getTagResultThunk(0));
+    dispatch(getTagResultThunk([]));
   }, []);
 
   return (
@@ -25,7 +25,6 @@ const TagCard = ({tagOpen}) => {
               fontSize: "1.5rem",
               fontWeight: "medium",
               lineHeight: "4rem",
-              marginTop: "0.5rem",
             }}
           >
             {tag.name} <br />

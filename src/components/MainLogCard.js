@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import MainImg from "../image/mainimage.png";
+import MainLogImg from "../image/hamburger.png";
 
-const MainCard = (props) => {
+const MainLogCard = (props) => {
   return (
     <>
       <GRID>
@@ -30,9 +30,12 @@ const MainCard = (props) => {
         <Box>
           <span style={{ margin: "0 0 0 1.5rem" }}>
             회원님의 지난 주 <br />
-            데이터가 없어요.
+            <span style={{ color: "#FF6B12", fontWeight: "bold" }}>
+              패스트푸드&nbsp;
+            </span>
+            매니아!
           </span>
-          <img src={MainImg} />
+          <Img src={MainLogImg} />
         </Box>
       </GRID1>
     </>
@@ -51,7 +54,7 @@ const GRID1 = styled.div`
 
 const Box = styled.div`
   display: grid;
-  grid-template-columns: 25rem 2fr;
+  grid-template-columns: 23rem 2fr;
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 1.5rem;
@@ -61,7 +64,12 @@ const Box = styled.div`
   margin: 0 2rem;
   font-size: 2rem;
   line-height: 3rem;
-  color: #717171;
+  color: black;
 `;
 
-export default MainCard;
+const Img = styled.img`
+  width: 7rem;
+  height: 7rem;
+`;
+
+export default MainLogCard;

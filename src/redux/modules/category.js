@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import instance from "../../shared/api";
 
+import Swal from "sweetalert2";
+
 // 카테고리라는 함수 만들기
 export const getCategoryThunk = createAsyncThunk(
   "category/getCategory",
@@ -27,7 +29,13 @@ const categorySlice = createSlice({
     builder.addCase(getCategoryThunk.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
-      alert("랭킹 데이터가 준비중이에요 조금만 기다려주세요!");
+      Swal.fire({
+        position: "top-center",
+        icon: "warning",
+        title: "랭킹 데이터 준비중!",
+        showConfirmButton: false,
+        timer: 2000,
+      });
     });
   },
 });

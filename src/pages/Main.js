@@ -3,6 +3,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
 import MainCard from "../components/MainCard";
+import MainLogCard from "../components/MainLogCard";
 
 import RecComButton from "../image/RecButton.png";
 import SearchButton from "../image/SearchButton.png";
@@ -47,12 +48,14 @@ const Main = (props) => {
           />
         </GRID>
         <GRID2>
-          <SeaButton src={SearchButton}
+          <SeaButton
+            src={SearchButton}
             onClick={() => {
               return history.push("/search");
             }}
           />
         </GRID2>
+        <MainLogCard />
         <Footer />
       </div>
     );
