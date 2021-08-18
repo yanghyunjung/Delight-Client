@@ -224,7 +224,8 @@ const FoodList = styled.div`
   justify-items: center;
   padding: 0 2rem;
   width: 90%;
-  grid-template-columns: repeat(4, minmax(5em, auto));
+  grid-template-rows: repeat(5, minmax(9rem, 9rem));
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
   gap: 0.5rem 1.3rem;
   &::-webkit-scrollbar {
     display: none;
