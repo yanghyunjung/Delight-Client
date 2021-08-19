@@ -12,7 +12,6 @@ import Spinner from "../components/Spinner";
 import Search from "../pages/Search";
 import MyPage from "../pages/MyPage";
 
-
 const App = () => {
   return (
     <ConnectedRouter history={history}>
