@@ -4,7 +4,6 @@ import instance from "../../shared/api";
 // 태그목록 불러오기
 export const getTagThunk = createAsyncThunk("tag/getTag", async (type) => {
   const response = await instance.get(`/api/tags?type=${type}`);
-  console.log(response.data);
   return response.data;
 });
 

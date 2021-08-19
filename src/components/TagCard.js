@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { getTagResult, getTagResultThunk } from "../redux/modules/tagresult";
 import { useDispatch, useSelector } from "react-redux";
 
-const TagCard = ({tagOpen}) => {
+const TagCard = () => {
   const dispatch = useDispatch();
   const tags = useSelector(getTagResult);
 
+  // []는 전체 목록을 불러옴 -> 백엔드와 얘기 ok
   useEffect(() => {
     dispatch(getTagResultThunk([]));
   }, []);

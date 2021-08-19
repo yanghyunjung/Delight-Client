@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import instance from "../../shared/api";
 
-import Swal from "sweetalert2";
-
 // 태그음식 결과 나오게 하기
 export const getTagResultThunk = createAsyncThunk(
   "tag/getTagResult",
@@ -32,13 +30,7 @@ const categorySlice = createSlice({
     builder.addCase(getTagResultThunk.rejected, (state, action) => {
       state.error = true;
       state.loading = false;
-      Swal.fire({
-        position: "top-center",
-        icon: "warning",
-        title: "로딩중",
-        showConfirmButton: false,
-        timer: 2000,
-      });
+      alert("목록을 불러오고 있습니다");
     });
   },
 });
