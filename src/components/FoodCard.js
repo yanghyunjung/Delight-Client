@@ -10,6 +10,8 @@ import {
   getFoodName,
 } from "../redux/modules/food";
 
+import { IKImage, IKContext, IKUpload } from "imagekitio-react";
+
 const FoodCard = ({ data, id, check, setCheck }) => {
   const dispatch = useDispatch();
 
@@ -62,6 +64,17 @@ const FoodCard = ({ data, id, check, setCheck }) => {
       >
         <FoodImgWrap>
           <img src={data.imgUrl} alt={data.name} />
+          {/* <IKContext urlEndpoint="https://ik.imagekit.io/nottnjw4umq/">
+            <IKImage
+              path={data.imgUrl}
+              transformation={[
+                {
+                  height: "70",
+                  width: "70",
+                },
+              ]}
+            />
+          </IKContext> */}
         </FoodImgWrap>
         <FoodNameWrap>
           <FoodName>{data.name}</FoodName>
