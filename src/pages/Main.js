@@ -19,7 +19,7 @@ const Main = (props) => {
   // 로그인 시
   if (is_jwt) {
     return (
-      <div>
+      <Container>
         <Title>
           <p
             style={{
@@ -57,7 +57,7 @@ const Main = (props) => {
         </GRID2>
         <MainLogCard />
         <Footer />
-      </div>
+      </Container>
     );
   }
 

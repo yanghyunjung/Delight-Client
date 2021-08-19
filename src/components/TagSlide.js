@@ -11,6 +11,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
   const dispatch = useDispatch();
 
   const [tagIndex, setTagIndex] = useState(1);
+  const [nowCate, setNowCate] = useState("COUNTRY");
   const [selectedTag2, setSelectedTag2] = useState([]);
   const tags = useSelector(getTags);
 
@@ -26,12 +27,24 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
     dispatch(getTagThunk("COUNTRY"));
   }, []);
 
+  // 중복 태그 제거, 카테고리 하나 당 태그 하나만 선택
+  const handleClickCategory = (id, name) => {
+    let hasThisCate = selectedTag2.findIndex((tag) => tag.id === id);
+    let hasNowCate = selectedTag2.findIndex((tag) => tag.nowCate === nowCate);
+    if (hasThisCate === -1 && hasNowCate === -1) {
+      setSelectedTag2([...selectedTag2, { id, name, nowCate }]);
+    } else if (hasThisCate !== -1) {
+      alert("이미 선택된 태그에요");
+    } else {
+      alert("하나만 선택 가능해요");
+    }
+  };
+
   // 태그 delete(삭제) -> filter 함수 사용
   const handleDeleteSelectedTag = (id) => {
     const newTags = selectedTag2.filter((tag) => {
       return tag.id !== id;
     });
-
     setSelectedTag2(newTags);
   };
 
@@ -47,7 +60,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
       tagIdArray.push(selectedTag2[i]["id"]);
       tagNameArray.push(selectedTag2[i]["name"]);
     }
-    dispatch(getTagResultThunk(tagNameArray));
+    dispatch(getTagResultThunk(tagIdArray));
     setSelectedTag(tagNameArray);
   };
   return (
@@ -56,9 +69,8 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
       <div
         style={{
           position: "fixed",
-          left: "0",
           bottom: "0",
-          width: "100%",
+          width: "36rem",
           backgroundColor: "rgba(0,0,0,0.6)",
           height: "100%",
         }}
@@ -76,6 +88,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
                   tagIndex={tagIndex}
                   onClick={() => {
                     setTagIndex(index + 1);
+                    setNowCate(type);
                     dispatch(getTagThunk(type));
                   }}
                   style={{ cursor: "pointer" }}
@@ -88,10 +101,12 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
               2. 태그 선택
             </Text>
             <Box1>
-              {tags.map(({ id, name }, index) => (
+              {tags.map(({ id, name }) => (
                 <SelectTag1
                   style={{ cursor: "pointer" }}
-                  onClick={() => setSelectedTag2([...selectedTag2, { id, name }])}
+                  onClick={() => {
+                    handleClickCategory(id, name);
+                  }}
                 >
                   {name}
                 </SelectTag1>
@@ -120,7 +135,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
               Swal.fire({
                 position: "top-center",
                 icon: "warning",
-                title: "선택된 태그가 없습니다",
+                title: "선택된 태그가 없어요",
                 showConfirmButton: false,
                 timer: 2000,
               });
@@ -146,7 +161,7 @@ const boxShow = keyframes`
 const DIV = styled.div`
   background-color: #ffffff;
   position: fixed;
-  width: 100%;
+  width: 36rem;
   animation: ${boxShow} 0.9s ease-in-out;
   bottom: 0;
   border-top-left-radius: 3rem;
@@ -159,7 +174,7 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   bottom: 0;
-  width: 100%;
+  width: 36rem;
   height: auto;
   margin: 0 0 1rem 1.3rem;
   align-items: flex-start;
@@ -202,18 +217,17 @@ const SelectTag = styled.div`
     `  &:nth-child(${props.tagIndex}) {
     color: #ffffff;
     background-color: #FFA012;
-    border-bottom: 1px solid #f2f2f2;
     transition: 0.3s ease;
   }`}
 `;
 
 const SelectTag1 = styled.div`
+  background-color: #ffffff;
   margin: 0 1rem 0 0;
   font-size: 1.4rem;
   height: 2rem;
   padding: 0.5rem 1.5rem;
   line-height: 2rem;
-  background-color: #ffffff;
   border-radius: 1.6rem;
 `;
 
