@@ -4,7 +4,7 @@ import { getTagResult } from "../redux/modules/tagresult";
 import { useSelector } from "react-redux";
 
 import { IoIosArrowDown } from "react-icons/io";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import TagSlide from "../components/TagSlide";
 import TagCard from "../components/TagCard";
@@ -14,67 +14,90 @@ const Search = (props) => {
   const [selectedTag, setSelectedTag] = useState(null);
   const tags = useSelector(getTagResult);
   return (
-    <div style={{ height: "100vh", position: "relative" }}>
-      <Title>
-        <span
-          style={{
-            fontSize: "2.4rem",
-            fontWeight: "bold",
-            margin: "1.7rem 0 0 2.5rem",
-            float: "left",
-            lineHeight: "4.5rem",
-          }}
-        >
-          태그로 음식 볼래요! <br />
-          {selectedTag !== null && (
-            <span
-              style={{ fontSize: "1.4rem", fontWeight: "350", display: "flex" }}
-            >
-              선택 태그: <SelectTag>{`# ` + selectedTag}</SelectTag>
-            </span>
-          )}
-        </span>
-      </Title>
-      <Container>
-        <span
-          style={{
-            fontSize: "1.5rem",
-            flexDirection: "row",
-          }}
-        >
-            {
-                tags && `전체 ${tags.length}개`
-            }
-          
+    <Container1>
+      <DIV tagOpen={tagOpen}>
+        <Title>
           <span
             style={{
-              fontSize: "1.6rem",
-              marginLeft: "17rem",
-              color: "#FF6B12",
+              fontSize: "2.4rem",
               fontWeight: "bold",
-              cursor: "pointer",
+              margin: "1.3rem 0px 1.3rem 1.3rem",
+              float: "left",
+              lineHeight: "4.5rem",
             }}
-            onClick={() => setTagOpen(true)}
           >
-            태그 선택하기 <ArrowDown tagOpen={tagOpen} />
+            태그로 음식 볼래요! <br />
+            <span
+              style={{
+                fontSize: "1.4rem",
+                fontWeight: "350",
+                display: "flex",
+                flexWrap: "wrap",
+              }}
+            >
+              선택된 태그:
+              {selectedTag?.map((tag) => (
+                <SelectTag>{`# ` + tag}</SelectTag>
+              ))}
+            </span>
           </span>
-        </span>
-      </Container>
+        </Title>
+        <Container>
+          <span
+            style={{
+              fontSize: "1.5rem",
+              flexDirection: "row",
+            }}
+          >
+            {tags && `전체 ${tags.length}개`}
 
-      {/* 음식 태그 목록 컴포넌트 */}
-      <TagCard />
+            <span
+              style={{
+                fontSize: "1.6rem",
+                marginLeft: "17rem",
+                color: "#FF6B12",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              onClick={() => setTagOpen(true)}
+            >
+              태그 선택하기 <ArrowDown tagOpen={tagOpen} />
+            </span>
+          </span>
+        </Container>
 
-      {/* 태그 컴포넌트 */}
-      {tagOpen && (
-        <TagSlide
-          tagOpen={tagOpen}
-          setTagOpen={setTagOpen}
-          setSelectedTag={setSelectedTag}
-        />
-      )}
-    </div>
+        {/* 음식 태그 목록 컴포넌트 */}
+        <TagCard tagOpen={tagOpen} />
+
+        {/* 태그 컴포넌트 */}
+        {tagOpen && (
+          <TagSlide
+            tagOpen={tagOpen}
+            setTagOpen={setTagOpen}
+            setSelectedTag={setSelectedTag}
+          />
+        )}
+      </DIV>
+    </Container1>
   );
 };
+
+const Container1 = styled.div`
+  width: 36rem;
+  margin: 0 auto;
+`;
+
+const DIV = styled.div`
+  height: 100vh;
+  position: relative;
+  // 태그 슬라이드 올라올 때 뒷배경 height 값 설정
+  ${(props) =>
+    props.tagOpen &&
+    css`
+      overflow: hidden;
+      height: 6rem !important;
+    `}
+`;
 
 const ArrowDown = styled(IoIosArrowDown)`
   vertical-align: middle;
@@ -110,7 +133,6 @@ const Container = styled.div`
   height: 6rem;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0 0 0;
 `;
 
 export default Search;

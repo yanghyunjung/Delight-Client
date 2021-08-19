@@ -4,12 +4,13 @@ import styled from "styled-components";
 import { getTagResult, getTagResultThunk } from "../redux/modules/tagresult";
 import { useDispatch, useSelector } from "react-redux";
 
-const TagCard = (props) => {
+const TagCard = () => {
   const dispatch = useDispatch();
   const tags = useSelector(getTagResult);
 
+  // []는 전체 목록을 불러옴 -> 백엔드와 얘기 ok
   useEffect(() => {
-    dispatch(getTagResultThunk(0));
+    dispatch(getTagResultThunk([]));
   }, []);
 
   return (
@@ -25,7 +26,6 @@ const TagCard = (props) => {
               fontSize: "1.5rem",
               fontWeight: "medium",
               lineHeight: "4rem",
-              marginTop: "0.5rem",
             }}
           >
             {tag.name} <br />
