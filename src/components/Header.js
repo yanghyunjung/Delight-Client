@@ -6,14 +6,14 @@ import HeaderLogo from "../image/DelightLogo.png";
 import { history } from "../redux/configureStore";
 import Swal from "sweetalert2";
 
+
 const Header = (props) => {
 
   // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
 
-
   //로그인 시  
-if (is_jwt) {
+  if (is_jwt) {
     return (
       <HEADER>
         <Logo
@@ -36,7 +36,7 @@ if (is_jwt) {
             }
           }}
         >
-      </Text>
+        </Text>
         <Text
           size="1.5rem"
           margin="1rem"
@@ -45,7 +45,7 @@ if (is_jwt) {
             window.location.replace("/"); // history.push(/)를 사용하면 refresh가 안됨.
           }}
         >
-      </Text>
+        </Text>
       </HEADER>
     );
   };
