@@ -9,6 +9,7 @@ import ArrowRight from "../image/SelectedArrowR.png";
 import ArrowLeft from "../image/SelectedArrowL.png";
 
 import Tag from "./Tag";
+import { history } from "../redux/configureStore";
 
 const ResultSlider = (props) => {
   const [pick, setPick] = useState(true);
@@ -45,7 +46,13 @@ const ResultSlider = (props) => {
                   {pick ? (
                     <MyPickButton>MY PICK!</MyPickButton>
                   ) : (
-                    <MyPageButton>기록장으로 가기!</MyPageButton>
+                    <MyPageButton
+                      onClick={() => {
+                        history.push("/mypage");
+                      }}
+                    >
+                      기록장으로 가기!
+                    </MyPageButton>
                   )}
                 </div>
               </div>
