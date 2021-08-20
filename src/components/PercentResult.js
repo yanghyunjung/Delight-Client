@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import ChartBar from "./ChartBar";
+import PieChart from "./PieChart";
 
 const PercentResult = (props) => {
   const data = props.data;
@@ -9,27 +9,8 @@ const PercentResult = (props) => {
   return (
     <React.Fragment>
       <Container>
-        <ContentContainer>
-          <ChartBar
-            width={100}
-            marginBt={0.7}
-            percent={data[0].score}
-            bgColor={"FFA012"}
-            name={data[0].name}
-          />
-          <ChartBar
-            width={100}
-            marginBt={0.7}
-            percent={data[1].score}
-            bgColor={"FFBC57"}
-            name={data[1].name}
-          />
-          <ChartBar
-            width={100}
-            percent={data[2].score}
-            bgColor={"FFD699"}
-            name={data[2].name}
-          />
+        <ContentContainer >
+          <PieChart data={data}/>
         </ContentContainer>
       </Container>
     </React.Fragment>

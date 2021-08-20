@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { Grid, Text } from "../elements";
 import ResultSlider from "../components/ResultSlider";
 import PercentResult from "../components/PercentResult";
+import ResultTip from "../components/ResultTip";
+
 import Tip from "../image/Tip.svg";
 
 import { getSelectFoodSV } from "../redux/modules/food";
@@ -14,8 +16,11 @@ import { history } from "../redux/configureStore";
 const Result = () => {
   const dispatch = useDispatch();
   const [getResultFood, setGetResultFood] = useState(null);
+  const [openTip, setOpenTip] = useState(false);
 
   const data = useSelector((state) => state.food.result);
+
+  const handleToopTip = (e) => {};
 
   useEffect(() => {
     setGetResultFood(data);
@@ -32,16 +37,20 @@ const Result = () => {
         <PercentContainer>
           <Grid is_flex padding="0 2rem">
             <SubText>밥씨가 알려주는 퍼센트!</SubText>
-
-            <div style={{ cursor: "pointer" }}>
-              <img src={Tip} alt="tooltip" />
-            </div>
+            <ToolTipWrap>
+              <ResultTip />
+            </ToolTipWrap>
           </Grid>
           <PercentWrap>
             <PercentResult data={data} />
           </PercentWrap>
           <div
-            style={{ color: "#C4C4C4", padding: "0 2rem", fontSize: "1.2rem" }}
+            style={{
+              color: "#C4C4C4",
+              padding: "0 2rem",
+              fontSize: "1.2rem",
+              lineHeight: "1.6rem",
+            }}
           >
             밥씨는 AI 기반 추천 알고리즘으로 여러분의 음식 결정을 도와드리고
             있어요. 결과에 대한 자세한 설명은 툴팁을 확인해 주세요.
@@ -69,6 +78,10 @@ const Result = () => {
     </React.Fragment>
   );
 };
+
+const ToolTipWrap = styled.div`
+  cursor: pointer;
+`;
 
 const PercentWrap = styled.div`
   background-color: #f6f6f6;
