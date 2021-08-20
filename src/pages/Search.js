@@ -50,19 +50,17 @@ const Search = (props) => {
             }}
           >
             {tags && `전체 ${tags.length}개`}
-
-            <span
-              style={{
-                fontSize: "1.6rem",
-                marginLeft: "17rem",
-                color: "#FF6B12",
-                fontWeight: "bold",
-                cursor: "pointer",
-              }}
-              onClick={() => setTagOpen(true)}
-            >
-              태그 선택하기 <ArrowDown tagOpen={tagOpen} />
-            </span>
+          </span>
+          <span
+            style={{
+              fontSize: "1.6rem",
+              color: "#FF6B12",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+            onClick={() => setTagOpen(true)}
+          >
+            태그 선택하기 <ArrowDown tagOpen={tagOpen} />
           </span>
         </Container>
 
@@ -127,12 +125,13 @@ const Container = styled.div`
   box-sizing: border-box;
   background-color: #ededed;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   bottom: 0;
   width: 100%;
   height: 6rem;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 1.5rem;
 `;
 
 export default Search;

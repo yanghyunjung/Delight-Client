@@ -229,6 +229,9 @@ const SelectTag1 = styled.div`
   padding: 0.5rem 1.5rem;
   line-height: 2rem;
   border-radius: 1.6rem;
+  &:hover{
+    color: #ffa012;
+  }
 `;
 
 const SelectTag2 = styled.div`
