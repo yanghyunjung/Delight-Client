@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import mypage_1 from "../image/mypage_1.png";
 import mypage_2 from "../image/mypage_2.png";
+import MainImg from "../image/mainimage.png";
 
 import { Grid, Text } from "../elements";
 import { history } from "../redux/configureStore";
@@ -20,8 +20,15 @@ const MyPageNoData = () => {
                     lineHeight: "3.5rem",
                 }}>
                     <p>회원님의 <br /> 음식 기록장</p> </Title1>
-                <Box1 src={mypage_1} />
             </Grid>
+            <Box1>
+                <span style={{ margin: "0 0 0 1.5rem" }}>
+                    회원님의 지난 주 <br />
+            데이터가 없어요.
+                    </span>
+                <img src={MainImg} />
+            </Box1>
+
 
             <Grid width="100%" height="15%" padding="2rem">
                 <Title2>지난 PICK</Title2>
@@ -50,7 +57,19 @@ const Container = styled.div`
     flex-direction: column;
 `;
 
-const Box1 = styled.img`
+const Box1 = styled.div`
+    display: grid;
+    grid-template-columns: 25rem 2fr;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 1.5rem;
+    padding: 1rem 0 1rem 0;
+    width: 32rem;
+    height: 8rem;
+    margin: 0 2rem;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: #717171;
 `;
 
 const Box2 = styled.div`
