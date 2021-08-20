@@ -25,9 +25,10 @@ const TagName = styled.div`
 `;
 
 const TagGrid = styled.div`
-  margin: 0 1.5rem;
+  margin: 0 3rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(5em, auto));
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
   grid-gap: 0.8rem;
 `;
 

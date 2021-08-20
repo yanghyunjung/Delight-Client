@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Grid, Text } from "../elements";
 import ResultSlider from "../components/ResultSlider";
 import PercentResult from "../components/PercentResult";
+import Tip from "../image/Tip.svg";
 
 import { getSelectFoodSV } from "../redux/modules/food";
 
@@ -29,10 +30,22 @@ const Result = () => {
           <ResultSlider data={data} />
         </ResultContainer>
         <PercentContainer>
-          <SubText>밥씨가 알려주는 퍼센트!</SubText>
+          <Grid is_flex padding="0 2rem">
+            <SubText>밥씨가 알려주는 퍼센트!</SubText>
+
+            <div style={{ cursor: "pointer" }}>
+              <img src={Tip} alt="tooltip" />
+            </div>
+          </Grid>
           <PercentWrap>
             <PercentResult data={data} />
           </PercentWrap>
+          <div
+            style={{ color: "#C4C4C4", padding: "0 2rem", fontSize: "1.2rem" }}
+          >
+            밥씨는 AI 기반 추천 알고리즘으로 여러분의 음식 결정을 도와드리고
+            있어요. 결과에 대한 자세한 설명은 툴팁을 확인해 주세요.
+          </div>
         </PercentContainer>
         <ButtonContainer>
           <SubText>더 많은 음식 보러 가기</SubText>
@@ -60,7 +73,8 @@ const Result = () => {
 const PercentWrap = styled.div`
   background-color: #f6f6f6;
   padding: 1.4rem 1.2rem;
-  margin: 0.5rem auto 1rem;
+  margin: 0.5rem 2rem 1rem;
+  border-radius: 1rem;
 `;
 
 const Title = styled.h2`

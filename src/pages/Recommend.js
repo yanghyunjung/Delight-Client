@@ -20,7 +20,7 @@ import { history } from "../redux/configureStore";
 const Recommand = (props) => {
   const dispatch = useDispatch();
 
-  const [foodsList, setFoodsList] = useState([]);
+  const [foodsList, setFoodsList] = useState(null);
   const [isLoding, setIsLoding] = useState(true);
   const [check, setCheck] = useState(false);
 

@@ -19,7 +19,20 @@ const App = () => {
   return (
     <ConnectedRouter history={history}>
       <Layout>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div
+              style={{
+                width: "36rem",
+                margin: "0 auto",
+                textAlign: "center",
+                padding: "20rem",
+              }}
+            >
+              Loading...
+            </div>
+          }
+        >
           <Switch>
             <Route exact path="/" component={Main} />
             <Route exact path="/recommendation/:id" component={Recommend} />
