@@ -42,7 +42,7 @@ const ResultSlider = (props) => {
                 </FoodImgWrap>
                 <FoodName>{item.name}</FoodName>
                 <Tag tag={item.tag} />
-                <div onClick={handlePick}>
+                <StoreButtonWrap onClick={handlePick}>
                   {pick ? (
                     <MyPickButton>MY PICK!</MyPickButton>
                   ) : (
@@ -54,7 +54,7 @@ const ResultSlider = (props) => {
                       기록장으로 가기!
                     </MyPageButton>
                   )}
-                </div>
+                </StoreButtonWrap>
               </div>
             );
           })}
@@ -63,6 +63,10 @@ const ResultSlider = (props) => {
     </React.Fragment>
   );
 };
+
+const StoreButtonWrap = styled.div`
+  margin: 0.5rem 0 0 0;
+`;
 
 const MyPageButton = styled.button`
   font-weight: 700;
