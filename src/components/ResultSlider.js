@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Slider from "react-slick";
@@ -11,6 +11,11 @@ import ArrowLeft from "../image/SelectedArrowL.png";
 import Tag from "./Tag";
 
 const ResultSlider = (props) => {
+  const [pick, setPick] = useState(true);
+
+  const handlePick = () => {
+    pick ? setPick(false) : setPick(true);
+  };
   const settings = {
     dots: true,
     infinte: true,
@@ -36,6 +41,13 @@ const ResultSlider = (props) => {
                 </FoodImgWrap>
                 <FoodName>{item.name}</FoodName>
                 <Tag tag={item.tag} />
+                <div onClick={handlePick}>
+                  {pick ? (
+                    <MyPickButton>MY PICK!</MyPickButton>
+                  ) : (
+                    <MyPageButton>기록장으로 가기!</MyPageButton>
+                  )}
+                </div>
               </div>
             );
           })}
@@ -44,6 +56,34 @@ const ResultSlider = (props) => {
     </React.Fragment>
   );
 };
+
+const MyPageButton = styled.button`
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #ffa012;
+  border: 1px solid #ffa012;
+  border-radius: 1rem;
+  min-width: 15rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0 2.5rem 0;
+  line-height: 1.9rem;
+`;
+
+const MyPickButton = styled.button`
+  font-weight: 700;
+  color: #ffa012;
+  background-color: white;
+  border: 1px solid #ffa012;
+  border-radius: 1rem;
+  min-width: 15rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  padding: 1rem 4rem;
+  margin: 0.5rem 0 2.5rem 0;
+  line-height: 1.9rem;
+`;
 
 const FoodName = styled.div`
   height: 20%;
