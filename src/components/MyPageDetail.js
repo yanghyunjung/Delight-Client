@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Grid } from "../elements";
+import MainLogImg from "../image/hamburger.png";
 
 const MyPageDetail = () => {
 
@@ -12,15 +13,22 @@ const MyPageDetail = () => {
                 <LogOutBtn >logout</LogOutBtn>
             </Grid>
 
+
             <Box1>
-                <Text1>
-                    회원님은 지난 주 <br /><span style={{ color: "#FF6B12" }} >???</span>매니아!
-                </Text1>
+                <span style={{ margin: "0 0 0 1.5rem" }}>
+                    회원님의 지난 주 <br />
+                    <span style={{ color: "#FF6B12", fontWeight: "bold" }}>
+                        패스트푸드&nbsp;
+                            </span>
+                            매니아!
+                        </span>
+                <Img src={MainLogImg} />
             </Box1>
+
 
             <Grid flex width="100%" height="15%" padding="2rem">
                 <PickBtn>지난 PICK</PickBtn>
-                <StatisticsBtn>통계</StatisticsBtn>
+
             </Grid>
         </Container >
     );
@@ -57,11 +65,23 @@ const Text1 = styled.div`
     line-height: 2.5rem;
 `;
 const Box1 = styled.div`
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 23rem 2fr;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 1.5rem;
+    padding: 1rem 0 1rem 0;
     width: 32rem;
-    height: 8.5rem;
-    background-color: #f2f2f2;
-    border-radius: 1.6rem;
+    height: 8rem;
+    margin: 0 2rem;
+    font-size: 2rem;
+    line-height: 3rem;
+    color: black;
+`;
+
+const Img = styled.img`
+  width: 7rem;
+  height: 7rem;
 `;
 
 const PickBtn = styled.button`
