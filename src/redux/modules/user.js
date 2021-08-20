@@ -26,7 +26,7 @@ function sendRequestWithJWT() {
     if (getCookie('jwt') != null) {
         headers = { 'Authorization': getCookie('jwt') }
     }
-    axios.post('http://localhost/restricted', {}, {
+    axios.post('https://api.delight99.co.kr/api/tags/users/frequent-tag', {}, {
         headers: headers
     })
         .then((response) => {
