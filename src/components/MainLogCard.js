@@ -21,6 +21,7 @@ const MainLogCard = (props) => {
             fontSize: "1.2rem",
             padding: "1.9rem 0 2rem 0",
             color: "#ACACAC",
+            cursor: "pointer",
           }}
         >
           자세히 보기
