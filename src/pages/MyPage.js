@@ -8,7 +8,7 @@ const MyPage = () => {
 
     return (
         <React.Fragment>
-            <MyPageDetail />
+            {/* <MyPageDetail /> */}
             <MyPageNoData />
         </React.Fragment>
     );

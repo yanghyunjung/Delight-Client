@@ -9,10 +9,8 @@ import Naver from "../image/naver.png";
 import { Grid, Text } from "../elements";
 
 import { GOOGLE_URL, KAKAO_URL, NAVER_URL } from "../redux/modules/oauth";
-import { getCookie } from "../shared/Cookie";
 
 const Login = (props) => {
-  console.log(getCookie("jwt"));
 
   return (
     <React.Fragment>
