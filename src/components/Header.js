@@ -12,7 +12,7 @@ const Header = (props) => {
   // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
 
-  //로그인 시  
+  // 로그인 시  
   if (is_jwt) {
     return (
       <HEADER>
@@ -56,7 +56,7 @@ const Header = (props) => {
     }
   };
 
-  //비로그인 헤더
+  // 비로그인 시
   return (
     <HEADER>
       <Logo style={{ cursor: "pointer" }} src={HeaderLogo} onClick={noLogin} />
@@ -104,7 +104,7 @@ const HEADER = styled.div`
 `;
 
 const BOX = styled.div`
-  margin: 0 0 0 14rem;
+  margin: 0 0 0 16rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

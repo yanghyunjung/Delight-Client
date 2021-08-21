@@ -27,7 +27,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
     dispatch(getTagThunk("COUNTRY"));
   }, []);
 
-  // 중복 태그 제거, 카테고리 하나 당 태그 하나만 선택
+  // 중복 태그 제거, 카테고리 하나 당 태그 하나만 선택가능하게
   const handleClickCategory = (id, name) => {
     let hasThisCate = selectedTag2.findIndex((tag) => tag.id === id);
     let hasNowCate = selectedTag2.findIndex((tag) => tag.nowCate === nowCate);
@@ -48,7 +48,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
     setSelectedTag2(newTags);
   };
 
-  // 선택하기를 눌렀을 때 실행되는 함수
+  // 확인버튼을 눌렀을 때 실행되는 함수
   const handleSubmitTags = () => {
     console.log("submit");
     let tagIdArray = [];
