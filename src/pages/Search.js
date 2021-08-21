@@ -93,7 +93,7 @@ const DIV = styled.div`
     props.tagOpen &&
     css`
       overflow: hidden;
-      height: 6rem !important;
+      height: 63rem !important;
     `}
 `;
 
