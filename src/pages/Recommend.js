@@ -30,7 +30,7 @@ const Recommand = (props) => {
     async function getFoods() {
       const { data } = await getFoodList();
       setFoodsList(data);
-      setIsLoding(false);
+      setTimeout(setIsLoding, 1000, false);
     }
     return getFoods();
   };
@@ -95,13 +95,28 @@ const Recommand = (props) => {
                 })}
               </FoodList>
             )}
-            <RefreshButton
-              onClick={() => {
-                handleRecommendFood();
-              }}
-            >
-              다른 음식도 볼래요
-            </RefreshButton>
+            {isLoding ? (
+              <RefreshButton
+                disabled
+                style={{
+                  color: "#ffffff",
+                  backgroundColor: "#ffa012",
+                }}
+              >
+                다른 음식도 볼래요
+              </RefreshButton>
+            ) : (
+              <>
+                <RefreshButton
+                  onClick={() => {
+                    setIsLoding(true);
+                    handleRecommendFood();
+                  }}
+                >
+                  다른 음식도 볼래요
+                </RefreshButton>
+              </>
+            )}
           </WrapContent>
 
           <WrapBottomBox>
@@ -206,7 +221,8 @@ const RefreshButton = styled.button`
 `;
 
 const SelectedBox = styled.div`
-  position: relative;
+  position: fixed;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -265,7 +281,7 @@ const ContentsContainer = styled.div`
 `;
 
 const WrapContent = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 15rem;
   max-width: 36rem;
   text-align: center;
 `;
