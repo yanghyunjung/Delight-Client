@@ -1,9 +1,6 @@
 import { createReducer, createAction, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const instance = axios.create({
-  baseURL: "https://api.delight99.co.kr",
-});
+import instance from "../../shared/api";
 
 const food = createSlice({
   name: "food",

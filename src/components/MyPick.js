@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from 'sass';
 
 const MyPick = () => {
 
@@ -7,3 +6,5 @@ const MyPick = () => {
 
     );
 };
+
+export default MyPick;

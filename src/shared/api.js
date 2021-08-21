@@ -9,7 +9,7 @@ instance.defaults.headers.common['Authorization'] = getCookie("jwt");
 
 // instance.defaults.headers.common["Authorization"] = USER_TOKEN;
 
-export const getFoodList = () => instance.get(`api/foods`).then((res) => res);
+export const getFoodList = () => instance.get(`/api/foods`).then((res) => res);
 
 export default instance;
 

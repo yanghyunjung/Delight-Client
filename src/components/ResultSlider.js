@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Slider from "react-slick";
@@ -9,8 +9,14 @@ import ArrowRight from "../image/SelectedArrowR.png";
 import ArrowLeft from "../image/SelectedArrowL.png";
 
 import Tag from "./Tag";
+import { history } from "../redux/configureStore";
 
 const ResultSlider = (props) => {
+  const [pick, setPick] = useState(true);
+
+  const handlePick = () => {
+    pick ? setPick(false) : setPick(true);
+  };
   const settings = {
     dots: true,
     infinte: true,
@@ -36,6 +42,19 @@ const ResultSlider = (props) => {
                 </FoodImgWrap>
                 <FoodName>{item.name}</FoodName>
                 <Tag tag={item.tag} />
+                <StoreButtonWrap onClick={handlePick}>
+                  {pick ? (
+                    <MyPickButton>MY PICK!</MyPickButton>
+                  ) : (
+                    <MyPageButton
+                      onClick={() => {
+                        history.push("/mypage");
+                      }}
+                    >
+                      기록장으로 가기!
+                    </MyPageButton>
+                  )}
+                </StoreButtonWrap>
               </div>
             );
           })}
@@ -44,6 +63,38 @@ const ResultSlider = (props) => {
     </React.Fragment>
   );
 };
+
+const StoreButtonWrap = styled.div`
+  margin: 0.5rem 0 0 0;
+`;
+
+const MyPageButton = styled.button`
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #ffa012;
+  border: 1px solid #ffa012;
+  border-radius: 1rem;
+  min-width: 15rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0 2.5rem 0;
+  line-height: 1.9rem;
+`;
+
+const MyPickButton = styled.button`
+  font-weight: 700;
+  color: #ffa012;
+  background-color: white;
+  border: 1px solid #ffa012;
+  border-radius: 1rem;
+  min-width: 15rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  padding: 1rem 4rem;
+  margin: 0.5rem 0 2.5rem 0;
+  line-height: 1.9rem;
+`;
 
 const FoodName = styled.div`
   height: 20%;

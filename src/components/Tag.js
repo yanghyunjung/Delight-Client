@@ -9,7 +9,7 @@ const Tag = (props) => {
         <ContentContainer>
           <TagGrid>
             {tag.map((item, idx) => {
-              return <TagName key={idx}>{`# ` + item.name}</TagName>;
+              return <TagName key={idx}>{`#` + item.name}</TagName>;
             })}
           </TagGrid>
         </ContentContainer>
@@ -19,15 +19,17 @@ const Tag = (props) => {
 };
 
 const TagName = styled.div`
-  padding: 0.4rem 0.6rem;
+  font-size: 1.2rem;
+  padding: 0.5rem 0.8rem;
   background-color: #f2f2f2;
   border-radius: 2rem;
 `;
 
 const TagGrid = styled.div`
-  margin: 0 1.5rem;
+  margin: 0 3rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(5em, auto));
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
   grid-gap: 0.8rem;
 `;
 
