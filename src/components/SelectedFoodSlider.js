@@ -5,44 +5,30 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { deleteFood } from "../redux/modules/food";
 
 import ArrowRight from "../image/SelectedArrowR.png";
 import ArrowLeft from "../image/SelectedArrowL.png";
-import XBox from "../image/xBox.svg";
 
-const SelectedFoodSlider = ({ data, check, setCheck }) => {
-  const dispatch = useDispatch();
+const SelectedFoodSlider = () => {
   const foodList = useSelector((state) => state.food.selectList);
-  const foodNameList = useSelector((state) => state.food.foodName);
+
   const settings = {
     infinite: false,
-    centerPadding: "6rem",
+    centerPadding: "3rem",
     slidesToShow: 5,
     swipeToSlide: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   return (
     <React.Fragment>
       <div>
         <StlyedSlider {...settings}>
           {foodList.map((item, idx) => {
+            const { food } = item;
             return (
-              <FoodImgWrap
-                onClick={({ name, imgUrl, list }) => {
-                  name = item.name;
-                  imgUrl = item.imgUrl;
-                  list = foodList;
-                  dispatch(deleteFood({ name, imgUrl, list }));
-                  setCheck(false);
-                }}
-                key={idx}
-              >
-                <img src={item.imgUrl} alt={item.name} />
-                <div>
-                  <img className="xbox" src={XBox} alt="cancel" />
-                </div>
+              <FoodImgWrap key={idx}>
+                <img src={food.imgUrl} alt={food.name} />
               </FoodImgWrap>
             );
           })}
@@ -59,6 +45,7 @@ const StlyedSlider = styled(Slider)`
   .slick-list {
     text-align: center;
     margin: 0px auto;
+    padding: 0px 0px 0px 3px;
     width: 90%;
     height: 5rem;
   }
@@ -74,7 +61,8 @@ const StlyedSlider = styled(Slider)`
 const FoodImgWrap = styled.div`
   overflow: hidden;
   box-sizing: border-box;
-  border: 0px solid #ffa012;
+  border-radius: 1rem;
+  border: 1px solid #ffffff;
   position: relative;
   & img {
     width: 100%;
@@ -91,7 +79,7 @@ const FoodImgWrap = styled.div`
 `;
 
 // 오른쪽 화살표 커스텀마이징
-function SampleNextArrow(props) {
+function NextArrow(props) {
   const { style, onClick } = props;
   if (onClick === null) {
     return "";
@@ -113,7 +101,7 @@ function SampleNextArrow(props) {
 }
 
 // 왼쪽 화살표 커스텀마이징
-function SamplePrevArrow(props) {
+function PrevArrow(props) {
   const { style, onClick } = props;
   if (onClick === null) {
     return "";

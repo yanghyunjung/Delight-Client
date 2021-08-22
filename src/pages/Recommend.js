@@ -18,19 +18,17 @@ import Loader from "react-loader-spinner";
 import { history } from "../redux/configureStore";
 
 const Recommand = (props) => {
-  const dispatch = useDispatch();
-
   const [foodsList, setFoodsList] = useState(null);
   const [isLoding, setIsLoding] = useState(true);
-  const [check, setCheck] = useState(false);
 
   const list = useSelector((state) => state.food.selectList);
 
   const handleRecommendFood = () => {
     async function getFoods() {
-      const { data } = await getFoodList();
+      const { data } = await getFoodList().then(
+        setTimeout(setIsLoding, 1000, false)
+      );
       setFoodsList(data);
-      setTimeout(setIsLoding, 1000, false);
     }
     return getFoods();
   };
@@ -84,14 +82,7 @@ const Recommand = (props) => {
             ) : (
               <FoodList>
                 {foodsList.map((data, idx) => {
-                  return (
-                    <FoodCard
-                      check={check}
-                      setCheck={setCheck}
-                      data={data}
-                      id={idx}
-                    />
-                  );
+                  return <FoodCard data={data} key={idx} />;
                 })}
               </FoodList>
             )}
@@ -106,26 +97,20 @@ const Recommand = (props) => {
                 다른 음식도 볼래요
               </RefreshButton>
             ) : (
-              <>
-                <RefreshButton
-                  onClick={() => {
-                    setIsLoding(true);
-                    handleRecommendFood();
-                  }}
-                >
-                  다른 음식도 볼래요
-                </RefreshButton>
-              </>
+              <RefreshButton
+                onClick={() => {
+                  setIsLoding(true);
+                  handleRecommendFood();
+                }}
+              >
+                다른 음식도 볼래요
+              </RefreshButton>
             )}
           </WrapContent>
 
           <WrapBottomBox>
             <SelectedBox>
-              <SelectedFoodSlider
-                data={foodsList}
-                check={check}
-                setCheck={setCheck}
-              />
+              <SelectedFoodSlider />
               <Grid margin="0 auto">
                 {list.length > 0 ? (
                   <Button
@@ -155,7 +140,7 @@ const Recommand = (props) => {
                         width: 240,
                         height: 150,
                         padding: "0 0 20px 0",
-                        title: `음식을 선택해주세요!`,
+                        title: `음식을 골라주세요!`,
                         imageUrl: ZeroAlert,
                         imageWidth: 240,
                         imageHeight: 100,

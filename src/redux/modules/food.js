@@ -12,20 +12,22 @@ const food = createSlice({
   reducers: {
     addFood: (state, action) => {
       if (state.selectList.length < 10) {
-        state.selectList.unshift(action.payload);
-        state.foodName.push(action.payload.name);
+        state.selectList = [action.payload, ...state.selectList];
+        state.foodName = [...state.foodName, action.payload.name];
       } else {
         return;
       }
     },
     deleteFood: (state, action) => {
-      state.foodName.splice(state.foodName.indexOf(action.payload.name), 1);
-      const idx = action.payload.list.findIndex((item) => {
-        return item.name === action.payload.name;
-      });
-      if (idx > -1) {
-        state.selectList.splice(idx, 1);
-      }
+      const foodList = state.selectList.filter(
+        (food) => food.name !== action.payload.name
+      );
+
+      const nameList = state.foodName.filter(
+        (food) => food !== action.payload.name
+      );
+      state.selectList = [...foodList];
+      state.foodName = [...nameList];
     },
     getResult: (state, action) => {
       state.result = action.payload.data;

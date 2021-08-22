@@ -1,41 +1,73 @@
 import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  addFood,
-  deleteFood,
-  getFoodList,
-  getFoodName,
-} from "../redux/modules/food";
+import { addFood, deleteFood } from "../redux/modules/food";
 
-const FoodCard = ({ data, id, check, setCheck }) => {
+const FoodCard = ({ data, key }) => {
   const dispatch = useDispatch();
 
-  const foodNameList = useSelector((state) => state.food.foodName);
   const foodList = useSelector((state) => state.food.selectList);
 
-  const [foodName, setFoodName] = useState("");
+  const [activeFood, setActiveFood] = useState([]);
+
+  const onAdd = (name, imgUrl) => {
+    const food = {
+      name: data.name,
+      imgUrl: data.imgUrl,
+      active: true,
+    };
+    dispatch(addFood({ name, imgUrl, food }));
+  };
+
+  const onDelete = (name, imgUrl) => {
+    const food = {
+      name: data.name,
+      imgUrl: data.imgUrl,
+      active: false,
+    };
+    setActiveFood(!activeFood.active);
+    dispatch(deleteFood({ name, imgUrl, food }));
+  };
 
   useEffect(() => {
-    foodNameList.map((item) => {
-      if (data.name === item) {
-        setFoodName(item);
+    foodList.map((item) => {
+      const { food, name } = item;
+      if (data.name === name) {
+        setActiveFood(food);
       }
     });
-  }, [foodNameList, data.name]);
+  }, [foodList, data.name]);
 
-  if (foodName === data.name) {
+  if (activeFood.active) {
     return (
       <React.Fragment>
         <Container
           key={data.id}
-          onClick={({ name, list }) => {
-            name = foodName;
-            list = foodList;
-            dispatch(deleteFood({ name, list }));
-            setCheck(false);
+          onClick={() => {
+            onDelete(data.name, data.imgUrl);
+          }}
+        >
+          <FoodImgWrap style={{ border: "3px solid #ffa012", opacity: "0.8" }}>
+            <img src={data.imgUrl} alt={data.name} />
+          </FoodImgWrap>
+          <FoodNameWrap>
+            <FoodName style={{ color: "#ffa012", fontWeight: "700" }}>
+              {data.name}
+            </FoodName>
+          </FoodNameWrap>
+        </Container>
+      </React.Fragment>
+    );
+  }
+  if (!activeFood.active) {
+    return (
+      <React.Fragment>
+        <Container
+          key={key}
+          onClick={() => {
+            onAdd(data.name, data.imgUrl);
           }}
         >
           <FoodImgWrap>
@@ -48,27 +80,6 @@ const FoodCard = ({ data, id, check, setCheck }) => {
       </React.Fragment>
     );
   }
-
-  return (
-    <React.Fragment>
-      <Container
-        id={data.id}
-        onClick={({ name, imgUrl }) => {
-          name = data.name;
-          imgUrl = data.imgUrl;
-          dispatch(addFood({ name, imgUrl }));
-          setCheck(true);
-        }}
-      >
-        <FoodImgWrap>
-          <img src={data.imgUrl} alt={data.name} />
-        </FoodImgWrap>
-        <FoodNameWrap>
-          <FoodName>{data.name}</FoodName>
-        </FoodNameWrap>
-      </Container>
-    </React.Fragment>
-  );
 };
 
 const Container = styled.div`
