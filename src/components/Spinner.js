@@ -3,9 +3,6 @@ import styled, { keyframes } from "styled-components";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { Grid } from "../elements";
-
-import spinner from "../image/spinner/Spinner.svg";
 import BobAI from "../image/BobAi.svg";
 import ResultAI from "../image/spinner/ResultAI.svg";
 
