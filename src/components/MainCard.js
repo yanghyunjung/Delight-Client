@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import MainImg from "../image/mainimage.png";
+import mypage_nodata from "../image/mypage_nodata.png";
 
 const MainCard = (props) => {
   return (
@@ -33,7 +33,7 @@ const MainCard = (props) => {
             회원님의 지난 주 <br />
             데이터가 없어요.
           </span>
-          <img src={MainImg} />
+          <img src={mypage_nodata} />
         </Box>
       </GRID1>
     </>
@@ -52,7 +52,7 @@ const GRID1 = styled.div`
 
 const Box = styled.div`
   display: grid;
-  grid-template-columns: 25rem 2fr;
+  grid-template-columns: 23rem 2fr;
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 1.5rem;

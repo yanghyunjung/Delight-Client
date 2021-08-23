@@ -46,14 +46,14 @@ const ResultSlider = (props) => {
                   {pick ? (
                     <MyPickButton>MY PICK!</MyPickButton>
                   ) : (
-                    <MyPageButton
-                      onClick={() => {
-                        history.push("/mypage");
-                      }}
-                    >
-                      기록장으로 가기!
-                    </MyPageButton>
-                  )}
+                      <MyPageButton
+                        onClick={() => {
+                          history.push("/mypage");
+                        }}
+                      >
+                        기록장으로 가기!
+                      </MyPageButton>
+                    )}
                 </StoreButtonWrap>
               </div>
             );
