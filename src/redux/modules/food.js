@@ -8,6 +8,7 @@ const food = createSlice({
     selectList: [],
     foodName: [],
     result: null,
+    history: [],
   },
   reducers: {
     addFood: (state, action) => {
@@ -33,6 +34,9 @@ const food = createSlice({
       state.result = action.payload.data;
       state.selectList = [];
     },
+    addHistory: (state, action) => {
+      state.history = [...state.history, action.payload];
+    },
   },
 });
 
@@ -42,7 +46,7 @@ export const sendSelectFoodSV = ({ foods, setIsLoding }) => {
       await instance.post("/api/ml-recommendations", { foods }).then((res) => {
         const data = res.data.data;
         dispatch(getResult({ data }));
-        setTimeout(setIsLoding, 6000, true);
+        setTimeout(setIsLoding, 5000, true);
       });
     } catch (error) {
       console.log("post 오류", error);
@@ -50,5 +54,15 @@ export const sendSelectFoodSV = ({ foods, setIsLoding }) => {
   };
 };
 
-export const { addFood, deleteFood, getResult } = food.actions;
+export const sendMyPickSV = ({ foodName }) => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      await instance.post("/api/mypicks", { foodName });
+    } catch (error) {
+      console.log("post 오류", error);
+    }
+  };
+};
+
+export const { addFood, deleteFood, getResult, addHistory } = food.actions;
 export default food.reducer;

@@ -7,20 +7,13 @@ import ResultSlider from "../components/ResultSlider";
 import PercentResult from "../components/PercentResult";
 import ResultTip from "../components/ResultTip";
 
-import Tip from "../image/Tip.svg";
-
-import { getSelectFoodSV } from "../redux/modules/food";
-
 import { history } from "../redux/configureStore";
 
 const Result = () => {
   const dispatch = useDispatch();
   const [getResultFood, setGetResultFood] = useState(null);
-  const [openTip, setOpenTip] = useState(false);
 
   const data = useSelector((state) => state.food.result);
-
-  const handleToopTip = (e) => {};
 
   useEffect(() => {
     setGetResultFood(data);
@@ -47,7 +40,7 @@ const Result = () => {
           <div
             style={{
               color: "#C4C4C4",
-              padding: "0 2rem",
+              padding: "0 2rem 0 2.5rem",
               fontSize: "1.2rem",
               lineHeight: "1.6rem",
             }}
