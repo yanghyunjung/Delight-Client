@@ -19,31 +19,15 @@ import { useSelector, useDispatch } from "react-redux";
 
 const ResultSlider = ({ data }) => {
   const dispatch = useDispatch();
-  const [pick, setPick] = useState(true);
+  const [pick, setPick] = useState(false);
 
-  const [myHistory, setMyHistory] = useState(null);
+  const [foodState, setFoodState] = useState(null);
   const [foodName, setFoodName] = useState(null);
 
-  useEffect(() => {
-    async function getHistory() {
-      const { data } = await getHistorySV();
-      setMyHistory(data);
-    }
-    return getHistory();
-  }, []);
-
-  useEffect(() => {
-    console.log(myHistory);
-    console.log(foodName);
-  }, [foodName, myHistory]);
-
-  const [mainSlick, setMainSlick] = useState(null);
-  const mainSlickRef = useRef(null);
-
-  useEffect(() => {
-    setMainSlick(mainSlickRef.current);
-    console.log(mainSlick);
-  }, [mainSlick]);
+  const handleMyPick = (food) => {
+    dispatch(sendMyPickSV({ foodName: food.name }));
+    setFoodName(food.name);
+  };
 
   const settings = {
     dots: true,
@@ -63,32 +47,38 @@ const ResultSlider = ({ data }) => {
       <Container>
         <StlyedSlider {...settings}>
           {data.map((item, index) => {
+            const food = {
+              name: item.name,
+              score: item.score,
+              imgUrl: item.imgUrl,
+              tag: [...item.tag],
+              active: true,
+            };
+            const { name, score, imgUrl, tag, active } = food;
             return (
               <div key={index}>
                 <FoodImgWrap>
-                  <img src={item.imgUrl} alt={item.name} />
+                  <img src={food.imgUrl} alt={food.name} />
                 </FoodImgWrap>
-                <FoodName>{item.name}</FoodName>
-                <Tag tag={item.tag} />
+                <FoodName>{food.name}</FoodName>
+                <Tag tag={food.tag} />
                 <StoreButtonWrap>
-                  {pick ? (
-                    <MyPickButton
-                      onClick={() => {
-                        setFoodName(item.name);
-                        dispatch(sendMyPickSV({ foodName }));
-                      }}
-                    >
-                      MY PICK!
-                    </MyPickButton>
-                  ) : (
+                  {food.name === foodName ? (
                     <MyPageButton
                       onClick={() => {
                         history.push("/mypage");
-                        setPick(true);
                       }}
                     >
                       기록장으로 가기!
                     </MyPageButton>
+                  ) : (
+                    <MyPickButton
+                      onClick={() => {
+                        handleMyPick(food);
+                      }}
+                    >
+                      MY PICK!
+                    </MyPickButton>
                   )}
                 </StoreButtonWrap>
               </div>
