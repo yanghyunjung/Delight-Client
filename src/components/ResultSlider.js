@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import Slider from "react-slick";
@@ -11,12 +11,40 @@ import ArrowLeft from "../image/SelectedArrowL.png";
 import Tag from "./Tag";
 import { history } from "../redux/configureStore";
 
-const ResultSlider = (props) => {
+import { sendMyPickSV, addHistory } from "../redux/modules/food";
+
+import { getHistorySV } from "../shared/api";
+
+import { useSelector, useDispatch } from "react-redux";
+
+const ResultSlider = ({ data }) => {
+  const dispatch = useDispatch();
   const [pick, setPick] = useState(true);
 
-  const handlePick = () => {
-    pick ? setPick(false) : setPick(true);
-  };
+  const [myHistory, setMyHistory] = useState(null);
+  const [foodName, setFoodName] = useState(null);
+
+  useEffect(() => {
+    async function getHistory() {
+      const { data } = await getHistorySV();
+      setMyHistory(data);
+    }
+    return getHistory();
+  }, []);
+
+  useEffect(() => {
+    console.log(myHistory);
+    console.log(foodName);
+  }, [foodName, myHistory]);
+
+  const [mainSlick, setMainSlick] = useState(null);
+  const mainSlickRef = useRef(null);
+
+  useEffect(() => {
+    setMainSlick(mainSlickRef.current);
+    console.log(mainSlick);
+  }, [mainSlick]);
+
   const settings = {
     dots: true,
     infinte: true,
@@ -27,14 +55,14 @@ const ResultSlider = (props) => {
     arrows: true,
     swipeToSlide: true,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   return (
     <React.Fragment>
       <Container>
         <StlyedSlider {...settings}>
-          {props.data.map((item, index) => {
+          {data.map((item, index) => {
             return (
               <div key={index}>
                 <FoodImgWrap>
@@ -42,18 +70,26 @@ const ResultSlider = (props) => {
                 </FoodImgWrap>
                 <FoodName>{item.name}</FoodName>
                 <Tag tag={item.tag} />
-                <StoreButtonWrap onClick={handlePick}>
+                <StoreButtonWrap>
                   {pick ? (
-                    <MyPickButton>MY PICK!</MyPickButton>
+                    <MyPickButton
+                      onClick={() => {
+                        setFoodName(item.name);
+                        dispatch(sendMyPickSV({ foodName }));
+                      }}
+                    >
+                      MY PICK!
+                    </MyPickButton>
                   ) : (
-                      <MyPageButton
-                        onClick={() => {
-                          history.push("/mypage");
-                        }}
-                      >
-                        기록장으로 가기!
-                      </MyPageButton>
-                    )}
+                    <MyPageButton
+                      onClick={() => {
+                        history.push("/mypage");
+                        setPick(true);
+                      }}
+                    >
+                      기록장으로 가기!
+                    </MyPageButton>
+                  )}
                 </StoreButtonWrap>
               </div>
             );
@@ -168,7 +204,7 @@ const FoodImgWrap = styled.div`
   }
 `;
 
-function SampleNextArrow(props) {
+function NextArrow(props) {
   const { style, onClick } = props;
   if (onClick === null) {
     return "";
@@ -189,7 +225,7 @@ function SampleNextArrow(props) {
   );
 }
 
-function SamplePrevArrow(props) {
+function PrevArrow(props) {
   const { style, onClick } = props;
   if (onClick === null) {
     return "";
