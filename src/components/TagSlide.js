@@ -50,9 +50,8 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
 
   // 확인버튼을 눌렀을 때 실행되는 함수
   const handleSubmitTags = () => {
-    console.log("submit");
-    let tagIdArray = [];
-    let tagNameArray = [];
+    const tagIdArray = [];
+    const tagNameArray = [];
 
     setTagOpen(false);
 
@@ -133,8 +132,10 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
           <TagBtn
             onClick={() => {
               Swal.fire({
+                width: "210",
+                height: "90",
                 position: "top-center",
-                icon: "warning",
+                icon: "info",
                 title: "선택된 태그가 없어요",
                 showConfirmButton: false,
                 timer: 2000,
