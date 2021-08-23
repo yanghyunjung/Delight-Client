@@ -81,9 +81,10 @@ const Recommand = (props) => {
               </WrapLoader>
             ) : (
               <FoodList>
-                {foodsList.map((data, idx) => {
-                  return <FoodCard data={data} key={idx} />;
-                })}
+                {foodsList &&
+                  foodsList.map((data, idx) => {
+                    return <FoodCard data={data} key={idx} />;
+                  })}
               </FoodList>
             )}
             {isLoding ? (

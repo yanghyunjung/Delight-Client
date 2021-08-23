@@ -1,10 +1,11 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
-import styled from "styled-components";
 import Loader from "react-loader-spinner";
+import styled from "styled-components";
+
 import Layout from "./Layout";
 
 const Main = lazy(() => import("../pages/Main"));
