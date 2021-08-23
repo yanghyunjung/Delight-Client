@@ -12,7 +12,7 @@ const Header = (props) => {
   // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
 
-  // 로그인 시  
+  // 로그인 시
   if (is_jwt) {
     return (
       <HEADER>
@@ -36,8 +36,8 @@ const Header = (props) => {
           style={{ cursor: "pointer", marginLeft: "21rem" }}
           src={MyPageLogo}
           onClick={() => {
-            window.alert("서비스 준비중 입니다.");
-            // window.location.replace("/mypage");
+            // window.alert("서비스 준비중 입니다.");
+            window.location.replace("/mypage");
           }}
         />
       </HEADER>
