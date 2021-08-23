@@ -13,23 +13,19 @@ import { getCategoryThunk, getFoods } from "../redux/modules/category";
 const MainSlider = (props) => {
   const dispatch = useDispatch();
   const foods = useSelector(getFoods);
-
   const sliderRef = useRef();
 
   // 실행했을 때 카테고리 탭 기본값 설정
   const [tabIndex, setTabIndex] = useState(1);
 
-  // 위치를 잡기 위해 슬라이드 이미지 크기(width) 임의로 변경 -> useEffect 사용함
   useEffect(() => {
-    // const list = document.querySelector(".slick-list");
-    // list.style.setProperty("width", "25rem", "important");
     dispatch(getCategoryThunk(0));
   }, []);
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 600,
     centerMode: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -117,7 +113,6 @@ const ImgWrap = styled.div`
   margin: 0 auto;
   height: 60%;
   transform: scale(0.95);
-
   & img {
     border-radius: 11.5rem;
     margin: 0 auto;

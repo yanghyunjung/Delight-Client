@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import InstagramIcon from "@material-ui/icons/Instagram";
-import FacebookIcon from "@material-ui/icons/Facebook";
 import NotionIcon from "../image/notion.png";
 
 const Footer = (props) => {
@@ -44,22 +43,17 @@ const Footer = (props) => {
         <Icon>
           <A href="https://www.instagram.com/" target="_blank">
             <InstagramIcon // 인스타그램 아이콘
-              style={{ fontSize: "3.3rem", margin: "1rem", cursor: "pointer" }}
+              style={{ fontSize: "3.3rem", margin: "1rem 0.4rem 0 0", cursor: "pointer" }}
             ></InstagramIcon>
-          </A>
-          <A href="https://www.facebook.com/" target="_blank">
-            <FacebookIcon // 페이스북 아이콘
-              style={{ fontSize: "3.3rem", margin: "1rem", cursor: "pointer" }}
-            ></FacebookIcon>
           </A>
           <A // 노션 아이콘
             href="https://www.notion.so/Delight-Crew-s-aa69ae261f404f6a8c58c48e669f02fd"
             target="_blank"
-          >   
-              <Notion src={NotionIcon} /> 
+          >
+            <Notion src={NotionIcon}/>
           </A>
         </Icon>
-        <Name>Team Delight</Name>
+        <Name>Copyright ⓒ2021 Team Delight</Name>
       </Div>
     </FooterStyle>
   );
@@ -103,7 +97,7 @@ const Icon = styled.div`
 `;
 
 const Notion = styled.img`
-  margin: 1rem;
+  margin: 1rem 0 0 0.4rem;
   width: 3.3rem;
   height: 3.3rem;
 `;
@@ -111,6 +105,7 @@ const Notion = styled.img`
 const Name = styled.a`
   display: flex;
   font-size: 1.4rem;
+  margin-top: 0.7rem;
 `;
 
 const A = styled.a`
