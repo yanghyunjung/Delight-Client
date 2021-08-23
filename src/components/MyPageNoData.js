@@ -35,24 +35,7 @@ const MyPageNoData = () => {
       <Grid width="100%" height="15%" padding="2rem">
         <Title2>지난 PICK</Title2>
 
-        <Box2
-          style={{
-            fontSize: "1rem",
-            lineHeight: "2rem",
-          }}
-        >
-          <Text padding="2rem 0 2rem 2rem" color="#717171" size="1.5rem">
-            회원님은 아직 데이터가 없어요!
-            <br />
-            지금 추천받고 기록해 보세요 :)
-          </Text>
-          <Button1
-            src={mypage_2}
-            onClick={() => {
-              return history.push("/recommendation/:id");
-            }}
-          />
-        </Box2>
+
       </Grid>
     </Container>
   );
@@ -79,13 +62,7 @@ const Box1 = styled.div`
   color: #717171;
 `;
 
-const Box2 = styled.div`
-  margin: 0 auto;
-  width: 32rem;
-  height: 14.4rem;
-  background-color: #f2f2f2;
-  border-radius: 1.6rem;
-`;
+
 
 const Title1 = styled.h2`
   margin: 2rem 0 0 0;

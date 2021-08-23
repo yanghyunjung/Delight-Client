@@ -11,13 +11,9 @@ import { history } from "../redux/configureStore";
 
 const Result = () => {
   const dispatch = useDispatch();
-  const [getResultFood, setGetResultFood] = useState(null);
 
   const data = useSelector((state) => state.food.result);
 
-  useEffect(() => {
-    setGetResultFood(data);
-  }, [data]);
   return (
     <React.Fragment>
       <Container>

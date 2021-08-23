@@ -8,7 +8,7 @@ const food = createSlice({
     selectList: [],
     foodName: [],
     result: null,
-    history: [],
+    history: null,
   },
   reducers: {
     addFood: (state, action) => {
@@ -35,7 +35,7 @@ const food = createSlice({
       state.selectList = [];
     },
     addHistory: (state, action) => {
-      state.history = [...state.history, action.payload];
+      state.history = action.payload;
     },
   },
 });
@@ -55,6 +55,7 @@ export const sendSelectFoodSV = ({ foods, setIsLoding }) => {
 };
 
 export const sendMyPickSV = ({ foodName }) => {
+  console.log(foodName);
   return async (dispatch, getState, { history }) => {
     try {
       await instance.post("/api/mypicks", { foodName });
