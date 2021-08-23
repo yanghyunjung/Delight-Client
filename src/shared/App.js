@@ -1,8 +1,10 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Switch, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
+import styled from "styled-components";
+import Loader from "react-loader-spinner";
 import Layout from "./Layout";
 
 const Main = lazy(() => import("../pages/Main"));
@@ -21,16 +23,7 @@ const App = () => {
       <Layout>
         <Suspense
           fallback={
-            <div
-              style={{
-                width: "36rem",
-                margin: "0 auto",
-                textAlign: "center",
-                padding: "20rem",
-              }}
-            >
-              Loading...
-            </div>
+            <StyledLoader type="Oval" color="#ffa012" height={30} width={50} />
           }
         >
           <Switch>
@@ -57,4 +50,15 @@ const App = () => {
     </ConnectedRouter>
   );
 };
+
+const StyledLoader = styled(Loader)`
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+`;
 export default App;
