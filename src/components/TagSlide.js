@@ -208,6 +208,7 @@ const Box2 = styled.div`
 const SelectTag = styled.div`
   margin: 0 2rem 0 0;
   font-size: 1.4rem;
+  font-family: sans-serif;
   height: 2rem;
   padding: 0.5rem 1.5rem;
   line-height: 2rem;
@@ -226,6 +227,7 @@ const SelectTag1 = styled.div`
   background-color: #ffffff;
   margin: 0 1rem 0 0;
   font-size: 1.4rem;
+  font-family: sans-serif;
   height: 2rem;
   padding: 0.5rem 1.5rem;
   line-height: 2rem;
@@ -240,6 +242,7 @@ const SelectTag2 = styled.div`
   color: #ffffff;
   margin: 0 1rem 0.8rem 0;
   font-size: 1.4rem;
+  font-family: sans-serif;
   height: 2rem;
   line-height: 2rem;
   padding: 0.5rem 1.5rem;
