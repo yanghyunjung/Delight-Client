@@ -36,7 +36,8 @@ const Header = (props) => {
           style={{ cursor: "pointer", marginLeft: "21rem" }}
           src={MyPageLogo}
           onClick={() => {
-            window.location.replace("/mypage");
+            window.alert("서비스 준비중 입니다.");
+            // window.location.replace("/mypage");
           }}
         />
       </HEADER>
@@ -80,7 +81,8 @@ const Header = (props) => {
           style={{ cursor: "pointer" }}
           src={MyPageLogo}
           onClick={() => {
-            window.location.replace("/mypage");
+            window.alert("서비스 준비중 입니다.");
+            // window.location.replace("/mypage");
           }}
         />
       </BOX>

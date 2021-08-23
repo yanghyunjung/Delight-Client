@@ -20,27 +20,6 @@ const userSlice = createSlice({
     },
 });
 
-// 쿠키에서 jwt 를 불러와 해더에 추가해서 보내는 방법
-function sendRequestWithJWT() {
-    let headers = {}
-    if (getCookie('jwt') != null) {
-        headers = { 'Authorization': getCookie('jwt') }
-    }
-    axios.post('https://api.delight99.co.kr/api/tags/users/frequent-tag', {}, {
-        headers: headers
-    })
-        .then((response) => {
-            console.log(response.data);
-        })
-        .catch((error) => {
-            // 로그인이 안되어 있다면 401 이 나옵니다.
-            // if (error.response.status === 401) {
-            // }
-        })
-}
 
-export const actionCreators = {
-    sendRequestWithJWT,
-};
 export const { setUser, logOut } = userSlice.actions;
 export default userSlice.reducer;

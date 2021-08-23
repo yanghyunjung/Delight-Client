@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import mypage_2 from "../image/mypage_2.png";
-import MainImg from "../image/mainimage.png";
+import mypage_nodata from "../image/mypage_nodata.png";
 
 import { Grid, Text } from "../elements";
 import { history } from "../redux/configureStore";
@@ -29,7 +29,7 @@ const MyPageNoData = () => {
           회원님의 지난 주 <br />
           데이터가 없어요.
         </span>
-        <img src={MainImg} />
+        <img src={mypage_nodata} />
       </Box1>
 
       <Grid width="100%" height="15%" padding="2rem">
@@ -66,7 +66,7 @@ const Container = styled.div`
 
 const Box1 = styled.div`
   display: grid;
-  grid-template-columns: 25rem 2fr;
+  grid-template-columns: 23rem 2fr;
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 1.5rem;

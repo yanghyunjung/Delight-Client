@@ -4,9 +4,9 @@ import instance from "../../shared/api";
 // 태그음식 결과 나오게 하기
 export const getTagResultThunk = createAsyncThunk(
   "tag/getTagResult",
-  async (tag_ids) => {
+  async (tagIds) => {
     const param = {
-      tag_ids
+      tagIds
     }
     const response = await instance.post(`/api/foods/tags`,param);
     console.log(response.data);

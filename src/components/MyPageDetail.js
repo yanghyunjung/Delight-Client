@@ -3,8 +3,18 @@ import styled from "styled-components";
 
 import { Grid } from "../elements";
 import MainLogImg from "../image/hamburger.png";
+import MyPagePickCard from "../components/MyPagePickCard";
+
+import { useDispatch, useSelector } from "react-redux";
+import { getFrequencyThunk, getFrequency } from "../redux/modules/frequent-tag";
 
 const MyPageDetail = () => {
+    const dispatch = useDispatch();
+    const foods = useSelector(getFrequency);
+
+    React.useEffect(() => {
+        dispatch(getFrequencyThunk(0));
+    }, []);
 
     return (
         <Container>
@@ -28,9 +38,9 @@ const MyPageDetail = () => {
 
             <Grid flex width="100%" height="15%" padding="2rem">
                 <PickBtn>지난 PICK</PickBtn>
-
             </Grid>
-        </Container >
+            <MyPagePickCard />
+        </Container>
     );
 };
 
@@ -80,8 +90,8 @@ const Box1 = styled.div`
 `;
 
 const Img = styled.img`
-  width: 7rem;
-  height: 7rem;
+    width: 7rem;
+    height: 7rem;
 `;
 
 const PickBtn = styled.button`

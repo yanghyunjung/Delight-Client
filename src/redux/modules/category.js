@@ -3,7 +3,7 @@ import instance from "../../shared/api";
 
 import Swal from "sweetalert2";
 
-// 카테고리라는 함수 만들기
+// 카테고리 함수 만들기
 export const getCategoryThunk = createAsyncThunk(
   "category/getCategory",
   async (categoryId) => {
@@ -30,9 +30,11 @@ const categorySlice = createSlice({
       state.error = true;
       state.loading = false;
       Swal.fire({
+        width: "260",
+        height: "110",
         position: "top-center",
-        icon: "warning",
-        title: "랭킹 데이터 준비중!",
+        icon: "error",
+        title: "랭킹 데이터가 준비중이에요",
         showConfirmButton: false,
         timer: 2000,
       });

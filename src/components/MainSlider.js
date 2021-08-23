@@ -21,15 +21,16 @@ const MainSlider = (props) => {
 
   // 위치를 잡기 위해 슬라이드 이미지 크기(width) 임의로 변경 -> useEffect 사용함
   useEffect(() => {
-    const list = document.querySelector(".slick-list");
-    list.style.setProperty("width", "25rem", "important");
+    // const list = document.querySelector(".slick-list");
+    // list.style.setProperty("width", "25rem", "important");
     dispatch(getCategoryThunk(0));
   }, []);
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 600,
+    speed: 500,
+    centerMode: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
@@ -74,7 +75,7 @@ const MainSlider = (props) => {
               style={{
                 fontSize: "2rem",
                 fontWeight: "bold",
-                lineHeight: "2.4rem",
+                lineHeight: "2.8rem",
               }}
             >
               {index + 1}위 <br />
@@ -89,31 +90,21 @@ const MainSlider = (props) => {
 
 // 이미지 슬라이드 스타일 적용하기
 const StyledSlider = styled(Slider)`
-  .slick-dots {
-    margin-bottom: 1rem;
-  }
-  .slick-dots li {
-    width: 5rem;
-    padding: 0 1rem;
-  }
-  position: relative;
-  margin-top: 0.8rem;
+  width: 100%;
+  padding-bottom: 1.2rem;
+  margin: 0px auto;
+  box-sizing: border-box;
   .slick-list {
     text-align: center;
-    margin: 0rem auto;
-    width: 30rem;
-    height: 30rem;
+    margin: 0px auto;
+    max-width: 32rem;
+    height: 38 rem;
   }
   .slick-list div {
     outline: none;
   }
-  .pro-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 25%;
-    height: 1rem;
-    background: #ccc;
+  .slick-track {
+    height: 100%;
   }
 `;
 
@@ -121,16 +112,17 @@ const Card = styled.div``;
 
 const ImgWrap = styled.div`
   overflow: hidden;
-  width: 25rem;
-  height: 25rem;
-  border-radius: 50%;
   box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+  height: 60%;
+  transform: scale(0.95);
+
   & img {
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    margin: 0rem;
-    padding: 0rem;
+    border-radius: 11.5rem;
+    margin: 0 auto;
+    width: 23rem;
+    height: 23rem;
   }
 `;
 
@@ -145,7 +137,7 @@ function NextArrow(props) {
       style={{
         ...style,
         position: "absolute",
-        top: "9rem",
+        top: "8.5rem",
         right: "0rem",
         zIndex: 9999,
         cursor: "pointer",
@@ -168,7 +160,7 @@ function PrevArrow(props) {
       style={{
         ...style,
         position: "absolute",
-        top: "9rem",
+        top: "8.5rem",
         left: "0rem",
         zIndex: 9999,
         cursor: "pointer",
@@ -182,8 +174,8 @@ function PrevArrow(props) {
 
 const ArrowWrap = styled.div`
   & img {
-    width: 3.3rem;
-    height: 6.5rem;
+    width: 2.3rem;
+    height: 5rem;
   }
 `;
 
