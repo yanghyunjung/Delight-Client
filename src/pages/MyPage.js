@@ -8,8 +8,10 @@ const MyPage = () => {
 
     return (
         <React.Fragment>
-            {/* <MyPageDetail /> */}
-            <MyPageNoData />
+
+            {/* {히스토리가 있으면 ? () : ()} */}
+            <MyPageDetail />
+            {/* <MyPageNoData /> */}
         </React.Fragment>
     );
 };
