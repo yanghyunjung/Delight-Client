@@ -58,7 +58,7 @@ export const sendMyPickSV = ({ foodName }) => {
   console.log(foodName);
   return async (dispatch, getState, { history }) => {
     try {
-      await instance.post("/api/mypicks", { foodName });
+      await instance.post("/api/mypicks", { foodName }); // 주소, 보내는 data
     } catch (error) {
       console.log("post 오류", error);
     }

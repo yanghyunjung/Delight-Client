@@ -29,7 +29,7 @@ const MyPageDetail = () => {
     async function getHistory() {
       const { data } = await getHistorySV();
       setHistoryList(data);
-      dispatch(addHistory(data));
+      dispatch(addHistory(data)); //리덕스 저장
     }
     return getHistory();
   }, []);
@@ -62,26 +62,26 @@ const MyPageDetail = () => {
           return <MyPagePickCard data={item} />;
         })
       ) : (
-        // 이 부분은 임의로 넣은거라서 수정하셔도 무방합니다.
-        <Box2
-          style={{
-            fontSize: "1rem",
-            lineHeight: "2rem",
-          }}
-        >
-          <Text padding="2rem 0 2rem 2rem" color="#717171" size="1.5rem">
-            회원님은 아직 데이터가 없어요!
+          // 이 부분은 임의로 넣은거라서 수정하셔도 무방합니다.
+          <Box2
+            style={{
+              fontSize: "1rem",
+              lineHeight: "2rem",
+            }}
+          >
+            <Text padding="2rem 0 2rem 2rem" color="#717171" size="1.5rem">
+              회원님은 아직 데이터가 없어요!
             <br />
             지금 추천받고 기록해 보세요 :)
           </Text>
-          <Button1
-            src={mypage_2}
-            onClick={() => {
-              return history.push("/recommendation/:id");
-            }}
-          />
-        </Box2>
-      )}
+            <Button1
+              src={mypage_2}
+              onClick={() => {
+                return history.push("/recommendation/:id");
+              }}
+            />
+          </Box2>
+        )}
     </Container>
   );
 };
@@ -124,12 +124,7 @@ const LogOutBtn = styled.button`
   border: none;
   cursor: pointer;
 `;
-const Text1 = styled.div`
-  font-weight: bold;
-  font-size: 2rem;
-  padding: 2rem 0 0 2rem;
-  line-height: 2.5rem;
-`;
+
 const Box1 = styled.div`
   display: grid;
   grid-template-columns: 23rem 2fr;
@@ -151,20 +146,21 @@ const Img = styled.img`
 `;
 
 const PickBtn = styled.button`
-  margin: 0 7rem 2rem 0;
   font-size: 2rem;
   font-weight: bold;
   border: none;
   background-color: transparent;
   cursor: pointer;
 `;
-const StatisticsBtn = styled.button`
-  margin: 0 0 2rem 0;
-  font-size: 2rem;
-  font-weight: bold;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-`;
+
+// 통계 추가 시 사용될 버튼
+// const StatisticsBtn = styled.button`
+//   margin: 0 0 2rem 0;
+//   font-size: 2rem;
+//   font-weight: bold;
+//   border: none;
+//   background-color: transparent;
+//   cursor: pointer;
+// `;
 
 export default MyPageDetail;

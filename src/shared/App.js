@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
@@ -47,7 +47,7 @@ const App = () => {
           </Switch>
         </Suspense>
       </Layout>
-    </ConnectedRouter>
+    </ConnectedRouter >
   );
 };
 
