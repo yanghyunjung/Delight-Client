@@ -90,7 +90,7 @@ video {
   /* font-size: 100%; */
   font: inherit;
   vertical-align: baseline;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 /* 10px = 1rem */
 html {
@@ -112,6 +112,8 @@ section {
 }
 body {
   line-height: 1;
+  margin: auto;
+  width: 36rem;
 }
 ol,
 ul {
