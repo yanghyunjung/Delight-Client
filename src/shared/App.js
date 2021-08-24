@@ -1,10 +1,11 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configureStore";
 
 import Loader from "react-loader-spinner";
 import styled from "styled-components";
+import Loading from "../pages/Loading";
 
 import Layout from "./Layout";
 
@@ -19,36 +20,49 @@ const UserRecommend = lazy(() => import("../components/UserRecommend"));
 const MyPage = lazy(() => import("../pages/MyPage"));
 
 const App = () => {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <ConnectedRouter history={history}>
-      <Layout>
-        <Suspense
-          fallback={
-            <StyledLoader type="Oval" color="#ffa012" height={30} width={50} />
-          }
-        >
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route exact path="/recommendation/:id" component={Recommend} />
-            <Route exact path="/result/:id" component={Result} />
-            <Route exact path="/login" component={Login} />
-            <Route
-              exact
-              path="/recommendation/:id/spinner"
-              component={Spinner}
-            />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/main/:id" component={MainChat} />
-            <Route
-              exact
-              path="/recommendation/:id/user"
-              component={UserRecommend}
-            />
-            <Route exact path="/mypage" component={MyPage} />
-          </Switch>
-        </Suspense>
-      </Layout>
-    </ConnectedRouter >
+      <Suspense
+        fallback={
+          <StyledLoader type="Oval" color="#ffa012" height={30} width={50} />
+        }
+      >
+        {loading ? (
+          <Loading />
+        ) : (
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route exact path="/recommendation/:id" component={Recommend} />
+              <Route exact path="/result/:id" component={Result} />
+              <Route exact path="/login" component={Login} />
+              <Route
+                exact
+                path="/recommendation/:id/spinner"
+                component={Spinner}
+              />
+              <Route exact path="/search" component={Search} />
+              <Route exact path="/main/:id" component={MainChat} />
+              <Route
+                exact
+                path="/recommendation/:id/user"
+                component={UserRecommend}
+              />
+              <Route exact path="/mypage" component={MyPage} />
+            </Switch>
+          </Layout>
+        )}
+      </Suspense>
+    </ConnectedRouter>
   );
 };
 
