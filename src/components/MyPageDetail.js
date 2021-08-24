@@ -41,7 +41,7 @@ const MyPageDetail = () => {
         <Title1>
           회원님의 <br /> 음식 기록장
         </Title1>
-        <LogOutBtn>logout</LogOutBtn>
+        {/* <LogOutBtn>logout</LogOutBtn> */}
       </Grid>
 
       <MainCard />

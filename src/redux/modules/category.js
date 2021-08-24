@@ -8,7 +8,6 @@ export const getCategoryThunk = createAsyncThunk(
   "category/getCategory",
   async (categoryId) => {
     const response = await instance.get(`/api/recommendations/${categoryId}`);
-    console.log(response.data);
     return response.data;
   }
 );
@@ -23,7 +22,6 @@ const categorySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCategoryThunk.fulfilled, (state, action) => {
-      console.log("action.payload : ", action.payload);
       state.list = action.payload;
     });
     builder.addCase(getCategoryThunk.rejected, (state, action) => {

@@ -78,7 +78,7 @@ export const sendSelectFoodSV = ({ foods, setIsLoding }) => {
       }).then((result) => {
         if (result.value) {
           console.log("sendSelectFood Error ::: ", error);
-          history.relpace("/recommendation");
+          window.location.replace("/recommendation");
         }
       });
     }

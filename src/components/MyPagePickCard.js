@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import styled from "styled-components";
 
 const MyPagePickCard = ({ data }) => {
-
   const { createdAt, foodTag, imgUrl, name, timeType } = data;
 
   return (
@@ -14,14 +13,9 @@ const MyPagePickCard = ({ data }) => {
         </ImgWrap>
         <Box1>
           <Grid1>
-            <Title>
-              {name}
-            </Title>
+            <Title>{name}</Title>
 
-            <TimeType>
-              {timeType}
-            </TimeType>
-
+            <TimeType>{timeType}</TimeType>
           </Grid1>
           <br />
           <TagGrid>
@@ -34,12 +28,11 @@ const MyPagePickCard = ({ data }) => {
             {createdAt[1] + "월"}&nbsp;
             {createdAt[2] + "일"}&nbsp;
             {createdAt[3] + "시"}&nbsp;
-            {createdAt[4] + "분"}
-            에 PICK했어요!
+            {createdAt[4] + "분"}에 PICK했어요!
           </Time>
         </Box1>
       </Column>
-    </React.Fragment >
+    </React.Fragment>
   );
 };
 
@@ -75,9 +68,9 @@ const Title = styled.div`
   color: black;
 `;
 const Grid1 = styled.div`
-  width:18rem;
+  width: 18rem;
   height: 2rem;
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: space-between;
 `;
@@ -90,20 +83,20 @@ const TagName = styled.div`
   line-height: 1rem;
   border-radius: 1.6rem;
   padding: 0.4rem 0.5rem 0.4rem 0.5rem; //태그 배경색 크기
-  background-color:#DADADA;
+  background-color: #dadada;
 `;
 const TagGrid = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;  //글자 깨짐 방지
+  flex-wrap: wrap; //글자 깨짐 방지
   grid-gap: 0.1rem;
   padding: 0 0 2rem 0;
 `;
 const Time = styled.div`
-font-size: 1rem;
+  font-size: 1rem;
 `;
 const Grid = styled.div`
-color: black;
+  color: black;
 `;
 
 export default MyPagePickCard;
