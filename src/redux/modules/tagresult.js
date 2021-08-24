@@ -9,7 +9,6 @@ export const getTagResultThunk = createAsyncThunk(
       tagIds
     }
     const response = await instance.post(`/api/foods/tags`,param);
-    console.log(response.data);
     return response.data;
   }
 );
@@ -24,7 +23,6 @@ const categorySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getTagResultThunk.fulfilled, (state, action) => {
-      console.log("action.payload : ", action.payload);
       state.list = action.payload;
     });
     builder.addCase(getTagResultThunk.rejected, (state, action) => {

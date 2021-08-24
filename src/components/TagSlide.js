@@ -162,7 +162,7 @@ const boxShow = keyframes`
 const DIV = styled.div`
   background-color: #ffffff;
   position: fixed;
-  width: 100%;
+  width: 36rem;
   animation: ${boxShow} 0.9s ease-in-out;
   bottom: 0;
   border-top-left-radius: 3rem;

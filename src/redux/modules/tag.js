@@ -17,7 +17,6 @@ const categorySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getTagThunk.fulfilled, (state, action) => {
-      console.log("action.payload : ", action.payload);
       state.list = action.payload;
     });
     builder.addCase(getTagThunk.rejected, (state, action) => {
