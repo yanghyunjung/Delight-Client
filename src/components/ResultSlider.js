@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Slider from "react-slick";
@@ -11,22 +11,32 @@ import ArrowLeft from "../image/SelectedArrowL.png";
 import Tag from "./Tag";
 import { history } from "../redux/configureStore";
 
-import { sendMyPickSV, addHistory } from "../redux/modules/food";
+import { sendMyPickSV } from "../redux/modules/food";
 
-import { getHistorySV } from "../shared/api";
+import { useDispatch } from "react-redux";
 
-import { useSelector, useDispatch } from "react-redux";
+import Swal from "sweetalert2";
+import PickAlert from "../image/PickAlert.svg";
 
 const ResultSlider = ({ data }) => {
   const dispatch = useDispatch();
-  const [pick, setPick] = useState(false);
-
-  const [foodState, setFoodState] = useState(null);
   const [foodName, setFoodName] = useState(null);
 
   const handleMyPick = (food) => {
     dispatch(sendMyPickSV({ foodName: food.name }));
     setFoodName(food.name);
+    Swal.fire({
+      width: 240,
+      padding: "0 0 20px 0",
+      title: `음식을 PICK 했어요!`,
+      text: `기록장에서 볼 수 있어요.`,
+      imageUrl: PickAlert,
+      imageWidth: 240,
+      imageHeight: 120,
+      imageAlt: "음식을 PICK 했어요!",
+      showConfirmButton: false,
+      timer: 3000,
+    });
   };
 
   const settings = {
@@ -54,7 +64,6 @@ const ResultSlider = ({ data }) => {
               tag: [...item.tag],
               active: true,
             };
-            const { name, score, imgUrl, tag, active } = food;
             return (
               <div key={index}>
                 <FoodImgWrap>
@@ -206,7 +215,7 @@ function NextArrow(props) {
         position: "absolute",
         top: "10rem",
         right: "-0.3rem",
-        zIndex: 9999,
+        zIndex: 2,
       }}
       onClick={onClick}
     >
@@ -227,7 +236,7 @@ function PrevArrow(props) {
         position: "absolute",
         top: "10rem",
         left: "-0.3rem",
-        zIndex: 9996,
+        zIndex: 2,
       }}
       onClick={onClick}
     >

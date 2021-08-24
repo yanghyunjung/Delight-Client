@@ -3,6 +3,9 @@ import styled, { keyframes } from "styled-components";
 
 import BobAI from "../image/BobAi.svg";
 import MainAI from "../image/spinner/MainAI.svg";
+import ErrorAlert from "../image/ErrorAlert.svg";
+
+import Swal from "sweetalert2";
 
 import Loader from "react-loader-spinner";
 import { history } from "../redux/configureStore";
@@ -55,14 +58,24 @@ const MainChat = (props) => {
               <ResultButton
                 style={{ margin: "0 0 1.2rem 0" }}
                 onClick={() => {
-                  history.push("/recommendation/:id");
+                  history.push("/recommendation");
                 }}
               >
                 기본 추천
               </ResultButton>
               <ResultButton
                 onClick={() => {
-                  history.push("/recommendation/:id/user");
+                  Swal.fire({
+                    width: 240,
+                    padding: "0 0 20px 0",
+                    title: `서비스 준비 중입니다!`,
+                    imageUrl: ErrorAlert,
+                    imageWidth: 240,
+                    imageHeight: 120,
+                    imageAlt: "준비 중인 컨텐츠입니다!",
+                    showConfirmButton: false,
+                    timer: 1100,
+                  });
                 }}
               >
                 사용자 기반 추천

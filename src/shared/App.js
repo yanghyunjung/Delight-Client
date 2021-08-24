@@ -29,26 +29,22 @@ const App = () => {
         >
           <Switch>
             <Route exact path="/" component={Main} />
-            <Route exact path="/recommendation/:id" component={Recommend} />
-            <Route exact path="/result/:id" component={Result} />
+            <Route exact path="/recommendation" component={Recommend} />
+            <Route exact path="/result" component={Result} />
             <Route exact path="/login" component={Login} />
-            <Route
-              exact
-              path="/recommendation/:id/spinner"
-              component={Spinner}
-            />
+            <Route exact path="/recommendation/spinner" component={Spinner} />
             <Route exact path="/search" component={Search} />
-            <Route exact path="/main/:id" component={MainChat} />
+            <Route exact path="/main/chat" component={MainChat} />
             <Route
               exact
-              path="/recommendation/:id/user"
+              path="/recommendation/chat"
               component={UserRecommend}
             />
             <Route exact path="/mypage" component={MyPage} />
           </Switch>
         </Suspense>
       </Layout>
-    </ConnectedRouter >
+    </ConnectedRouter>
   );
 };
 
