@@ -6,6 +6,7 @@ import MainLogImg from "../image/hamburger.png";
 import mypage_2 from "../image/mypage_2.png";
 
 import MyPagePickCard from "../components/MyPagePickCard";
+import MainCard from "../components/MainCard";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getFrequencyThunk, getFrequency } from "../redux/modules/frequent-tag";
@@ -43,7 +44,9 @@ const MyPageDetail = () => {
         <LogOutBtn>logout</LogOutBtn>
       </Grid>
 
-      <Box1>
+      <MainCard />
+
+      {/* <Box1>
         <span style={{ margin: "0 0 0 1.5rem" }}>
           회원님의 지난 주 <br />
           <span style={{ color: "#FF6B12", fontWeight: "bold" }}>
@@ -52,7 +55,7 @@ const MyPageDetail = () => {
           매니아!
         </span>
         <Img src={MainLogImg} />
-      </Box1>
+      </Box1> */}
 
       <Grid flex width="100%" height="15%" padding="2rem">
         <PickBtn>지난 PICK</PickBtn>
