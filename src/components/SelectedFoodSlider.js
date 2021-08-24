@@ -14,7 +14,6 @@ const SelectedFoodSlider = () => {
 
   const settings = {
     infinite: false,
-    centerPadding: "3rem",
     slidesToShow: 5,
     swipeToSlide: true,
     nextArrow: <NextArrow />,
