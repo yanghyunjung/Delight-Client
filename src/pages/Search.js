@@ -81,7 +81,7 @@ const Search = (props) => {
 };
 
 const Container1 = styled.div`
-  width: 36rem;
+  width: 100%;
   margin: 0 auto;
 `;
 

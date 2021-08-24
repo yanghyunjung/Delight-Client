@@ -124,7 +124,7 @@ const Main = (props) => {
 };
 
 const Container = styled.div`
-  width: 36rem;
+  width: 100%;
   margin: 0 auto;
 `;
 
