@@ -56,7 +56,7 @@ const ResultSlider = ({ data }) => {
     <React.Fragment>
       <Container>
         <StlyedSlider {...settings}>
-          {data.map((item, index) => {
+          {data && data.map((item, index) => {
             const food = {
               name: item.name,
               score: item.score,

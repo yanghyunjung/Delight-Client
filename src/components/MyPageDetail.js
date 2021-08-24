@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFrequencyThunk, getFrequency } from "../redux/modules/frequent-tag";
 
 import { getHistorySV } from "../shared/api";
-import { addHistory } from "../redux/modules/food";
+import { addHistory, resetData } from "../redux/modules/food";
 
 import { history } from "../redux/configureStore";
 
@@ -80,7 +80,8 @@ const MyPageDetail = () => {
             <Button1
               src={mypage_2}
               onClick={() => {
-                return history.push("/recommendation");
+                dispatch(resetData())
+                history.push("/recommendation");
               }}
             />
           </Box2>

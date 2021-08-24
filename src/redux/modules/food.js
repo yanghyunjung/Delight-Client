@@ -50,6 +50,10 @@ const food = createSlice({
     addHistory: (state, action) => {
       state.history = action.payload;
     },
+    resetData: (state, action) => {
+      state.selectList = [];
+      state.foodName = [];
+    },
   },
 });
 
@@ -74,12 +78,10 @@ export const sendSelectFoodSV = ({ foods, setIsLoding }) => {
         showConfirmButton: true,
         confirmButtonColor: "#78C6FF",
         confirmButtonText: "알겠어요",
-        onOpen: () => {},
-      }).then((result) => {
-        if (result.value) {
-          console.log("sendSelectFood Error ::: ", error);
-          window.location.replace("/recommendation");
-        }
+      }).then(() => {
+        dispatch(resetData());
+        console.log("sendSelectFood Error ::: ", error);
+        window.location.replace("/recommendation");
       });
     }
   };
@@ -102,7 +104,6 @@ export const sendMyPickSV = ({ foodName }) => {
         showConfirmButton: true,
         confirmButtonColor: "#78C6FF",
         confirmButtonText: "알겠어요",
-        onOpen: () => {},
       }).then((result) => {
         if (result.value) {
           console.log("sendMyPickSV Error ::: ", error);
@@ -112,5 +113,6 @@ export const sendMyPickSV = ({ foodName }) => {
   };
 };
 
-export const { addFood, deleteFood, getResult, addHistory } = food.actions;
+export const { addFood, deleteFood, getResult, addHistory, resetData } =
+  food.actions;
 export default food.reducer;
