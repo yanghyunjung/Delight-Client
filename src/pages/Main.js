@@ -55,7 +55,7 @@ const Main = (props) => {
             }}
           />
         </GRID2>
-        <MainLogCard />
+        <MainCard />
         <Footer />
       </Container>
     );
