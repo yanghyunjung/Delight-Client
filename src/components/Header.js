@@ -39,7 +39,7 @@ const Header = (props) => {
           }}
         />
         <Logo
-          style={{ cursor: "pointer", marginLeft: "21rem" }}
+          style={{ cursor: "pointer" }}
           src={MyPageLogo}
           onClick={() => {
             history.replace("/mypage");
@@ -59,11 +59,6 @@ const Header = (props) => {
           window.location.replace("/");
         }}
       />
-      <span
-        style={{ fontSize: "2rem", fontWeight: "bold", marginTop: "0.1rem" }}
-      >
-        밥씨
-      </span>
       <BOX>
         <Text
           size="1.5rem"
@@ -87,6 +82,8 @@ const Header = (props) => {
 
 // 헤더 박스 모양 잡아주기
 const HEADER = styled.div`
+  display: flex;
+  justify-content: space-between;
   box-sizing: border-box;
   border: none;
   /* width: 100vw; */

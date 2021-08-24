@@ -31,8 +31,9 @@ const Loading = () => {
             밥씨
           </span>
         </span>
-        <WhiteLogo src={Logo} />
-        <div style={{ position: "absolute", bottom: "0" }}>
+
+        <div style={{ position: "fixed", bottom: "0" }}>
+          <WhiteLogo src={Logo}/>
           <Bob src={Bobsi} />
         </div>
       </Screen>
@@ -46,8 +47,10 @@ const Screen = styled.div`
   align-items: center;
   justify-content: center;
   width: 36rem;
-  height: 64rem;
+  height: 100vh;
   background-color: #ffa012;
+  position: fixed;
+  top: 0;
 `;
 
 const Bob = styled.img`
@@ -62,6 +65,9 @@ const WhiteLogo = styled.img`
   height: 3rem;
   display: flex;
   margin-top: 6rem;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -80%);
 `;
 
 export default Loading;

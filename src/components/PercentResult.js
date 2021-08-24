@@ -5,7 +5,6 @@ import PieChart from "./PieChart";
 
 const PercentResult = (props) => {
   const data = props.data;
-  console.log("===", data);
   return (
     <React.Fragment>
       <Container>
