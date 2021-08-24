@@ -162,7 +162,7 @@ const boxShow = keyframes`
 const DIV = styled.div`
   background-color: #ffffff;
   position: fixed;
-  width: 36rem;
+  width: 100%;
   animation: ${boxShow} 0.9s ease-in-out;
   bottom: 0;
   border-top-left-radius: 3rem;
@@ -175,7 +175,7 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   bottom: 0;
-  width: 36rem;
+  width: 100%;
   height: auto;
   margin: 0 0 1rem 1.3rem;
   align-items: flex-start;

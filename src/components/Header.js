@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 import { Text } from "../elements";
 
-import HeaderLogo from "../image/logo.png";
+import HeaderLogo from "../image/HeaderLogo.png";
 import MyPageLogo from "../image/mypageIcon.png";
 
 import { history } from "../redux/configureStore";
@@ -38,15 +38,6 @@ const Header = (props) => {
             window.location.replace("/");
           }}
         />
-        <span
-          style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            marginTop: "0.1rem",
-          }}
-        >
-          밥씨
-        </span>
         <Logo
           style={{ cursor: "pointer", marginLeft: "21rem" }}
           src={MyPageLogo}
