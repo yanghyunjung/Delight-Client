@@ -77,7 +77,7 @@ const MyPageDetail = () => {
             <Button1
               src={mypage_2}
               onClick={() => {
-                return history.push("/recommendation/:id");
+                return history.push("/recommendation");
               }}
             />
           </Box2>

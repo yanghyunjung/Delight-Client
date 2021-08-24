@@ -4,7 +4,6 @@ import styled, { keyframes } from "styled-components";
 
 import Swal from "sweetalert2";
 
-import FullAlert from "../image/FullAlert.svg";
 import ZeroAlert from "../image/ZeroAlert.svg";
 import BobAI from "../image/BobAi.svg";
 
@@ -32,24 +31,6 @@ const Recommand = (props) => {
     }
     return getFoods();
   };
-
-  useEffect(() => {
-    if (list.length > 9) {
-      Swal.fire({
-        width: 240,
-        height: 150,
-        padding: "0 0 20px 0",
-        title: `10개 다 골랐어요!`,
-        imageUrl: FullAlert,
-        imageWidth: 240,
-        imageHeight: 100,
-        imageAlt: "음식을 골라주세요",
-        showConfirmButton: false,
-        background: "#ffffff",
-        timer: 1000,
-      });
-    }
-  }, [list.length]);
 
   useEffect(() => {
     handleRecommendFood();
@@ -123,7 +104,7 @@ const Recommand = (props) => {
                     height="5rem"
                     cursor
                     _onClick={() => {
-                      history.replace("/recommendation/:id/spinner");
+                      history.replace("/recommendation/spinner");
                     }}
                   >
                     다 골랐어요! ( {list.length} / 10 )
@@ -139,7 +120,6 @@ const Recommand = (props) => {
                     _onClick={() =>
                       Swal.fire({
                         width: 240,
-                        height: 150,
                         padding: "0 0 20px 0",
                         title: `음식을 골라주세요!`,
                         imageUrl: ZeroAlert,
@@ -147,7 +127,6 @@ const Recommand = (props) => {
                         imageHeight: 100,
                         imageAlt: "음식을 골라주세요",
                         showConfirmButton: false,
-                        background: "#ffffff",
                         timer: 1500,
                       })
                     }

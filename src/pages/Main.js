@@ -13,7 +13,6 @@ import Swal from "sweetalert2";
 import { history } from "../redux/configureStore";
 
 const Main = (props) => {
-
   // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
 
@@ -44,7 +43,7 @@ const Main = (props) => {
           <RecButton
             src={RecComButton}
             onClick={() => {
-              return history.push("/main/:id");
+              return history.push("/main/chat");
             }}
           />
         </GRID>

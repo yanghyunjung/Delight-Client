@@ -42,9 +42,8 @@ const FoodCard = ({ data, key }) => {
 
   if (activeFood.active) {
     return (
-      <React.Fragment>
+      <React.Fragment key={data.id}>
         <Container
-          key={data.id}
           onClick={() => {
             onDelete(data.name, data.imgUrl);
           }}
@@ -63,9 +62,8 @@ const FoodCard = ({ data, key }) => {
   }
   if (!activeFood.active) {
     return (
-      <React.Fragment>
+      <React.Fragment key={key}>
         <Container
-          key={key}
           onClick={() => {
             onAdd(data.name, data.imgUrl);
           }}
@@ -119,4 +117,4 @@ const FoodName = styled.div`
   margin: 0.3rem auto 0.5rem;
 `;
 
-export default FoodCard;
+export default React.memo(FoodCard);
