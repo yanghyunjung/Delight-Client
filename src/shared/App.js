@@ -48,7 +48,7 @@ const App = () => {
           </Switch>
         </Suspense>
       </Layout>
-    </ConnectedRouter>
+    </ConnectedRouter >
   );
 };
 
