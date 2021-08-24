@@ -1,16 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Text } from "../elements";
-import HeaderLogo from "../image/logo.png";
-import MyPageLogo from "../image/mypageIcon.png";
-import { history } from "../redux/configureStore";
 import Swal from "sweetalert2";
 
+import { Text } from "../elements";
+
+import HeaderLogo from "../image/logo.png";
+import MyPageLogo from "../image/mypageIcon.png";
+
+import { history } from "../redux/configureStore";
 
 const Header = (props) => {
   // 로그인 유무 확인
   const is_jwt = document.cookie ? true : false;
+
+  const noLogin = () => {
+    if (!is_jwt) {
+      Swal.fire({
+        position: "top-center",
+        icon: "info",
+        title: "로그인이 필요합니다",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      return history.push("/login");
+    }
+  };
 
   // 로그인 시
   if (is_jwt) {
@@ -36,31 +51,23 @@ const Header = (props) => {
           style={{ cursor: "pointer", marginLeft: "21rem" }}
           src={MyPageLogo}
           onClick={() => {
-            // window.alert("서비스 준비중 입니다.");
-            window.location.replace("/mypage");
+            history.replace("/mypage");
           }}
         />
       </HEADER>
     );
   }
 
-  const noLogin = () => {
-    if (!is_jwt) {
-      Swal.fire({
-        position: "top-center",
-        icon: "info",
-        title: "로그인이 필요합니다",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-      return history.push("/login");
-    }
-  };
-
   // 비로그인 시
   return (
     <HEADER>
-      <Logo style={{ cursor: "pointer" }} src={HeaderLogo} onClick={noLogin} />
+      <Logo
+        style={{ cursor: "pointer" }}
+        src={HeaderLogo}
+        onClick={() => {
+          window.location.replace("/");
+        }}
+      />
       <span
         style={{ fontSize: "2rem", fontWeight: "bold", marginTop: "0.1rem" }}
       >
@@ -72,7 +79,7 @@ const Header = (props) => {
           margin="1rem"
           cursor
           _onClick={() => {
-            window.location.replace("/login"); // history.push(/)를 사용하면 refresh가 안됨.
+            history.push("/login");
           }}
         >
           LOGIN
@@ -80,10 +87,7 @@ const Header = (props) => {
         <Logo1
           style={{ cursor: "pointer" }}
           src={MyPageLogo}
-          onClick={() => {
-            window.alert("서비스 준비중 입니다.");
-            // window.location.replace("/mypage");
-          }}
+          onClick={noLogin}
         />
       </BOX>
     </HEADER>

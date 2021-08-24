@@ -69,7 +69,7 @@ const Spinner = (props) => {
               <WrapButton>
                 <ResultButton
                   onClick={() => {
-                    history.push("/result/:id");
+                    history.push("/result");
                   }}
                 >
                   결과 볼래요!!

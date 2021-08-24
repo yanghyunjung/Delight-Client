@@ -57,7 +57,7 @@ const Result = () => {
           <SubText>원하는 결과가 아니신가요?</SubText>
           <ReTryButton
             onClick={() => {
-              window.location.replace("/recommendation/:id");
+              window.location.replace("/recommendation");
             }}
           >
             테스트 다시하기
