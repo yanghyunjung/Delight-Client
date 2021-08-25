@@ -14,8 +14,11 @@ const SelectedFoodSlider = () => {
 
   const settings = {
     infinite: false,
+    lazyLoad: true,
+    speed: 500,
     slidesToShow: 5,
     swipeToSlide: true,
+    variableWidth: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
@@ -41,6 +44,7 @@ const StlyedSlider = styled(Slider)`
   width: 100%;
   padding-bottom: 1.2rem;
   margin: 0px auto;
+  display: flex;
   .slick-list {
     text-align: center;
     margin: 0px auto;
