@@ -239,6 +239,9 @@ const Title = styled.h2`
 
 const Container = styled.div`
   width: 100%;
+  @media ${(props) => props.theme.mobile} {
+  /* background-color: #ffa012; */
+}
 `;
 
 const ContentsContainer = styled.div`

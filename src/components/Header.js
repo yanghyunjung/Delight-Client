@@ -95,6 +95,9 @@ const HEADER = styled.div`
   display: flex;
   box-shadow: 0 0.3rem #e5e5e3;
   align-items: center;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const BOX = styled.div`
