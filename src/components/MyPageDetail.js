@@ -65,27 +65,27 @@ const MyPageDetail = () => {
           return <MyPagePickCard data={item} />;
         })
       ) : (
-          // 이 부분은 임의로 넣은거라서 수정하셔도 무방합니다.
-          <Box2
-            style={{
-              fontSize: "1rem",
-              lineHeight: "2rem",
-            }}
-          >
-            <Text padding="2rem 0 2rem 2rem" color="#717171" size="1.5rem">
-              회원님은 아직 데이터가 없어요!
+        // 이 부분은 임의로 넣은거라서 수정하셔도 무방합니다.
+        <Box2
+          style={{
+            fontSize: "1rem",
+            lineHeight: "2rem",
+          }}
+        >
+          <Text padding="2rem 0 2rem 2rem" color="#717171" size="1.5rem">
+            회원님은 아직 데이터가 없어요!
             <br />
             지금 추천받고 기록해 보세요 :)
           </Text>
-            <Button1
-              src={mypage_2}
-              onClick={() => {
-                dispatch(resetData())
-                history.push("/recommendation");
-              }}
-            />
-          </Box2>
-        )}
+          <Button1
+            src={mypage_2}
+            onClick={() => {
+              dispatch(resetData());
+              history.push("/recommendation");
+            }}
+          />
+        </Box2>
+      )}
     </Container>
   );
 };
@@ -95,20 +95,30 @@ const Button1 = styled.img`
   width: 28rem;
   height: 4.8rem;
   cursor: pointer;
+  @media ${(props) => props.theme.mobile} {
+  }
 `;
 
 const Box2 = styled.div`
   margin: 0 auto;
-  width: 32rem;
+  width: 100%;
   height: 14.4rem;
   background-color: #f2f2f2;
   border-radius: 1.6rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 80%;
+    margin: 0 2rem;
+    /* padding: 1.6rem 2rem; */
+  }
 `;
 
 const Container = styled.div`
-  width: 36rem;
+  width: 100%;
   margin: 0 auto;
   flex-direction: column;
+  @media ${(props) => props.theme.mobile} {
+    background-color: #ffa012;
+  }
 `;
 const Title1 = styled.h2`
   width: 11.7rem;

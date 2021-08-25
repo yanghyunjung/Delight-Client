@@ -115,6 +115,13 @@ body {
   margin: auto;
   width: 36rem;
 }
+
+@media screen and (max-width: 540px) {
+  body {
+    width: 100%;
+  }
+}
+
 ol,
 ul {
   list-style: none;
