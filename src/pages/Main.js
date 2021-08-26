@@ -10,10 +10,11 @@ import styled from "styled-components";
 import Swal from "sweetalert2";
 
 import { history } from "../redux/configureStore";
+import { getCookie } from "../shared/Cookie";
 
 const Main = (props) => {
   // 로그인 유무 확인
-  const is_jwt = document.cookie ? true : false;
+  const is_jwt = getCookie("jwt") ? true : false;
 
   // 로그인 시
   if (is_jwt) {

@@ -116,9 +116,6 @@ const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   flex-direction: column;
-  @media ${(props) => props.theme.mobile} {
-    background-color: #ffa012;
-  }
 `;
 const Title1 = styled.h2`
   width: 11.7rem;

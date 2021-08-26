@@ -116,6 +116,10 @@ const ResultButton = styled.button`
   margin: 0 auto;
   cursor: pointer;
   padding: 1.7rem 0;
+  @media screen and (max-width: 300px) {
+    width: 16rem;
+    margin: 0;
+  }
 `;
 
 const WrapName = styled.div`
@@ -177,7 +181,7 @@ const Chat = styled.span`
   font-weight: 500;
   border-radius: 2rem;
   padding: 1.6rem 1.5rem 1.5rem 1.5rem;
-  margin: 0 auto 1.2rem 2rem;
+  margin: 0 5rem 1.2rem 2rem;
   line-height: 2rem;
   background-color: #f6f6f6;
   animation-duration: 1s;
@@ -185,6 +189,11 @@ const Chat = styled.span`
   animation-timing-function: ease;
   animation-name: ${Slideup};
   animation-fill-mode: forwards;
+  & img {
+    @media screen and (max-width: 300px) {
+    width: 16rem;
+  }
+  }
 `;
 
 export default Spinner;
