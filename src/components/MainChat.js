@@ -105,6 +105,10 @@ const ResultButton = styled.button`
   margin: 0 auto;
   cursor: pointer;
   padding: 1.7rem 0;
+  @media screen and (max-width: 300px) {
+    width: 16rem;
+    margin: 0;
+  }
 `;
 
 const WrapName = styled.div`
@@ -177,6 +181,11 @@ const Chat = styled.span`
   animation-timing-function: ease;
   animation-name: ${Slideup};
   animation-fill-mode: forwards;
+  & img {
+    @media screen and (max-width: 300px) {
+      width: 16rem;
+    }
+  }
 `;
 
 export default MainChat;

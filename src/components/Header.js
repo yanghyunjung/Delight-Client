@@ -9,10 +9,11 @@ import HeaderLogo from "../image/HeaderLogo.png";
 import MyPageLogo from "../image/mypageIcon.png";
 
 import { history } from "../redux/configureStore";
+import { getCookie } from "../shared/Cookie";
 
 const Header = (props) => {
   // 로그인 유무 확인
-  const is_jwt = document.cookie ? true : false;
+  const is_jwt = getCookie("jwt") ? true : false;
 
   const noLogin = () => {
     if (!is_jwt) {
