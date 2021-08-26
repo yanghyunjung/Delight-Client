@@ -209,7 +209,7 @@ const MenuItem = styled.a`
   width: auto;
   padding: 0.8rem;
   display: flex;
-  font-size: 1.8vh;
+  font-size: 1.7vh;
   ${(props) =>
     props.tabIndex &&
     `  &:nth-child(${props.tabIndex}) {
