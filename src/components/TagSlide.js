@@ -65,16 +65,9 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
   return (
     <>
       {/* 태그 선택 화면 띄우기 */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: "0",
-          width: "36rem",
-          backgroundColor: "rgba(0,0,0,0.6)",
-          height: "100%",
-        }}
+      <BackGround
         onClick={() => setTagOpen(false)}
-      ></div>
+      ></BackGround>
       <DIV tagOpen={tagOpen}>
         <div>
           <Layout>
@@ -159,6 +152,17 @@ const boxShow = keyframes`
     }
 `;
 
+const BackGround = styled.div`
+  position: fixed;
+  width: 36rem;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
+`;
+
 const DIV = styled.div`
   background-color: #ffffff;
   position: fixed;
@@ -168,6 +172,9 @@ const DIV = styled.div`
   border-top-left-radius: 3rem;
   border-top-right-radius: 3rem;
   padding-top: 1.5rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const Layout = styled.div`
@@ -177,7 +184,7 @@ const Layout = styled.div`
   bottom: 0;
   width: 100%;
   height: auto;
-  margin: 0 0 1rem 1.3rem;
+  margin: 0 0 10px 13px;
   align-items: flex-start;
   justify-content: flex-start;
   line-height: 6rem;
@@ -193,10 +200,13 @@ const Box1 = styled.div`
   flex-wrap: wrap;
   align-items: center;
   height: 9rem;
-  width: 85%;
-  padding: 0.3rem 0 0.3rem 1.3rem;
+  width: 89%;
+  padding: 5px 0 5px 13px;
   background-color: #f2f2f2;
   border-radius: 1.6rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 88%;
+  }
 `;
 
 const Box2 = styled.div`
@@ -206,7 +216,7 @@ const Box2 = styled.div`
 `;
 
 const SelectTag = styled.div`
-  margin: 0 2rem 0 0;
+  margin: 0 20px 10px 0;
   font-size: 1.4rem;
   font-family: sans-serif;
   height: 2rem;
@@ -232,7 +242,7 @@ const SelectTag1 = styled.div`
   padding: 0.5rem 1.5rem;
   line-height: 2rem;
   border-radius: 1.6rem;
-  &:hover{
+  &:hover {
     color: #ffa012;
   }
 `;

@@ -5,21 +5,19 @@ import mypage_nodata from "../image/mypage_nodata.png";
 
 const MainCard = (props) => {
   return (
-    <>
+    <DIV>
       <GRID>
         <span
           style={{
-            fontSize: "1.8rem",
+            fontSize: "1.6em",
             fontWeight: "bold",
-            padding: "1.5rem 4rem 2rem 2rem",
           }}
         >
           나의 데이터가 궁금하다면?
         </span>
         <span
           style={{
-            fontSize: "1.2rem",
-            padding: "1.9rem 0 2rem 0",
+            fontSize: "1.1em",
             color: "#ACACAC",
           }}
         >
@@ -28,40 +26,70 @@ const MainCard = (props) => {
       </GRID>
       <GRID1>
         <Box>
-          <span style={{ margin: "0 0 0 1.5rem" }}>
+          <span style={{ margin: "0 0 0 10px" }}>
             회원님의 지난 주 <br />
             데이터가 없어요.
           </span>
-          <img src={mypage_nodata} />
+          <Img srcSet={mypage_nodata} />
         </Box>
       </GRID1>
-    </>
+    </DIV>
   );
 };
 
+const DIV = styled.div`
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
+`;
+
 const GRID = styled.div`
-  padding: 2rem 0 0 0;
-  display: grid;
-  grid-template-columns: 28rem 2fr;
+  display: flex;
+  justify-content: space-around;
+  padding: 25px 0 10px 0;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
 `;
 
 const GRID1 = styled.div`
   display: flex;
+  @media ${(props) => props.theme.mobile} {
+    width: 95%;
+    display: flex;
+    margin: auto;
+  }
 `;
 
 const Box = styled.div`
   display: grid;
-  grid-template-columns: 23rem 2fr;
+  grid-template-columns: 75% 1fr;
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 1.5rem;
-  padding: 1rem 0 1rem 0;
-  width: 35rem;
+  padding: 10px 5px 10px 0;
+  width: 100vw;
   height: 8rem;
-  margin: 0 2rem;
+  margin: 5px 25px;
   font-size: 2rem;
   line-height: 3rem;
   color: #717171;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+    padding: 15px;
+    grid-template-columns: 75% 1fr;
+  }
+`;
+
+const Img = styled.img`
+  @media ${(props) => props.theme.mobile} {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
 `;
 
 export default MainCard;

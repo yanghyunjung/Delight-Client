@@ -33,7 +33,7 @@ const Loading = () => {
         </span>
 
         <div style={{ position: "fixed", bottom: "0" }}>
-          <WhiteLogo src={Logo}/>
+          <WhiteLogo src={Logo} />
           <Bob src={Bobsi} />
         </div>
       </Screen>
@@ -51,6 +51,9 @@ const Screen = styled.div`
   background-color: #ffa012;
   position: fixed;
   top: 0;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const Bob = styled.img`

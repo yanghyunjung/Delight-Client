@@ -3,7 +3,6 @@ import React from "react";
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
 import MainCard from "../components/MainCard";
-import MainLogCard from "../components/MainLogCard";
 
 import RecComButton from "../image/RecButton.png";
 import SearchButton from "../image/SearchButton.png";
@@ -32,7 +31,7 @@ const Main = (props) => {
             }}
           >
             오늘 사람들이 가장 <br />
-            즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top10</span>
+            즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top5</span>
           </p>
         </Title>
 
@@ -127,6 +126,9 @@ const Main = (props) => {
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -137,25 +139,39 @@ const Title = styled.div`
 const GRID = styled.div`
   margin-top: 1.7rem;
   display: flex;
-  padding: 1rem;
+  padding: 0 23px 10px 23px;
   justify-content: center;
 `;
 
 const GRID2 = styled.div`
   display: flex;
   justify-content: center;
+  padding: 0 23px 10px 23px;
 `;
 
 const RecButton = styled.img`
   cursor: pointer;
   width: 32rem;
   height: 9rem;
+  @media ${(props) => props.theme.mobile} {
+    width: auto;
+    height: auto;
+    max-width: 85%;
+    max-height: 100%;
+  }
 `;
 
 const SeaButton = styled.img`
   cursor: pointer;
   width: 32rem;
   height: 9rem;
+  @media ${(props) => props.theme.mobile} {
+    padding: 0 15px 15px 15px;
+    width: auto;
+    height: auto;
+    max-width: 85%;
+    max-height: 100%;
+  }
 `;
 
 export default Main;
