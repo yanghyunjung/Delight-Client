@@ -9,7 +9,7 @@ const MainCard = (props) => {
       <GRID>
         <span
           style={{
-            fontSize: "1.6em",
+            fontSize: "1.8em",
             fontWeight: "bold",
           }}
         >
@@ -17,7 +17,8 @@ const MainCard = (props) => {
         </span>
         <span
           style={{
-            fontSize: "1.1em",
+            marginTop: "3px",
+            fontSize: "1.3em",
             color: "#ACACAC",
           }}
         >
@@ -26,10 +27,10 @@ const MainCard = (props) => {
       </GRID>
       <GRID1>
         <Box>
-          <span style={{ margin: "0 0 0 10px" }}>
-            회원님의 지난 주 <br />
-            데이터가 없어요.
-          </span>
+          <SpanWrap>
+            <span>회원님의 지난 주&nbsp;</span>
+            <span>데이터가 없어요.</span>
+          </SpanWrap>
           <Img srcSet={mypage_nodata} />
         </Box>
       </GRID1>
@@ -80,6 +81,17 @@ const Box = styled.div`
     width: 100%;
     padding: 15px;
     grid-template-columns: 75% 1fr;
+  }
+`;
+
+const SpanWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  @media ${(props) => props.theme.mobile} {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 
