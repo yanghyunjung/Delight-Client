@@ -19,6 +19,8 @@ const MainSlider = (props) => {
   const [tabIndex, setTabIndex] = useState(1);
 
   useEffect(() => {
+    const list = document.querySelector(".slick-list");
+    list.style.setProperty("padding", "0px 45px", "important");
     dispatch(getCategoryThunk(0));
   }, []);
 
@@ -27,6 +29,7 @@ const MainSlider = (props) => {
     infinite: true,
     speed: 600,
     centerMode: true,
+    variableWidth: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
@@ -64,12 +67,12 @@ const MainSlider = (props) => {
       <StyledSlider {...settings} ref={sliderRef}>
         {foods.map((food, index) => (
           <Card>
-            <ImgWrap style={{ marginBottom: "0.7rem" }}>
+            <ImgWrap>
               <img src={food.imgUrl} alt="food" />
             </ImgWrap>
             <span
               style={{
-                fontSize: "2rem",
+                fontSize: "2.2em",
                 fontWeight: "bold",
                 lineHeight: "2.8rem",
               }}
@@ -94,10 +97,16 @@ const StyledSlider = styled(Slider)`
     text-align: center;
     margin: 0px auto;
     max-width: 32rem;
-    height: 38 rem;
+    @media ${(props) => props.theme.mobile} {
+      max-width: initial;
+    }
   }
   .slick-list div {
     outline: none;
+    @media ${(props) => props.theme.mobile} {
+      display: flex;
+      align-items: center;
+    }
   }
   .slick-track {
     height: 100%;
@@ -111,13 +120,20 @@ const ImgWrap = styled.div`
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
-  height: 60%;
+  height: 21rem;
+  width: 21rem;
   transform: scale(0.95);
   & img {
-    border-radius: 11.5rem;
+    border-radius: 2.5rem;
     margin: 0 auto;
-    width: 23rem;
-    height: 23rem;
+    width: 21rem;
+    height: 21rem;
+    @media ${(props) => props.theme.mobile} {
+      width: 100%;
+      height: 100%;
+      /* max-width: 100%;
+      max-height: 100%; */
+    }
   }
 `;
 
@@ -171,6 +187,10 @@ const ArrowWrap = styled.div`
   & img {
     width: 2.3rem;
     height: 5rem;
+    @media ${(props) => props.theme.mobile} {
+      width: 2.8rem;
+      height: 5.5rem;
+    }
   }
 `;
 
@@ -193,7 +213,7 @@ const MenuItem = styled.a`
   width: auto;
   padding: 0.8rem;
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1.9vh;
   ${(props) =>
     props.tabIndex &&
     `  &:nth-child(${props.tabIndex}) {
@@ -202,6 +222,10 @@ const MenuItem = styled.a`
     border-bottom: 1.8px solid;
     transition: 0.3s ease-in-out; // 시작지점과 종료지점의 변화가 서서히 일어나게끔
   }`}
+  @media ${(props) => props.theme.mobile} {
+    font-size: 1.8vh;
+    padding: 0 5px 5px 5px;
+  }
 `;
 
 export default MainSlider;
