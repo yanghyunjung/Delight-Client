@@ -43,7 +43,7 @@ const MyPageDetail = () => {
       </Grid1>
 
       <MainCard />
-
+      <Title2>지난 PICK</Title2>
       {historyList ? (
         historyList.map((item) => {
           return <MyPagePickCard data={item} />;
@@ -61,8 +61,9 @@ const Container = styled.div`
 
 const Grid1 = styled.div`
   width: 35rem;
-  margin: 0 auto;
+  margin: 0 auto 0 3rem;
 `;
+
 const Title1 = styled.h2`
   width: 100%;
   height: 6.6rem;
@@ -77,6 +78,14 @@ const Title1 = styled.h2`
   @media ${(props) => props.theme.tablet} {
     width: 100%;
   }
+`;
+
+const Title2 = styled.h2`
+  width: 350px;
+  margin: 2rem auto;
+  padding: 0 0 0 3rem;
+  font-size: 2rem;
+  font-weight: bold;
 `;
 
 const LogOutBtn = styled.button`

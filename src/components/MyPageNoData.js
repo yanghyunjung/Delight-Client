@@ -14,7 +14,7 @@ const MyPageNoData = () => {
   const dispatch = useDispatch();
   return (
     <Container>
-      <Title1>지난 PICK</Title1>
+
       <Box1
         style={{
           fontSize: "1rem",
@@ -43,7 +43,7 @@ const Container = styled.div`
   margin: 0 auto;
   align-items:center;
   @media ${(props) => props.theme.mobile} {
-    width: 90vw;
+    width: 60%;
   }
   
   @media ${(props) => props.theme.mobile} {
@@ -51,12 +51,7 @@ const Container = styled.div`
   }
 `;
 
-const Title1 = styled.h2`
-  width: 350px;
-  margin: 2rem auto;
-  font-size: 2rem;
-  font-weight: bold;
-`;
+
 
 const Box1 = styled.div`
   text-align:center;
