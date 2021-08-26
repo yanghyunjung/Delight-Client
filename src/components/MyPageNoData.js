@@ -39,15 +39,11 @@ const MyPageNoData = () => {
 };
 
 const Container = styled.div`
-  width: 340px;  
+  width: 320px;  
   margin: 0 auto;
   align-items:center;
   @media ${(props) => props.theme.mobile} {
-    width: 60%;
-  }
-  
-  @media ${(props) => props.theme.mobile} {
-    width: 310px;
+    width: 80%;
   }
 `;
 
@@ -66,7 +62,7 @@ const Button1 = styled.img`
   height: 4.8rem;
   cursor: pointer; 
   @media ${(props) => props.theme.mobile} {
-  width: 260px;
+  width: 90%;
   }
 `;
 
