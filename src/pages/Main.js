@@ -30,7 +30,7 @@ const Main = (props) => {
             }}
           >
             오늘 사람들이 가장 <br />
-            즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top10</span>
+            즐겨 찾은 메뉴 <span style={{ color: "#FFA012" }}>Top5</span>
           </p>
         </Title>
 

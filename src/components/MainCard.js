@@ -57,7 +57,7 @@ const GRID = styled.div`
 const GRID1 = styled.div`
   display: flex;
   @media ${(props) => props.theme.mobile} {
-    width: 90%;
+    width: 95%;
     display: flex;
     margin: auto;
   }
