@@ -5,13 +5,13 @@ import mypage_nodata from "../image/mypage_nodata.png";
 
 const MainCard = (props) => {
   return (
-    <>
+    <Container>
       <GRID>
         <span
           style={{
             fontSize: "1.8rem",
             fontWeight: "bold",
-            padding: "1.5rem 4rem 2rem 2rem",
+            padding: "0 8rem 0 0",
           }}
         >
           나의 데이터가 궁금하다면?
@@ -19,7 +19,7 @@ const MainCard = (props) => {
         <span
           style={{
             fontSize: "1.2rem",
-            padding: "1.9rem 0 2rem 0",
+            // padding: "1.9rem 0 2rem 0",
             color: "#ACACAC",
           }}
         >
@@ -35,18 +35,25 @@ const MainCard = (props) => {
           <img src={mypage_nodata} />
         </Box>
       </GRID1>
-    </>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  width: 35rem;
+  margin: 0 auto;
+  align-items: center;
+  flex-direction: column;
+`;
+
 const GRID = styled.div`
-  padding: 2rem 0 0 0;
-  display: grid;
-  grid-template-columns: 28rem 2fr;
+  margin: 2rem 0 3rem 0;
+  justify-content: space-between;
 `;
 
 const GRID1 = styled.div`
   display: flex;
+  margin: 0 0 3rem 0;
 `;
 
 const Box = styled.div`
@@ -58,7 +65,7 @@ const Box = styled.div`
   padding: 1rem 0 1rem 0;
   width: 35rem;
   height: 8rem;
-  margin: 0 2rem;
+  /* margin: 0 2rem; */
   font-size: 2rem;
   line-height: 3rem;
   color: #717171;

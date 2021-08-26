@@ -98,6 +98,13 @@ const HEADER = styled.div`
   @media ${(props) => props.theme.mobile} {
     width: 100%;
   }
+  @media ${(props) => props.theme.tablet} {
+    width: 100%;
+  }
+  @media ${(props) => props.theme.desktop} {
+    width: 100%;
+  }
+
 `;
 
 const BOX = styled.div`

@@ -13,4 +13,7 @@ export const getFoodList = () => instance.get(`/api/foods`).then((res) => res);
 export const getHistorySV = () =>
   instance.get(`/api/mypicks/histories`).then((res) => res);
 
+export const getFrequency = () =>
+  instance.get(`/api/tags/users/frequent-tag`).then((res) => res);
+
 export default instance;

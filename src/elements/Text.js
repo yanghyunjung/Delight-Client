@@ -47,7 +47,7 @@ Text.defaultProps = {
   margin: false,
   width: "",
   padding: false,
-  _onClick: () => {},
+  _onClick: () => { },
   cursor: "",
   is_float: "",
   text_align: "",
