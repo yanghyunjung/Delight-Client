@@ -19,15 +19,13 @@ const MainSlider = (props) => {
   const [tabIndex, setTabIndex] = useState(1);
 
   useEffect(() => {
-    const list = document.querySelector(".slick-list");
-    list.style.setProperty("padding", "0px 45px", "important");
     dispatch(getCategoryThunk(0));
   }, []);
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 600,
+    speed: 700,
     centerMode: true,
     variableWidth: true,
     slidesToShow: 1,
@@ -124,15 +122,13 @@ const ImgWrap = styled.div`
   width: 21rem;
   transform: scale(0.95);
   & img {
-    border-radius: 2.5rem;
+    border-radius: 1.5rem;
     margin: 0 auto;
     width: 21rem;
     height: 21rem;
     @media ${(props) => props.theme.mobile} {
       width: 100%;
       height: 100%;
-      /* max-width: 100%;
-      max-height: 100%; */
     }
   }
 `;
@@ -195,7 +191,7 @@ const ArrowWrap = styled.div`
 `;
 
 const MenuList = styled.div`
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
   padding: 2rem;
   width: auto;
@@ -213,7 +209,7 @@ const MenuItem = styled.a`
   width: auto;
   padding: 0.8rem;
   display: flex;
-  font-size: 1.9vh;
+  font-size: 1.8vh;
   ${(props) =>
     props.tabIndex &&
     `  &:nth-child(${props.tabIndex}) {
