@@ -102,10 +102,12 @@ const HEADER = styled.div`
 `;
 
 const BOX = styled.div`
-  margin: 0 0 0 16rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  @media ${(props) => props.theme.mobile} {
+    display: flex;
+  }
 `;
 
 // 로고 스타일 지정
