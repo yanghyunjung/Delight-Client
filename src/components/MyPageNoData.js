@@ -7,16 +7,14 @@ import { useDispatch } from "react-redux";
 import { resetData } from "../redux/modules/food";
 import { history } from "../redux/configureStore";
 
-import { Grid, Text } from "../elements";
+import { Text } from "../elements";
 
 
 const MyPageNoData = () => {
   const dispatch = useDispatch();
   return (
     <Container>
-
       <Title1>지난 PICK</Title1>
-
       <Box1
         style={{
           fontSize: "1rem",
@@ -26,9 +24,7 @@ const MyPageNoData = () => {
         <Text padding="2rem" color="#717171" size="1.5rem">
           회원님은 아직 데이터가 없어요!
             <br />
-            지금 추천받고 기록해 보세요 :)
-
-
+            지금 추천받고 기록해 보세요
         </Text>
         <Button1
           src={mypage_2}
@@ -48,6 +44,8 @@ const Container = styled.div`
   align-items:center;
   @media ${(props) => props.theme.mobile} {
     width: 90vw;
+  }
+  
   @media ${(props) => props.theme.mobile} {
     width: 310px;
   }

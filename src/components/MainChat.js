@@ -105,6 +105,10 @@ const ResultButton = styled.button`
   margin: 0 auto;
   cursor: pointer;
   padding: 1.7rem 0;
+  @media screen and (max-width: 300px) {
+    width: 16rem;
+    margin: 0;
+  }
 `;
 
 const WrapName = styled.div`
@@ -138,9 +142,12 @@ const Wrap = styled.div`
 
 const WrapContent = styled.div`
   margin: 0 auto;
-  max-width: 36rem;
+  width: 36rem;
   height: 92vh;
   position: relative;
+  @media ${(props) => props.theme.mobile} {
+    width: 100vw;
+  }
 `;
 
 const Container = styled.div`
@@ -174,6 +181,11 @@ const Chat = styled.span`
   animation-timing-function: ease;
   animation-name: ${Slideup};
   animation-fill-mode: forwards;
+  & img {
+    @media screen and (max-width: 300px) {
+      width: 16rem;
+    }
+  }
 `;
 
 export default MainChat;

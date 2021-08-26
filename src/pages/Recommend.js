@@ -41,16 +41,16 @@ const Recommand = (props) => {
       <Container>
         <ContentsContainer>
           <WrapContent>
-            <Grid width="100%" height="15%" padding="2rem 2rem 2rem">
-              <Grid is_flex height="70%" width="32rem">
+            <Wrap>
+              <Inner>
                 <AiImgWrap>
                   <img src={BobAI} alt="AI" />
                 </AiImgWrap>
                 <TitleWrap className="chat">
                   <Title>최근에 먹은 음식, 최대 10개 골라주세요!</Title>
                 </TitleWrap>
-              </Grid>
-            </Grid>
+              </Inner>
+            </Wrap>
             {isLoding ? (
               <WrapLoader>
                 <StyledLoader
@@ -143,6 +143,27 @@ const Recommand = (props) => {
   );
 };
 
+const Wrap = styled.div`
+  width: 100%;
+  height: 15%;
+  padding: 2rem 2rem 2rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 90vw;
+    padding: 2vh 5vw;
+  }
+`;
+
+const Inner = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  @media ${(props) => props.theme.mobile} {
+    width: 94%;
+    padding: 0 0rem 0 0;
+  }
+`;
+
 const Slideup = keyframes`
   from {
     opacity: 0;
@@ -179,15 +200,20 @@ const RefreshButton = styled.button`
   background-color: white;
   border: 1px solid #ffa012;
   border-radius: 1rem;
-  min-width: 32rem;
+  width: 32rem;
   cursor: pointer;
   padding: 1.7rem 0;
   margin: 1.7rem auto 2rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 90vw;
+    padding: 1.7rem 0;
+  }
 `;
 
 const SelectedBox = styled.div`
   position: fixed;
   bottom: 0;
+
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -197,6 +223,10 @@ const SelectedBox = styled.div`
   background-color: #f4f0ea;
   padding: 1.4rem 2rem;
   box-shadow: 0 -0.4rem 0.4rem 0 rgba(0, 0, 0, 0.1);
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+    left: 0;
+  }
 `;
 
 const FoodList = styled.div`
@@ -208,6 +238,10 @@ const FoodList = styled.div`
   grid-template-rows: repeat(5, minmax(9rem, 9rem));
   grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
   gap: 0.5rem 1.3rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 90vw;
+    padding: 0 5vw;
+  }
   &::-webkit-scrollbar {
     display: none;
   }
@@ -224,6 +258,8 @@ const AiImgWrap = styled.div`
   height: 5rem;
   border-radius: 1rem;
   box-sizing: border-box;
+  @media ${(props) => props.theme.mobile} {
+  }
   & img {
     width: 100%;
     height: 100%;
@@ -232,7 +268,6 @@ const AiImgWrap = styled.div`
 
 const Title = styled.h2`
   position: relative;
-  top: 50%;
   font-size: 1.5rem;
   font-weight: 600;
 `;
@@ -240,8 +275,7 @@ const Title = styled.h2`
 const Container = styled.div`
   width: 100%;
   @media ${(props) => props.theme.mobile} {
-  /* background-color: #ffa012; */
-}
+  }
 `;
 
 const ContentsContainer = styled.div`
@@ -250,8 +284,11 @@ const ContentsContainer = styled.div`
 
 const WrapContent = styled.div`
   margin: 0 auto 15rem;
-  max-width: 36rem;
+  width: 36rem;
   text-align: center;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const WrapBottomBox = styled.div`
@@ -269,6 +306,10 @@ const TitleWrap = styled.div`
   animation-timing-function: ease;
   animation-name: ${Slideup};
   animation-fill-mode: forwards;
+  @media ${(props) => props.theme.mobile} {
+    margin: 0 0 0 1rem;
+    width: 80vw;
+  }
   &.chat {
     position: relative;
     background: #f6f6f6;
