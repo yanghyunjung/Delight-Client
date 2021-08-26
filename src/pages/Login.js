@@ -6,7 +6,7 @@ import Google from "../image/google.png";
 import Kakao from "../image/kakao.png";
 import Naver from "../image/naver.png";
 
-import { Grid, Text } from "../elements";
+import { Text } from "../elements";
 
 import { GOOGLE_URL, KAKAO_URL, NAVER_URL } from "../redux/modules/oauth";
 
@@ -38,53 +38,67 @@ const Login = (props) => {
         <Box3>
 
           <ButtonG href={GOOGLE_URL}>
-            <Grid is_flex>
-              <LogoG />
-              <Text size="1.6rem" bold text_align="center" margin="auto">
-                구글로 1초 로그인하기
+
+            <LogoG />
+            <Text size="1.6rem" bold text_align="center" margin="auto">
+              구글로 1초 로그인하기
               </Text>
-            </Grid>
+
           </ButtonG>
 
           <ButtonK href={KAKAO_URL}>
-            <Grid is_flex>
-              <LogoK />
-              <Text size="1.6rem" bold text_align="center" margin="auto">
-                카카오로 1초 로그인하기
+
+            <LogoK />
+            <Text size="1.6rem" bold text_align="center" margin="auto">
+              카카오로 1초 로그인하기
               </Text>
-            </Grid>
+
           </ButtonK>
 
           <ButtonN href={NAVER_URL}>
-            <Grid is_flex>
-              <LogoN />
-              <Text
-                color="white"
-                size="1.6rem"
-                bold
-                text_align="center"
-                margin="auto"
-              >
-                네이버로 1초 로그인하기
+            <LogoN />
+            <Text
+              color="white"
+              size="1.6rem"
+              bold
+              text_align="center"
+              margin="auto"
+            >
+              네이버로 1초 로그인하기
               </Text>
-            </Grid>
           </ButtonN>
         </Box3>
       </Container>
+
     </React.Fragment>
   );
 };
 
 const Container = styled.div`
+  width:  100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 11rem;
+  justify-content: center;
+  padding: 11rem 0 0 0;
+  margin:0 auto;
 `;
 
 const Box = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  /* @media ${(props) => props.theme.mobile} {
+    background-color: yellow;
+    height:0%;
+  } */
+`;
+
+const Logo = styled.img`
+  width: 100%;
+  height: 6rem;  
+    
 `;
 
 const Box2 = styled.div`
@@ -95,10 +109,14 @@ const Box2 = styled.div`
 const Box3 = styled.div`
   display: grid;
   grid-gap: 2rem;
+  width: 110vw;
 `;
 
 // sns 버튼
 const ButtonG = styled.a`
+  display: flex;
+  align-items:center;
+  justify-content:space-between;
   background-color: #e7e7e7;
   border: none;
   color: #ffffff;
@@ -107,20 +125,35 @@ const ButtonG = styled.a`
   height: 5.5rem;
   cursor: pointer;
   padding: 0 1rem 0 5rem;
+  margin: 0 auto;
   text-decoration: none;
+  @media ${(props) => props.theme.mobile} {
+    width: 70vw;
+  }
 `;
+
 const ButtonK = styled.a`
+  display: flex;
+  align-items:center;
+  justify-content:space-between;
   background-color: #fae301;
   border: none;
   color: #ffffff;
-  border-radius: 30px;
+  border-radius: 3rem;
   width: 27rem;
   height: 5.5rem;
   cursor: pointer;
   padding: 0 1rem 0 5rem;
+  margin: 0 auto;
   text-decoration: none;
+  @media ${(props) => props.theme.mobile} {
+    width: 70vw;
+  }
 `;
 const ButtonN = styled.a`
+  display: flex;
+  align-items:center;
+  justify-content:space-between;
   background-color: #03c75a;
   border: none;
   color: #ffffff;
@@ -128,28 +161,32 @@ const ButtonN = styled.a`
   width: 27rem;
   height: 5.5rem;
   cursor: pointer;
-  padding: 0 1rem 0 5rem;
+  padding: 0 0 0 5rem;
+  margin: 0 auto;
   text-decoration: none;
+  @media ${(props) => props.theme.mobile} {
+    width: 70vw;
+    }
 `;
-const Logo = styled.img`
-  width: 19rem;
-  height: 6rem;
-`;
+
 
 // sns 로고
 const LogoG = styled.div`
+position: absolute;
   width: 30px;
   height: 30px;
   background-size: cover;
   background-image: url(${Google});
 `;
 const LogoK = styled.div`
+position: absolute;
   width: 30px;
   height: 30px;
   background-size: cover;
   background-image: url(${Kakao});
 `;
 const LogoN = styled.div`
+  position: absolute;
   width: 30px;
   height: 30px;
   background-size: cover;

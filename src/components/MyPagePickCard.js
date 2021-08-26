@@ -7,7 +7,9 @@ const MyPagePickCard = ({ data }) => {
 
   return (
     <React.Fragment>
-      <Column>
+
+      <Container>
+
         <ImgWrap>
           <img src={imgUrl} alt="tags" />
         </ImgWrap>
@@ -31,28 +33,42 @@ const MyPagePickCard = ({ data }) => {
             {createdAt[4] + "분"}에 PICK했어요!
           </Time>
         </Box1>
-      </Column>
+      </Container>
     </React.Fragment>
   );
 };
 
-const Column = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: 11rem 2fr;
   background-color: #f5f5f5;
   border-radius: 1.5rem;
-  padding: 1rem 0 1.5rem 0;
-  width: 32rem;
-  height: 8rem;
-  margin: 0 0 1rem 2rem;
+  padding: 1rem 0 0 0;
+  width: 80vw;
+  /* height: 8rem; */
+  margin: 1rem auto;
   color: #717171;
+    @media ${(props) => props.theme.mobile} {
+    width: 310px;
+  }
+    @media ${(props) => props.theme.tablet} {
+    width: 310px;
+  }
+    @media ${(props) => props.theme.desktop} {
+    width: 310px;
+  }
+  
 `;
+
 const ImgWrap = styled.div`
   overflow: hidden;
   width: 10rem;
   height: 10rem;
   border-radius: 3rem;
   padding: 0 0 0 1rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 10rem;
+  }
   & img {
     width: 85%;
     height: 85%;
@@ -61,6 +77,9 @@ const ImgWrap = styled.div`
 `;
 const Box1 = styled.div`
   padding: 0.5rem 0 0 0;
+  @media ${(props) => props.theme.mobile} {
+    width: 70vw;
+  }
 `;
 const Title = styled.div`
   font-size: 1.5rem;
@@ -79,7 +98,7 @@ const TimeType = styled.span`
 `;
 const TagName = styled.div`
   font-size: 1rem;
-  height: 1rem; //height와 line-height값으 같이 가져갈것.
+  height: 1rem; // height와 line-height값으 같이 가져갈것.
   line-height: 1rem;
   border-radius: 1.6rem;
   padding: 0.4rem 0.5rem 0.4rem 0.5rem; //태그 배경색 크기
@@ -90,7 +109,7 @@ const TagGrid = styled.div`
   flex-direction: row;
   flex-wrap: wrap; //글자 깨짐 방지
   grid-gap: 0.1rem;
-  padding: 0 0 2rem 0;
+  padding: 0 0 1rem 0;
 `;
 const Time = styled.div`
   font-size: 1rem;
