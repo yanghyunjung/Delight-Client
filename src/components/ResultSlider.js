@@ -43,12 +43,10 @@ const ResultSlider = ({ data }) => {
     dots: true,
     infinte: true,
     speed: 500,
-    className: "center",
     centerMode: true,
     sliderToShow: 1,
-    arrows: true,
     swipeToSlide: true,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
@@ -56,43 +54,44 @@ const ResultSlider = ({ data }) => {
     <React.Fragment>
       <Container>
         <StlyedSlider {...settings}>
-          {data && data.map((item, index) => {
-            const food = {
-              name: item.name,
-              score: item.score,
-              imgUrl: item.imgUrl,
-              tag: [...item.tag],
-              active: true,
-            };
-            return (
-              <div key={index}>
-                <FoodImgWrap>
-                  <img src={food.imgUrl} alt={food.name} />
-                </FoodImgWrap>
-                <FoodName>{food.name}</FoodName>
-                <Tag tag={food.tag} />
-                <StoreButtonWrap>
-                  {food.name === foodName ? (
-                    <MyPageButton
-                      onClick={() => {
-                        history.push("/mypage");
-                      }}
-                    >
-                      기록장으로 가기!
-                    </MyPageButton>
-                  ) : (
-                    <MyPickButton
-                      onClick={() => {
-                        handleMyPick(food);
-                      }}
-                    >
-                      MY PICK!
-                    </MyPickButton>
-                  )}
-                </StoreButtonWrap>
-              </div>
-            );
-          })}
+          {data &&
+            data.map((item, index) => {
+              const food = {
+                name: item.name,
+                score: item.score,
+                imgUrl: item.imgUrl,
+                tag: [...item.tag],
+                active: true,
+              };
+              return (
+                <div key={index}>
+                  <FoodImgWrap>
+                    <img src={food.imgUrl} alt={food.name} />
+                  </FoodImgWrap>
+                  <FoodName>{food.name}</FoodName>
+                  <Tag tag={food.tag} />
+                  <StoreButtonWrap>
+                    {food.name === foodName ? (
+                      <MyPageButton
+                        onClick={() => {
+                          history.push("/mypage");
+                        }}
+                      >
+                        기록장으로 가기!
+                      </MyPageButton>
+                    ) : (
+                      <MyPickButton
+                        onClick={() => {
+                          handleMyPick(food);
+                        }}
+                      >
+                        MY PICK!
+                      </MyPickButton>
+                    )}
+                  </StoreButtonWrap>
+                </div>
+              );
+            })}
         </StlyedSlider>
       </Container>
     </React.Fragment>
@@ -150,8 +149,10 @@ const StlyedSlider = styled(Slider)`
   .slick-list {
     text-align: center;
     margin: 0px auto;
-    max-width: 32rem;
+    max-width: 36rem;
     height: 38 rem;
+    @media ${(props) => props.theme.mobile} {
+    }
   }
   .slick-list div {
     outline: none;
@@ -182,6 +183,7 @@ const StlyedSlider = styled(Slider)`
       font-size: 60px;
       opacity: 1;
       color: #ffa012;
+      transition: all 0.5s;
     }
   }
 `;
@@ -192,14 +194,19 @@ const FoodImgWrap = styled.div`
   border: 0px solid #ffa012;
   position: relative;
   margin: 0 auto;
-  height: 60%;
-  transform: scale(0.95);
-
+  width: 23.4rem;
+  height: 15.5rem;
+  @media ${(props) => props.theme.mobile} {
+    max-width: 20rem;
+  }
+  @media screen and (max-width: 300px) {
+    max-width: 15rem;
+  }
   & img {
-    border-radius: 11.5rem;
-    margin: 0 auto;
-    width: 23rem;
-    height: 23rem;
+    border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
   }
 `;
 
@@ -213,7 +220,7 @@ function NextArrow(props) {
       style={{
         ...style,
         position: "absolute",
-        top: "10rem",
+        top: "16rem",
         right: "-0.3rem",
         zIndex: 2,
       }}
@@ -234,7 +241,7 @@ function PrevArrow(props) {
       style={{
         ...style,
         position: "absolute",
-        top: "10rem",
+        top: "16rem",
         left: "-0.3rem",
         zIndex: 2,
       }}

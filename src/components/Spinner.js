@@ -146,9 +146,12 @@ const Container = styled.div`
 
 const WrapContent = styled.div`
   margin: 0 auto;
-  max-width: 36rem;
+  width: 36rem;
   height: 92vh;
   position: relative;
+  @media ${(props) => props.theme.mobile} {
+    width: 100vw;
+  }
 `;
 
 const Slideup = keyframes`
@@ -174,7 +177,7 @@ const Chat = styled.span`
   font-weight: 500;
   border-radius: 2rem;
   padding: 1.6rem 1.5rem 1.5rem 1.5rem;
-  margin: 0 5rem 1.2rem 2rem;
+  margin: 0 auto 1.2rem 2rem;
   line-height: 2rem;
   background-color: #f6f6f6;
   animation-duration: 1s;
