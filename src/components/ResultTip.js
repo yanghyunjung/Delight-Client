@@ -75,7 +75,7 @@ const TipImage = styled.img`
 const TipText = styled.span`
   text-align: start;
   position: absolute;
-  width: 29rem;
+  width: 28rem;
   height: 11rem;
   padding: 3rem 0.8rem 5rem 1.6rem;
   visibility: hidden;

@@ -18,7 +18,7 @@ const Result = () => {
     <React.Fragment>
       <Container>
         <ResultContainer>
-          <Grid width="100%" height="15%" padding="2rem 2rem 4rem">
+          <Grid width="100%" height="15%" padding="2rem 2rem 2rem">
             <Title>오늘은 이거 어때?</Title>
           </Grid>
           <ResultSlider data={data} />
@@ -90,9 +90,12 @@ const ReTryButton = styled.button`
   background-color: #ffa012;
   border: none;
   border-radius: 1rem;
-  min-width: 32rem;
+  width: 32rem;
   cursor: pointer;
   padding: 1.7rem 0;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const SearchButton = styled.button`
@@ -101,10 +104,13 @@ const SearchButton = styled.button`
   background-color: white;
   border: 1px solid #ffa012;
   border-radius: 1rem;
-  min-width: 32rem;
+  width: 32rem;
   cursor: pointer;
   padding: 1.7rem 0;
   margin: 0 0 2rem 0;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const Container = styled.div`
@@ -113,18 +119,28 @@ const Container = styled.div`
 
 const ResultContainer = styled.div`
   margin: 0 auto;
-  max-width: 36rem;
+  width: 36rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 100vw;
+  }
 `;
 
 const PercentContainer = styled.div`
   margin: 4rem auto;
-  max-width: 36rem;
+  width: 36rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 100vw;
+  }
 `;
 
 const ButtonContainer = styled.div`
   margin: 4rem auto 4rem auto;
-  max-width: 36rem;
+  width: 36rem;
   text-align: center;
+  @media ${(props) => props.theme.mobile} {
+    width: 90vw;
+    padding: 0 5vw;
+  }
 `;
 
 const SubText = styled.div`

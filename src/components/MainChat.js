@@ -138,9 +138,12 @@ const Wrap = styled.div`
 
 const WrapContent = styled.div`
   margin: 0 auto;
-  max-width: 36rem;
+  width: 36rem;
   height: 92vh;
   position: relative;
+  @media ${(props) => props.theme.mobile} {
+    width: 100vw;
+  }
 `;
 
 const Container = styled.div`
