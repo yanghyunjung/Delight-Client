@@ -86,6 +86,7 @@ const Container1 = styled.div`
 `;
 
 const DIV = styled.div`
+  width: 100%;
   height: 100vh;
   position: relative;
   // 태그 슬라이드 올라올 때 뒷배경 height 값 설정
@@ -93,7 +94,7 @@ const DIV = styled.div`
     props.tagOpen &&
     css`
       overflow: hidden;
-      height: 63rem !important;
+      height: 95vh !important;
     `}
 `;
 
@@ -132,6 +133,9 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 1.5rem;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 export default Search;
