@@ -9,8 +9,12 @@ import ResultTip from "../components/ResultTip";
 
 import { history } from "../redux/configureStore";
 
+import FoodTip from "../image/FoodTip.svg";
+
 const Result = () => {
   const dispatch = useDispatch();
+
+  const [openTip, setOpenTip] = useState(true);
 
   const data = useSelector((state) => state.food.result);
 
@@ -18,10 +22,21 @@ const Result = () => {
     <React.Fragment>
       <Container>
         <ResultContainer>
-          <Grid width="100%" height="15%" padding="2rem 2rem 2rem">
+          <Grid padding="2.5rem 2rem 1.5rem">
             <Title>오늘은 이거 어때?</Title>
           </Grid>
-          <ResultSlider data={data} />
+          {openTip && (
+            <TipWrap>
+              <div>
+                <img src={FoodTip} alt="my pick tip" />
+              </div>
+              <div>
+                <span>음식 하단에 있는 아이콘을 누르면 기록장에 저장돼요!</span>
+              </div>
+            </TipWrap>
+          )}
+
+          <ResultSlider data={data} setOpenTip={setOpenTip} />
         </ResultContainer>
         <PercentContainer>
           <Grid is_flex padding="0 2rem">
@@ -67,6 +82,23 @@ const Result = () => {
     </React.Fragment>
   );
 };
+
+const TipWrap = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin: 0rem 2rem 2rem;
+  background-color: #f4f0ea;
+  padding: 1.2rem 2rem;
+  & img {
+    height: 1.3rem;
+    padding: 0 1rem 0 0;
+    vertical-align: top;
+  }
+  & span {
+    font-size: 11px;
+    line-height: 14px;
+  }
+`;
 
 const ToolTipWrap = styled.div`
   cursor: pointer;

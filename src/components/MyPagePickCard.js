@@ -16,7 +16,6 @@ const MyPagePickCard = ({ data }) => {
         <Box1>
           <Grid1>
             <Title>{name}</Title>
-
             <TimeType>{timeType}</TimeType>
           </Grid1>
           <br />
@@ -37,27 +36,19 @@ const MyPagePickCard = ({ data }) => {
     </React.Fragment>
   );
 };
-
 const Container = styled.div`
   display: grid;
   grid-template-columns: 11rem 2fr;
   background-color: #f5f5f5;
   border-radius: 1.5rem;
   padding: 1rem 0 0 0;
-  width: 80vw;
+  width: 100%;
   /* height: 8rem; */
   margin: 1rem auto;
   color: #717171;
     @media ${(props) => props.theme.mobile} {
-    width: 310px;
+    width: 80%;
   }
-    @media ${(props) => props.theme.tablet} {
-    width: 310px;
-  }
-    @media ${(props) => props.theme.desktop} {
-    width: 310px;
-  }
-  
 `;
 
 const ImgWrap = styled.div`
@@ -67,7 +58,7 @@ const ImgWrap = styled.div`
   border-radius: 3rem;
   padding: 0 0 0 1rem;
   @media ${(props) => props.theme.mobile} {
-    width: 10rem;
+    width: 80%;
   }
   & img {
     width: 85%;
@@ -75,27 +66,31 @@ const ImgWrap = styled.div`
     border-radius: 1.5rem;
   }
 `;
+
 const Box1 = styled.div`
   padding: 0.5rem 0 0 0;
-  @media ${(props) => props.theme.mobile} {
-    width: 70vw;
-  }
 `;
+
 const Title = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   color: black;
 `;
-const Grid1 = styled.div`
-  width: 18rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+
 const TimeType = styled.span`
   font-size: 1rem;
 `;
+
+const Grid1 = styled.div`
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media ${(props) => props.theme.mobile} {
+    width: 90%;
+  }
+`;
+
 const TagName = styled.div`
   font-size: 1rem;
   height: 1rem; // height와 line-height값으 같이 가져갈것.
@@ -104,6 +99,7 @@ const TagName = styled.div`
   padding: 0.4rem 0.5rem 0.4rem 0.5rem; //태그 배경색 크기
   background-color: #dadada;
 `;
+
 const TagGrid = styled.div`
   display: flex;
   flex-direction: row;
@@ -111,11 +107,12 @@ const TagGrid = styled.div`
   grid-gap: 0.1rem;
   padding: 0 0 1rem 0;
 `;
+
 const Time = styled.div`
   font-size: 1rem;
-`;
-const Grid = styled.div`
-  color: black;
+  @media ${(props) => props.theme.mobile} {
+    width: 80%;
+  }
 `;
 
 export default MyPagePickCard;

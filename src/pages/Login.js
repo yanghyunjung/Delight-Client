@@ -75,7 +75,7 @@ const Login = (props) => {
 };
 
 const Container = styled.div`
-  width:  100vw;
+  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,10 +89,6 @@ const Box = styled.div`
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  /* @media ${(props) => props.theme.mobile} {
-    background-color: yellow;
-    height:0%;
-  } */
 `;
 
 const Logo = styled.img`
@@ -168,7 +164,6 @@ const ButtonN = styled.a`
     width: 70vw;
     }
 `;
-
 
 // sns 로고
 const LogoG = styled.div`

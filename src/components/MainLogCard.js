@@ -4,11 +4,11 @@ import styled from "styled-components";
 import MainLogImg from "../image/hamburger.png";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getFrequency } from "../redux/modules/frequent-tag";
+import { getFrequency } from "../redux/modules/frequency";
 
 const MainLogCard = (props) => {
-  const dispatch = useDispatch();
-  const foods = useSelector(getFrequency);
+  // const dispatch = useDispatch();
+  // const foods = useSelector(getFrequency);
 
 
   return (
