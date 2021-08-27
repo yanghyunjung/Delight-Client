@@ -14,7 +14,7 @@ const MyPageNoData = () => {
   const dispatch = useDispatch();
   return (
     <Container>
-      <Title1>지난 PICK</Title1>
+
       <Box1
         style={{
           fontSize: "1rem",
@@ -39,24 +39,15 @@ const MyPageNoData = () => {
 };
 
 const Container = styled.div`
-  width: 340px;  
+  width: 320px;  
   margin: 0 auto;
   align-items:center;
   @media ${(props) => props.theme.mobile} {
-    width: 90vw;
-  }
-  
-  @media ${(props) => props.theme.mobile} {
-    width: 310px;
+    width: 80%;
   }
 `;
 
-const Title1 = styled.h2`
-  width: 350px;
-  margin: 2rem auto;
-  font-size: 2rem;
-  font-weight: bold;
-`;
+
 
 const Box1 = styled.div`
   text-align:center;
@@ -71,7 +62,7 @@ const Button1 = styled.img`
   height: 4.8rem;
   cursor: pointer; 
   @media ${(props) => props.theme.mobile} {
-  width: 260px;
+  width: 90%;
   }
 `;
 
