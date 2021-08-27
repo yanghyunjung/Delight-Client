@@ -46,7 +46,7 @@ const ToolAi = styled.img`
 const InnerText = styled.p`
   font-weight: 500;
   font: 500 1.2rem "Noto-Sans";
-  line-height: 1.8rem;
+  line-height: 1.6rem;
   margin-top: 0.9rem;
   padding: 0 0 0 0.4rem;
   color: #ffffff;
@@ -76,8 +76,8 @@ const TipText = styled.span`
   text-align: start;
   position: absolute;
   width: 28rem;
-  height: 11rem;
-  padding: 3rem 0.8rem 5rem 1.6rem;
+  height: 12rem;
+  padding: 2.5rem 0.8rem 5rem 1.6rem;
   visibility: hidden;
   background-color: #7da9ff;
   bottom: 35px;
@@ -86,6 +86,14 @@ const TipText = styled.span`
   transition: all 0.5s;
   z-index: 99;
   border-radius: 1rem;
+  @media ${(props) => props.theme.mobile} {
+    max-width: 27rem;
+    height: 15rem;
+  }
+  @media screen and (max-width: 360px) {
+    max-width: 21rem;
+    height: 17rem;
+  }
   :after {
     content: "";
     position: absolute;
