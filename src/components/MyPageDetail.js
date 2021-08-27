@@ -8,19 +8,12 @@ import MainLogCard from './MainLogCard';
 
 
 import { useDispatch, useSelector } from "react-redux";
-import { getFrequencyThunk, getFrequency } from "../redux/modules/frequent-tag";
 
 import { getHistorySV } from "../shared/api";
 import { addHistory } from "../redux/modules/food";
 
 const MyPageDetail = () => {
   const dispatch = useDispatch();
-
-
-  React.useEffect(() => {
-    dispatch(getFrequencyThunk(0));
-  }, []);
-
   const [historyList, setHistoryList] = useState(null);
 
   useEffect(() => {
@@ -43,6 +36,7 @@ const MyPageDetail = () => {
       </Grid1>
 
       <MainCard />
+
       <Title2>지난 PICK</Title2>
       {historyList ? (
         historyList.map((item) => {
