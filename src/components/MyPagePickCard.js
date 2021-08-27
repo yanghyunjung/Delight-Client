@@ -36,7 +36,6 @@ const MyPagePickCard = ({ data }) => {
     </React.Fragment>
   );
 };
-
 const Container = styled.div`
   display: grid;
   grid-template-columns: 11rem 2fr;
@@ -83,7 +82,7 @@ const TimeType = styled.span`
 `;
 
 const Grid1 = styled.div`
-  width: 40vw;
+  width: 200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
