@@ -47,8 +47,6 @@ const Container = styled.div`
   }
 `;
 
-
-
 const Box1 = styled.div`
   text-align:center;
   margin: 0 auto;

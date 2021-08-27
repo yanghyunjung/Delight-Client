@@ -88,7 +88,7 @@ const Grid1 = styled.div`
   align-items: center;
   justify-content: space-between;
   @media ${(props) => props.theme.mobile} {
-    width: 80%;
+    width: 90%;
   }
 `;
 
