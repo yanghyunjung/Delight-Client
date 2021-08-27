@@ -35,7 +35,7 @@ const MyPageDetail = () => {
         {/* <LogOutBtn>logout</LogOutBtn> */}
       </Grid1>
 
-      <MainCard />
+      {/* <MainCard /> */}
 
       <Title2>지난 PICK</Title2>
       {historyList ? (
