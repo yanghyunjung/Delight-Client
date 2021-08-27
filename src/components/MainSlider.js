@@ -40,8 +40,7 @@ const MainSlider = (props) => {
     { categoryId: 2, category: "일식" },
     { categoryId: 3, category: "중식" },
     { categoryId: 4, category: "양식" },
-    { categoryId: 5, category: "패스트푸드" },
-    { categoryId: 6, category: "분식" },
+    { categoryId: 5, category: "분식" },
   ];
   return (
     <div>
@@ -190,37 +189,37 @@ const ArrowWrap = styled.div`
   }
 `;
 
-const MenuList = styled.div`
-  overflow-x: scroll;
-  overflow-y: hidden;
-  padding: 2rem;
-  width: auto;
+const MenuList = styled.nav`
   display: flex;
-  align-items: center;
+  box-sizing: border-box;
+  padding: 16px;
   justify-content: space-evenly;
-  ::-webkit-scrollbar {
-    display: none;
+  align-items: center;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+    padding: 16px;
+    justify-content: space-evenly;
   }
 `;
 
 const MenuItem = styled.a`
   color: #979797;
+  font-size: 2vh;
+  font-weight: 600;
   cursor: pointer;
-  width: auto;
-  padding: 0.8rem;
   display: flex;
-  font-size: 1.7vh;
   ${(props) =>
     props.tabIndex &&
     `  &:nth-child(${props.tabIndex}) {
     color: black;
-    font-weight: bold;
+    font-weight: 800;
     border-bottom: 1.8px solid;
     transition: 0.3s ease-in-out; // 시작지점과 종료지점의 변화가 서서히 일어나게끔
   }`}
   @media ${(props) => props.theme.mobile} {
-    font-size: 1.8vh;
+    font-size: 2.3vh;
     padding: 0 5px 5px 5px;
+    min-width: 20px;
   }
 `;
 

@@ -4693,6 +4693,13 @@ dom-serializer@0:
     domelementtype "^2.0.1"
     entities "^2.0.0"
 
+dom7@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/dom7/-/dom7-4.0.0.tgz#69c8fb9b170c92d64f385fdc37f81456e82b80a1"
+  integrity sha512-xOJ0LAHFwktyj8Xljz4R2wzRI+Y9mR0plkMP0WlqtwqAkqn/vbdAyRifiW/w8mXe17LGktntcAwsQ5fKVDBNYg==
+  dependencies:
+    ssr-window "^4.0.0"
+
 domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.npmjs.org/domain-browser/-/domain-browser-1.2.0.tgz"
@@ -10990,6 +10997,11 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
+ssr-window@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.0.tgz#4ee82fc360c5f88a022f321740bcfec59ada1a61"
+  integrity sha512-qCg6wJNeGNTVcPK2KFNfwtHU1gA3UZDZdxogu+Ys5+Ue5PMOENxUb7sscpAWWo4mWOBkJRCwQ50IlyA7qZ0hxw==
+
 ssri@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmjs.org/ssri/-/ssri-6.0.1.tgz"
@@ -11315,6 +11327,14 @@ sweetalert2@^11.1.2:
   version "11.1.2"
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.1.2.tgz#268deb981fd2476f4e9dc1085497e771ba1b55a8"
   integrity sha512-HWPsMlCvA+rJEn7BJH0ovTPr6S5YkxViIgK1YrA2Z3Y5Ghkfk7IOprgmYNi44HWIqN/xoXE73rG9+qG/MgD6Sw==
+
+swiper@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-7.0.1.tgz#86d5caaf74dc350ff7766f7a9bd9c4749f3312fe"
+  integrity sha512-mvn5Pap63wi3gY+z4+OnDvFGtep8Z57rnyEKysq+KVcdc6wZP0b7g8YO04HqKb5+mgqzvKEoup9R759DkVAjTw==
+  dependencies:
+    dom7 "^4.0.0"
+    ssr-window "^4.0.0"
 
 symbol-tree@^3.2.4:
   version "3.2.4"

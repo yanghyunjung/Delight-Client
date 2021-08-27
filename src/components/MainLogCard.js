@@ -39,7 +39,7 @@ const MainLogCard = (props) => {
           <span style={{ margin: "0 0 0 1.5rem" }}>
             회원님의 지난 주 <br />
             <span style={{ color: "#FF6B12", fontWeight: "bold" }}>
-              패스트푸드&nbsp;
+    
             </span>
             매니아!
           </span>
