@@ -17,14 +17,17 @@ import { useDispatch } from "react-redux";
 
 import Swal from "sweetalert2";
 import PickAlert from "../image/PickAlert.svg";
+import myPick from "../image/myPick.svg";
+import myPicked from "../image/myPicked.svg";
 
-const ResultSlider = ({ data }) => {
+const ResultSlider = ({ data, setOpenTip }) => {
   const dispatch = useDispatch();
   const [foodName, setFoodName] = useState(null);
 
   const handleMyPick = (food) => {
     dispatch(sendMyPickSV({ foodName: food.name }));
     setFoodName(food.name);
+    setOpenTip(false);
     Swal.fire({
       width: 240,
       padding: "0 0 20px 0",
@@ -64,32 +67,34 @@ const ResultSlider = ({ data }) => {
                 active: true,
               };
               return (
-                <div key={index}>
+                <WrapSlider key={index}>
                   <FoodImgWrap>
-                    <img src={food.imgUrl} alt={food.name} />
-                  </FoodImgWrap>
-                  <FoodName>{food.name}</FoodName>
-                  <Tag tag={food.tag} />
-                  <StoreButtonWrap>
+                    <img
+                      src={food.imgUrl}
+                      alt={food.name}
+                      style={{ border: "0px solid #ffffff" }}
+                    />
                     {food.name === foodName ? (
-                      <MyPageButton
+                      <MyPickButton
                         onClick={() => {
                           history.push("/mypage");
                         }}
                       >
-                        기록장으로 가기!
-                      </MyPageButton>
+                        <img src={myPicked} alt="my picked food" />
+                      </MyPickButton>
                     ) : (
                       <MyPickButton
                         onClick={() => {
                           handleMyPick(food);
                         }}
                       >
-                        MY PICK!
+                        <img src={myPick} alt="my pick" />
                       </MyPickButton>
                     )}
-                  </StoreButtonWrap>
-                </div>
+                  </FoodImgWrap>
+                  <FoodName>{food.name}</FoodName>
+                  <Tag tag={food.tag} />
+                </WrapSlider>
               );
             })}
         </StlyedSlider>
@@ -98,36 +103,16 @@ const ResultSlider = ({ data }) => {
   );
 };
 
-const StoreButtonWrap = styled.div`
-  margin: 0.5rem 0 0 0;
-`;
-
-const MyPageButton = styled.button`
-  font-weight: 700;
-  color: #ffffff;
-  background-color: #ffa012;
-  border: 1px solid #ffa012;
-  border-radius: 1rem;
-  min-width: 15rem;
-  border-radius: 5rem;
-  cursor: pointer;
-  padding: 1rem 2rem;
-  margin: 0.5rem 0 2.5rem 0;
-  line-height: 1.9rem;
-`;
+const WrapSlider = styled.div``;
 
 const MyPickButton = styled.button`
-  font-weight: 700;
-  color: #ffa012;
-  background-color: white;
-  border: 1px solid #ffa012;
-  border-radius: 1rem;
-  min-width: 15rem;
-  border-radius: 5rem;
+  outline: none;
+  border: 0px solid #ffffff;
+  background-color: inherit;
+  position: absolute;
+  top: 12.2rem;
+  right: 0rem;
   cursor: pointer;
-  padding: 1rem 4rem;
-  margin: 0.5rem 0 2.5rem 0;
-  line-height: 1.9rem;
 `;
 
 const FoodName = styled.div`
@@ -143,7 +128,7 @@ const Container = styled.div`
 
 const StlyedSlider = styled(Slider)`
   width: 100%;
-  padding-bottom: 1.2rem;
+  padding-bottom: 3rem;
   margin: 0px auto;
   box-sizing: border-box;
   .slick-list {
@@ -162,7 +147,7 @@ const StlyedSlider = styled(Slider)`
   }
   .slick-dots {
     height: 11px;
-    bottom: 5px;
+    bottom: 0px;
   }
   .slick-dots li {
     & button:before {
@@ -191,22 +176,23 @@ const StlyedSlider = styled(Slider)`
 const FoodImgWrap = styled.div`
   overflow: hidden;
   box-sizing: border-box;
-  border: 0px solid #ffa012;
   position: relative;
   margin: 0 auto;
-  width: 23.4rem;
-  height: 15.5rem;
+  width: 23.5rem;
+  height: 16rem;
   @media ${(props) => props.theme.mobile} {
+    max-width: 24rem;
+  }
+  @media screen and (max-width: 360px) {
     max-width: 20rem;
   }
-  @media screen and (max-width: 300px) {
-    max-width: 15rem;
+  @media screen and (max-width: 310px) {
+    max-width: 16rem;
   }
   & img {
     border-radius: 1rem;
     width: 100%;
     height: 100%;
-    transform: scale(1);
   }
 `;
 
