@@ -59,6 +59,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
       tagIdArray.push(selectedTag2[i]["id"]);
       tagNameArray.push(selectedTag2[i]["name"]);
     }
+    console.log("tagIdArray : ",tagIdArray)
     dispatch(getTagResultThunk(tagIdArray));
     setSelectedTag(tagNameArray);
   };
@@ -184,7 +185,7 @@ const Layout = styled.div`
   bottom: 0;
   width: 100%;
   height: auto;
-  margin: 0 0 10px 13px;
+  margin: 0 0 1rem 1.3rem;
   align-items: flex-start;
   justify-content: flex-start;
   line-height: 6rem;
@@ -199,13 +200,13 @@ const Box1 = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  height: 9rem;
+  height: auto;
   width: 89%;
-  padding: 5px 0 5px 13px;
+  padding: 0.5rem 0 0.5rem 1rem;
   background-color: #f2f2f2;
   border-radius: 1.6rem;
   @media ${(props) => props.theme.mobile} {
-    width: 88%;
+    width: 89%;
   }
 `;
 
@@ -216,7 +217,7 @@ const Box2 = styled.div`
 `;
 
 const SelectTag = styled.div`
-  margin: 0 20px 10px 0;
+  margin: 0 1.6rem 1rem 0;
   font-size: 1.4rem;
   font-family: sans-serif;
   height: 2rem;
@@ -235,7 +236,7 @@ const SelectTag = styled.div`
 
 const SelectTag1 = styled.div`
   background-color: #ffffff;
-  margin: 0 1rem 0 0;
+  margin: 0.5rem 1rem 1rem 0;
   font-size: 1.4rem;
   font-family: sans-serif;
   height: 2rem;
