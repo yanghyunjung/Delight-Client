@@ -16,4 +16,7 @@ export const getHistorySV = () =>
 export const getFrequency = () =>
   instance.get(`/api/tags/users/frequent-tag`).then((res) => res);
 
+export const getUserRecommendationSV = () =>
+  instance.get(`/api/ml-recommendations/mypicks`).then((res) => res);
+
 export default instance;

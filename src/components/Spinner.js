@@ -35,11 +35,12 @@ const Spinner = (props) => {
             </WrapName>
           </Wrap>
           <Chat delay="1">밥씨가 메뉴를 정하고 있어요!</Chat>
-
+          <br />
           <Chat delay="1.5">
             오늘 하루 맛있는 밥 먹고
             <br /> 배도 든든 마음도 든든한 하루 보내세요!
           </Chat>
+          <br />
           <Chat delay="2">
             원하는 음식이 나왔다면
             <br />
@@ -55,6 +56,7 @@ const Spinner = (props) => {
             버튼을 눌러주세요. <br />
             음식 데이터를 기록할 수 있어요!
           </Chat>
+          <br />
           {isLoding ? (
             <Chat
               delay="2.5"
@@ -181,7 +183,7 @@ const Chat = styled.span`
   font-weight: 500;
   border-radius: 2rem;
   padding: 1.6rem 1.5rem 1.5rem 1.5rem;
-  margin: 0 5rem 1.2rem 2rem;
+  margin: 0 2rem 1.2rem 2rem;
   line-height: 2rem;
   background-color: #f6f6f6;
   animation-duration: 1s;
@@ -191,8 +193,8 @@ const Chat = styled.span`
   animation-fill-mode: forwards;
   & img {
     @media screen and (max-width: 300px) {
-    width: 16rem;
-  }
+      width: 16rem;
+    }
   }
 `;
 

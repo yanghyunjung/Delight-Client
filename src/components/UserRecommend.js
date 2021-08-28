@@ -3,16 +3,41 @@ import styled, { keyframes } from "styled-components";
 
 import BobAI from "../image/BobAi.svg";
 import ResultAI from "../image/spinner/ResultAI.svg";
-import MockData from "../image/spinner/MockData.svg";
 
 import Loader from "react-loader-spinner";
 import { history } from "../redux/configureStore";
 
+import { getUserRecommendationSV } from "../shared/api";
+import { getResult, addHistory } from "../redux/modules/food";
+import { getHistorySV } from "../shared/api";
+import { useSelector, useDispatch } from "react-redux";
+
 const UserRecommend = (props) => {
+  const dispatch = useDispatch();
   const [isLoding, setIsLoding] = useState(false);
+  const [userData, setUserData] = useState(null);
+
+  const historyData = useSelector((state) => state.food.history);
 
   useEffect(() => {
-    setTimeout(setIsLoding, 7000, true);
+    setTimeout(setIsLoding, 5000, true);
+  }, []);
+
+  useEffect(() => {
+    async function getUserRecommendation() {
+      const { data } = await getUserRecommendationSV();
+      dispatch(getResult(data));
+      setUserData(data);
+    }
+    return getUserRecommendation();
+  }, []);
+
+  useEffect(() => {
+    async function getHistory() {
+      const { data } = await getHistorySV();
+      dispatch(addHistory(data));
+    }
+    return getHistory();
   }, []);
 
   return (
@@ -27,32 +52,31 @@ const UserRecommend = (props) => {
               <Name>밥씨</Name>
             </WrapName>
           </Wrap>
-          <Chat delay="1">지난 주 회원님의 기록이에요!</Chat>
-          <Chat delay="1" style={{ padding: "0", backgroundColor: "#ffffff" }}>
-            <div>
-              <img src={MockData} alt="통계 들어가는 부분" />
-            </div>
+          <Chat delay="1">
+            최근 마이픽한 최대 10가지 음식을 <br />
+            기준으로 추천해 드려요!
           </Chat>
-
+          <br />
           <Chat delay="1.5">
-            밥씨가 지난 주 회원님의 기록을 가지고
-            <br />{" "}
-            <Name
-              style={{
-                display: "inline-block",
-                color: "#141414",
-                fontWeight: "700",
-              }}
-            >
-              AI
-            </Name>{" "}
-            추천을 해줄거에요!
+            <div style={{ margin: "0 0 0.7rem 0" }}>회원님의 최근 마이픽</div>
+            {historyData &&
+              historyData.map((item, index) => {
+                if (index < 9) {
+                  return (
+                    <React.Fragment key={index}>
+                      <MyPickFood>{item.name}</MyPickFood>
+                    </React.Fragment>
+                  );
+                }
+              })}
           </Chat>
+          <br />
           <Chat delay="2">
             오늘 하루 맛있는 밥 먹고
             <br />
             배도 든든 마음도 든든한 하루 보내세요!
           </Chat>
+          <br />
           {isLoding ? (
             <Chat
               delay="2.5"
@@ -67,7 +91,7 @@ const UserRecommend = (props) => {
               <WrapButton>
                 <ResultButton
                   onClick={() => {
-                    history.push("#");
+                    history.push("/result");
                   }}
                 >
                   결과 볼래요!!
@@ -89,6 +113,14 @@ const UserRecommend = (props) => {
     </React.Fragment>
   );
 };
+
+const MyPickFood = styled.div`
+  display: inline-block;
+  background-color: #ffffff;
+  color: #ffa012;
+  padding: 0.4rem 0.6rem;
+  margin: 0.6rem 0.5rem 0.1rem 0;
+`;
 
 const Wrap = styled.div`
   width: 100%;
@@ -114,6 +146,10 @@ const ResultButton = styled.button`
   margin: 0 auto;
   cursor: pointer;
   padding: 1.7rem 0;
+  @media screen and (max-width: 300px) {
+    width: 16rem;
+    margin: 0;
+  }
 `;
 
 const WrapName = styled.div`
@@ -144,9 +180,12 @@ const Container = styled.div`
 
 const WrapContent = styled.div`
   margin: 0 auto;
-  max-width: 36rem;
+  width: 36rem;
   height: 92vh;
   position: relative;
+  @media ${(props) => props.theme.mobile} {
+    width: 100vw;
+  }
 `;
 
 const Slideup = keyframes`
@@ -172,7 +211,7 @@ const Chat = styled.span`
   font-weight: 500;
   border-radius: 2rem;
   padding: 1.6rem 1.5rem 1.5rem 1.5rem;
-  margin: 0 5rem 1.2rem 2rem;
+  margin: 0 2rem 1.2rem 2rem;
   line-height: 2rem;
   background-color: #f6f6f6;
   animation-duration: 1s;
@@ -180,6 +219,11 @@ const Chat = styled.span`
   animation-timing-function: ease;
   animation-name: ${Slideup};
   animation-fill-mode: forwards;
+  & img {
+    @media screen and (max-width: 300px) {
+      width: 16rem;
+    }
+  }
 `;
 
 export default UserRecommend;

@@ -50,7 +50,6 @@ const food = createSlice({
     addHistory: (state, action) => {
       state.history = action.payload;
     },
-
     resetData: (state, action) => {
       state.selectList = [];
       state.foodName = [];
@@ -114,6 +113,12 @@ export const sendMyPickSV = ({ foodName }) => {
   };
 };
 
-export const { addFood, deleteFood, getResult, addHistory, addFrequency, resetData } =
-  food.actions;
+export const {
+  addFood,
+  deleteFood,
+  getResult,
+  addHistory,
+  addFrequency,
+  resetData,
+} = food.actions;
 export default food.reducer;

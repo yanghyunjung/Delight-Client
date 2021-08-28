@@ -10,7 +10,23 @@ import Swal from "sweetalert2";
 import Loader from "react-loader-spinner";
 import { history } from "../redux/configureStore";
 
+import { useSelector, useDispatch } from "react-redux";
+import { addHistory } from "../redux/modules/food";
+import { getHistorySV } from "../shared/api";
+
 const MainChat = (props) => {
+  const dispatch = useDispatch();
+  const [historyList, setHistoryList] = useState(null);
+
+  useEffect(() => {
+    async function getHistory() {
+      const { data } = await getHistorySV();
+      setHistoryList(data);
+      dispatch(addHistory(data));
+    }
+    return getHistory();
+  }, []);
+
   return (
     <React.Fragment>
       <Container>
@@ -23,13 +39,8 @@ const MainChat = (props) => {
               <Name>밥씨</Name>
             </WrapName>
           </Wrap>
-          <Chat delay="1">
-            안녕하세요! <br />
-            여러분의 추천 요정 밥씨에요.
-          </Chat>
-
-          <Chat delay="1.5">오늘도 뭐 먹을지 고민되시죠?</Chat>
-          <Chat delay="2">
+          <Chat delay="1">오늘도 뭐 먹을지 고민되시죠?🤔</Chat>
+          <Chat delay="1.5">
             밥씨가{" "}
             <Name
               style={{
@@ -45,7 +56,7 @@ const MainChat = (props) => {
             여러분의 고민을 해결해 드릴게요!
           </Chat>
           <Chat
-            delay="2.5"
+            delay="2"
             style={{
               fontWeight: "700",
             }}
@@ -65,20 +76,25 @@ const MainChat = (props) => {
               </ResultButton>
               <ResultButton
                 onClick={() => {
-                  Swal.fire({
-                    width: 240,
-                    padding: "0 0 20px 0",
-                    title: `서비스 준비 중입니다!`,
-                    imageUrl: ErrorAlert,
-                    imageWidth: 240,
-                    imageHeight: 120,
-                    imageAlt: "준비 중인 컨텐츠입니다!",
-                    showConfirmButton: false,
-                    timer: 1100,
-                  });
+                  if (historyList === null) {
+                    Swal.fire({
+                      width: 240,
+                      padding: "0 0 20px 0",
+                      title: `마이픽이 없습니다!`,
+                      text: `기본 추천을 받은 후 마이픽을 해주세요!`,
+                      imageUrl: ErrorAlert,
+                      imageWidth: 240,
+                      imageHeight: 120,
+                      imageAlt: "마이픽이 없는 알럿",
+                      showConfirmButton: false,
+                      timer: 2500,
+                    });
+                  } else {
+                    history.push("/recommendation/user");
+                  }
                 }}
               >
-                사용자 기반 추천
+                마이픽 기반 추천
               </ResultButton>
             </WrapButton>
           </Chat>
