@@ -8,7 +8,7 @@ export const getTagResultThunk = createAsyncThunk(
     const param = {
       tagIds
     }
-    const response = await instance.post(`/api/foods/tags`,param);
+    const response = await instance.post(`/api/foods/tags`, param);
     return response.data;
   }
 );
