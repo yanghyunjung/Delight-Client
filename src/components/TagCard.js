@@ -85,7 +85,7 @@ const NoDataImg = styled.img`
 `;
 
 const NoDataTitle = styled.a`
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   line-height: 1.3em;
 `;
 
