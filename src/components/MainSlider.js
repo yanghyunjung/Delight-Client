@@ -40,7 +40,7 @@ const MainSlider = (props) => {
     { categoryId: 2, category: "일식" },
     { categoryId: 3, category: "중식" },
     { categoryId: 4, category: "양식" },
-    { categoryId: 5, category: "분식" },
+    { categoryId: 6, category: "분식" },
   ];
   return (
     <div>
