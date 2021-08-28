@@ -79,7 +79,6 @@ const Box = styled.div`
   color: #717171;
   @media ${(props) => props.theme.mobile} {
     width: 100%;
-    padding: 15px;
     grid-template-columns: 75% 1fr;
   }
 `;

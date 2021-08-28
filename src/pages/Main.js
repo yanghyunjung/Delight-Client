@@ -2,7 +2,8 @@ import React from "react";
 
 import Footer from "../components/Footer";
 import MainSlider from "../components/MainSlider";
-import MainCard from "../components/MainCard";
+import MainLogOutCard from "../components/MainLogOutCard";
+import MainLogCard from "../components/MainLogCard";
 
 import RecComButton from "../image/RecButton.png";
 import SearchButton from "../image/SearchButton.png";
@@ -55,7 +56,7 @@ const Main = (props) => {
             }}
           />
         </GRID2>
-        <MainCard />
+        <MainLogCard />
         <Footer />
       </Container>
     );
@@ -117,7 +118,7 @@ const Main = (props) => {
           }}
         />
       </GRID2>
-      <MainCard />
+      <MainLogOutCard />
       <Footer />
     </Container>
   );

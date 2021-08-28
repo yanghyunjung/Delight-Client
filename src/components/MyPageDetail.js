@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import MyPagePickCard from "../components/MyPagePickCard";
-import MainCard from "../components/MainCard";
+import MainLogOutCard from "../components/MainLogOutCard";
 import MyPageNoData from './MyPageNoData';
 import MainLogCard from './MainLogCard';
 
@@ -35,7 +35,7 @@ const MyPageDetail = () => {
         {/* <LogOutBtn>logout</LogOutBtn> */}
       </Grid1>
 
-      <MainCard />
+      <MainLogOutCard />
 
       <Title2>지난 PICK</Title2>
       {historyList ? (
