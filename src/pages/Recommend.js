@@ -11,29 +11,40 @@ import { Grid, Button } from "../elements";
 import FoodCard from "../components/FoodCard";
 import SelectedFoodSlider from "../components/SelectedFoodSlider";
 
-import { getFoodList } from "../shared/api";
+import { getFoodList, getFoodListSV } from "../shared/api";
 
 import Loader from "react-loader-spinner";
 import { history } from "../redux/configureStore";
 
+const category = [
+  { id: 1, country: "한식" },
+  { id: 2, country: "일식" },
+  { id: 3, country: "중식" },
+  { id: 4, country: "양식" },
+  { id: 6, country: "분식" },
+];
+
 const Recommand = (props) => {
   const [foodsList, setFoodsList] = useState(null);
   const [isLoding, setIsLoding] = useState(true);
+  const [selectCategory, setSelectCategory] = useState(false);
+  const [categoryId, setCategoryId] = useState(0);
 
   const list = useSelector((state) => state.food.selectList);
 
-  const handleRecommendFood = () => {
+  const handleRecommendFood = (categoryId) => {
     async function getFoods() {
-      const { data } = await getFoodList().then(
+      const { data } = await getFoodListSV(categoryId).then(
         setTimeout(setIsLoding, 1000, false)
       );
+      setSelectCategory(true);
       setFoodsList(data);
     }
     return getFoods();
   };
 
   useEffect(() => {
-    handleRecommendFood();
+    handleRecommendFood(1);
   }, []);
 
   return (
@@ -51,6 +62,24 @@ const Recommand = (props) => {
                 </TitleWrap>
               </Inner>
             </Wrap>
+            <FlexBox>
+              {category &&
+                category.map((i, index) => {
+                  return (
+                    <CategoryName
+                      key={i.id}
+                      current={index === categoryId}
+                      onClick={() => {
+                        setIsLoding(true);
+                        setCategoryId(index);
+                        handleRecommendFood(i.id);
+                      }}
+                    >
+                      {i.country}
+                    </CategoryName>
+                  );
+                })}
+            </FlexBox>
             {isLoding ? (
               <WrapLoader>
                 <StyledLoader
@@ -67,26 +96,6 @@ const Recommand = (props) => {
                     return <FoodCard data={data} key={idx} />;
                   })}
               </FoodList>
-            )}
-            {isLoding ? (
-              <RefreshButton
-                disabled
-                style={{
-                  color: "#ffffff",
-                  backgroundColor: "#ffa012",
-                }}
-              >
-                다른 음식도 볼래요
-              </RefreshButton>
-            ) : (
-              <RefreshButton
-                onClick={() => {
-                  setIsLoding(true);
-                  handleRecommendFood();
-                }}
-              >
-                다른 음식도 볼래요
-              </RefreshButton>
             )}
           </WrapContent>
 
@@ -143,6 +152,25 @@ const Recommand = (props) => {
   );
 };
 
+const CategoryName = styled.div`
+  font-size: 1.6rem;
+  padding: 0.7rem 1.3rem 0.4rem;
+  margin: 0 0 1.8rem 0;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+  cursor: pointer;
+  line-height: 1.5rem;
+  color: ${(props) => (props.current ? "#ffffff" : "gray")};
+  background-color: ${(props) => (props.current ? "#ffa012" : "")};
+`;
+
+const FlexBox = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 1rem;
+`;
+
 const Wrap = styled.div`
   width: 100%;
   height: 15%;
@@ -191,23 +219,6 @@ const StyledLoader = styled(Loader)`
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-`;
-
-const RefreshButton = styled.button`
-  text-align: center;
-  font-weight: 700;
-  color: #ffa012;
-  background-color: white;
-  border: 1px solid #ffa012;
-  border-radius: 1rem;
-  width: 32rem;
-  cursor: pointer;
-  padding: 1.7rem 0;
-  margin: 1.7rem auto 2rem;
-  @media ${(props) => props.theme.mobile} {
-    width: 90vw;
-    padding: 1.7rem 0;
-  }
 `;
 
 const SelectedBox = styled.div`

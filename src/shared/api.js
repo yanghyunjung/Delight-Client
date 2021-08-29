@@ -19,4 +19,7 @@ export const getFrequency = () =>
 export const getUserRecommendationSV = () =>
   instance.get(`/api/ml-recommendations/mypicks`).then((res) => res);
 
+export const getFoodListSV = (categoryId) =>
+  instance.get(`/api/foods/${categoryId}`).then((res) => res);
+
 export default instance;
