@@ -246,8 +246,8 @@ const FoodList = styled.div`
   justify-items: center;
   padding: 0 2rem;
   width: 90%;
-  grid-template-rows: repeat(5, minmax(9rem, 9rem));
-  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  grid-auto-rows: minmax(90px, 90px);
+  grid-template-columns: repeat(auto-fill, minmax(70px, auto));
   gap: 0.5rem 1.3rem;
   @media ${(props) => props.theme.mobile} {
     width: 90vw;
