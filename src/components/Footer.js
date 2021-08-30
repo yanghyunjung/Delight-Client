@@ -82,7 +82,7 @@ const FooterStyle = styled.div`
   height: 18.1rem;
   justify-content: center;
   align-items: center;
-  margin: 3rem 0 0 0;
+  margin: 2rem 0 0 0;
 `;
 
 const Div = styled.div`

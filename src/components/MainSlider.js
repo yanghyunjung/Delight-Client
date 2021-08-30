@@ -87,7 +87,7 @@ const MainSlider = (props) => {
 // 이미지 슬라이드 스타일 적용하기
 const StyledSlider = styled(Slider)`
   width: 100%;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1rem;
   margin: 0px auto;
   box-sizing: border-box;
   .slick-list {
@@ -180,11 +180,11 @@ function PrevArrow(props) {
 
 const ArrowWrap = styled.div`
   & img {
-    width: 2.3rem;
-    height: 5rem;
+    width: 3.2rem;
+    height: 5.9rem;
     @media ${(props) => props.theme.mobile} {
-      width: 2.8rem;
-      height: 5.5rem;
+      width: 3.2rem;
+      height: 5.9rem;
     }
   }
 `;
