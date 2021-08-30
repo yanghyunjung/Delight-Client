@@ -59,7 +59,6 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
       tagIdArray.push(selectedTag2[i]["id"]);
       tagNameArray.push(selectedTag2[i]["name"]);
     }
-    console.log("tagIdArray : ",tagIdArray)
     dispatch(getTagResultThunk(tagIdArray));
     setSelectedTag(tagNameArray);
   };
