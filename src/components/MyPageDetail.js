@@ -2,19 +2,23 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import MyPagePickCard from "../components/MyPagePickCard";
-import MainLogOutCard from "../components/MainLogOutCard";
 import MyPageNoData from './MyPageNoData';
-import MainLogCard from './MainLogCard';
-
 
 import { useDispatch, useSelector } from "react-redux";
-
-import { getHistorySV } from "../shared/api";
+//redux
 import { addHistory } from "../redux/modules/food";
+import { history } from "../redux/configureStore";
+//shared
+import { getCookie, deleteCookie } from '../shared/Cookie';
+import { getHistorySV } from "../shared/api";
+
 
 const MyPageDetail = () => {
+
   const dispatch = useDispatch();
   const [historyList, setHistoryList] = useState(null);
+
+  // const delete_jwt = deleteCookie("jwt") ? true : false;
 
   useEffect(() => {
     async function getHistory() {
@@ -25,27 +29,30 @@ const MyPageDetail = () => {
     return getHistory();
   }, []);
 
-
   return (
     <Container>
       <Grid1>
         <Title1>
           회원님의 음식 기록장
         </Title1>
-        {/* <LogOutBtn>logout</LogOutBtn> */}
+
+        <LogOutBtn onClick={() => {
+          return history.push("/login");
+        }} >logout</LogOutBtn>
+
       </Grid1>
 
-      <MainLogOutCard />
-
       <Title2>지난 PICK</Title2>
-      {historyList ? (
-        historyList.map((item) => {
-          return <MyPagePickCard data={item} />;
-        })
-      ) : (
-          <MyPageNoData />
-        )}
-    </Container>
+      {
+        historyList ? (
+          historyList.map((item) => {
+            return <MyPagePickCard data={item} />;
+          })
+        ) : (
+            <MyPageNoData />
+          )
+      }
+    </Container >
   );
 };
 
@@ -54,8 +61,9 @@ const Container = styled.div`
 `;
 
 const Grid1 = styled.div`
-  width: 35rem;
-  margin: 0 auto 0 3rem;
+  display: flex;
+  width: 30rem; 
+  margin: 0 0 0 3rem;
 `;
 
 const Title1 = styled.h2`
@@ -63,9 +71,8 @@ const Title1 = styled.h2`
   height: 6.6rem;
   font-size: 2.4rem;
   font-weight: 700;
-  margin: 0 15rem 0 0;
   line-height: 3rem;
-  padding: 4rem 0 0 0;
+  padding: 4rem 1rem 0 1rem;
   @media ${(props) => props.theme.mobile} {
     width: 40%;
   }
@@ -83,10 +90,9 @@ const Title2 = styled.h2`
 `;
 
 const LogOutBtn = styled.button`
-  width: 4.2rem;
-  height: 1.8rem;
+  display: absolute;
+  padding: 0 0 0 10rem;
   font-size: 1.5rem;
-  position: top;
   color: #c9c9c9;
   background-color: transparent;
   border: none;

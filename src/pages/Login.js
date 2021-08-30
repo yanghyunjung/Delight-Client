@@ -1,16 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
+//images
 import DelightLogo from "../image/DelightLogo.png";
 import Google from "../image/google.png";
 import Kakao from "../image/kakao.png";
 import Naver from "../image/naver.png";
-
+//elements
 import { Text } from "../elements";
-
+//redux
 import { GOOGLE_URL, KAKAO_URL, NAVER_URL } from "../redux/modules/oauth";
+//shared
+import { deleteCookie } from '../shared/Cookie';
 
 const Login = (props) => {
+
+  const delete_jwt = deleteCookie("jwt") ? true : false;
 
   return (
     <React.Fragment>

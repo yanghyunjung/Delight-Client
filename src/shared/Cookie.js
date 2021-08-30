@@ -6,5 +6,10 @@ const getCookie = (name) => {
         value ? value[2] : null);
 };
 
+//쿠키 삭제하기
+const deleteCookie = (name) => {
+    let date = new Date("2021-01-01").toUTCString();
+    document.cookie = name + "=; expires=" + date;
+};
 
-export { getCookie };
+export { getCookie, deleteCookie };

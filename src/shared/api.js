@@ -5,7 +5,7 @@ import { getCookie } from "./Cookie";
 const instance = axios.create({
   baseURL: "https://api.delight99.co.kr",
 });
-instance.defaults.headers.common["Authorization"] = getCookie("jwt");
+instance.defaults.headers.common["Authorization"] = getCookie("jwt"); // 헤더에 jwt 실어 서버에 보내기
 // instance.defaults.headers.common["Authorization"] = USER_TOKEN;
 
 export const getFoodList = () => instance.get(`/api/foods`).then((res) => res);
