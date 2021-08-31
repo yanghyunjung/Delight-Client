@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 //components
 import MyPagePickCard from "./MyPagePickCard";
-import MyPageNoData from './MyPageNoData';
-import MainLogCard from './MainLogCard';
-import MainLogOutCard from './MainLogOutCard';
+import MyPageNoData from "./MyPageNoData";
+import MainLogCard from "./MainLogCard";
+import MainLogOutCard from "./MainLogOutCard";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { addHistory, addFrequency } from "../redux/modules/food";
@@ -12,11 +12,9 @@ import { addHistory, addFrequency } from "../redux/modules/food";
 import { getHistorySV, getFrequencySV } from "../shared/api";
 
 const MyPageDetail = () => {
-
   const dispatch = useDispatch();
   const [historyList, setHistoryList] = useState(null);
   const [frequency, setFrequency] = useState(null);
-
 
   useEffect(() => {
     async function getHistory() {
@@ -25,7 +23,6 @@ const MyPageDetail = () => {
 
       dispatch(addHistory(data)); //리덕스 저장
     }
-    console.log(historyList);
     return getHistory();
   }, []);
 
@@ -35,47 +32,37 @@ const MyPageDetail = () => {
       setFrequency(data);
       dispatch(addFrequency(data));
     }
-    console.log(frequency);
     return getFrequency();
   }, []);
+
+  console.log("매니아 카드 콘솔  ::: ", frequency);
 
   return (
     <Container>
       <Grid1>
-        <Title1>
-          회원님의 음식 기록장
-        </Title1>
+        <Title1>회원님의 음식 기록장</Title1>
 
-        <LogOutBtn onClick={() => {
-          return window.location.replace("/login")
-        }} >logout</LogOutBtn>
+        <LogOutBtn
+          onClick={() => {
+            return window.location.replace("/login");
+          }}
+        >
+          logout
+        </LogOutBtn>
       </Grid1>
 
-      {/* 
-      {
-        frequency ? (
-          frequency.map((i) => {
-            return <MainLogCard data={i} />;
-          })
-        ) : (
-            <MainLogOutCard />
-          )
-      } */}
-
-      <MainLogCard />
+      {frequency ? <MainLogCard data={frequency} /> : <MainLogOutCard />}
 
       <Title2>지난 PICK</Title2>
 
-      {
-        historyList ? (
-          historyList.map((item) => {
-            return <MyPagePickCard data={item} />;
-          })
-        ) : (
-            <MyPageNoData />
-          )
-      }
-    </Container >
+      {historyList ? (
+        historyList.map((item) => {
+          return <MyPagePickCard data={item} />;
+        })
+      ) : (
+        <MyPageNoData />
+      )}
+    </Container>
   );
 };
 
@@ -85,7 +72,7 @@ const Container = styled.div`
 
 const Grid1 = styled.div`
   display: flex;
-  width: 310px; 
+  width: 310px;
   margin: 0 0 0 1rem;
 `;
 
