@@ -15,7 +15,7 @@
 ## 개요
   - 한끼 추천 서비스 ([서비스 이용하기](https://www.delight99.co.kr/))
   - React + Spring 협업
-  - [Team Delight 팀원](https://github.com/Team-Delight/Delight-Client/wiki/%ED%94%84%EB%A1%A0%ED%8A%B8-%ED%8C%80%EC%9B%90%EC%9D%84-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4)
+  - [Team Delight 팀원](https://github.com/Team-Delight/Delight-Client/wiki/Team-Delight-%ED%8C%80%EC%9B%90%EC%9D%84-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4)
   - 개발 언어 : JavaScript
   - 개발 라이브러리 : React
   - Github flow 적용
