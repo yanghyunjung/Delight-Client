@@ -58,7 +58,7 @@ const Recommand = (props) => {
                   <img src={BobAI} alt="AI" />
                 </AiImgWrap>
                 <TitleWrap className="chat">
-                  <Title>최근에 먹은 음식, 최대 10개 골라주세요!</Title>
+                  <Title>최근에 먹은 음식 1개 이상 골라주세요!</Title>
                 </TitleWrap>
               </Inner>
             </Wrap>
