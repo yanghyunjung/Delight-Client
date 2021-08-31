@@ -1,7 +1,6 @@
 // import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import instance from "../../shared/api";
 
-
 // export const getFrequencyThunk = createAsyncThunk("frequency/getFrequency", async () => {
 //     const response = await instance.get("/api/tags/users/frequent-tag");
 //     return response.data;
@@ -27,6 +26,6 @@
 //     },
 // });
 
-// export const getFrequency = (state) => state.tag.list;
+// export const getFrequency = (state) => state.data.list;
 
 // export default frequencySlice.reducer;

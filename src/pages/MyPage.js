@@ -1,8 +1,7 @@
 import React from "react";
-
+//components
 import MyPageNoData from "../components/MyPageNoData";
 import MyPageDetail from "../components/MyPageDetail";
-
 
 const MyPage = () => {
 

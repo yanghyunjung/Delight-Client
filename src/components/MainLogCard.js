@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
 
+import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+//image
 import MainLogImg from "../image/hamburger.png";
 
-import { useDispatch, useSelector } from "react-redux";
-import { getFrequency } from "../redux/modules/frequency";
+const MainLogCard = ({ data }) => {
 
-const MainLogCard = (props) => {
-  // const dispatch = useDispatch();
-  // const foods = useSelector(getFrequency);
-
+  useEffect(() => {
+    console.log(data);
+  }, []);
+  // const { name } = data;
 
   return (
     <>
@@ -31,7 +31,7 @@ const MainLogCard = (props) => {
             cursor: "pointer",
           }}
         >
-          자세히 보기
+          {/* 자세히 보기 */}
         </span>
       </GRID>
       <GRID1>
@@ -39,7 +39,7 @@ const MainLogCard = (props) => {
           <span style={{ margin: "0 0 0 1.5rem" }}>
             회원님의 지난 주 <br />
             <span style={{ color: "#FF6B12", fontWeight: "bold" }}>
-    
+              {/* {name} */}
             </span>
             매니아!
           </span>

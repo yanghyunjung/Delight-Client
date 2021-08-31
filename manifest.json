@@ -1,8 +1,8 @@
 {
   "dir": "ltr",
   "lang": "en",
-  "name": "Delight : 한끼 추천 서비스",
-  "short_name": "Delight : ",
+  "name": "밥씨",
+  "short_name": "밥씨",
   "scope": "/",
   "start_url": "https://www.delight99.co.kr/",
   "display": "standalone",

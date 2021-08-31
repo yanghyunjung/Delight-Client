@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 //images
 import DelightLogo from "../image/DelightLogo.png";
 import Google from "../image/google.png";
@@ -15,7 +14,7 @@ import { deleteCookie } from '../shared/Cookie';
 
 const Login = (props) => {
 
-  const delete_jwt = deleteCookie("jwt") ? true : false;
+  const delete_jwt = deleteCookie("jwt");
 
   return (
     <React.Fragment>

@@ -1,32 +1,42 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
-import MyPagePickCard from "../components/MyPagePickCard";
+//components
+import MyPagePickCard from "./MyPagePickCard";
 import MyPageNoData from './MyPageNoData';
-
-import { useDispatch, useSelector } from "react-redux";
+import MainLogCard from './MainLogCard';
+import MainLogOutCard from './MainLogOutCard';
 //redux
-import { addHistory } from "../redux/modules/food";
-import { history } from "../redux/configureStore";
+import { useDispatch, useSelector } from "react-redux";
+import { addHistory, addFrequency } from "../redux/modules/food";
 //shared
-import { getCookie, deleteCookie } from '../shared/Cookie';
-import { getHistorySV } from "../shared/api";
-
+import { getHistorySV, getFrequencySV } from "../shared/api";
 
 const MyPageDetail = () => {
 
   const dispatch = useDispatch();
   const [historyList, setHistoryList] = useState(null);
+  const [frequency, setFrequency] = useState(null);
 
-  // const delete_jwt = deleteCookie("jwt") ? true : false;
 
   useEffect(() => {
     async function getHistory() {
       const { data } = await getHistorySV();
       setHistoryList(data);
+
       dispatch(addHistory(data)); //리덕스 저장
     }
+    console.log(historyList);
     return getHistory();
+  }, []);
+
+  useEffect(() => {
+    async function getFrequency() {
+      const { data } = await getFrequencySV();
+      setFrequency(data);
+      dispatch(addFrequency(data));
+    }
+    console.log(frequency);
+    return getFrequency();
   }, []);
 
   return (
@@ -37,12 +47,25 @@ const MyPageDetail = () => {
         </Title1>
 
         <LogOutBtn onClick={() => {
-          return history.push("/login");
+          return window.location.replace("/login")
         }} >logout</LogOutBtn>
-
       </Grid1>
 
+      {/* 
+      {
+        frequency ? (
+          frequency.map((i) => {
+            return <MainLogCard data={i} />;
+          })
+        ) : (
+            <MainLogOutCard />
+          )
+      } */}
+
+      <MainLogCard />
+
       <Title2>지난 PICK</Title2>
+
       {
         historyList ? (
           historyList.map((item) => {
@@ -62,8 +85,8 @@ const Container = styled.div`
 
 const Grid1 = styled.div`
   display: flex;
-  width: 30rem; 
-  margin: 0 0 0 3rem;
+  width: 310px; 
+  margin: 0 0 0 1rem;
 `;
 
 const Title1 = styled.h2`
@@ -98,15 +121,5 @@ const LogOutBtn = styled.button`
   border: none;
   cursor: pointer;
 `;
-
-// 통계 추가 시 사용될 버튼
-// const StatisticsBtn = styled.button`
-//   margin: 0 0 2rem 0;
-//   font-size: 2rem;
-//   font-weight: bold;
-//   border: none;
-//   background-color: transparent;
-//   cursor: pointer;
-// `;
 
 export default MyPageDetail;

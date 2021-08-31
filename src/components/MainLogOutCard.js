@@ -22,7 +22,7 @@ const MainCard = (props) => {
             color: "#ACACAC",
           }}
         >
-          자세히 보기
+          {/* 자세히 보기 */}
         </span>
       </GRID>
       <GRID1>
