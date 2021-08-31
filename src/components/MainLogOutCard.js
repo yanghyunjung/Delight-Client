@@ -54,7 +54,7 @@ const Box = styled.div`
   padding: 10px 5px 10px 0;
   width: 100vw;
   height: 8rem;
-  margin: 5px 25px;
+  margin: 0px 25px;
   font-size: 2rem;
   line-height: 3rem;
   color: #717171;

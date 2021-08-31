@@ -180,22 +180,22 @@ const GRID2 = styled.div`
 `;
 
 const GRID3 = styled.div`
-  padding: 2rem 0 0 0;
   display: grid;
-  grid-template-columns: 28rem 2fr;
+  grid-template-columns: 19rem 2fr;
 `;
 
 const Span = styled.a`
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  padding: 1.5rem 4rem 2rem 2rem;
+  padding: 1.5rem 0 2rem 2rem;
 `;
 
 const Span2 = styled.a`
   font-size: 1.2rem;
-  padding: 1.9rem 0 2rem 0;
+  padding: 1.9rem 2.5rem 2rem 0;
   color: #acacac;
   cursor: pointer;
+  text-align: right;
 `;
 
 const RecButton = styled.img`

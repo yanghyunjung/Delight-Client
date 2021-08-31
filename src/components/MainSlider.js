@@ -205,7 +205,7 @@ const MenuList = styled.nav`
 const MenuItem = styled.a`
   color: #979797;
   font-size: 2vh;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   display: flex;
   ${(props) =>
