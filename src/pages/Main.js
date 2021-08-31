@@ -5,8 +5,8 @@ import MainSlider from "../components/MainSlider";
 import MainLogOutCard from "../components/MainLogOutCard";
 import MainLogCard from "../components/MainLogCard";
 
-import RecComButton from "../image/RecButton.png";
-import SearchButton from "../image/SearchButton.png";
+import RecComButton from "../image/Rec.png";
+import SearchButton from "../image/Search.png";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 
