@@ -34,8 +34,6 @@ const MyPageDetail = () => {
     return getFrequency();
   }, []);
 
-  console.log("매니아 카드 콘솔  ::: ", frequency);
-
   return (
     <Container>
       <Grid1>
@@ -59,8 +57,8 @@ const MyPageDetail = () => {
           return <MyPagePickCard data={item} />;
         })
       ) : (
-          <MyPageNoData />
-        )}
+        <MyPageNoData />
+      )}
     </Container>
   );
 };
