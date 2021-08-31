@@ -9,9 +9,6 @@ import { useDispatch } from "react-redux";
 import { resetData } from "../redux/modules/food";
 import { history } from "../redux/configureStore";
 
-
-
-
 const MyPageNoData = () => {
   const dispatch = useDispatch();
   return (

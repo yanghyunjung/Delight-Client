@@ -6,7 +6,7 @@ import MyPageNoData from "./MyPageNoData";
 import MainLogCard from "./MainLogCard";
 import MainLogOutCard from "./MainLogOutCard";
 //redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addHistory, addFrequency } from "../redux/modules/food";
 //shared
 import { getHistorySV, getFrequencySV } from "../shared/api";
@@ -20,20 +20,19 @@ const MyPageDetail = () => {
     async function getHistory() {
       const { data } = await getHistorySV();
       setHistoryList(data);
-
       dispatch(addHistory(data)); //리덕스 저장
     }
     return getHistory();
   }, []);
 
-  useEffect(() => {
-    async function getFrequency() {
-      const { data } = await getFrequencySV();
-      setFrequency(data);
-      dispatch(addFrequency(data));
-    }
-    return getFrequency();
-  }, []);
+  // useEffect(() => {
+  //   async function getFrequency() {
+  //     const { data } = await getFrequencySV();
+  //     setFrequency(data);
+  //     dispatch(addFrequency(data)); //리덕스 저장
+  //   }
+  //   return getFrequency();
+  // }, []);
 
   console.log("매니아 카드 콘솔  ::: ", frequency);
 
@@ -60,8 +59,8 @@ const MyPageDetail = () => {
           return <MyPagePickCard data={item} />;
         })
       ) : (
-        <MyPageNoData />
-      )}
+          <MyPageNoData />
+        )}
     </Container>
   );
 };
@@ -72,19 +71,19 @@ const Container = styled.div`
 
 const Grid1 = styled.div`
   display: flex;
-  width: 310px;
-  margin: 0 0 0 1rem;
+  width: 100%;
+  margin: 0 0 1rem;
 `;
 
 const Title1 = styled.h2`
-  width: 100%;
+  width: 30vw;
   height: 6.6rem;
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 3rem;
-  padding: 4rem 1rem 0 1rem;
+  padding: 4rem 0 0 1rem;
   @media ${(props) => props.theme.mobile} {
-    width: 40%;
+    width: 43%;
   }
   @media ${(props) => props.theme.tablet} {
     width: 100%;

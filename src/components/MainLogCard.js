@@ -2,13 +2,18 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 //image
 import MainLogImg from "../image/hamburger.png";
+import babssi from "../image/babssi.png";
+import sushi from "../image/sushi.png";
+import pizza from "../image/pizza.png";
+import chinesefood from "../image/chinesefood.png";
+import streetfood from "../image/streetfood.png";
 
-const image = [
-  { id: 1, title: "한식", imgUrl: "11233" },
-  { id: 2, title: "일식", imgUrl: "11233" },
-  { id: 3, title: "양식", imgUrl: "11233" },
-  { id: 4, title: "중식", imgUrl: "11233" },
-  { id: 5, title: "분식", imgUrl: "11233" },
+const catagory = [
+  { id: 1, title: "한식", imgUrl: { babssi } },
+  { id: 2, title: "일식", imgUrl: { sushi } },
+  { id: 3, title: "양식", imgUrl: { pizza } },
+  { id: 4, title: "중식", imgUrl: { chinesefood } },
+  { id: 5, title: "분식", imgUrl: { streetfood } },
 ];
 
 const MainLogCard = ({ data }) => {
@@ -42,10 +47,12 @@ const MainLogCard = ({ data }) => {
         <Box>
           <span style={{ margin: "0 0 0 1.5rem" }}>
             회원님의 지난 주 <br />
-            <span style={{ color: "#FF6B12", fontWeight: "bold" }}>{name}</span>
+            <span style={{ color: "#FF6B12", fontWeight: "bold" }}>
+              {name}
+            </span>&nbsp;
             매니아!
           </span>
-          <Img src={MainLogImg} />
+          <Img src={babssi} />
         </Box>
       </GRID1>
     </>
