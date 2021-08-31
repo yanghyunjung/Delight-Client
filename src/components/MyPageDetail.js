@@ -6,15 +6,15 @@ import MyPageNoData from "./MyPageNoData";
 import MainLogCard from "./MainLogCard";
 import MainLogOutCard from "./MainLogOutCard";
 //redux
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addHistory, addFrequency } from "../redux/modules/food";
 //shared
 import { getHistorySV, getFrequencySV } from "../shared/api";
 
 const MyPageDetail = () => {
   const dispatch = useDispatch();
+  const maniaData = useSelector((state) => state.food.frequency);
   const [historyList, setHistoryList] = useState(null);
-  const [frequency, setFrequency] = useState(null);
 
   useEffect(() => {
     async function getHistory() {
@@ -28,8 +28,7 @@ const MyPageDetail = () => {
   useEffect(() => {
     async function getFrequency() {
       const { data } = await getFrequencySV();
-      setFrequency(data);
-      dispatch(addFrequency(data)); //리덕스 저장
+      dispatch(addFrequency([data])); //리덕스 저장
     }
     return getFrequency();
   }, []);
@@ -48,7 +47,7 @@ const MyPageDetail = () => {
         </LogOutBtn>
       </Grid1>
 
-      {frequency ? <MainLogCard data={frequency} /> : <MainLogOutCard />}
+      {maniaData && maniaData ? <MainLogCard /> : <MainLogOutCard />}
 
       <Title2>지난 PICK</Title2>
 
