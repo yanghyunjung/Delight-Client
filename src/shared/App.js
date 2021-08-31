@@ -39,24 +39,24 @@ const App = () => {
         {loading ? (
           <Loading />
         ) : (
-          <Layout>
-            <Switch>
-              <Route exact path="/" component={Main} />
-              <Route exact path="/recommendation" component={Recommend} />
-              <Route exact path="/result" component={Result} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/recommendation/spinner" component={Spinner} />
-              <Route exact path="/search" component={Search} />
-              <Route exact path="/main/chat" component={MainChat} />
-              <Route
-                exact
-                path="/recommendation/user"
-                component={UserRecommend}
-              />
-              <Route exact path="/mypage" component={MyPage} />
-            </Switch>
-          </Layout>
-        )}
+            <Layout>
+              <Switch>
+                <Route exact path="/" component={Main} />
+                <Route exact path="/recommendation" component={Recommend} />
+                <Route exact path="/result" component={Result} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/recommendation/spinner" component={Spinner} />
+                <Route exact path="/search" component={Search} />
+                <Route exact path="/main/chat" component={MainChat} />
+                <Route
+                  exact
+                  path="/recommendation/user"
+                  component={UserRecommend}
+                />
+                <Route exact path="/mypage" component={MyPage} />
+              </Switch>
+            </Layout>
+          )}
       </Suspense>
     </ConnectedRouter>
   );

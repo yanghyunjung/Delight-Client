@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
-import MyPagePickCard from "../components/MyPagePickCard";
-import MyPageNoData from './MyPageNoData';
-
-import { useDispatch, useSelector } from "react-redux";
+//components
+import MyPagePickCard from "./MyPagePickCard";
+import MyPageNoData from "./MyPageNoData";
+import MainLogCard from "./MainLogCard";
+import MainLogOutCard from "./MainLogOutCard";
 //redux
-import { addHistory } from "../redux/modules/food";
-import { history } from "../redux/configureStore";
+import { useDispatch } from "react-redux";
+import { addHistory, addFrequency } from "../redux/modules/food";
 //shared
-import { getCookie, deleteCookie } from '../shared/Cookie';
-import { getHistorySV } from "../shared/api";
-
+import { getHistorySV, getFrequencySV } from "../shared/api";
 
 const MyPageDetail = () => {
-
   const dispatch = useDispatch();
   const [historyList, setHistoryList] = useState(null);
-
-  // const delete_jwt = deleteCookie("jwt") ? true : false;
+  const [frequency, setFrequency] = useState(null);
 
   useEffect(() => {
     async function getHistory() {
@@ -29,30 +25,41 @@ const MyPageDetail = () => {
     return getHistory();
   }, []);
 
+  useEffect(() => {
+    async function getFrequency() {
+      const { data } = await getFrequencySV();
+      setFrequency(data);
+      dispatch(addFrequency(data)); //리덕스 저장
+    }
+    return getFrequency();
+  }, []);
+
   return (
     <Container>
       <Grid1>
-        <Title1>
-          회원님의 음식 기록장
-        </Title1>
+        <Title1>회원님의 음식 기록장</Title1>
 
-        <LogOutBtn onClick={() => {
-          return history.push("/login");
-        }} >logout</LogOutBtn>
-
+        <LogOutBtn
+          onClick={() => {
+            return window.location.replace("/login");
+          }}
+        >
+          logout
+        </LogOutBtn>
       </Grid1>
 
+      {frequency ? <MainLogCard data={frequency} /> : <MainLogOutCard />}
+
       <Title2>지난 PICK</Title2>
-      {
-        historyList ? (
-          historyList.map((item) => {
-            return <MyPagePickCard data={item} />;
-          })
-        ) : (
-            <MyPageNoData />
-          )
-      }
-    </Container >
+
+      {historyList ? (
+        historyList.map((item) => {
+          return <MyPagePickCard data={item} />;
+        })
+      ) : (
+        <MyPageNoData />
+      )}
+    </Container>
   );
 };
 
@@ -62,19 +69,19 @@ const Container = styled.div`
 
 const Grid1 = styled.div`
   display: flex;
-  width: 30rem; 
-  margin: 0 0 0 3rem;
+  width: 100%;
+  margin: 0 0 1rem;
 `;
 
 const Title1 = styled.h2`
-  width: 100%;
+  width: 30vw;
   height: 6.6rem;
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 3rem;
-  padding: 4rem 1rem 0 1rem;
+  padding: 4rem 0 0 1rem;
   @media ${(props) => props.theme.mobile} {
-    width: 40%;
+    width: 43%;
   }
   @media ${(props) => props.theme.tablet} {
     width: 100%;
@@ -98,15 +105,5 @@ const LogOutBtn = styled.button`
   border: none;
   cursor: pointer;
 `;
-
-// 통계 추가 시 사용될 버튼
-// const StatisticsBtn = styled.button`
-//   margin: 0 0 2rem 0;
-//   font-size: 2rem;
-//   font-weight: bold;
-//   border: none;
-//   background-color: transparent;
-//   cursor: pointer;
-// `;
 
 export default MyPageDetail;

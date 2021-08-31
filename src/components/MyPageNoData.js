@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-
+//elements
+import { Text } from "../elements";
+//image
 import mypage_2 from "../image/mypage_2.png";
-
+//redux
 import { useDispatch } from "react-redux";
 import { resetData } from "../redux/modules/food";
 import { history } from "../redux/configureStore";
-
-import { Text } from "../elements";
-
 
 const MyPageNoData = () => {
   const dispatch = useDispatch();

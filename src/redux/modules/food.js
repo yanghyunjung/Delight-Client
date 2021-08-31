@@ -12,6 +12,7 @@ const food = createSlice({
     foodName: [],
     result: null,
     history: null,
+    frequency: null,
   },
   reducers: {
     addFood: (state, action) => {
@@ -49,6 +50,9 @@ const food = createSlice({
     },
     addHistory: (state, action) => {
       state.history = action.payload;
+    },
+    addFrequency: (state, action) => {
+      state.frequency = action.payload;
     },
     resetData: (state, action) => {
       state.selectList = [];
@@ -118,7 +122,7 @@ export const {
   deleteFood,
   getResult,
   addHistory,
-  addFrequency,
   resetData,
+  addFrequency,
 } = food.actions;
 export default food.reducer;
