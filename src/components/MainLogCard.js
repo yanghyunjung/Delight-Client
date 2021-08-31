@@ -2,32 +2,30 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import MainLogOutCard from "./MainLogOutCard";
 //image
-import MainLogImg from "../image/hamburger.png";
 import babssi from "../image/babssi.png";
 import sushi from "../image/sushi.png";
 import pizza from "../image/pizza.png";
 import chinesefood from "../image/chinesefood.png";
 import streetfood from "../image/streetfood.png";
 
-
-
 const MainLogCard = ({ data }) => {
   const { name } = data;
-  const [correctData, setCorrectData] = useState(0);
   const [imgData, setImgData] = useState(null);
 
   const catagoryImage = [
-    { id: 1, title: "한식", imgUrl: { babssi } },
-    { id: 2, title: "일식", imgUrl: { sushi } },
-    { id: 3, title: "양식", imgUrl: { pizza } },
-    { id: 4, title: "중식", imgUrl: { chinesefood } },
-    { id: 5, title: "분식", imgUrl: { streetfood } },
+    { id: 1, title: "한식", imgUrl: babssi },
+    { id: 2, title: "일식", imgUrl: sushi },
+    { id: 3, title: "양식", imgUrl: pizza },
+    { id: 4, title: "중식", imgUrl: chinesefood },
+    { id: 6, title: "분식", imgUrl: streetfood },
   ];
 
   useEffect(() => {
-    if ({ name } === "한식") {
-      setImgData(babssi);
-    }
+    catagoryImage.map((i) => {
+      if (i.title === name) {
+        setImgData(i.imgUrl);
+      }
+    });
   }, []);
 
   return (
@@ -56,15 +54,11 @@ const MainLogCard = ({ data }) => {
       <GRID1>
         <Box>
           <span style={{ margin: "0 0 0 1.5rem" }}>
-            회원님의 지난 주 <br />
-            <span style={{ color: "#FF6B12", fontWeight: "bold" }}>
-              {name}
-            </span>&nbsp;
-            매니아!
+            회원님은 지난 주 <br />
+            <span style={{ color: "#FF6B12", fontWeight: "bold" }}>{name}</span>
+            &nbsp; 매니아!
           </span>
-
           <Img src={imgData} />
-
         </Box>
       </GRID1>
     </>
