@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
+import MainLogOutCard from "./MainLogOutCard";
 //image
 import MainLogImg from "../image/hamburger.png";
 import babssi from "../image/babssi.png";
@@ -8,17 +9,26 @@ import pizza from "../image/pizza.png";
 import chinesefood from "../image/chinesefood.png";
 import streetfood from "../image/streetfood.png";
 
-const catagory = [
-  { id: 1, title: "한식", imgUrl: { babssi } },
-  { id: 2, title: "일식", imgUrl: { sushi } },
-  { id: 3, title: "양식", imgUrl: { pizza } },
-  { id: 4, title: "중식", imgUrl: { chinesefood } },
-  { id: 5, title: "분식", imgUrl: { streetfood } },
-];
+
 
 const MainLogCard = ({ data }) => {
   const { name } = data;
-  const [correctData, setCorrectData] = useState(null);
+  const [correctData, setCorrectData] = useState(0);
+  const [imgData, setImgData] = useState(null);
+
+  const catagoryImage = [
+    { id: 1, title: "한식", imgUrl: { babssi } },
+    { id: 2, title: "일식", imgUrl: { sushi } },
+    { id: 3, title: "양식", imgUrl: { pizza } },
+    { id: 4, title: "중식", imgUrl: { chinesefood } },
+    { id: 5, title: "분식", imgUrl: { streetfood } },
+  ];
+
+  useEffect(() => {
+    if ({ name } === "한식") {
+      setImgData(babssi);
+    }
+  }, []);
 
   return (
     <>
@@ -52,7 +62,9 @@ const MainLogCard = ({ data }) => {
             </span>&nbsp;
             매니아!
           </span>
-          <Img src={babssi} />
+
+          <Img src={imgData} />
+
         </Box>
       </GRID1>
     </>

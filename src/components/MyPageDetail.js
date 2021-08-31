@@ -25,14 +25,14 @@ const MyPageDetail = () => {
     return getHistory();
   }, []);
 
-  // useEffect(() => {
-  //   async function getFrequency() {
-  //     const { data } = await getFrequencySV();
-  //     setFrequency(data);
-  //     dispatch(addFrequency(data)); //리덕스 저장
-  //   }
-  //   return getFrequency();
-  // }, []);
+  useEffect(() => {
+    async function getFrequency() {
+      const { data } = await getFrequencySV();
+      setFrequency(data);
+      dispatch(addFrequency(data)); //리덕스 저장
+    }
+    return getFrequency();
+  }, []);
 
   console.log("매니아 카드 콘솔  ::: ", frequency);
 

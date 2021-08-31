@@ -43,17 +43,30 @@ const Footer = (props) => {
         <Icon>
           <A href="https://www.instagram.com/" target="_blank">
             <InstagramIcon // 인스타그램 아이콘
-              style={{ fontSize: "3.3rem", margin: "1rem 0.4rem 0 0", cursor: "pointer" }}
+              style={{
+                fontSize: "3.3rem",
+                margin: "0.4rem 0.4rem 0 0",
+                cursor: "pointer",
+              }}
             ></InstagramIcon>
           </A>
           <A // 노션 아이콘
             href="https://www.notion.so/Delight-Crew-s-aa69ae261f404f6a8c58c48e669f02fd"
             target="_blank"
           >
-            <Notion src={NotionIcon}/>
+            <Notion src={NotionIcon} />
           </A>
         </Icon>
-        <Name>Copyright ⓒ2021 Team Delight</Name>
+        <span
+          style={{ textAlign: "center", color: "black", fontSize: "1.1em" }}
+        >
+          Team Delight
+        </span>
+        <Sub>
+          <br />본 프로젝트는 항해99 결과물입니다. 사용된 이미지 등은 양해를
+          <br />
+          구하지 못했으나, 필요한 경우 연락 주시면 교체하도록 하겠습니다.
+        </Sub>
       </Div>
     </FooterStyle>
   );
@@ -69,11 +82,12 @@ const FooterStyle = styled.div`
   height: 18.1rem;
   justify-content: center;
   align-items: center;
-  margin: 3rem 0 0 0;
+  margin: 2rem 0 0 0;
 `;
 
 const Div = styled.div`
   display: flex;
+  padding: 0.5rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -87,8 +101,7 @@ const Content = styled.a`
   font-size: 1.8rem;
   font-weight: bold;
   text-align: center;
-  padding: 0.5rem;
-  line-height: 2.4rem;
+  line-height: 2.3rem;
 `;
 
 const Icon = styled.div`
@@ -97,15 +110,18 @@ const Icon = styled.div`
 `;
 
 const Notion = styled.img`
-  margin: 1rem 0 0 0.4rem;
+  margin: 0.4rem 0 0 0.4rem;
   width: 3.3rem;
   height: 3.3rem;
 `;
 
-const Name = styled.a`
+const Sub = styled.a`
   display: flex;
-  font-size: 1.4rem;
-  margin-top: 0.7rem;
+  text-align: center;
+  font-size: 1em;
+  line-height: 1.3rem;
+  color: #a7a7a7;
+  margin-top: -0.5rem;
 `;
 
 const A = styled.a`

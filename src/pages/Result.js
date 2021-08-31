@@ -25,13 +25,24 @@ const Result = () => {
           <Grid padding="2.5rem 2rem 1.5rem">
             <Title>오늘은 이거 어때?</Title>
           </Grid>
-          {openTip && (
+          {openTip ? (
             <TipWrap>
               <div>
                 <img src={FoodTip} alt="my pick tip" />
               </div>
               <div>
                 <span>음식 하단에 있는 아이콘을 누르면 기록장에 저장돼요!</span>
+              </div>
+            </TipWrap>
+          ) : (
+            <TipWrap>
+              <div>
+                <img src={FoodTip} alt="my pick tip" />
+              </div>
+              <div>
+                <span>
+                  음식 하단에 있는 아이콘을 한번더 누르면 기록장으로 이동해요!
+                </span>
               </div>
             </TipWrap>
           )}
