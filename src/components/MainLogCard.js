@@ -42,27 +42,6 @@ const MainLogCard = (props) => {
 
   return (
     <>
-      <GRID>
-        <span
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: "bold",
-            padding: "1.5rem 4rem 2rem 2rem",
-          }}
-        >
-          나의 데이터가 궁금하다면?
-        </span>
-        <span
-          style={{
-            fontSize: "1.2rem",
-            padding: "1.9rem 0 2rem 0",
-            color: "#ACACAC",
-            cursor: "pointer",
-          }}
-        >
-          {/* 자세히 보기 */}
-        </span>
-      </GRID>
       <GRID1>
         <Box>
           <span style={{ margin: "0 0 0 1.5rem" }}>
@@ -78,12 +57,6 @@ const MainLogCard = (props) => {
     </>
   );
 };
-
-const GRID = styled.div`
-  padding: 2rem 0 0 0;
-  display: grid;
-  grid-template-columns: 28rem 2fr;
-`;
 
 const GRID1 = styled.div`
   display: flex;

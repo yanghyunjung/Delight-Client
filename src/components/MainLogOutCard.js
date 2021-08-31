@@ -6,25 +6,6 @@ import mypage_nodata from "../image/mypage_nodata.png";
 const MainCard = (props) => {
   return (
     <DIV>
-      <GRID>
-        <span
-          style={{
-            fontSize: "1.8em",
-            fontWeight: "bold",
-          }}
-        >
-          나의 데이터가 궁금하다면?
-        </span>
-        <span
-          style={{
-            marginTop: "3px",
-            fontSize: "1.3em",
-            color: "#ACACAC",
-          }}
-        >
-          {/* 자세히 보기 */}
-        </span>
-      </GRID>
       <GRID1>
         <Box>
           <SpanWrap>
