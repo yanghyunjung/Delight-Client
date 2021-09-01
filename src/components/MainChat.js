@@ -76,7 +76,7 @@ const MainChat = (props) => {
               </ResultButton>
               <ResultButton
                 onClick={() => {
-                  if (historyList.length === 0) {
+                  if (!historyList || historyList.length === 0) {
                     Swal.fire({
                       width: 240,
                       padding: "0 0 20px 0",
