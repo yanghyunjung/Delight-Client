@@ -110,8 +110,8 @@ const MyPickButton = styled.button`
   border: 0px solid #ffffff;
   background-color: inherit;
   position: absolute;
-  top: 12.2rem;
-  right: 0rem;
+  bottom: 1.2rem;
+  right: 0.5rem;
   cursor: pointer;
 `;
 
@@ -178,16 +178,19 @@ const FoodImgWrap = styled.div`
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
-  width: 23.5rem;
-  height: 16rem;
+  width: 23rem;
+  height: 23rem;
   @media ${(props) => props.theme.mobile} {
-    max-width: 24rem;
+    width: 23rem;
+    height: 23rem;
   }
   @media screen and (max-width: 360px) {
-    max-width: 20rem;
+    width: 20rem;
+    height: 20rem;
   }
   @media screen and (max-width: 310px) {
-    max-width: 16rem;
+    width: 16rem;
+    height: 16rem;
   }
   & img {
     border-radius: 1rem;
@@ -206,7 +209,7 @@ function NextArrow(props) {
       style={{
         ...style,
         position: "absolute",
-        top: "16rem",
+        bottom: "9rem",
         right: "-0.3rem",
         zIndex: 2,
       }}
@@ -227,7 +230,7 @@ function PrevArrow(props) {
       style={{
         ...style,
         position: "absolute",
-        top: "16rem",
+        bottom: "9rem",
         left: "-0.3rem",
         zIndex: 2,
       }}
