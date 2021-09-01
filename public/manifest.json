@@ -4,7 +4,7 @@
   "name": "밥씨 : 한끼 추천 서비스",
   "short_name": "밥씨",
   "scope": "/",
-  "start_url": "https://www.delight99.co.kr/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#FFA012",
