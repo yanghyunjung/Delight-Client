@@ -12,25 +12,38 @@
     gtag('config', 'G-ECME9179M3');
   </script>
 
+  <!-- og 태그 -->
   <meta property="og:url" content="https://www.delight99.co.kr" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="한끼 추천 서비스 밥씨" />
   <meta property="og:description" content="오늘 뭐 먹을지 고민하고 있다면 밥씨가 추천해주는 음식으로 드시는 건 어떠세요~?" />
   <meta property="og:image" content="./ogimage.png" />
-  <link rel="manifest" href="manifest.json" />
+
+  <!-- 기본 뷰포트 설정 -->
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/delightIcon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <!-- apple -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" />
+  <meta name=" apple-mobile-web-app-title" content="밥씨 : 한끼 추천 서비스" />
+  <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/images/152x152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="%PUBLIC_URL%/images/167x167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/images/180x180.png">
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="icon" href="%PUBLIC_URL%/delightIcon.png" />
   <meta name="theme-color" content="#ffffff" />
   <meta name="background_color" content="#ffffff" />
   <meta name="Delight" content="한끼 추천 서비스" />
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <title>Delight : 한끼 추천 서비스</title>
+
   <script type="module">
     import "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate";
     const el = document.createElement('pwa-update');
     document.body.appendChild(el);
   </script>
+
+  <title>Delight : 한끼 추천 서비스</title>
 </head>
 
 <body>
