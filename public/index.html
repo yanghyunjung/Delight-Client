@@ -32,7 +32,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/images/180x180.png">
 
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <link rel="icon" href="%PUBLIC_URL%/delightIcon.png" />
+  <link rel="icon" href="%PUBLIC_URL%/images/64x64.png" />
   <meta name="theme-color" content="#ffffff" />
   <meta name="background_color" content="#ffffff" />
   <meta name="Delight" content="한끼 추천 서비스" />
@@ -49,11 +49,11 @@
 <body>
   <div id="root">
   </div>
+
   <script>
-    if ('serviceWorker' in navigator) {
-      // Use the window load event to keep the page load performant
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./pwabuilder-sw.js');
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js");
       });
     }
   </script>
