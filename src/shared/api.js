@@ -1,5 +1,4 @@
 import axios from "axios";
-import { result } from "lodash";
 import { getCookie } from "./Cookie";
 
 const instance = axios.create({
