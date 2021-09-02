@@ -62,7 +62,7 @@
   
 ## 트러블 슈팅
   - [현정's Story](https://github.com/Team-Delight/Delight-Client/wiki/%ED%98%84%EC%A0%95's-Story)
-  - [일교's Story]
+  - [일교's Story](https://github.com/Team-Delight/Delight-Client/wiki/%EC%9D%BC%EA%B5%90's-Story)
   - [화현's Story]
 
 <br>
