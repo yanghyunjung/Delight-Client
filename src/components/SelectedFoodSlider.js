@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import ArrowRight from "../image/SelectedArrowR.png";
 import ArrowLeft from "../image/SelectedArrowL.png";
 
 const SelectedFoodSlider = () => {
+  // 선택한 음식 리스트
   const foodList = useSelector((state) => state.food.selectList);
 
   const settings = {
@@ -30,7 +31,7 @@ const SelectedFoodSlider = () => {
             const { food } = item;
             return (
               <FoodImgWrap key={idx}>
-                <img src={food.imgUrl} alt={food.name} />
+                <img src={food.imgUrl} alt={food.name} loading="lazy" />
               </FoodImgWrap>
             );
           })}

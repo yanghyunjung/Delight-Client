@@ -1,4 +1,5 @@
 import React from "react";
+// 차트 라이브러리
 import { ResponsivePie } from "@nivo/pie";
 
 const PieChart = ({ data }) => {

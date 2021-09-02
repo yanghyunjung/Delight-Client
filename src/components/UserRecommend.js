@@ -15,23 +15,24 @@ import { useSelector, useDispatch } from "react-redux";
 const UserRecommend = (props) => {
   const dispatch = useDispatch();
   const [isLoding, setIsLoding] = useState(false);
-  const [userData, setUserData] = useState(null);
 
+  // 리덕스) 유저 마이픽 데이터 가져오기
   const historyData = useSelector((state) => state.food.history);
 
   useEffect(() => {
     setTimeout(setIsLoding, 5000, true);
   }, []);
 
+  // 유저 마이픽 기반 랭킹 3 데이터 가져오기
   useEffect(() => {
     async function getUserRecommendation() {
       const { data } = await getUserRecommendationSV();
       dispatch(getResult(data));
-      setUserData(data);
     }
     return getUserRecommendation();
   }, []);
 
+  // 유저 마이픽 데이터 가져오기
   useEffect(() => {
     async function getHistory() {
       const { data } = await getHistorySV();

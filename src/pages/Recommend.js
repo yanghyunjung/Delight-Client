@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
 
 import Swal from "sweetalert2";
@@ -11,7 +11,7 @@ import { Grid, Button } from "../elements";
 import FoodCard from "../components/FoodCard";
 import SelectedFoodSlider from "../components/SelectedFoodSlider";
 
-import { getFoodList, getFoodListSV } from "../shared/api";
+import { getFoodListSV } from "../shared/api";
 
 import Loader from "react-loader-spinner";
 import { history } from "../redux/configureStore";
@@ -27,17 +27,17 @@ const category = [
 const Recommand = (props) => {
   const [foodsList, setFoodsList] = useState(null);
   const [isLoding, setIsLoding] = useState(true);
-  const [selectCategory, setSelectCategory] = useState(false);
   const [categoryId, setCategoryId] = useState(0);
 
+  // 고른 음식 리스트
   const list = useSelector((state) => state.food.selectList);
 
+  // 해당 카테고리 음식 데이터 가져오기
   const handleRecommendFood = (categoryId) => {
     async function getFoods() {
       const { data } = await getFoodListSV(categoryId).then(
         setTimeout(setIsLoding, 1000, false)
       );
-      setSelectCategory(true);
       setFoodsList(data);
     }
     return getFoods();

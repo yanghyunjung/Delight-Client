@@ -1,29 +1,31 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { history } from "../redux/configureStore";
 import styled from "styled-components";
 
+// 라이브 러리
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Swal from "sweetalert2";
 
+// 이미지
 import ArrowRight from "../image/SelectedArrowR.png";
 import ArrowLeft from "../image/SelectedArrowL.png";
-
-import Tag from "./Tag";
-import { history } from "../redux/configureStore";
-
-import { sendMyPickSV } from "../redux/modules/food";
-
-import { useDispatch } from "react-redux";
-
-import Swal from "sweetalert2";
 import PickAlert from "../image/PickAlert.svg";
 import myPick from "../image/myPick.svg";
 import myPicked from "../image/myPicked.svg";
+
+import Tag from "./Tag";
+
+// 마이픽 보내는 POST API
+import { sendMyPickSV } from "../redux/modules/food";
 
 const ResultSlider = ({ data, setOpenTip }) => {
   const dispatch = useDispatch();
   const [foodName, setFoodName] = useState(null);
 
+  // 해당 음식 마이픽
   const handleMyPick = (food) => {
     dispatch(sendMyPickSV({ foodName: food.name }));
     setFoodName(food.name);

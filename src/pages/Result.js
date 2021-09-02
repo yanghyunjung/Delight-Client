@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+// 추천 결과 페이지
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-import { Grid, Text } from "../elements";
+import { Grid } from "../elements";
 import ResultSlider from "../components/ResultSlider";
 import PercentResult from "../components/PercentResult";
 import ResultTip from "../components/ResultTip";
@@ -12,10 +13,9 @@ import { history } from "../redux/configureStore";
 import FoodTip from "../image/FoodTip.svg";
 
 const Result = () => {
-  const dispatch = useDispatch();
-
   const [openTip, setOpenTip] = useState(true);
 
+  // 랭킹 데이터
   const data = useSelector((state) => state.food.result);
 
   return (
@@ -46,7 +46,7 @@ const Result = () => {
               </div>
             </TipWrap>
           )}
-
+          {/* 결과 페이지 슬라이더 */}
           <ResultSlider data={data} setOpenTip={setOpenTip} />
         </ResultContainer>
         <PercentContainer>

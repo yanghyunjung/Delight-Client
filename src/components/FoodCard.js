@@ -49,7 +49,7 @@ const FoodCard = ({ data, key }) => {
           }}
         >
           <FoodImgWrap style={{ border: "3px solid #ffa012", opacity: "0.8" }}>
-            <img src={data.imgUrl} alt={data.name} />
+            <img src={data.imgUrl} alt={data.name} loading="lazy" />
           </FoodImgWrap>
           <FoodNameWrap>
             <FoodName style={{ color: "#ffa012", fontWeight: "700" }}>

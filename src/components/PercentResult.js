@@ -8,8 +8,8 @@ const PercentResult = (props) => {
   return (
     <React.Fragment>
       <Container>
-        <ContentContainer >
-          <PieChart data={data}/>
+        <ContentContainer>
+          <PieChart data={data} />
         </ContentContainer>
       </Container>
     </React.Fragment>

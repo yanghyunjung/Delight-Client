@@ -7,22 +7,18 @@ import ErrorAlert from "../image/ErrorAlert.svg";
 
 import Swal from "sweetalert2";
 
-import Loader from "react-loader-spinner";
 import { history } from "../redux/configureStore";
 
-import { useSelector, useDispatch } from "react-redux";
-import { addHistory } from "../redux/modules/food";
+// 마이픽 리스트 가져오기
 import { getHistorySV } from "../shared/api";
 
 const MainChat = (props) => {
-  const dispatch = useDispatch();
   const [historyList, setHistoryList] = useState(null);
 
   useEffect(() => {
     async function getHistory() {
       const { data } = await getHistorySV();
       setHistoryList(data);
-      dispatch(addHistory(data));
     }
     return getHistory();
   }, []);
