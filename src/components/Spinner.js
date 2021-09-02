@@ -16,8 +16,10 @@ const Spinner = (props) => {
 
   const [isLoding, setIsLoding] = useState(false);
 
+  // 선택한 음식 이름 데이터
   const foods = useSelector((state) => state.food.foodName);
 
+  // 선택 음식 기반 머신러닝 서버쪽으로 보내기
   useEffect(() => {
     dispatch(sendSelectFoodSV({ foods, setIsLoding }));
   }, [foods, dispatch]);

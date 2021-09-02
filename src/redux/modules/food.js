@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import instance from "../../shared/api";
 import FullAlert from "../../image/FullAlert.svg";
 import ErrorAlert from "../../image/ErrorAlert.svg";
@@ -44,16 +43,20 @@ const food = createSlice({
       state.selectList = [...foodList];
       state.foodName = [...nameList];
     },
+    // 결과 데이테 가져오고 골랐던 음식 리스트 초기화
     getResult: (state, action) => {
       state.result = action.payload.data;
       state.selectList = [];
     },
+    // 마이픽 리스트 저장하기
     addHistory: (state, action) => {
       state.history = action.payload;
     },
+    // 매니아카드 정보 저장
     addFrequency: (state, action) => {
       state.frequency = action.payload;
     },
+    // 클린업을 위한 설정
     resetData: (state, action) => {
       state.selectList = [];
       state.foodName = [];
@@ -61,6 +64,7 @@ const food = createSlice({
   },
 });
 
+// 선택한 음식 머신 러닝 서버로 보내는 모듈
 export const sendSelectFoodSV = ({ foods, setIsLoding }) => {
   return async (dispatch, getState, { history }) => {
     try {
@@ -91,6 +95,7 @@ export const sendSelectFoodSV = ({ foods, setIsLoding }) => {
   };
 };
 
+// 마이픽한 음식 데이터 서버로 보내는 모듈
 export const sendMyPickSV = ({ foodName }) => {
   return async (dispatch, getState, { history }) => {
     try {

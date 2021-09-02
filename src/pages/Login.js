@@ -9,12 +9,8 @@ import Naver from "../image/naver.png";
 import { Text } from "../elements";
 //redux
 import { GOOGLE_URL, KAKAO_URL, NAVER_URL } from "../redux/modules/oauth";
-//shared
-import { deleteCookie } from '../shared/Cookie';
 
 const Login = (props) => {
-
-  const delete_jwt = deleteCookie("jwt");
 
   return (
     <React.Fragment>
@@ -97,8 +93,8 @@ const Box = styled.div`
 
 const Logo = styled.img`
   width: 100%;
-  height: 6rem;  
-    
+  height: 6rem;
+
 `;
 
 const Box2 = styled.div`
