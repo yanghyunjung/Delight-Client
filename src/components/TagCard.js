@@ -9,7 +9,7 @@ import noData from "../image/nodatabobsi.png";
 const TagCard = () => {
   const dispatch = useDispatch();
   const tags = useSelector(getTagResult);
-  
+
   // []는 전체 목록을 불러옴 -> 백엔드와 얘기 ok
   useEffect(() => {
     dispatch(getTagResultThunk([]));
@@ -39,6 +39,8 @@ const TagCard = () => {
           </span>
         </DIV>
       ))}
+
+      {/* 선택된 배열값이 아무것도 없을 때 */}
       {tags?.length === 0 && (
         <DIV2>
           <NoDataImg src={noData} />

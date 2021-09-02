@@ -3,7 +3,7 @@ import instance from "../../shared/api";
 
 import Swal from "sweetalert2";
 
-// 카테고리 함수 만들기
+// 카테고리 함수 생성
 export const getCategoryThunk = createAsyncThunk(
   "category/getCategory",
   async (categoryId) => {
@@ -16,6 +16,7 @@ const initialState = {
   list: [],
 };
 
+// category가 createSlice 내에서 실행 가능하게
 const categorySlice = createSlice({
   name: "food",
   initialState,

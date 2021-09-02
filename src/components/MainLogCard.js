@@ -60,6 +60,9 @@ const MainLogCard = (props) => {
 
 const GRID1 = styled.div`
   display: flex;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const Box = styled.div`
@@ -75,6 +78,9 @@ const Box = styled.div`
   font-size: 2rem;
   line-height: 3rem;
   color: black;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const Img = styled.img`

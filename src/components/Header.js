@@ -87,7 +87,6 @@ const HEADER = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   border: none;
-  /* width: 100vw; */
   width: 36rem;
   margin: 0 auto;
   padding: 0 1rem;

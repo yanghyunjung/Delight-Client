@@ -14,7 +14,7 @@ const Search = (props) => {
   const [selectedTag, setSelectedTag] = useState(null);
   const tags = useSelector(getTagResult);
   return (
-    <Container1>
+    <Layout>
       <DIV tagOpen={tagOpen}>
         <Title>
           <span
@@ -64,10 +64,10 @@ const Search = (props) => {
           </span>
         </Container>
 
-        {/* 음식 태그 목록 컴포넌트 */}
+        {/* 음식 목록 불러오기 */}
         <TagCard tagOpen={tagOpen} />
 
-        {/* 태그 컴포넌트 */}
+        {/* 태그 검색하기 컴포넌트 */}
         {tagOpen && (
           <TagSlide
             tagOpen={tagOpen}
@@ -76,26 +76,41 @@ const Search = (props) => {
           />
         )}
       </DIV>
-    </Container1>
+    </Layout>
   );
 };
 
-const Container1 = styled.div`
+const Layout = styled.div`
   width: 100%;
   margin: 0 auto;
+  @media ${(props) => props.theme.mobile} {
+    width: 100%;
+  }
 `;
 
 const DIV = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
-  // 태그 슬라이드 올라올 때 뒷배경 height 값 설정
+  // 태그 선택하기 버튼 눌렀을 때 div 배경 height값 설정
   ${(props) =>
     props.tagOpen &&
     css`
-      overflow: hidden;
       height: 95vh !important;
     `}
+`;
+
+const Container = styled.div`
+  box-sizing: border-box;
+  background-color: #ededed;
+  display: flex;
+  flex-direction: row;
+  bottom: 0;
+  width: 100%;
+  height: 6rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
 `;
 
 const ArrowDown = styled(IoIosArrowDown)`
@@ -120,22 +135,6 @@ const SelectTag = styled.div`
   line-height: 2rem;
   background-color: #f2f2f2;
   border-radius: 1.6rem;
-`;
-
-const Container = styled.div`
-  box-sizing: border-box;
-  background-color: #ededed;
-  display: flex;
-  flex-direction: row;
-  bottom: 0;
-  width: 100%;
-  height: 6rem;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1.5rem;
-  @media ${(props) => props.theme.mobile} {
-    width: 100%;
-  }
 `;
 
 export default Search;
