@@ -13,9 +13,11 @@ import { getCategoryThunk, getFoods } from "../redux/modules/category";
 const MainSlider = (props) => {
   const dispatch = useDispatch();
   const foods = useSelector(getFoods);
+
+  // sliderRef로 초기화 설정해 focus 기능 구현
   const sliderRef = useRef();
 
-  // 실행했을 때 카테고리 탭 기본값 설정
+  // 실행했을 때 카테고리 탭 기본값(전체) 설정
   const [tabIndex, setTabIndex] = useState(1);
 
   useEffect(() => {
@@ -84,7 +86,7 @@ const MainSlider = (props) => {
   );
 };
 
-// 이미지 슬라이드 스타일 적용하기
+// 캐로쉘(이미지) 슬라이드 스타일 적용
 const StyledSlider = styled(Slider)`
   width: 100%;
   padding-bottom: 1rem;
@@ -178,6 +180,7 @@ function PrevArrow(props) {
   );
 }
 
+// 화살표 감싸는 div
 const ArrowWrap = styled.div`
   & img {
     width: 3.2rem;
