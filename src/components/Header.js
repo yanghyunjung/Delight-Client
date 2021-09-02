@@ -11,7 +11,9 @@ import MyPageLogo from "../image/mypageIcon.png";
 import { history } from "../redux/configureStore";
 import { getCookie } from "../shared/Cookie";
 
+// 현정 - 헤더 뷰 제작
 const Header = (props) => {
+  // 화현 - 로그인 기능 담당
   // 로그인 유무 확인
   const is_jwt = getCookie("jwt") ? true : false;
 
