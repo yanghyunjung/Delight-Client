@@ -4,6 +4,7 @@ import styled from "styled-components";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import NotionIcon from "../image/notion.png";
 
+// 메인 페이지 푸터 적용
 const Footer = (props) => {
   return (
     <FooterStyle>

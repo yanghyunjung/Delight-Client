@@ -10,13 +10,14 @@ const TagCard = () => {
   const dispatch = useDispatch();
   const tags = useSelector(getTagResult);
 
-  // []는 전체 목록을 불러옴 -> 백엔드와 얘기 ok
+  // []는 전체 목록을 불러옴
   useEffect(() => {
     dispatch(getTagResultThunk([]));
   }, []);
 
   return (
     <>
+    {/* 음식 목록을 보여주는 기능구현 */}
       {tags?.map((tag) => (
         <DIV>
           <ImgWrap>
@@ -40,7 +41,7 @@ const TagCard = () => {
         </DIV>
       ))}
 
-      {/* 선택된 배열값이 아무것도 없을 때 */}
+      {/* 선택된 배열길이가 0일때 실행 */}
       {tags?.length === 0 && (
         <DIV2>
           <NoDataImg src={noData} />

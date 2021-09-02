@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Bobsi from "../image/Bobsi.png";
 import Logo from "../image/WhiteLogo.png";
 
+// 로딩 페이지 제작
 const Loading = () => {
   return (
     <>

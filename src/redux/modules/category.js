@@ -16,7 +16,7 @@ const initialState = {
   list: [],
 };
 
-// category가 createSlice 내에서 실행 가능하게
+// createSlice는 카테고리 함수의 액션을 동작하게 함
 const categorySlice = createSlice({
   name: "food",
   initialState,
@@ -42,4 +42,5 @@ const categorySlice = createSlice({
 });
 
 export const getFoods = (state) => state.category.list;
+
 export default categorySlice.reducer;

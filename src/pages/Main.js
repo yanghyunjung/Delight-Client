@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import { history } from "../redux/configureStore";
 import { getCookie } from "../shared/Cookie";
 
+// 메인 페이지 제작
 const Main = (props) => {
   // 로그인 유무 확인
   const is_jwt = getCookie("jwt") ? true : false;
