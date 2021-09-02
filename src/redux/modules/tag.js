@@ -11,6 +11,7 @@ const initialState = {
   list: [],
 };
 
+// createSlice는 태그목록 함수의 액션을 동작하게 함
 const categorySlice = createSlice({
   name: "tags",
   initialState,

@@ -9,6 +9,7 @@ import styled, { css } from "styled-components";
 import TagSlide from "../components/TagSlide";
 import TagCard from "../components/TagCard";
 
+// 검색(태그) 페이지 제작
 const Search = (props) => {
   const [tagOpen, setTagOpen] = useState(false);
   const [selectedTag, setSelectedTag] = useState(null);
@@ -92,7 +93,8 @@ const DIV = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
-  // 태그 선택하기 버튼 눌렀을 때 div 배경 height값 설정
+  // 슬라이드 올라올 때 백그라운드 height 값을 따로 설정해줌
+  // props로 따로 CSS를 설정해줌 
   ${(props) =>
     props.tagOpen &&
     css`
