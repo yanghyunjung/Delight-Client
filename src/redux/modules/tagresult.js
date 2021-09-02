@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import instance from "../../shared/api";
 
-// 태그음식 결과 나오게 하기
+// 음식 목록 post하기 
 export const getTagResultThunk = createAsyncThunk(
   "tag/getTagResult",
   async (tagIds) => {
@@ -14,9 +14,10 @@ export const getTagResultThunk = createAsyncThunk(
 );
 
 const initialState = {
-  list: null,
+  list: [],
 };
 
+// createSlice는 음식 목록 함수의 액션을 동작하게 함
 const categorySlice = createSlice({
   name: "tagresult",
   initialState,
@@ -34,4 +35,5 @@ const categorySlice = createSlice({
 });
 
 export const getTagResult = (state) => state.tagresult.list;
+
 export default categorySlice.reducer;

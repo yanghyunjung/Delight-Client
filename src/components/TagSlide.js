@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
   const dispatch = useDispatch();
-
   const [tagIndex, setTagIndex] = useState(1);
   const [nowCate, setNowCate] = useState("COUNTRY");
   const [selectedTag2, setSelectedTag2] = useState([]);
@@ -40,7 +39,8 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
     }
   };
 
-  // 태그 delete(삭제) -> filter 함수 사용
+  // 태그 삭제를 위해
+  // filter 함수 사용
   const handleDeleteSelectedTag = (id) => {
     const newTags = selectedTag2.filter((tag) => {
       return tag.id !== id;
@@ -48,7 +48,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
     setSelectedTag2(newTags);
   };
 
-  // 확인버튼을 눌렀을 때 실행되는 함수
+  // 선택하기 버튼을 눌렀을 때 실행되는 함수
   const handleSubmitTags = () => {
     const tagIdArray = [];
     const tagNameArray = [];
@@ -64,7 +64,7 @@ const Tag = ({ tagOpen, setTagOpen, setSelectedTag }) => {
   };
   return (
     <>
-      {/* 태그 선택 화면 띄우기 */}
+      {/* 태그 선택 화면 띄움 */}
       <BackGround
         onClick={() => setTagOpen(false)}
       ></BackGround>
@@ -152,6 +152,8 @@ const boxShow = keyframes`
     }
 `;
 
+// 태그 선택하기 버튼을 눌렀을 때 백그라운드 배경을 어둡게 함 
+// BackGround div를 position fixed로 고정
 const BackGround = styled.div`
   position: fixed;
   width: 36rem;
@@ -163,6 +165,8 @@ const BackGround = styled.div`
   }
 `;
 
+// 태그 선택하기 버튼을 눌렀을 때 보이는 Tag div 컴포넌트를
+// 화면 아래에 고정하기 위하여 position:fixed로 고정
 const DIV = styled.div`
   background-color: #ffffff;
   position: fixed;
